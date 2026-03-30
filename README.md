@@ -26,7 +26,7 @@ This project is the first project of the Hyundai AutoEver Mobility SW School, fo
 
 따라서, 운전자의 실수를 보완하고, 특히 고령 운전자 및 운전 미숙 사용자 환경에서도 안전성을 확보할 수 있는 능동적 차량 제어 시스템의 필요성이 증가하고 있다.
 
-[1] 교통사고 발생 
+[1] 교통사고 발생  
 [후진기어 둔 채 트렁크 열다 참변…20대 여성 차·벽 사이 끼여 사망[출처:중앙일보]](https://www.joongang.co.kr/article/25402548)
 
 [주차장서 후진기어 상태로 내린 40대 운전자, 차에 깔려 숨져[출처:연합뉴스]](https://www.yna.co.kr/view/AKR20260313174500063)

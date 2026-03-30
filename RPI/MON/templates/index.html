@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAPS MON</title>
+    <meta http-equiv="refresh" content="{{ auto_refresh_sec }}">
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --card: #ffffff;
+            --text: #18212f;
+            --muted: #6b7785;
+            --line: #d7deea;
+            --primary: #1f4fa3;
+            --warning: #b26b00;
+            --danger: #b42318;
+            --ok: #127a42;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        .wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+        .sub {
+            margin: 0 0 20px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 8px 20px rgba(18, 33, 61, 0.05);
+        }
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 15px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+        .big {
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .filter {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        input, select, button {
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            padding: 0 12px;
+            font-size: 14px;
+            background: #fff;
+        }
+        button {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        button.secondary {
+            background: #eef3fb;
+            color: var(--primary);
+            border: 1px solid #d2dff7;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            background: var(--card);
+            border-radius: 16px;
+            border: 1px solid var(--line);
+        }
+        th, td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #edf1f7;
+            text-align: left;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        th {
+            background: #f8fbff;
+            font-size: 13px;
+            color: #475467;
+        }
+        tr:last-child td { border-bottom: none; }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .warning { background: #fff3d6; color: var(--warning); }
+        .brake { background: #ffe0db; color: var(--danger); }
+        .system { background: #daf3e4; color: var(--ok); }
+        .muted { color: var(--muted); }
+        .topline {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .hint {
+            font-size: 13px;
+            color: var(--muted);
+        }
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 920px) {
+            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .topline { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 640px) {
+            .grid { grid-template-columns: 1fr; }
+            th, td { font-size: 12px; padding: 10px 8px; }
+            .wrap { padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="topline">
+            <div>
+                <h1>VAPS 모니터링 프로그램 (MON)</h1>
+                <p class="sub">경고/제동 이벤트를 저장하고, 최근 기록을 즉시 조회할 수 있는 라즈베리파이용 모니터링 화면입니다.</p>
+            </div>
+            <div class="actions">
+                <button onclick="location.reload()">새로고침</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>전체 이벤트 수</h2>
+                <div class="big">{{ stats.total }}</div>
+            </div>
+            <div class="card">
+                <h2>경고 이벤트 수</h2>
+                <div class="big">{{ stats.warning_count }}</div>
+            </div>
+            <div class="card">
+                <h2>제동 이벤트 수</h2>
+                <div class="big">{{ stats.brake_count }}</div>
+            </div>
+            <div class="card">
+                <h2>최근 이벤트</h2>
+                {% if stats.latest %}
+                    <div><strong>{{ stats.latest.event_time }}</strong></div>
+                    <div class="muted">{{ stats.latest.event_category|category_ko }} / {{ stats.latest.event_type }}</div>
+                {% else %}
+                    <div class="muted">기록 없음</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <form class="filter" method="get" action="/">
+            <select name="category">
+                <option value="" {% if not selected_category %}selected{% endif %}>전체 분류</option>
+                <option value="warning" {% if selected_category == 'warning' %}selected{% endif %}>경고</option>
+                <option value="brake" {% if selected_category == 'brake' %}selected{% endif %}>제동</option>
+                <option value="system" {% if selected_category == 'system' %}selected{% endif %}>시스템</option>
+            </select>
+            <input type="text" name="keyword" value="{{ keyword }}" placeholder="이벤트 종류, 기어, 문 상태 검색">
+            <select name="limit">
+                {% for n in [20, 50, 100, 200] %}
+                <option value="{{ n }}" {% if limit == n %}selected{% endif %}>최근 {{ n }}개</option>
+                {% endfor %}
+            </select>
+            <button type="submit">조회</button>
+            <span class="hint">{{ auto_refresh_sec }}초마다 자동 새로고침</span>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>발생 시각</th>
+                    <th>구분</th>
+                    <th>이벤트 종류</th>
+                    <th>기어 상태</th>
+                    <th>도어 상태</th>
+                    <th>운전자 유무</th>
+                    <th>차량 속도</th>
+                    <th>입력 출처</th>
+                    <th>저장 시각</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if events %}
+                    {% for e in events %}
+                    <tr>
+                        <td>{{ e.id }}</td>
+                        <td>{{ e.event_time }}</td>
+                        <td>
+                            <span class="badge {{ e.event_category }}">{{ e.event_category|category_ko }}</span>
+                        </td>
+                        <td><strong>{{ e.event_type }}</strong></td>
+                        <td>{{ e.gear_state or '-' }}</td>
+                        <td>{{ e.door_state or '-' }}</td>
+                        <td>{{ e.driver_present|yesno }}</td>
+                        <td>{{ e.vehicle_speed|speed_fmt }}</td>
+                        <td>{{ e.source }}</td>
+                        <td>{{ e.received_at }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="10" class="muted">조회된 이벤트가 없습니다.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

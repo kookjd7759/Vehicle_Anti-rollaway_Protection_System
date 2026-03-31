@@ -7,6 +7,7 @@
 - 제동 이벤트 기록
 - 제동 시점의 기어/도어/운전자 유무/속도 기록
 - 웹 화면에서 최근 기록 조회
+- 새 이벤트 수신 시 웹에서 팝업 알림 + 자동 새로고침(SSE)
 - UART(시리얼) 수신 또는 HTTP API 수신 지원
 - SQLite 기반 로컬 저장
 
@@ -102,6 +103,22 @@ WARN|1차|2026-03-30 14:22:10
 BRAKE|긴급|2026-03-30 14:22:11|D|OPEN|0|3.2
 ```
 
+### 지원 형식 4: MON 이진 프레임/상태워드
+
+엑셀 인터페이스 정의 기준으로 `Status Word = [15:14][13:12][11:10][9][8][7:0]` 를 디캡슐화합니다.
+
+- `warning_type(2bit)` / `brake_type(2bit)` / `gear_state(2bit)` / `door_state(1bit)` / `driver_present(1bit)` / `speed_kmh(8bit)`
+- Event Code(`0x01`, `0x11` 등)가 함께 오면 해당 코드 우선으로 이벤트 종류를 결정합니다.
+
+입력 예시:
+
+```text
+0110001000110000
+000000010110001000110000
+AA 01 62 30 53 55
+0x11 0x82 0x57
+```
+
 ---
 
 ## 5) HTTP API 테스트
@@ -143,8 +160,14 @@ curl http://127.0.0.1:5000/api/events?limit=20
 ```bash
 export MON_WEB_PORT=5000
 export MON_SERIAL_ENABLED=1
-export MON_SERIAL_PORT=/dev/serial0
+export MON_SERIAL_PORT=/dev/ttyUSB0
 export MON_SERIAL_BAUDRATE=115200
+export MON_MAX_EVENTS=5000
+export MON_SERIAL_DUPLICATE_WINDOW_SEC=1.5
+export MON_FRAME_SOF_HEX=AA
+export MON_FRAME_EOF_HEX=55
+export MON_FRAME_REQUIRE_MARKERS=0
+export MON_FRAME_REQUIRE_CHECKSUM=0
 python3 app.py
 ```
 

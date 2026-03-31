@@ -4,72 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VAPS MON</title>
+    {% if auto_refresh_sec and auto_refresh_sec > 0 %}
     <meta http-equiv="refresh" content="{{ auto_refresh_sec }}">
+    {% endif %}
     <style>
         :root {
-            --bg: #f4f7fb;
+            --bg: #f3f6fb;
             --card: #ffffff;
             --text: #18212f;
-            --muted: #6b7785;
+            --muted: #617083;
             --line: #d7deea;
             --primary: #1f4fa3;
             --warning: #b26b00;
             --danger: #b42318;
             --ok: #127a42;
+            --shadow: 0 10px 24px rgba(22, 36, 62, 0.08);
         }
         * { box-sizing: border-box; }
         body {
             margin: 0;
             font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
-            background: var(--bg);
+            background: radial-gradient(circle at top, #edf3ff 0%, #f5f8fd 35%, #f3f6fb 100%);
             color: var(--text);
         }
         .wrap {
-            max-width: 1280px;
+            max-width: 1380px;
             margin: 0 auto;
             padding: 24px;
+        }
+        .topline {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: 20px;
         }
         h1 {
             margin: 0 0 8px;
             font-size: 30px;
+            letter-spacing: -0.5px;
         }
         .sub {
-            margin: 0 0 20px;
+            margin: 0;
             color: var(--muted);
-            font-size: 15px;
+            font-size: 14px;
+            line-height: 1.45;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        .card {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 18px;
-            box-shadow: 0 8px 20px rgba(18, 33, 61, 0.05);
-        }
-        .card h2 {
-            margin: 0 0 8px;
-            font-size: 15px;
-            color: var(--muted);
-            font-weight: 600;
-        }
-        .big {
-            font-size: 28px;
-            font-weight: 800;
-        }
-        .filter {
+        .actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             align-items: center;
-            margin-bottom: 16px;
         }
-        input, select, button {
-            height: 42px;
+        button, input, select {
+            height: 40px;
             border-radius: 10px;
             border: 1px solid var(--line);
             padding: 0 12px;
@@ -77,43 +65,108 @@
             background: #fff;
         }
         button {
+            border: none;
             background: var(--primary);
             color: #fff;
-            border: none;
-            cursor: pointer;
             font-weight: 700;
+            cursor: pointer;
         }
-        button.secondary {
-            background: #eef3fb;
-            color: var(--primary);
-            border: 1px solid #d2dff7;
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 999px;
+            padding: 8px 12px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #98a2b3;
+            box-shadow: 0 0 0 0 rgba(24, 33, 47, 0.2);
+        }
+        .dot.online {
+            background: #12b76a;
+            animation: pulse 1.7s infinite;
+        }
+        .dot.offline {
+            background: #f79009;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(18, 183, 106, 0.36); }
+            70% { box-shadow: 0 0 0 10px rgba(18, 183, 106, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(18, 183, 106, 0); }
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 16px 18px;
+            box-shadow: var(--shadow);
+        }
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+        .big {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+        }
+        .muted { color: var(--muted); }
+        .filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .hint {
+            font-size: 12px;
+            color: var(--muted);
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            overflow: hidden;
             background: var(--card);
-            border-radius: 16px;
             border: 1px solid var(--line);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
         th, td {
-            padding: 12px 10px;
+            padding: 10px 8px;
             border-bottom: 1px solid #edf1f7;
             text-align: left;
-            font-size: 14px;
             vertical-align: middle;
+            font-size: 13px;
+            white-space: nowrap;
         }
         th {
             background: #f8fbff;
-            font-size: 13px;
             color: #475467;
+            font-size: 12px;
+            letter-spacing: 0.02em;
         }
         tr:last-child td { border-bottom: none; }
         .badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 4px 10px;
+            padding: 4px 9px;
             border-radius: 999px;
             font-size: 12px;
             font-weight: 700;
@@ -121,31 +174,62 @@
         .warning { background: #fff3d6; color: var(--warning); }
         .brake { background: #ffe0db; color: var(--danger); }
         .system { background: #daf3e4; color: var(--ok); }
-        .muted { color: var(--muted); }
-        .topline {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 20px;
+        .mono {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 12px;
         }
-        .hint {
-            font-size: 13px;
-            color: var(--muted);
+        .wrap-cell {
+            white-space: normal;
+            word-break: break-all;
+            max-width: 220px;
         }
-        .actions {
+        .toast-wrap {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 9999;
             display: flex;
+            flex-direction: column;
             gap: 8px;
-            flex-wrap: wrap;
         }
-        @media (max-width: 920px) {
+        .toast {
+            min-width: 280px;
+            max-width: 360px;
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 12px;
+            padding: 12px 14px;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.32);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.18s ease;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .toast strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+        .toast span {
+            display: block;
+            color: #cbd5e1;
+            font-size: 12px;
+            line-height: 1.3;
+        }
+        @media (max-width: 1050px) {
             .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .topline { flex-direction: column; align-items: flex-start; }
         }
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
             .grid { grid-template-columns: 1fr; }
-            th, td { font-size: 12px; padding: 10px 8px; }
             .wrap { padding: 14px; }
+            th, td { font-size: 11px; padding: 8px 6px; }
+            h1 { font-size: 24px; }
+            .card h2 { font-size: 13px; }
+            .big { font-size: 24px; }
         }
     </style>
 </head>
@@ -154,28 +238,32 @@
         <div class="topline">
             <div>
                 <h1>VAPS 모니터링 프로그램 (MON)</h1>
-                <p class="sub">경고/제동 이벤트를 저장하고, 최근 기록을 즉시 조회할 수 있는 라즈베리파이용 모니터링 화면입니다.</p>
+                <p class="sub">UART로 들어오는 이벤트를 실시간으로 디캡슐화하여 저장하고, 최신 상태를 즉시 확인합니다.</p>
             </div>
             <div class="actions">
-                <button onclick="location.reload()">새로고침</button>
+                <span class="status-pill">
+                    <span id="streamDot" class="dot offline"></span>
+                    <span id="streamText">실시간 연결 대기</span>
+                </span>
+                <button type="button" onclick="location.reload()">새로고침</button>
             </div>
         </div>
 
         <div class="grid">
             <div class="card">
-                <h2>전체 이벤트 수</h2>
+                <h2>전체 이벤트</h2>
                 <div class="big">{{ stats.total }}</div>
             </div>
             <div class="card">
-                <h2>경고 이벤트 수</h2>
+                <h2>경고 이벤트</h2>
                 <div class="big">{{ stats.warning_count }}</div>
             </div>
             <div class="card">
-                <h2>제동 이벤트 수</h2>
+                <h2>제동 이벤트</h2>
                 <div class="big">{{ stats.brake_count }}</div>
             </div>
             <div class="card">
-                <h2>최근 이벤트</h2>
+                <h2>최신 이벤트</h2>
                 {% if stats.latest %}
                     <div><strong>{{ stats.latest.event_time }}</strong></div>
                     <div class="muted">{{ stats.latest.event_category|category_ko }} / {{ stats.latest.event_type }}</div>
@@ -192,14 +280,18 @@
                 <option value="brake" {% if selected_category == 'brake' %}selected{% endif %}>제동</option>
                 <option value="system" {% if selected_category == 'system' %}selected{% endif %}>시스템</option>
             </select>
-            <input type="text" name="keyword" value="{{ keyword }}" placeholder="이벤트 종류, 기어, 문 상태 검색">
+            <input type="text" name="keyword" value="{{ keyword }}" placeholder="이벤트 종류, 기어, 도어, raw 검색">
             <select name="limit">
                 {% for n in [20, 50, 100, 200] %}
-                <option value="{{ n }}" {% if limit == n %}selected{% endif %}>최근 {{ n }}개</option>
+                <option value="{{ n }}" {% if limit == n %}selected{% endif %}>최신 {{ n }}건</option>
                 {% endfor %}
             </select>
             <button type="submit">조회</button>
-            <span class="hint">{{ auto_refresh_sec }}초마다 자동 새로고침</span>
+            {% if auto_refresh_sec and auto_refresh_sec > 0 %}
+            <span class="hint">SSE 실패 시 {{ auto_refresh_sec }}초 주기로 자동 새로고침</span>
+            {% else %}
+            <span class="hint">새 이벤트 수신 시 팝업 후 자동 새로고침</span>
+            {% endif %}
         </form>
 
         <table>
@@ -209,12 +301,16 @@
                     <th>발생 시각</th>
                     <th>구분</th>
                     <th>이벤트 종류</th>
-                    <th>기어 상태</th>
-                    <th>도어 상태</th>
-                    <th>운전자 유무</th>
-                    <th>차량 속도</th>
+                    <th>Event Code</th>
+                    <th>Status Word</th>
+                    <th>Checksum</th>
+                    <th>기어</th>
+                    <th>도어</th>
+                    <th>운전자</th>
+                    <th>속도</th>
+                    <th>Raw Frame</th>
                     <th>입력 출처</th>
-                    <th>저장 시각</th>
+                    <th>수신 시각</th>
                 </tr>
             </thead>
             <tbody>
@@ -223,25 +319,114 @@
                     <tr>
                         <td>{{ e.id }}</td>
                         <td>{{ e.event_time }}</td>
-                        <td>
-                            <span class="badge {{ e.event_category }}">{{ e.event_category|category_ko }}</span>
-                        </td>
+                        <td><span class="badge {{ e.event_category }}">{{ e.event_category|category_ko }}</span></td>
                         <td><strong>{{ e.event_type }}</strong></td>
+                        <td class="mono">{{ e.event_code|hex8 }}</td>
+                        <td class="mono">{{ e.status_word|hex16 }}</td>
+                        <td>{{ e.checksum_ok|yesno_or_dash }}</td>
                         <td>{{ e.gear_state or '-' }}</td>
                         <td>{{ e.door_state or '-' }}</td>
                         <td>{{ e.driver_present|yesno }}</td>
                         <td>{{ e.vehicle_speed|speed_fmt }}</td>
+                        <td class="mono wrap-cell">{{ e.raw_frame or '-' }}</td>
                         <td>{{ e.source }}</td>
                         <td>{{ e.received_at }}</td>
                     </tr>
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="10" class="muted">조회된 이벤트가 없습니다.</td>
+                        <td colspan="14" class="muted">조회된 이벤트가 없습니다.</td>
                     </tr>
                 {% endif %}
             </tbody>
         </table>
     </div>
+
+    <div id="toastWrap" class="toast-wrap" aria-live="polite" aria-atomic="true"></div>
+
+    <script>
+        (function () {
+            const streamDot = document.getElementById("streamDot");
+            const streamText = document.getElementById("streamText");
+            const toastWrap = document.getElementById("toastWrap");
+            const autoRefreshSec = Number({{ auto_refresh_sec|int }});
+            let reconnectTimer = null;
+            let reloadScheduled = false;
+
+            function setStreamState(online, text) {
+                streamDot.classList.toggle("online", online);
+                streamDot.classList.toggle("offline", !online);
+                streamText.textContent = text;
+            }
+
+            function showToast(payload) {
+                const toast = document.createElement("div");
+                toast.className = "toast";
+                const codeText = payload.event_code_hex || "-";
+                toast.innerHTML = "<strong>새 이벤트 수신</strong>" +
+                    "<span>" + (payload.event_type || "알 수 없는 이벤트") + "</span>" +
+                    "<span>코드 " + codeText + " / " + (payload.event_time || "") + "</span>";
+                toastWrap.prepend(toast);
+                requestAnimationFrame(() => toast.classList.add("show"));
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                    setTimeout(() => toast.remove(), 220);
+                }, 2600);
+            }
+
+            function scheduleReload() {
+                if (reloadScheduled) return;
+                reloadScheduled = true;
+                setTimeout(() => window.location.reload(), 1000);
+            }
+
+            function attachStream() {
+                if (!("EventSource" in window)) {
+                    setStreamState(false, "브라우저 SSE 미지원");
+                    return;
+                }
+
+                const stream = new EventSource("/api/stream");
+
+                stream.addEventListener("hello", function () {
+                    setStreamState(true, "실시간 수신 연결됨");
+                });
+
+                stream.addEventListener("ping", function () {
+                    if (!reloadScheduled) {
+                        setStreamState(true, "실시간 수신 연결됨");
+                    }
+                });
+
+                stream.addEventListener("new_event", function (event) {
+                    let payload = {};
+                    try {
+                        payload = JSON.parse(event.data || "{}");
+                    } catch (err) {
+                        payload = {};
+                    }
+                    showToast(payload);
+                    scheduleReload();
+                });
+
+                stream.onerror = function () {
+                    setStreamState(false, "실시간 연결 재시도 중");
+                    stream.close();
+                    if (reconnectTimer) clearTimeout(reconnectTimer);
+                    reconnectTimer = setTimeout(attachStream, 1800);
+                };
+            }
+
+            attachStream();
+
+            if (autoRefreshSec > 0) {
+                setInterval(function () {
+                    if (!reloadScheduled) {
+                        window.location.reload();
+                    }
+                }, autoRefreshSec * 1000);
+            }
+        })();
+    </script>
 </body>
 </html>

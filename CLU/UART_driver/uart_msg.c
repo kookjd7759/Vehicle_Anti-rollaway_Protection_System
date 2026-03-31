@@ -35,7 +35,9 @@
 #include "IfxCpu_Irq.h"
 #include "IfxAsclin_Asc.h"
 #include "IfxPort.h"
+
 #include <string.h>
+#include <stdio.h>
 /*********************************************************************************************************************/
 /*------------------------------------------------------Macros-------------------------------------------------------*/
 /*********************************************************************************************************************/
@@ -122,4 +124,28 @@ void UART_sendText(const char *text)
 {
     Ifx_SizeT count = (Ifx_SizeT)strlen(text);
     IfxAsclin_Asc_write(&g_ascHandle, (uint8 *)text, &count, TIME_INFINITE);
+}
+
+/* ---------------- UART Text Send ---------------- */
+void sendData(int warning, int brake, int gear, int door, int driver, int speed)
+{
+    unsigned short status = 0;
+    char binStr[17];   // 16비트 + '\0'
+    int i;
+
+    status |= ((warning & 0x03) << 14);  // 2bit
+    status |= ((brake   & 0x03) << 12);  // 2bit
+    status |= ((gear    & 0x03) << 10);  // 2bit
+    status |= ((door    & 0x01) << 9);   // 1bit
+    status |= ((driver  & 0x01) << 8);   // 1bit
+    status |=  (speed   & 0xFF);         // 8bit
+
+    for (i = 0; i < 16; i++)
+    {
+        binStr[i] = ((status >> (15 - i)) & 1) ? '1' : '0';
+    }
+    binStr[16] = '\0';
+
+    UART_sendText(binStr);
+    UART_sendText("\r\n");
 }

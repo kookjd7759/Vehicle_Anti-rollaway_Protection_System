@@ -2,61 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-/* -----------------------------
- * 입력값 코드 정의
- * ----------------------------- */
-
-/* warning_type (2bit)
- * 0: 경고 없음
- * 1: 1차 경고
- * 2: 강화 경고
- * 3: Rollaway 경고
- */
-#define LCD_WARN_NONE       0
-#define LCD_WARN_LV1        1
-#define LCD_WARN_LV2        2
-#define LCD_WARN_ROLLAWAY   3
-
-/* brake_type (2bit)
- * 0: 제동 없음
- * 1: D단 제동
- * 2: R단 제동
- * 3: Rollaway 제동
- */
-#define LCD_BRK_NONE        0
-#define LCD_BRK_D           1
-#define LCD_BRK_R           2
-#define LCD_BRK_ROLLAWAY    3
-
-/* gear_state (2bit)
- * 0: P
- * 1: R
- * 2: N
- * 3: D
- */
-#define LCD_GEAR_P          0
-#define LCD_GEAR_R          1
-#define LCD_GEAR_N          2
-#define LCD_GEAR_D          3
-
-/* door_state (1bit)
- * 0: 닫힘
- * 1: 열림
- */
-#define LCD_DOOR_CLOSE      0
-#define LCD_DOOR_OPEN       1
-
-/* driver_present (1bit)
- * 0: 운전자 부재
- * 1: 운전자 존재
- */
-#define LCD_DRIVER_ABSENT   0
-#define LCD_DRIVER_PRESENT  1
-
-
-/* --------------------------------
- * 내부 helper
- * -------------------------------- */
+#include "lcd.h"
 
 static char lcd_get_gear_char(uint8_t gear)
 {
@@ -179,10 +125,6 @@ void lcd_make_strings(uint8_t warning, uint8_t brake, uint8_t gear,
     uint8_t buzzer_mode = lcd_get_buzzer_mode(warning, brake);
     uint8_t led_hazard  = lcd_get_led_hazard(brake);
     uint8_t led_brake   = lcd_get_led_brake(brake);
-
-    if (speed > 255) {
-        speed = 255;
-    }
 
     /* LCD 1 */
     /* "D ---km move    " */

@@ -5,11 +5,26 @@ PIN_R = 22
 PIN_G = 27
 PIN_B = 17
 
+PWM_FREQ = 1000
+
+# 네 LED가 common anode면 True, common cathode면 False
+# 증상:
+# - off인데 희미하게 켜짐
+# - 색이 반대로 나옴
+# 이런 경우 True로 바꿔봐
+COMMON_ANODE = False
+
 _initialized = False
 _pwm_r = None
 _pwm_g = None
 _pwm_b = None
 warning_color = "off"
+
+# 채널별 밝기 보정
+# 보통 G가 너무 밝아서 줄여야 주황이 예쁘게 나옴
+GAIN_R = 1.00
+GAIN_G = 0.35
+GAIN_B = 0.60
 
 
 def set_warning_color(color):
@@ -19,6 +34,21 @@ def set_warning_color(color):
 
 def get_warning_color():
     return warning_color
+
+
+def _clamp(value, low=0.0, high=100.0):
+    return max(low, min(high, float(value)))
+
+
+def _apply_gain(value, gain):
+    return _clamp(value * gain)
+
+
+def _to_duty(value):
+    duty = _clamp(value)
+    if COMMON_ANODE:
+        return 100.0 - duty
+    return duty
 
 
 def _init_rgb():
@@ -34,22 +64,28 @@ def _init_rgb():
     GPIO.setup(PIN_G, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(PIN_B, GPIO.OUT, initial=GPIO.LOW)
 
-    _pwm_r = GPIO.PWM(PIN_R, 1000)
-    _pwm_g = GPIO.PWM(PIN_G, 1000)
-    _pwm_b = GPIO.PWM(PIN_B, 1000)
+    _pwm_r = GPIO.PWM(PIN_R, PWM_FREQ)
+    _pwm_g = GPIO.PWM(PIN_G, PWM_FREQ)
+    _pwm_b = GPIO.PWM(PIN_B, PWM_FREQ)
 
-    _pwm_r.start(0)
-    _pwm_g.start(0)
-    _pwm_b.start(0)
+    # 시작은 꺼진 상태
+    _pwm_r.start(_to_duty(0))
+    _pwm_g.start(_to_duty(0))
+    _pwm_b.start(_to_duty(0))
 
     _initialized = True
 
 
 def _set_color(r, g, b):
     _init_rgb()
-    _pwm_r.ChangeDutyCycle(r)   # 0~100
-    _pwm_g.ChangeDutyCycle(g)
-    _pwm_b.ChangeDutyCycle(b)
+
+    r = _apply_gain(r, GAIN_R)
+    g = _apply_gain(g, GAIN_G)
+    b = _apply_gain(b, GAIN_B)
+
+    _pwm_r.ChangeDutyCycle(_to_duty(r))
+    _pwm_g.ChangeDutyCycle(_to_duty(g))
+    _pwm_b.ChangeDutyCycle(_to_duty(b))
 
 
 def on_red():
@@ -59,7 +95,8 @@ def on_red():
 
 def on_orange():
     set_warning_color("orange")
-    _set_color(100, 20, 0)
+    # 주황은 G를 많이 낮춰야 자연스럽게 나오는 경우가 많음
+    _set_color(100, 25, 0)
 
 
 def on_green():
@@ -68,6 +105,7 @@ def on_green():
 
 
 def off():
+    set_warning_color("off")
     if not _initialized:
         return
     _set_color(0, 0, 0)
@@ -79,7 +117,6 @@ def cleanup():
     if not _initialized:
         return
 
-    set_warning_color("off")
     off()
     _pwm_r.stop()
     _pwm_g.stop()

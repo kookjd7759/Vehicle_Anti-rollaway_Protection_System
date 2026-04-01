@@ -16,61 +16,60 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 from zoneinfo import ZoneInfo
 
-from flask import Flask, Response, jsonify, redirect, render_template, request, stream_with_context, url_for
+from flask import Flask, jsonify, redirect, render_template, request, url_for
 
 try:
     import serial  # type: ignore
 except Exception:
     serial = None
 
-
-def _hex_env(name: str, default: int) -> int:
-    text = os.getenv(name, f"{default:02X}").strip()
-    try:
-        value = int(text, 16)
-    except ValueError:
-        return default
-    if 0 <= value <= 0xFF:
-        return value
-    return default
-
+try:
+    import LED_driver  # type: ignore
+except Exception:
+    LED_driver = None
 
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = Path(os.getenv("MON_DB_PATH", BASE_DIR / "mon_logs.db"))
-SERIAL_PORT = os.getenv("MON_SERIAL_PORT", "/dev/ttyUSB0")
+SERIAL_PORT = "/dev/ttyUSB0"
 SERIAL_BAUDRATE = int(os.getenv("MON_SERIAL_BAUDRATE", "115200"))
 SERIAL_ENABLED = os.getenv("MON_SERIAL_ENABLED", "1") == "1"
+SERIAL_RETRY_SEC = float(os.getenv("MON_SERIAL_RETRY_SEC", "3"))
+SERIAL_TIMEOUT_SEC = float(os.getenv("MON_SERIAL_TIMEOUT_SEC", "1"))
 WEB_HOST = os.getenv("MON_WEB_HOST", "0.0.0.0")
 WEB_PORT = int(os.getenv("MON_WEB_PORT", "5000"))
-AUTO_REFRESH_SEC = int(os.getenv("MON_AUTO_REFRESH_SEC", "0"))
+AUTO_REFRESH_SEC = int(os.getenv("MON_AUTO_REFRESH_SEC", "5"))
 TIMEZONE_NAME = os.getenv("MON_TIMEZONE", "Asia/Seoul")
 SEND_URL_ENABLED = os.getenv("MON_SEND_URL_ENABLED", "1") == "1"
 SEND_URL_COMMAND = os.getenv("MON_SEND_URL_COMMAND", "send_url send {url}")
 SEND_URL_TIMEOUT_SEC = float(os.getenv("MON_SEND_URL_TIMEOUT_SEC", "20"))
 SEND_URL_POLL_INTERVAL_SEC = float(os.getenv("MON_SEND_URL_POLL_INTERVAL_SEC", "0.2"))
 PUBLIC_WEB_HOST = os.getenv("MON_PUBLIC_HOST", "").strip()
-SERIAL_DUPLICATE_WINDOW_SEC = float(os.getenv("MON_SERIAL_DUPLICATE_WINDOW_SEC", "1.5"))
-MAX_EVENTS = int(os.getenv("MON_MAX_EVENTS", "5000"))
-EVENT_STREAM_HEARTBEAT_SEC = float(os.getenv("MON_EVENT_STREAM_HEARTBEAT_SEC", "15"))
-FRAME_SOF = _hex_env("MON_FRAME_SOF_HEX", 0xAA)
-FRAME_EOF = _hex_env("MON_FRAME_EOF_HEX", 0x55)
-FRAME_REQUIRE_MARKERS = os.getenv("MON_FRAME_REQUIRE_MARKERS", "0") == "1"
-FRAME_REQUIRE_CHECKSUM = os.getenv("MON_FRAME_REQUIRE_CHECKSUM", "0") == "1"
-SERIAL_PORT_FALLBACKS = tuple(
-    p.strip()
-    for p in os.getenv("MON_SERIAL_PORT_FALLBACKS", "/dev/ttyUSB0,/dev/serial0,/dev/ttyAMA0").split(",")
-    if p.strip()
-)
-
+LED_SIGNAL_ENABLED = os.getenv("MON_LED_SIGNAL_ENABLED", "1") == "1"
+MON_BINARY_FRAME_BITS = int(os.getenv("MON_BINARY_FRAME_BITS", "16"))
+if MON_BINARY_FRAME_BITS < 8 or MON_BINARY_FRAME_BITS % 8 != 0:
+    MON_BINARY_FRAME_BITS = 16
 
 app = Flask(__name__)
 app.json.ensure_ascii = False
 _db_lock = threading.Lock()
-_subscriber_lock = threading.Lock()
-_subscriber_queues: set[queue.Queue[str]] = set()
+_led_queue: "queue.Queue[str]" = queue.Queue(maxsize=64)
+_led_worker_started = False
+_led_worker_lock = threading.Lock()
 _serial_state_lock = threading.Lock()
-_last_serial_signature = ""
-_last_serial_saved_at = 0.0
+_serial_state: Dict[str, Any] = {
+    "connected": False,
+    "retrying": SERIAL_ENABLED,
+    "last_error": "",
+    "last_error_at": None,
+    "last_connected_at": None,
+    "last_data_at": None,
+    "last_raw": "",
+    "reconnect_count": 0,
+    "received_count": 0,
+    "received_bytes": 0,
+    "parsed_count": 0,
+    "dropped_count": 0,
+}
 
 
 VALID_CATEGORIES = {"warning", "brake", "system"}
@@ -81,54 +80,12 @@ EVENT_BRAKE_R = "R\ub2e8"
 EVENT_BRAKE_EMERGENCY = "\uae34\uae09"
 EVENT_SYSTEM_RELEASE_DRIVER = "\uc81c\ub3d9 \ud574\uc81c(\uc6b4\uc804\uc790 \ubcf5\uadc0)"
 EVENT_SYSTEM_RELEASE_P = "\uc81c\ub3d9 \ud574\uc81c(P\ub2e8 \uc804\ud658)"
-EVENT_SYSTEM_RELEASE_MANUAL = "\uc81c\ub3d9 \ud574\uc81c(\uc218\ub3d9 \ud574\uc81c)"
-EVENT_SYSTEM_RELEASE_RESET = "\uc81c\ub3d9 \ud574\uc81c(\uc2dc\uc2a4\ud15c \ub9ac\uc14b/\uc624\ub958 \ud574\uc81c)"
-EVENT_SYSTEM_STATUS_PERIODIC = "\uc8fc\uae30 \uc0c1\ud0dc \uc804\uc1a1"
 EVENT_SYSTEM_LOG_SENT = "\uc774\ubca4\ud2b8 \ub85c\uadf8 \uc804\uc1a1 \uc644\ub8cc"
 
 VALID_WARNING_TYPES = {EVENT_WARNING_PRIMARY, EVENT_WARNING_ENHANCED, "Rollaway"}
 VALID_BRAKE_TYPES = {EVENT_BRAKE_D, EVENT_BRAKE_R, "Rollaway", EVENT_BRAKE_EMERGENCY}
 VALID_GEAR = {"P", "R", "N", "D", "UNKNOWN", ""}
 VALID_DOOR = {"OPEN", "CLOSED", "UNKNOWN", ""}
-
-WARNING_TYPE_FROM_BITS = {
-    0: None,
-    1: EVENT_WARNING_PRIMARY,
-    2: EVENT_WARNING_ENHANCED,
-    3: "Rollaway",
-}
-BRAKE_TYPE_FROM_BITS = {
-    0: None,
-    1: EVENT_BRAKE_D,
-    2: EVENT_BRAKE_R,
-    3: "Rollaway",
-}
-GEAR_FROM_BITS = {
-    0: "P",
-    1: "R",
-    2: "N",
-    3: "D",
-}
-DOOR_FROM_BIT = {
-    0: "CLOSED",
-    1: "OPEN",
-}
-EVENT_CODE_MAP: dict[int, tuple[str, str]] = {
-    0x01: ("warning", EVENT_WARNING_PRIMARY),
-    0x02: ("warning", EVENT_WARNING_ENHANCED),
-    0x03: ("warning", "Rollaway"),
-    0x11: ("brake", EVENT_BRAKE_D),
-    0x12: ("brake", EVENT_BRAKE_R),
-    0x13: ("brake", "Rollaway"),
-    0x14: ("brake", EVENT_BRAKE_EMERGENCY),
-    0x21: ("system", EVENT_SYSTEM_RELEASE_DRIVER),
-    0x22: ("system", EVENT_SYSTEM_RELEASE_P),
-    0x23: ("system", EVENT_SYSTEM_RELEASE_MANUAL),
-    0x24: ("system", EVENT_SYSTEM_RELEASE_RESET),
-    0x30: ("system", EVENT_SYSTEM_STATUS_PERIODIC),
-}
-HEX_BYTE_RE = re.compile(r"^[0-9a-fA-F]{2}$")
-BIN_CHUNK_RE = re.compile(r"^[01]+$")
 
 
 SCHEMA_SQL = """
@@ -141,11 +98,6 @@ CREATE TABLE IF NOT EXISTS events (
     door_state TEXT,
     driver_present INTEGER,
     vehicle_speed REAL,
-    event_code INTEGER,
-    status_word INTEGER,
-    checksum_ok INTEGER,
-    frame_format TEXT,
-    raw_frame TEXT,
     source TEXT NOT NULL DEFAULT 'api',
     raw_payload TEXT,
     received_at TEXT NOT NULL,
@@ -168,27 +120,6 @@ def init_db() -> None:
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     with closing(get_db()) as conn:
         conn.executescript(SCHEMA_SQL)
-        existing_cols = {
-            row["name"]
-            for row in conn.execute("PRAGMA table_info(events)").fetchall()
-        }
-        alter_statements = [
-            ("event_code", "ALTER TABLE events ADD COLUMN event_code INTEGER"),
-            ("status_word", "ALTER TABLE events ADD COLUMN status_word INTEGER"),
-            ("checksum_ok", "ALTER TABLE events ADD COLUMN checksum_ok INTEGER"),
-            ("frame_format", "ALTER TABLE events ADD COLUMN frame_format TEXT"),
-            ("raw_frame", "ALTER TABLE events ADD COLUMN raw_frame TEXT"),
-        ]
-        for column_name, sql in alter_statements:
-            if column_name not in existing_cols:
-                conn.execute(sql)
-
-        existing_cols = {
-            row["name"]
-            for row in conn.execute("PRAGMA table_info(events)").fetchall()
-        }
-        if "event_code" in existing_cols:
-            conn.execute("CREATE INDEX IF NOT EXISTS idx_events_code ON events(event_code)")
         conn.commit()
 
 
@@ -197,6 +128,111 @@ def now_str() -> str:
         return datetime.now(ZoneInfo(TIMEZONE_NAME)).strftime("%Y-%m-%d %H:%M:%S")
     except Exception:
         return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+def _serial_state_update(**kwargs: Any) -> None:
+    with _serial_state_lock:
+        _serial_state.update(kwargs)
+
+
+def _serial_state_increment(field: str, amount: int = 1) -> None:
+    with _serial_state_lock:
+        _serial_state[field] = int(_serial_state.get(field, 0) or 0) + amount
+
+
+def get_serial_state() -> Dict[str, Any]:
+    with _serial_state_lock:
+        return dict(_serial_state)
+
+
+def classify_led_action(cleaned: Dict[str, Any]) -> Optional[str]:
+    category = str(cleaned.get("event_category") or "").lower()
+    event_type = str(cleaned.get("event_type") or "")
+    source = str(cleaned.get("source") or "").lower()
+
+    # 샘플 데이터/시드에는 LED를 울리지 않음
+    if source.startswith("sample"):
+        return None
+
+    if category == "brake":
+        return "control"   # 제어
+    if category == "warning":
+        return "warning"   # 경고
+    if category == "system":
+        if event_type in {EVENT_SYSTEM_RELEASE_DRIVER, EVENT_SYSTEM_RELEASE_P} or "해제" in event_type:
+            return "release"  # 해제
+    return None
+
+
+def _call_led_driver(action: str) -> None:
+    if LED_driver is None or not LED_SIGNAL_ENABLED:
+        return
+
+    # 요청사항: 제어=warning_red, 경고=orange, 해제=grean
+    # 환경별 함수명 차이를 흡수하기 위해 순차 fallback
+    candidate_names: list[str]
+    if action == "control":
+        candidate_names = ["warning_red", "red", "on_red"]
+    elif action == "warning":
+        candidate_names = ["orange", "warning_orange", "on_orange"]
+    elif action == "release":
+        candidate_names = ["grean", "green", "warning_green", "on_green"]
+    else:
+        return
+
+    for name in candidate_names:
+        func = getattr(LED_driver, name, None)
+        if callable(func):
+            func()
+            return
+
+    print(f"[LED] no callable for action={action} candidates={candidate_names}")
+
+
+def _led_worker() -> None:
+    while True:
+        action = _led_queue.get()
+        try:
+            _call_led_driver(action)
+        except Exception as exc:
+            print(f"[LED] action failed: {action} / {exc}")
+        finally:
+            _led_queue.task_done()
+
+
+def _ensure_led_worker_started() -> None:
+    global _led_worker_started
+    if _led_worker_started:
+        return
+    with _led_worker_lock:
+        if _led_worker_started:
+            return
+        t = threading.Thread(target=_led_worker, daemon=True)
+        t.start()
+        _led_worker_started = True
+
+
+def trigger_led_signal(cleaned: Dict[str, Any]) -> None:
+    action = classify_led_action(cleaned)
+    if action is None:
+        return
+    if LED_driver is None or not LED_SIGNAL_ENABLED:
+        return
+
+    _ensure_led_worker_started()
+    try:
+        _led_queue.put_nowait(action)
+    except queue.Full:
+        # 최신 상태를 더 우선시해 오래된 신호 1개를 비움
+        try:
+            _ = _led_queue.get_nowait()
+            _led_queue.task_done()
+        except queue.Empty:
+            pass
+        try:
+            _led_queue.put_nowait(action)
+        except queue.Full:
+            pass
 
 
 def build_sample_events(source: str = "sample") -> list[Dict[str, Any]]:
@@ -327,7 +363,7 @@ def seed_sample_events_if_empty() -> int:
         return 0
     samples = build_sample_events(source="sample_seed")
     for item in samples:
-        insert_event(item, notify=False)
+        insert_event(item)
     return len(samples)
 
 
@@ -576,11 +612,6 @@ def validate_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
         "door_state": door_state or None,
         "driver_present": normalize_bool(payload.get("driver_present")),
         "vehicle_speed": normalize_speed(payload.get("vehicle_speed")),
-        "event_code": payload.get("event_code"),
-        "status_word": payload.get("status_word"),
-        "checksum_ok": normalize_bool(payload.get("checksum_ok")),
-        "frame_format": normalize_text(payload.get("frame_format")) or None,
-        "raw_frame": normalize_text(payload.get("raw_frame")) or None,
         "source": normalize_text(payload.get("source")) or "api",
         "raw_payload": json.dumps(payload, ensure_ascii=False),
         "received_at": now_str(),
@@ -589,74 +620,14 @@ def validate_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
 
 
 
-def normalize_optional_int(value: Any) -> Optional[int]:
-    if value is None or value == "":
-        return None
-    if isinstance(value, int):
-        return value
-    text = str(value).strip().lower()
-    if text.startswith("0x"):
-        try:
-            return int(text, 16)
-        except ValueError:
-            return None
-    try:
-        return int(text)
-    except ValueError:
-        return None
-
-
-def trim_events_if_needed(conn: sqlite3.Connection) -> None:
-    if MAX_EVENTS <= 0:
-        return
-    total = conn.execute("SELECT COUNT(*) FROM events").fetchone()[0]
-    overflow = int(total) - MAX_EVENTS
-    if overflow <= 0:
-        return
-    conn.execute(
-        """
-        DELETE FROM events
-        WHERE id IN (
-            SELECT id FROM events
-            ORDER BY event_time ASC, id ASC
-            LIMIT ?
-        )
-        """,
-        (overflow,),
-    )
-
-
-def push_event_stream_message(payload: Dict[str, Any]) -> None:
-    data = json.dumps(payload, ensure_ascii=False)
-    with _subscriber_lock:
-        targets = list(_subscriber_queues)
-    for q in targets:
-        try:
-            q.put_nowait(data)
-        except queue.Full:
-            try:
-                _ = q.get_nowait()
-            except queue.Empty:
-                pass
-            try:
-                q.put_nowait(data)
-            except queue.Full:
-                pass
-
-
-def insert_event(payload: Dict[str, Any], *, notify: bool = True) -> int:
+def insert_event(payload: Dict[str, Any]) -> int:
     cleaned = validate_payload(payload)
     sql = """
     INSERT INTO events (
         event_time, event_category, event_type, gear_state, door_state,
-        driver_present, vehicle_speed, event_code, status_word, checksum_ok,
-        frame_format, raw_frame, source, raw_payload, received_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        driver_present, vehicle_speed, source, raw_payload, received_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """
-    event_code = normalize_optional_int(cleaned.get("event_code"))
-    status_word = normalize_optional_int(cleaned.get("status_word"))
-    if status_word is not None:
-        status_word &= 0xFFFF
     with _db_lock:
         with closing(get_db()) as conn:
             cur = conn.execute(
@@ -669,41 +640,16 @@ def insert_event(payload: Dict[str, Any], *, notify: bool = True) -> int:
                     cleaned["door_state"],
                     cleaned["driver_present"],
                     cleaned["vehicle_speed"],
-                    event_code,
-                    status_word,
-                    cleaned["checksum_ok"],
-                    cleaned["frame_format"],
-                    cleaned["raw_frame"],
                     cleaned["source"],
                     cleaned["raw_payload"],
                     cleaned["received_at"],
                 ),
             )
-            trim_events_if_needed(conn)
             conn.commit()
             event_id = int(cur.lastrowid)
 
-    if notify:
-        live_payload = {
-            "id": event_id,
-            "event_time": cleaned["event_time"],
-            "event_category": cleaned["event_category"],
-            "event_type": cleaned["event_type"],
-            "gear_state": cleaned["gear_state"],
-            "door_state": cleaned["door_state"],
-            "driver_present": cleaned["driver_present"],
-            "vehicle_speed": cleaned["vehicle_speed"],
-            "event_code": event_code,
-            "event_code_hex": f"0x{event_code:02X}" if event_code is not None else None,
-            "status_word": status_word,
-            "status_word_hex": f"0x{status_word:04X}" if status_word is not None else None,
-            "checksum_ok": cleaned["checksum_ok"],
-            "frame_format": cleaned["frame_format"],
-            "source": cleaned["source"],
-            "received_at": cleaned["received_at"],
-        }
-        push_event_stream_message(live_payload)
-
+    # LED 호출은 DB 잠금 밖에서 비동기로 처리
+    trigger_led_signal(cleaned)
     return event_id
 
 
@@ -825,372 +771,266 @@ def parse_kv_message(line: str) -> Optional[Dict[str, Any]]:
     return None
 
 
-
-def decode_status_word(status_word: int) -> Dict[str, Any]:
-    status_word &= 0xFFFF
-    warning_bits = (status_word >> 14) & 0b11
-    brake_bits = (status_word >> 12) & 0b11
-    gear_bits = (status_word >> 10) & 0b11
-    door_bit = (status_word >> 9) & 0b1
-    driver_bit = (status_word >> 8) & 0b1
-    speed_kmh = status_word & 0xFF
-
-    return {
-        "warning_type": WARNING_TYPE_FROM_BITS.get(warning_bits),
-        "brake_type": BRAKE_TYPE_FROM_BITS.get(brake_bits),
-        "gear_state": GEAR_FROM_BITS.get(gear_bits, "UNKNOWN"),
-        "door_state": DOOR_FROM_BIT.get(door_bit, "UNKNOWN"),
-        "driver_present": int(driver_bit),
-        "vehicle_speed": int(speed_kmh),
-    }
+def is_binary_line(line: str) -> bool:
+    compact = re.sub(r"\s+", "", line)
+    return bool(compact) and bool(re.fullmatch(r"[01]+", compact))
 
 
-def resolve_event_from_bits(event_code: Optional[int], parsed_status: Dict[str, Any]) -> tuple[str, str]:
-    if event_code is not None and event_code in EVENT_CODE_MAP:
-        return EVENT_CODE_MAP[event_code]
+def split_binary_frames(bit_stream: str) -> tuple[list[str], str]:
+    if not bit_stream:
+        return [], ""
+    usable_len = len(bit_stream) - (len(bit_stream) % MON_BINARY_FRAME_BITS)
+    if usable_len <= 0:
+        return [], bit_stream
+    frames = [
+        bit_stream[i:i + MON_BINARY_FRAME_BITS]
+        for i in range(0, usable_len, MON_BINARY_FRAME_BITS)
+    ]
+    return frames, bit_stream[usable_len:]
 
-    brake_type = parsed_status.get("brake_type")
-    warning_type = parsed_status.get("warning_type")
-    if isinstance(brake_type, str) and brake_type:
-        return "brake", brake_type
-    if isinstance(warning_type, str) and warning_type:
-        return "warning", warning_type
-    return "system", EVENT_SYSTEM_STATUS_PERIODIC
 
+def decode_binary_frame(frame_bits: str) -> Dict[str, Any]:
+    byte_values = [
+        int(frame_bits[i:i + 8], 2)
+        for i in range(0, len(frame_bits), 8)
+    ]
+    b0 = byte_values[0] if len(byte_values) > 0 else 0
+    b1 = byte_values[1] if len(byte_values) > 1 else 0
 
-def build_payload_from_status_word(
-    *,
-    status_word: int,
-    raw_frame: str,
-    frame_format: str,
-    event_code: Optional[int] = None,
-    checksum_ok: Optional[bool] = None,
-) -> Dict[str, Any]:
-    parsed_status = decode_status_word(status_word)
-    event_category, event_type = resolve_event_from_bits(event_code, parsed_status)
-    return {
+    # 기본 MON 비트 해석 규칙:
+    # bit7=제동(control), bit6=경고(warning), bit5=해제(system release)
+    if b0 & 0x80:
+        event_category = "brake"
+        if b0 & 0x20:
+            event_type = EVENT_BRAKE_EMERGENCY
+        elif b0 & 0x10:
+            event_type = EVENT_BRAKE_D
+        else:
+            event_type = EVENT_BRAKE_R
+    elif b0 & 0x40:
+        event_category = "warning"
+        event_type = EVENT_WARNING_ENHANCED if (b0 & 0x20) else EVENT_WARNING_PRIMARY
+    else:
+        event_category = "system"
+        if b0 & 0x20:
+            event_type = EVENT_SYSTEM_RELEASE_P if (b0 & 0x10) else EVENT_SYSTEM_RELEASE_DRIVER
+        else:
+            event_type = EVENT_SYSTEM_LOG_SENT
+
+    gear_code = (b1 >> 6) & 0x03
+    gear_state = {0: "P", 1: "R", 2: "N", 3: "D"}.get(gear_code, "UNKNOWN")
+    door_state = "OPEN" if (b1 & 0x20) else "CLOSED"
+    driver_present = 1 if (b1 & 0x10) else 0
+    vehicle_speed = float(b1 & 0x0F)
+
+    payload: Dict[str, Any] = {
         "event_time": now_str(),
         "event_category": event_category,
         "event_type": event_type,
-        "gear_state": parsed_status["gear_state"],
-        "door_state": parsed_status["door_state"],
-        "driver_present": parsed_status["driver_present"],
-        "vehicle_speed": parsed_status["vehicle_speed"],
-        "event_code": event_code,
-        "status_word": int(status_word & 0xFFFF),
-        "checksum_ok": checksum_ok,
-        "frame_format": frame_format,
-        "raw_frame": raw_frame,
-        "source": "serial",
+        "gear_state": gear_state,
+        "door_state": door_state,
+        "driver_present": driver_present,
+        "vehicle_speed": vehicle_speed,
+        "source": "serial_binary",
+        "binary_bits": frame_bits,
+        "binary_bytes_hex": [f"0x{b:02X}" for b in byte_values],
     }
+    return payload
 
 
-def parse_bytes_payload(byte_values: list[int], raw_frame: str) -> Optional[Dict[str, Any]]:
-    if not byte_values:
-        return None
-    values = list(byte_values)
-    framed = len(values) >= 5 and values[0] == FRAME_SOF and values[-1] == FRAME_EOF
-    if FRAME_REQUIRE_MARKERS and not framed:
-        return None
-    if framed:
-        values = values[1:-1]
-        frame_format = "framed"
-    else:
-        frame_format = "plain"
-
-    if len(values) == 1:
-        event_code_only = values[0]
-        if event_code_only in EVENT_CODE_MAP:
-            return {"_event_code_only": event_code_only}
-        return None
-
-    if len(values) == 2:
-        status_word = (values[0] << 8) | values[1]
-        return build_payload_from_status_word(
-            status_word=status_word,
-            raw_frame=raw_frame,
-            frame_format=f"{frame_format}_status2",
-        )
-
-    if len(values) == 3:
-        event_code = values[0]
-        status_word = (values[1] << 8) | values[2]
-        return build_payload_from_status_word(
-            event_code=event_code,
-            status_word=status_word,
-            raw_frame=raw_frame,
-            frame_format=f"{frame_format}_evt_status",
-        )
-
-    if len(values) == 4:
-        event_code = values[0]
-        status_word = (values[1] << 8) | values[2]
-        checksum = values[3]
-        calculated = (event_code ^ values[1] ^ values[2]) & 0xFF
-        checksum_ok = checksum == calculated
-        if FRAME_REQUIRE_CHECKSUM and not checksum_ok:
-            return None
-        return build_payload_from_status_word(
-            event_code=event_code,
-            status_word=status_word,
-            raw_frame=raw_frame,
-            frame_format=f"{frame_format}_evt_status_checksum",
-            checksum_ok=checksum_ok,
-        )
-
-    return None
+def parse_binary_payloads(line: str, residual_bits: str = "") -> tuple[list[Dict[str, Any]], str]:
+    compact = re.sub(r"\s+", "", line)
+    if not compact:
+        return [], residual_bits
+    stream = residual_bits + compact
+    frames, remain = split_binary_frames(stream)
+    payloads = [decode_binary_frame(frame_bits) for frame_bits in frames]
+    return payloads, remain
 
 
-def parse_binary_frame(line: str) -> Optional[Dict[str, Any]]:
-    pieces = [p for p in re.split(r"[^01]+", line.strip()) if p]
-    if not pieces:
-        return None
 
-    if len(pieces) == 1 and BIN_CHUNK_RE.fullmatch(pieces[0]):
-        bits = pieces[0]
-        if len(bits) == 8:
-            value = int(bits, 2)
-            if value in EVENT_CODE_MAP:
-                return {"_event_code_only": value}
-            return None
-        if len(bits) == 16:
-            return build_payload_from_status_word(
-                status_word=int(bits, 2),
-                raw_frame=line,
-                frame_format="binary16",
-            )
-        if len(bits) == 24:
-            event_code = int(bits[:8], 2)
-            status_word = int(bits[8:], 2)
-            return build_payload_from_status_word(
-                event_code=event_code,
-                status_word=status_word,
-                raw_frame=line,
-                frame_format="binary24",
-            )
-        if len(bits) == 32:
-            byte_values = [int(bits[idx:idx + 8], 2) for idx in range(0, 32, 8)]
-            return parse_bytes_payload(byte_values, line)
-        return None
-
-    if all(len(p) == 8 and BIN_CHUNK_RE.fullmatch(p) for p in pieces):
-        byte_values = [int(p, 2) for p in pieces]
-        return parse_bytes_payload(byte_values, line)
-    return None
-
-
-def parse_hex_or_decimal_bytes(line: str) -> Optional[Dict[str, Any]]:
-    text = line.strip()
-    if not text:
-        return None
-
-    pure_hex = re.sub(r"\s+", "", text)
-    if len(pure_hex) >= 4 and len(pure_hex) % 2 == 0 and re.fullmatch(r"[0-9A-Fa-f]+", pure_hex):
-        byte_values = [int(pure_hex[idx:idx + 2], 16) for idx in range(0, len(pure_hex), 2)]
-        parsed = parse_bytes_payload(byte_values, line)
-        if parsed:
-            return parsed
-
-    tokens = [tok for tok in re.split(r"[\s,;|]+", text) if tok]
-    if not tokens:
-        return None
-
-    byte_values: list[int] = []
-    for token in tokens:
-        cleaned = token.strip().lower()
-        if cleaned.startswith("0x"):
-            cleaned = cleaned[2:]
-        if HEX_BYTE_RE.fullmatch(cleaned):
-            byte_values.append(int(cleaned, 16))
-            continue
-        if cleaned.isdigit():
-            num = int(cleaned, 10)
-            if 0 <= num <= 255:
-                byte_values.append(num)
-                continue
-        return None
-
-    if not byte_values:
-        return None
-    return parse_bytes_payload(byte_values, line)
-
-
-def parse_event_code_only(line: str) -> Optional[int]:
-    text = line.strip().lower()
-    if not text:
-        return None
-
-    if BIN_CHUNK_RE.fullmatch(text):
-        if len(text) == 8:
-            value = int(text, 2)
-            return value if value in EVENT_CODE_MAP else None
-        if len(text) == 16:
-            value = int(text, 2)
-            if value <= 0xFF and value in EVENT_CODE_MAP:
-                return value
-            return None
-
-    if text.startswith("0x"):
-        text = text[2:]
-    if HEX_BYTE_RE.fullmatch(text):
-        value = int(text, 16)
-        if value in EVENT_CODE_MAP:
-            return value
-    return None
-
-
-def parse_serial_line(line: str, pending_event_code: Optional[int] = None) -> tuple[Optional[Dict[str, Any]], Optional[int]]:
+def parse_serial_line(line: str) -> Optional[Dict[str, Any]]:
     line = line.strip()
     if not line:
-        return None, pending_event_code
+        return None
 
     try:
         payload = json.loads(line)
         if isinstance(payload, dict):
             payload.setdefault("source", "serial")
-            return payload, None
+            return payload
     except json.JSONDecodeError:
         pass
 
     parsed = parse_kv_message(line)
     if parsed:
-        return parsed, None
+        return parsed
 
     parsed = parse_pipe_message(line)
     if parsed:
-        return parsed, None
+        return parsed
 
-    parsed = parse_binary_frame(line)
-    if parsed:
-        event_code_only = parsed.get("_event_code_only")
-        if isinstance(event_code_only, int):
-            return None, event_code_only
-        if (
-            pending_event_code is not None
-            and parsed.get("event_code") is None
-            and pending_event_code in EVENT_CODE_MAP
-        ):
-            event_category, event_type = EVENT_CODE_MAP[pending_event_code]
-            parsed["event_code"] = pending_event_code
-            parsed["event_category"] = event_category
-            parsed["event_type"] = event_type
-            parsed["frame_format"] = f"{parsed.get('frame_format', 'binary')}_paired"
-        return parsed, None
+    return None
 
-    parsed = parse_hex_or_decimal_bytes(line)
-    if parsed:
-        event_code_only = parsed.get("_event_code_only")
-        if isinstance(event_code_only, int):
-            return None, event_code_only
-        if (
-            pending_event_code is not None
-            and parsed.get("event_code") is None
-            and pending_event_code in EVENT_CODE_MAP
-        ):
-            event_category, event_type = EVENT_CODE_MAP[pending_event_code]
-            parsed["event_code"] = pending_event_code
-            parsed["event_category"] = event_category
-            parsed["event_type"] = event_type
-            parsed["frame_format"] = f"{parsed.get('frame_format', 'bytes')}_paired"
-        return parsed, None
-
-    only_code = parse_event_code_only(line)
-    if only_code is not None:
-        return None, only_code
-
-    return None, pending_event_code
-
-
-
-def build_serial_signature(payload: Dict[str, Any]) -> str:
-    comparable = {
-        "category": payload.get("event_category"),
-        "type": payload.get("event_type"),
-        "gear": payload.get("gear_state"),
-        "door": payload.get("door_state"),
-        "driver": payload.get("driver_present"),
-        "speed": payload.get("vehicle_speed"),
-        "event_code": payload.get("event_code"),
-        "status_word": payload.get("status_word"),
-    }
-    return json.dumps(comparable, ensure_ascii=False, sort_keys=True)
-
-
-def should_skip_duplicate_serial(payload: Dict[str, Any]) -> bool:
-    if SERIAL_DUPLICATE_WINDOW_SEC <= 0:
-        return False
-
-    signature = build_serial_signature(payload)
-    now = time.time()
-
-    with _serial_state_lock:
-        global _last_serial_signature, _last_serial_saved_at
-        within_window = (now - _last_serial_saved_at) <= SERIAL_DUPLICATE_WINDOW_SEC
-        if within_window and signature == _last_serial_signature:
-            return True
-        _last_serial_signature = signature
-        _last_serial_saved_at = now
-    return False
-
-
-def serial_ports_to_try() -> list[str]:
-    ordered: list[str] = []
-    for port in (SERIAL_PORT, *SERIAL_PORT_FALLBACKS):
-        if port and port not in ordered:
-            ordered.append(port)
-    return ordered or [SERIAL_PORT]
 
 
 def serial_worker() -> None:
     if not SERIAL_ENABLED:
-        print("[SERIAL] disabled")
+        print("[SERIAL] 비활성화 상태입니다.")
         return
     if serial is None:
-        print("[SERIAL] pyserial is not installed.")
+        print("[SERIAL] pyserial이 설치되지 않아 시리얼 수신을 시작하지 않습니다.")
         return
 
-    ports = serial_ports_to_try()
     while True:
-        for port in ports:
+        try:
+            print(f"[SERIAL] 포트 연결 시도: {SERIAL_PORT} @ {SERIAL_BAUDRATE}")
+            with serial.Serial(SERIAL_PORT, SERIAL_BAUDRATE, timeout=1) as ser:
+                print("[SERIAL] 연결 성공")
+                while True:
+                    raw = ser.readline().decode("utf-8", errors="ignore").strip()
+                    if not raw:
+                        continue
+                    payload = parse_serial_line(raw)
+                    if not payload:
+                        print(f"[SERIAL] 파싱 실패: {raw}")
+                        continue
+                    try:
+                        event_id = insert_event(payload)
+                        print(f"[SERIAL] 저장 완료 id={event_id} payload={payload}")
+                    except Exception as exc:
+                        print(f"[SERIAL] 저장 실패: {exc} / raw={raw}")
+        except Exception as exc:
+            print(f"[SERIAL] 연결 오류: {exc}")
+            time.sleep(3)
+
+
+def serial_worker_reliable() -> None:
+    if not SERIAL_ENABLED:
+        print("[SERIAL] disabled")
+        _serial_state_update(connected=False, retrying=False, last_error="serial disabled")
+        return
+    if serial is None:
+        print("[SERIAL] pyserial unavailable")
+        _serial_state_update(connected=False, retrying=False, last_error="pyserial unavailable")
+        return
+
+    while True:
+        try:
+            _serial_state_update(retrying=True, connected=False)
+            print(f"[SERIAL] connect try: {SERIAL_PORT} @ {SERIAL_BAUDRATE}")
+
+            serial_kwargs: Dict[str, Any] = {
+                "port": SERIAL_PORT,
+                "baudrate": SERIAL_BAUDRATE,
+                "timeout": SERIAL_TIMEOUT_SEC,
+                "xonxoff": False,
+                "rtscts": False,
+                "dsrdtr": False,
+            }
+            if hasattr(serial, "EIGHTBITS"):
+                serial_kwargs["bytesize"] = serial.EIGHTBITS
+            if hasattr(serial, "PARITY_NONE"):
+                serial_kwargs["parity"] = serial.PARITY_NONE
+            if hasattr(serial, "STOPBITS_ONE"):
+                serial_kwargs["stopbits"] = serial.STOPBITS_ONE
+
             try:
-                print(f"[SERIAL] opening: {port} @ {SERIAL_BAUDRATE}")
-                with serial.Serial(port, SERIAL_BAUDRATE, timeout=1) as ser:
-                    print(f"[SERIAL] connected: {port}")
-                    pending_event_code: Optional[int] = None
-                    pending_until = 0.0
-                    while True:
-                        raw_bytes = ser.readline()
-                        if not raw_bytes:
-                            if pending_event_code is not None and time.time() > pending_until:
-                                pending_event_code = None
-                            continue
+                ser_obj = serial.Serial(exclusive=False, **serial_kwargs)
+            except TypeError:
+                ser_obj = serial.Serial(**serial_kwargs)
 
-                        raw = raw_bytes.decode("utf-8", errors="ignore").strip()
-                        if not raw:
-                            raw = " ".join(f"{b:02X}" for b in raw_bytes if b)
-                            if not raw:
-                                continue
+            with ser_obj as ser:
+                try:
+                    ser.reset_input_buffer()
+                except Exception:
+                    pass
 
-                        payload, pending_event_code = parse_serial_line(raw, pending_event_code)
-                        if payload is None:
-                            if pending_event_code is not None:
-                                pending_until = time.time() + 2.0
-                            else:
-                                print(f"[SERIAL] parse failed: {raw}")
-                            continue
+                _serial_state_update(
+                    connected=True,
+                    retrying=False,
+                    last_error="",
+                    last_connected_at=now_str(),
+                )
+                print("[SERIAL] connected")
+                binary_residual = ""
+                text_residual = ""
 
-                        pending_event_code = None
-                        if should_skip_duplicate_serial(payload):
-                            continue
+                def process_serial_record(raw_record: str) -> None:
+                    nonlocal binary_residual
+                    raw = raw_record.strip()
+                    if not raw:
+                        return
 
+                    payloads: list[Dict[str, Any]] = []
+                    if is_binary_line(raw):
+                        payloads, binary_residual = parse_binary_payloads(raw, binary_residual)
+                        if not payloads:
+                            return
+                    else:
+                        binary_residual = ""
+                        payload = parse_serial_line(raw)
+                        if payload:
+                            payloads = [payload]
+
+                    if not payloads:
+                        _serial_state_increment("dropped_count", 1)
+                        print(f"[SERIAL] parse failed: {raw}")
+                        return
+
+                    for payload in payloads:
                         try:
-                            event_id = insert_event(payload, notify=True)
+                            event_id = insert_event(payload)
+                            _serial_state_increment("parsed_count", 1)
                             print(f"[SERIAL] saved id={event_id} payload={payload}")
                         except Exception as exc:
+                            _serial_state_increment("dropped_count", 1)
+                            _serial_state_update(last_error=str(exc), last_error_at=now_str())
                             print(f"[SERIAL] save failed: {exc} / raw={raw}")
-            except Exception as exc:
-                print(f"[SERIAL] connection error on {port}: {exc}")
-        time.sleep(2)
+
+                while True:
+                    raw_bytes = ser.read(256)
+                    if not raw_bytes:
+                        continue
+
+                    decoded = raw_bytes.decode("utf-8", errors="ignore")
+                    if not decoded:
+                        continue
+
+                    _serial_state_increment("received_count", 1)
+                    _serial_state_increment("received_bytes", len(raw_bytes))
+                    _serial_state_update(last_data_at=now_str(), last_raw=decoded.strip()[:200])
+
+                    text_residual += decoded
+                    lines = re.split(r"[\r\n]+", text_residual)
+                    text_residual = lines.pop() if lines else ""
+
+                    for line in lines:
+                        process_serial_record(line)
+
+                    if text_residual and is_binary_line(text_residual):
+                        process_serial_record(text_residual)
+                        text_residual = ""
+                    elif len(text_residual) > 4096:
+                        _serial_state_increment("dropped_count", 1)
+                        print("[SERIAL] residual overflow, dropped")
+                        text_residual = ""
+                        binary_residual = ""
+        except Exception as exc:
+            _serial_state_increment("reconnect_count", 1)
+            _serial_state_update(
+                connected=False,
+                retrying=True,
+                last_error=str(exc),
+                last_error_at=now_str(),
+            )
+            print(f"[SERIAL] connect error: {exc}")
+            time.sleep(max(0.5, SERIAL_RETRY_SEC))
+
+
+def serial_worker() -> None:
+    # Backward-compatible alias
+    serial_worker_reliable()
 
 
 def resolve_public_web_host() -> str:
@@ -1330,20 +1170,57 @@ def index():
 
 @app.route("/health")
 def health():
+    serial_state = get_serial_state()
+    serial_message = "connected" if serial_state.get("connected") else "reconnecting"
     return jsonify({
         "status": "ok",
+        "connected": bool(serial_state.get("connected")),
+        "message": serial_message,
         "db_path": str(DB_PATH),
         "serial_enabled": SERIAL_ENABLED,
         "serial_port": SERIAL_PORT,
-        "serial_ports": serial_ports_to_try(),
         "serial_baudrate": SERIAL_BAUDRATE,
-        "serial_duplicate_window_sec": SERIAL_DUPLICATE_WINDOW_SEC,
-        "max_events": MAX_EVENTS,
-        "frame_sof_hex": f"0x{FRAME_SOF:02X}",
-        "frame_eof_hex": f"0x{FRAME_EOF:02X}",
-        "frame_require_markers": FRAME_REQUIRE_MARKERS,
-        "frame_require_checksum": FRAME_REQUIRE_CHECKSUM,
+        "serial_connected": bool(serial_state.get("connected")),
+        "serial_retrying": bool(serial_state.get("retrying")),
+        "serial_status": serial_message,
+        "serial_last_error": serial_state.get("last_error"),
+        "serial_last_error_at": serial_state.get("last_error_at"),
+        "serial_last_connected_at": serial_state.get("last_connected_at"),
+        "serial_last_data_at": serial_state.get("last_data_at"),
+        "serial_last_raw": serial_state.get("last_raw"),
+        "serial_reconnect_count": serial_state.get("reconnect_count"),
+        "serial_received_count": serial_state.get("received_count"),
+        "serial_received_bytes": serial_state.get("received_bytes"),
+        "serial_parsed_count": serial_state.get("parsed_count"),
+        "serial_dropped_count": serial_state.get("dropped_count"),
+        "led_signal_enabled": LED_SIGNAL_ENABLED,
+        "led_driver_available": LED_driver is not None,
         "send_url_enabled": SEND_URL_ENABLED,
+        "now": now_str(),
+    })
+
+
+@app.route("/api/serial/status")
+def api_serial_status():
+    state = get_serial_state()
+    return jsonify({
+        "ok": True,
+        "enabled": SERIAL_ENABLED,
+        "port": SERIAL_PORT,
+        "baudrate": SERIAL_BAUDRATE,
+        "connected": bool(state.get("connected")),
+        "retrying": bool(state.get("retrying")),
+        "message": "connected" if state.get("connected") else "reconnecting",
+        "last_error": state.get("last_error"),
+        "last_error_at": state.get("last_error_at"),
+        "last_connected_at": state.get("last_connected_at"),
+        "last_data_at": state.get("last_data_at"),
+        "last_raw": state.get("last_raw"),
+        "reconnect_count": state.get("reconnect_count"),
+        "received_count": state.get("received_count"),
+        "received_bytes": state.get("received_bytes"),
+        "parsed_count": state.get("parsed_count"),
+        "dropped_count": state.get("dropped_count"),
         "now": now_str(),
     })
 
@@ -1363,36 +1240,6 @@ def api_get_events():
         "items": query_events(limit=limit, category=category, keyword=keyword),
         "stats": get_stats(),
     })
-
-
-@app.route("/api/stream")
-def api_stream():
-    def generate():
-        q: queue.Queue[str] = queue.Queue(maxsize=200)
-        with _subscriber_lock:
-            _subscriber_queues.add(q)
-        hello = json.dumps({"type": "hello", "connected_at": now_str()}, ensure_ascii=False)
-        yield f"event: hello\ndata: {hello}\n\n"
-
-        try:
-            while True:
-                try:
-                    message = q.get(timeout=EVENT_STREAM_HEARTBEAT_SEC)
-                except queue.Empty:
-                    heartbeat = json.dumps({"type": "ping", "time": now_str()}, ensure_ascii=False)
-                    yield f"event: ping\ndata: {heartbeat}\n\n"
-                    continue
-                yield f"event: new_event\ndata: {message}\n\n"
-        finally:
-            with _subscriber_lock:
-                _subscriber_queues.discard(q)
-
-    headers = {
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive",
-        "X-Accel-Buffering": "no",
-    }
-    return Response(stream_with_context(generate()), headers=headers, mimetype="text/event-stream")
 
 
 @app.route("/api/events", methods=["POST"])
@@ -1426,16 +1273,6 @@ def yesno_filter(value: Any) -> str:
     return "있음" if int(value) == 1 else "없음"
 
 
-@app.template_filter("yesno_or_dash")
-def yesno_or_dash_filter(value: Any) -> str:
-    if value is None or value == "":
-        return "-"
-    try:
-        return "있음" if int(value) == 1 else "없음"
-    except Exception:
-        return str(value)
-
-
 @app.template_filter("category_ko")
 def category_ko_filter(value: str) -> str:
     return {
@@ -1455,26 +1292,10 @@ def speed_fmt_filter(value: Any) -> str:
         return str(value)
 
 
-@app.template_filter("hex8")
-def hex8_filter(value: Any) -> str:
-    parsed = normalize_optional_int(value)
-    if parsed is None:
-        return "-"
-    return f"0x{parsed & 0xFF:02X}"
-
-
-@app.template_filter("hex16")
-def hex16_filter(value: Any) -> str:
-    parsed = normalize_optional_int(value)
-    if parsed is None:
-        return "-"
-    return f"0x{parsed & 0xFFFF:04X}"
-
-
 
 def start_background_threads() -> None:
     if SERIAL_ENABLED:
-        t = threading.Thread(target=serial_worker, daemon=True)
+        t = threading.Thread(target=serial_worker_reliable, daemon=True)
         t.start()
     if SEND_URL_ENABLED:
         t2 = threading.Thread(target=send_url_worker, daemon=True)

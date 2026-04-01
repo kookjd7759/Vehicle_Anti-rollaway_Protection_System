@@ -14,7 +14,7 @@
 IfxCpu_syncEvent cpuSyncEvent = 0;
 
 #define BTN_PORT    &MODULE_P02
-#define BTN_PIN     1
+#define BTN_PIN     3
 
 void send_random(void)
 {
@@ -22,8 +22,8 @@ void send_random(void)
     int brake = rand() % 4;
     int gear = rand() % 4;
     int door = rand() % 2;
-    int driver = rand() % 4;
-    int speed = rand() % 100;
+    int driver = rand() % 2;
+    int speed = rand() % 10;
     sendData(warning, brake, gear, door, driver, speed);
 }
 
@@ -37,7 +37,6 @@ void core0_main(void)
     IfxCpu_emitEvent(&cpuSyncEvent);
     IfxCpu_waitEvent(&cpuSyncEvent, 1);
 
-    Driver_Asc0_Init();
     srand((unsigned int)IfxStm_getLower(&MODULE_STM0));
 
     Driver_Asc0_Init();
@@ -55,8 +54,6 @@ void core0_main(void)
 
         if (prevState == 1 && currState == 0)
         {
-            waitTime(IfxStm_getTicksFromMilliseconds(BSP_DEFAULT_TIMER, 20));
-
             if (IfxPort_getPinState(BTN_PORT, BTN_PIN) == 0)
             {
                 send_random();

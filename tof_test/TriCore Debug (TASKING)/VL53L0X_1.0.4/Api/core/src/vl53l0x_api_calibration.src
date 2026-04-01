@@ -1,0 +1,8176 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc3960a --dep-file=VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc27xd -D__CPU_TC27XD__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc27xd -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Configurations -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D\\\\_Reg -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service\\\\CpuGeneric -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\CStart -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Trap -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c\\\\I2c -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_Impl -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_PinMap -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4 -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core\\\\inc -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform\\\\inc -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.src ../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c"
+	.compiler_name		"ctc"
+	;source	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_perform_xtalk_calibration',code,cluster('VL53L0X_perform_xtalk_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_perform_xtalk_calibration'
+	.align	2
+	
+	.global	VL53L0X_perform_xtalk_calibration
+; Function VL53L0X_perform_xtalk_calibration
+.L193:
+VL53L0X_perform_xtalk_calibration:	.type	func
+	sub.a	a10,#32
+.L601:
+	mov.aa	a15,a4
+.L603:
+	mov	d12,d4
+.L604:
+	mov.aa	a12,a5
+.L606:
+	mov	d2,#0
+.L607:
+	mov	d8,#0
+.L608:
+	mov	d10,#0
+.L610:
+	mov	d11,#0
+.L612:
+	mov	d9,#0
+.L613:
+	jge.u	d12,#1,.L2
+.L972:
+	mov	d2,#-4
+.L2:
+	jne	d2,#0,.L3
+.L973:
+	mov	d4,#0
+.L602:
+	mov.aa	a4,a15
+	call	VL53L0X_SetXTalkCompensationEnable
+.L3:
+	jne	d2,#0,.L4
+.L974:
+	mov	d4,#3
+.L975:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L614:
+	call	VL53L0X_SetLimitCheckEnable
+.L4:
+	jne	d2,#0,.L5
+.L976:
+	mov	d8,#0
+.L977:
+	mov	d10,#0
+.L978:
+	mov	d11,#0
+.L979:
+	mov	d9,#0
+.L980:
+	mov	d13,#0
+.L615:
+	j	.L6
+.L7:
+	lea	a5,[a10]0
+	mov.aa	a4,a15
+.L616:
+	call	VL53L0X_PerformSingleRangingMeasurement
+.L617:
+	jeq	d2,#0,.L8
+.L981:
+	j	.L9
+.L8:
+	ld.bu	d15,[a10]24
+.L982:
+	jne	d15,#0,.L10
+.L983:
+	ld.hu	d0,[a10]8
+.L984:
+	add	d8,d0
+.L609:
+	extr.u	d8,d8,#0,#16
+.L618:
+	ld.w	d15,[a10]12
+.L985:
+	add	d11,d15
+.L986:
+	ld.hu	d0,[a10]20
+.L987:
+	mov	d1,#256
+.L988:
+	div	e0,d0,d1
+.L989:
+	add	d10,d0
+.L611:
+	extr.u	d10,d10,#0,#16
+.L619:
+	add	d9,#1
+.L10:
+	add	d13,#1
+.L6:
+	mov	d15,#50
+.L990:
+	jlt.u	d13,d15,.L7
+.L9:
+	jne	d9,#0,.L11
+.L991:
+	mov	d2,#-6
+.L11:
+.L5:
+	jne	d2,#0,.L12
+.L992:
+	div.u	e0,d11,d9
+.L620:
+	sha	d15,d8,#16
+.L993:
+	div.u	e6,d15,d9
+.L622:
+	sha	d15,d10,#16
+.L994:
+	div.u	e4,d15,d9
+.L624:
+	mov.u	d15,#32768
+.L995:
+	add	d4,d15
+.L625:
+	sh	d3,d4,#-16
+.L626:
+	mov.u	d15,#32768
+.L996:
+	add	d15,d12
+.L997:
+	sh	d15,d15,#-16
+.L627:
+	jeq	d3,#0,.L13
+.L998:
+	jeq	d15,#0,.L14
+.L999:
+	jlt.u	d6,d12,.L15
+.L14:
+.L13:
+	mov	d15,#0
+.L628:
+	j	.L16
+.L15:
+	mov.u	d15,#32768
+.L629:
+	add	d12,d15
+.L605:
+	sh	d15,d12,#-16
+.L630:
+	div.u	e4,d0,d3
+.L632:
+	movh	d0,#1
+.L621:
+	div.u	e6,d6,d15
+.L623:
+	sub	d0,d6
+.L1000:
+	mul	d4,d0
+.L1001:
+	mov.u	d15,#32768
+.L631:
+	add	d4,d15
+.L633:
+	sh	d15,d4,#-16
+.L16:
+	st.w	[a12],d15
+.L1002:
+	jne	d2,#0,.L17
+.L1003:
+	mov	d4,#1
+	mov.aa	a4,a15
+.L634:
+	call	VL53L0X_SetXTalkCompensationEnable
+.L17:
+	jne	d2,#0,.L18
+.L1004:
+	mov.aa	a4,a15
+.L635:
+	mov	d4,d15
+.L636:
+	call	VL53L0X_SetXTalkCompensationRateMegaCps
+.L18:
+.L12:
+	j	.L19
+.L19:
+	ret
+.L360:
+	
+__VL53L0X_perform_xtalk_calibration_function_end:
+	.size	VL53L0X_perform_xtalk_calibration,__VL53L0X_perform_xtalk_calibration_function_end-VL53L0X_perform_xtalk_calibration
+.L246:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_perform_offset_calibration',code,cluster('VL53L0X_perform_offset_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_perform_offset_calibration'
+	.align	2
+	
+	.global	VL53L0X_perform_offset_calibration
+; Function VL53L0X_perform_offset_calibration
+.L195:
+VL53L0X_perform_offset_calibration:	.type	func
+	sub.a	a10,#32
+.L637:
+	mov.aa	a15,a4
+.L639:
+	mov	d9,d4
+.L640:
+	mov.aa	a12,a5
+.L642:
+	mov	d2,#0
+.L643:
+	mov	d8,#0
+.L644:
+	mov	d11,#0
+.L646:
+	jge.u	d9,#1,.L20
+.L1009:
+	mov	d2,#-4
+.L20:
+	jne	d2,#0,.L21
+.L1010:
+	mov	d4,#0
+.L638:
+	mov.aa	a4,a15
+	call	VL53L0X_SetOffsetCalibrationDataMicroMeter
+.L21:
+	jne	d2,#0,.L22
+.L1011:
+	mov	d4,#0
+.L1012:
+	lea	a5,[a10]28
+	mov.aa	a4,a15
+.L647:
+	call	VL53L0X_GetSequenceStepEnable
+.L22:
+	jne	d2,#0,.L23
+.L1013:
+	mov	d4,#0
+.L1014:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L648:
+	call	VL53L0X_SetSequenceStepEnable
+.L23:
+	jne	d2,#0,.L24
+.L1015:
+	mov	d4,#3
+.L1016:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L649:
+	call	VL53L0X_SetLimitCheckEnable
+.L24:
+	jne	d2,#0,.L25
+.L1017:
+	mov	d8,#0
+.L1018:
+	mov	d11,#0
+.L1019:
+	mov	d10,#0
+.L650:
+	j	.L26
+.L27:
+	lea	a5,[a10]0
+	mov.aa	a4,a15
+.L651:
+	call	VL53L0X_PerformSingleRangingMeasurement
+.L652:
+	jeq	d2,#0,.L28
+.L1020:
+	j	.L29
+.L28:
+	ld.bu	d15,[a10]24
+.L1021:
+	jne	d15,#0,.L30
+.L1022:
+	ld.hu	d0,[a10]8
+.L1023:
+	add	d8,d0
+.L645:
+	extr.u	d8,d8,#0,#16
+.L653:
+	add	d11,#1
+.L30:
+	add	d10,#1
+.L26:
+	mov	d15,#50
+.L1024:
+	jlt	d10,d15,.L27
+.L29:
+	jne	d11,#0,.L31
+.L1025:
+	mov	d2,#-6
+.L31:
+.L25:
+	jne	d2,#0,.L32
+.L1026:
+	sha	d15,d8,#16
+.L1027:
+	div.u	e0,d15,d11
+.L654:
+	mov.u	d15,#32768
+.L1028:
+	add	d15,d0
+.L1029:
+	sh	d0,d15,#-16
+.L655:
+	mov.u	d15,#32768
+.L1030:
+	add	d9,d15
+.L641:
+	sh	d15,d9,#-16
+.L657:
+	sub	d15,d0
+.L658:
+	mov	d0,#1000
+.L656:
+	mul	d15,d0
+.L1031:
+	st.w	[a12],d15
+.L1032:
+	jne	d2,#0,.L33
+.L1033:
+	ld.w	d15,[a12]
+	st.w	[a15]26,d15
+.L1034:
+	ld.w	d4,[a12]
+	mov.aa	a4,a15
+.L659:
+	call	VL53L0X_SetOffsetCalibrationDataMicroMeter
+.L33:
+.L32:
+	jne	d2,#0,.L34
+.L1035:
+	ld.bu	d15,[a10]28
+.L1036:
+	jeq	d15,#0,.L35
+.L1037:
+	mov	d4,#0
+.L1038:
+	mov	d5,#1
+	mov.aa	a4,a15
+.L660:
+	call	VL53L0X_SetSequenceStepEnable
+.L35:
+.L34:
+	j	.L36
+.L36:
+	ret
+.L384:
+	
+__VL53L0X_perform_offset_calibration_function_end:
+	.size	VL53L0X_perform_offset_calibration,__VL53L0X_perform_offset_calibration_function_end-VL53L0X_perform_offset_calibration
+.L251:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_set_offset_calibration_data_micro_meter',code,cluster('VL53L0X_set_offset_calibration_data_micro_meter')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_set_offset_calibration_data_micro_meter'
+	.align	2
+	
+	.global	VL53L0X_set_offset_calibration_data_micro_meter
+; Function VL53L0X_set_offset_calibration_data_micro_meter
+.L197:
+VL53L0X_set_offset_calibration_data_micro_meter:	.type	func
+	mov.u	d15,#63875
+.L663:
+	sh	d15,#3
+.L1043:
+	mov	d1,#12288
+.L665:
+	addih	d1,d1,#65528
+.L1044:
+	mov	d0,#4096
+.L667:
+	jge	d15,d4,.L37
+.L1045:
+	mov	d4,d15
+.L1046:
+	j	.L38
+.L37:
+	jge	d4,d1,.L39
+.L1047:
+	mov	d4,d1
+.L39:
+.L38:
+	jlt	d4,#0,.L40
+.L1048:
+	mov	d15,#250
+.L664:
+	div	e0,d4,d15
+.L666:
+	j	.L41
+.L40:
+	mov	d15,#250
+.L668:
+	div	e2,d4,d15
+.L669:
+	add	d0,d2
+.L41:
+	mov	d4,#40
+.L662:
+	extr.u	d5,d0,#0,#16
+	call	VL53L0X_WrWord
+.L661:
+	j	.L42
+.L42:
+	ret
+.L399:
+	
+__VL53L0X_set_offset_calibration_data_micro_meter_function_end:
+	.size	VL53L0X_set_offset_calibration_data_micro_meter,__VL53L0X_set_offset_calibration_data_micro_meter_function_end-VL53L0X_set_offset_calibration_data_micro_meter
+.L256:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_get_offset_calibration_data_micro_meter',code,cluster('VL53L0X_get_offset_calibration_data_micro_meter')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_get_offset_calibration_data_micro_meter'
+	.align	2
+	
+	.global	VL53L0X_get_offset_calibration_data_micro_meter
+; Function VL53L0X_get_offset_calibration_data_micro_meter
+.L199:
+VL53L0X_get_offset_calibration_data_micro_meter:	.type	func
+	sub.a	a10,#8
+.L670:
+	mov.aa	a15,a5
+.L673:
+	mov	d15,#2047
+.L674:
+	mov	d4,#40
+.L1053:
+	lea	a5,[a10]0
+.L672:
+	call	VL53L0X_RdWord
+.L671:
+	jne	d2,#0,.L43
+.L1054:
+	ld.hu	d0,[a10]0
+.L1055:
+	insert	d0,d0,#0,#12,#20
+.L1056:
+	st.h	[a10],d0
+.L1057:
+	ld.hu	d0,[a10]0
+.L1058:
+	jge	d15,d0,.L44
+.L1059:
+	ld.hu	d15,[a10]0
+.L675:
+	addi	d15,d15,#-4096
+.L1060:
+	mul	d15,d15,#250
+.L1061:
+	st.w	[a15],d15
+.L1062:
+	j	.L45
+.L44:
+	ld.hu	d15,[a10]0
+.L676:
+	mul	d15,d15,#250
+.L1063:
+	st.w	[a15],d15
+.L45:
+.L43:
+	j	.L46
+.L46:
+	ret
+.L408:
+	
+__VL53L0X_get_offset_calibration_data_micro_meter_function_end:
+	.size	VL53L0X_get_offset_calibration_data_micro_meter,__VL53L0X_get_offset_calibration_data_micro_meter_function_end-VL53L0X_get_offset_calibration_data_micro_meter
+.L261:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_apply_offset_adjustment',code,cluster('VL53L0X_apply_offset_adjustment')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_apply_offset_adjustment'
+	.align	2
+	
+	.global	VL53L0X_apply_offset_adjustment
+; Function VL53L0X_apply_offset_adjustment
+.L201:
+VL53L0X_apply_offset_adjustment:	.type	func
+	sub.a	a10,#8
+.L677:
+	mov.aa	a15,a4
+.L679:
+	mov	d4,#7
+	mov.aa	a4,a15
+	call	VL53L0X_get_info_from_device
+.L678:
+	jne	d2,#0,.L47
+.L1068:
+	lea	a5,[a10]0
+	mov.aa	a4,a15
+.L680:
+	call	VL53L0X_GetOffsetCalibrationDataMicroMeter
+.L47:
+	jne	d2,#0,.L48
+.L1069:
+	ld.w	d15,[a10]
+	st.w	[a15],d15
+.L1070:
+	ld.w	d8,[a10]
+.L1071:
+	ld.w	d15,[a15]4
+.L681:
+	add	d8,d15
+.L1072:
+	mov.aa	a4,a15
+.L682:
+	mov	d4,d8
+.L684:
+	call	VL53L0X_SetOffsetCalibrationDataMicroMeter
+.L683:
+	jne	d2,#0,.L49
+.L1073:
+	st.w	[a15]26,d8
+.L49:
+.L48:
+	j	.L50
+.L50:
+	ret
+.L415:
+	
+__VL53L0X_apply_offset_adjustment_function_end:
+	.size	VL53L0X_apply_offset_adjustment,__VL53L0X_apply_offset_adjustment_function_end-VL53L0X_apply_offset_adjustment
+.L266:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.get_next_good_spad',code,cluster('get_next_good_spad')
+	.sect	'.text.vl53l0x_api_calibration.get_next_good_spad'
+	.align	2
+	
+	.global	get_next_good_spad
+; Function get_next_good_spad
+.L203:
+get_next_good_spad:	.type	func
+	mov	d0,#8
+.L685:
+	mov	d1,#0
+.L686:
+	mov	d15,#-1
+.L1254:
+	st.w	[a5],d15
+.L1255:
+	div.u	e6,d5,d0
+.L687:
+	div.u	e8,d5,d0
+.L688:
+	mov	d15,d6
+.L689:
+	j	.L51
+.L52:
+	mov	d2,#0
+.L690:
+	addsc.a	a15,a4,d15,#0
+	ld.bu	d3,[a15]
+.L692:
+	jne	d15,d6,.L53
+.L693:
+	mov	d2,d9
+.L691:
+	rsub	d2,#0
+	sha	d3,d3,d2
+.L694:
+	mov	d2,d9
+.L53:
+	j	.L54
+.L55:
+	jz.t	d3:0,.L56
+.L1256:
+	mov	d1,#1
+.L1257:
+	madd	d2,d2,d15,d0
+.L695:
+	st.w	[a5],d2
+.L1258:
+	j	.L57
+.L56:
+	sha	d3,#-1
+.L1259:
+	add	d2,#1
+.L54:
+	jlt.u	d2,#8,.L55
+.L57:
+	add	d15,#1
+.L51:
+	jge.u	d15,d4,.L58
+.L1260:
+	jeq	d1,#0,.L52
+.L58:
+	ret
+.L502:
+	
+__get_next_good_spad_function_end:
+	.size	get_next_good_spad,__get_next_good_spad_function_end-get_next_good_spad
+.L306:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.is_aperture',code,cluster('is_aperture')
+	.sect	'.text.vl53l0x_api_calibration.is_aperture'
+	.align	2
+	
+	.global	is_aperture
+; Function is_aperture
+.L205:
+is_aperture:	.type	func
+	mov	d2,#1
+.L697:
+	sh	d4,#-6
+.L696:
+	mul	d15,d4,#4
+.L1265:
+	movh.a	a15,#@his(refArrayQuadrants)
+	lea	a15,[a15]@los(refArrayQuadrants)
+.L1266:
+	addsc.a	a15,a15,d15,#0
+	ld.w	d15,[a15]
+.L1267:
+	jne	d15,#0,.L59
+.L1268:
+	mov	d2,#0
+.L59:
+	j	.L60
+.L60:
+	ret
+.L514:
+	
+__is_aperture_function_end:
+	.size	is_aperture,__is_aperture_function_end-is_aperture
+.L311:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.enable_spad_bit',code,cluster('enable_spad_bit')
+	.sect	'.text.vl53l0x_api_calibration.enable_spad_bit'
+	.align	2
+	
+	.global	enable_spad_bit
+; Function enable_spad_bit
+.L207:
+enable_spad_bit:	.type	func
+	mov	d2,#0
+.L698:
+	mov	d15,#8
+.L699:
+	div.u	e0,d5,d15
+.L701:
+	div.u	e6,d5,d15
+.L703:
+	jlt.u	d0,d4,.L61
+.L1273:
+	mov	d2,#-50
+.L1274:
+	j	.L62
+.L61:
+	addsc.a	a15,a4,d0,#0
+	addsc.a	a2,a4,d0,#0
+	ld.bu	d15,[a2]
+.L700:
+	mov	d0,#1
+.L702:
+	sha	d0,d0,d7
+.L1275:
+	or	d15,d0
+	st.b	[a15],d15
+.L62:
+	j	.L63
+.L63:
+	ret
+.L518:
+	
+__enable_spad_bit_function_end:
+	.size	enable_spad_bit,__enable_spad_bit_function_end-enable_spad_bit
+.L316:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.count_enabled_spads',code,cluster('count_enabled_spads')
+	.sect	'.text.vl53l0x_api_calibration.count_enabled_spads'
+	.align	2
+	
+	.global	count_enabled_spads
+; Function count_enabled_spads
+.L209:
+count_enabled_spads:	.type	func
+	mov	d8,#0
+.L704:
+	mov	d15,#8
+.L705:
+	mov	d0,#0
+.L707:
+	div.u	e2,d5,d15
+.L709:
+	div.u	e6,d5,d15
+.L711:
+	jlt.u	d2,d4,.L64
+.L1280:
+	mov	d8,#-50
+.L64:
+	mov	d15,#0
+.L706:
+	st.w	[a5],d15
+.L1281:
+	mov	d1,#0
+.L712:
+	j	.L65
+.L66:
+	addsc.a	a15,a4,d1,#0
+	ld.bu	d15,[a15]
+.L714:
+	mov	d4,#0
+.L715:
+	j	.L67
+.L68:
+	jz.t	d15:0,.L69
+.L1282:
+	ld.w	d5,[a5]
+.L1283:
+	add	d5,#1
+	st.w	[a5],d5
+.L1284:
+	jne	d0,#0,.L70
+.L1285:
+	mov	d0,#1
+.L708:
+	st.b	[a6],d0
+.L1286:
+	jge.u	d1,#2,.L71
+.L1287:
+	jge.u	d4,#4,.L72
+.L1288:
+	mov	d0,#0
+.L1289:
+	st.b	[a6],d0
+.L72:
+.L71:
+	mov	d0,#1
+.L70:
+.L69:
+	sha	d15,#-1
+.L1290:
+	add	d4,#1
+.L67:
+	jlt.u	d4,#9,.L68
+.L1291:
+	add	d1,#1
+.L65:
+	add	d15,d2,#-1
+.L1292:
+	jge.u	d15,d1,.L66
+.L1293:
+	addsc.a	a15,a4,d2,#0
+	ld.bu	d15,[a15]
+.L716:
+	mov	d1,#0
+.L713:
+	j	.L73
+.L74:
+	jz.t	d15:0,.L75
+.L1294:
+	ld.w	d0,[a5]
+.L1295:
+	add	d0,#1
+	st.w	[a5],d0
+.L75:
+	add	d1,#1
+.L73:
+	jge.u	d7,d1,.L74
+.L1296:
+	mov	d2,d8
+.L710:
+	j	.L76
+.L76:
+	ret
+.L526:
+	
+__count_enabled_spads_function_end:
+	.size	count_enabled_spads,__count_enabled_spads_function_end-count_enabled_spads
+.L321:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.set_ref_spad_map',code,cluster('set_ref_spad_map')
+	.sect	'.text.vl53l0x_api_calibration.set_ref_spad_map'
+	.align	2
+	
+	.global	set_ref_spad_map
+; Function set_ref_spad_map
+.L211:
+set_ref_spad_map:	.type	func
+	mov	d4,#176
+.L1301:
+	mov	d5,#6
+	call	VL53L0X_WriteMulti
+.L717:
+	j	.L77
+.L77:
+	ret
+.L540:
+	
+__set_ref_spad_map_function_end:
+	.size	set_ref_spad_map,__set_ref_spad_map_function_end-set_ref_spad_map
+.L326:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.get_ref_spad_map',code,cluster('get_ref_spad_map')
+	.sect	'.text.vl53l0x_api_calibration.get_ref_spad_map'
+	.align	2
+	
+	.global	get_ref_spad_map
+; Function get_ref_spad_map
+.L213:
+get_ref_spad_map:	.type	func
+	mov	d4,#176
+.L1306:
+	mov	d5,#6
+	call	VL53L0X_ReadMulti
+.L718:
+	j	.L78
+.L78:
+	ret
+.L544:
+	
+__get_ref_spad_map_function_end:
+	.size	get_ref_spad_map,__get_ref_spad_map_function_end-get_ref_spad_map
+.L331:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.enable_ref_spads',code,cluster('enable_ref_spads')
+	.sect	'.text.vl53l0x_api_calibration.enable_ref_spads'
+	.align	2
+	
+	.global	enable_ref_spads
+; Function enable_ref_spads
+.L215:
+enable_ref_spads:	.type	func
+	sub.a	a10,#16
+.L719:
+	mov.aa	a15,a4
+.L720:
+	mov	d8,d4
+.L721:
+	mov.aa	a12,a5
+.L722:
+	mov.aa	a14,a6
+.L723:
+	mov	d9,d5
+.L724:
+	mov	d10,d6
+.L725:
+	ld.w	d11,[a10]16
+.L726:
+	mov.aa	a13,a7
+.L727:
+	mov	d12,#0
+.L728:
+	st.w	[a10],d7
+.L1311:
+	mov	d13,d7
+.L730:
+	mov	d14,#0
+.L731:
+	j	.L79
+.L80:
+	lea	a5,[a10]0
+	mov.aa	a4,a12
+.L732:
+	mov	e4,d13,d9
+	call	get_next_good_spad
+.L733:
+	ld.w	d15,[a10]
+.L1312:
+	jne	d15,#-1,.L81
+.L1313:
+	mov	d12,#-50
+.L1314:
+	j	.L82
+.L81:
+	ld.w	d4,[a10]
+.L1315:
+	add	d4,d10
+	call	is_aperture
+.L1316:
+	jeq	d2,d8,.L83
+.L1317:
+	mov	d12,#-50
+.L1318:
+	j	.L84
+.L83:
+	ld.w	d13,[a10]
+.L1319:
+	mov.aa	a4,a14
+.L734:
+	mov	e4,d13,d9
+	call	enable_spad_bit
+.L735:
+	add	d13,#1
+.L1320:
+	add	d14,#1
+.L79:
+	jlt.u	d14,d11,.L80
+.L84:
+.L82:
+	st.w	[a13],d13
+.L1321:
+	jne	d12,#0,.L85
+.L1322:
+	mov.aa	a4,a15
+.L736:
+	mov.aa	a5,a14
+.L737:
+	call	set_ref_spad_map
+.L729:
+	mov	d12,d2
+.L85:
+	jne	d12,#0,.L86
+.L1323:
+	lea	a5,[a10]4
+	mov.aa	a4,a15
+.L739:
+	call	get_ref_spad_map
+.L738:
+	mov	d12,d2
+.L741:
+	mov	d0,#0
+.L742:
+	j	.L87
+.L88:
+	addsc.a	a15,a14,d0,#0
+	ld.bu	d1,[a15]
+.L1324:
+	addsc.a	a15,a10,d0,#0
+	ld.bu	d15,[a15]4
+.L1325:
+	jeq	d15,d1,.L89
+.L1326:
+	mov	d12,#-50
+.L740:
+	j	.L90
+.L89:
+	add	d0,#1
+.L87:
+	jlt.u	d0,d9,.L88
+.L90:
+.L86:
+	mov	d2,d12
+.L743:
+	j	.L91
+.L91:
+	ret
+.L548:
+	
+__enable_ref_spads_function_end:
+	.size	enable_ref_spads,__enable_ref_spads_function_end-enable_ref_spads
+.L336:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.perform_ref_signal_measurement',code,cluster('perform_ref_signal_measurement')
+	.sect	'.text.vl53l0x_api_calibration.perform_ref_signal_measurement'
+	.align	2
+	
+	.global	perform_ref_signal_measurement
+; Function perform_ref_signal_measurement
+.L217:
+perform_ref_signal_measurement:	.type	func
+	sub.a	a10,#32
+.L744:
+	mov.aa	a15,a4
+.L745:
+	mov.aa	a12,a5
+.L746:
+	mov	d2,#0
+.L747:
+	ld.bu	d15,[a15]344
+.L748:
+	jne	d2,#0,.L92
+.L1331:
+	mov	d4,#1
+.L1332:
+	mov	d5,#192
+	mov.aa	a4,a15
+	call	VL53L0X_WrByte
+.L92:
+	jne	d2,#0,.L93
+.L1333:
+	lea	a5,[a10]0
+	mov.aa	a4,a15
+.L749:
+	call	VL53L0X_PerformSingleRangingMeasurement
+.L93:
+	jne	d2,#0,.L94
+.L1334:
+	mov	d4,#255
+.L1335:
+	mov	d5,#1
+	mov.aa	a4,a15
+.L750:
+	call	VL53L0X_WrByte
+.L94:
+	jne	d2,#0,.L95
+.L1336:
+	mov	d4,#182
+.L1337:
+	mov.aa	a4,a15
+.L751:
+	mov.aa	a5,a12
+.L752:
+	call	VL53L0X_RdWord
+.L95:
+	jne	d2,#0,.L96
+.L1338:
+	mov	d4,#255
+.L1339:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L753:
+	call	VL53L0X_WrByte
+.L96:
+	jne	d2,#0,.L97
+.L1340:
+	mov	d4,#1
+.L1341:
+	mov.aa	a4,a15
+.L754:
+	mov	d5,d15
+.L756:
+	call	VL53L0X_WrByte
+.L755:
+	jne	d2,#0,.L98
+.L1342:
+	st.b	[a15]344,d15
+.L98:
+.L97:
+	j	.L99
+.L99:
+	ret
+.L564:
+	
+__perform_ref_signal_measurement_function_end:
+	.size	perform_ref_signal_measurement,__perform_ref_signal_measurement_function_end-perform_ref_signal_measurement
+.L341:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_perform_ref_spad_management',code,cluster('VL53L0X_perform_ref_spad_management')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_perform_ref_spad_management'
+	.align	2
+	
+	.global	VL53L0X_perform_ref_spad_management
+; Function VL53L0X_perform_ref_spad_management
+.L219:
+VL53L0X_perform_ref_spad_management:	.type	func
+	sub.a	a10,#32
+.L757:
+	mov.aa	a12,a4
+.L759:
+	mov.aa	a13,a5
+.L760:
+	mov.aa	a14,a6
+.L761:
+	mov	d8,#180
+.L762:
+	mov	d9,#3
+.L763:
+	mov	d10,#44
+.L765:
+	mov	d11,#0
+.L767:
+	mov	d0,#0
+.L1078:
+	st.w	[a10]10,d0
+.L1079:
+	mov	d0,#0
+.L1080:
+	st.w	[a10]14,d0
+.L1081:
+	mov	d15,#0
+.L768:
+	st.w	[a10]24,d15
+.L770:
+	mov	d12,#6
+.L771:
+	mov	d0,#0
+.L1082:
+	st.b	[a10]20,d0
+.L1083:
+	mov	d15,#0
+.L769:
+	st.b	[a10]21,d15
+.L1084:
+	mov	d13,#0
+.L772:
+	mov	d15,#0
+.L773:
+	st.w	[a10]28,d15
+.L775:
+	ld.hu	d14,[a12]356
+.L776:
+	mov	d15,#0
+.L774:
+	j	.L100
+.L101:
+	addsc.a	a15,a12,d15,#0
+.L1085:
+	mov	d0,#0
+.L1086:
+	st.b	[a15]332,d0
+.L1087:
+	add	d15,#1
+.L100:
+	jlt.u	d15,#6,.L101
+.L1088:
+	mov	d4,#255
+.L1089:
+	mov	d5,#1
+	mov.aa	a4,a12
+	call	VL53L0X_WrByte
+.L758:
+	mov	d15,d2
+.L777:
+	jne	d15,#0,.L102
+.L1090:
+	mov	d4,#79
+.L1091:
+	mov	d5,#0
+	mov.aa	a4,a12
+.L779:
+	call	VL53L0X_WrByte
+.L778:
+	mov	d15,d2
+.L102:
+	jne	d15,#0,.L103
+.L1092:
+	mov	d4,#78
+.L1093:
+	mov	d5,#44
+	mov.aa	a4,a12
+.L781:
+	call	VL53L0X_WrByte
+.L780:
+	mov	d15,d2
+.L103:
+	jne	d15,#0,.L104
+.L1094:
+	mov	d4,#255
+.L1095:
+	mov	d5,#0
+	mov.aa	a4,a12
+.L783:
+	call	VL53L0X_WrByte
+.L782:
+	mov	d15,d2
+.L104:
+	jne	d15,#0,.L105
+.L1096:
+	mov	d4,#182
+.L1097:
+	mov.aa	a4,a12
+.L785:
+	mov	d5,d8
+.L786:
+	call	VL53L0X_WrByte
+.L784:
+	mov	d15,d2
+.L105:
+	jne	d15,#0,.L106
+.L1098:
+	mov	d4,#128
+.L1099:
+	mov	d5,#0
+	mov.aa	a4,a12
+.L788:
+	call	VL53L0X_WrByte
+.L787:
+	mov	d15,d2
+.L106:
+	jne	d15,#0,.L107
+.L1100:
+	lea	a5,[a10]20
+.L1101:
+	lea	a6,[a10]21
+.L1102:
+	mov	d4,#0
+	mov.aa	a4,a12
+.L790:
+	call	VL53L0X_perform_ref_calibration
+.L789:
+	mov	d15,d2
+.L107:
+	jne	d15,#0,.L108
+.L1103:
+	mov	d11,#0
+.L1104:
+	st.w	[a10]10,d11
+.L1105:
+	mov	d4,#0
+.L792:
+	st.w	[a10]24,d4
+.L1106:
+	st.w	[a10],d9
+.L1107:
+	lea	a5,[a12]338
+.L1108:
+	lea	a6,[a12]332
+.L1109:
+	lea	a7,[a10]10
+	mov.aa	a4,a12
+.L793:
+	mov	d5,d12
+.L794:
+	mov	e6,d11,d8
+	call	enable_ref_spads
+.L791:
+	mov	d15,d2
+.L108:
+	jne	d15,#0,.L109
+.L1110:
+	ld.w	d11,[a10]10
+.L1111:
+	lea	a5,[a10]18
+	mov.aa	a4,a12
+.L796:
+	call	perform_ref_signal_measurement
+.L795:
+	mov	d15,d2
+.L797:
+	jne	d15,#0,.L110
+.L1112:
+	ld.hu	d0,[a10]18
+.L1113:
+	jge.u	d14,d0,.L111
+.L1114:
+	mov	d15,#0
+.L798:
+	j	.L112
+.L113:
+	addsc.a	a15,a12,d15,#0
+.L1115:
+	mov	d0,#0
+.L1116:
+	st.b	[a15]332,d0
+.L1117:
+	add	d15,#1
+.L112:
+	jlt.u	d15,#6,.L113
+.L1118:
+	j	.L114
+.L115:
+	add	d11,#1
+.L114:
+	add	d4,d8,d11
+	call	is_aperture
+.L1119:
+	jne	d2,#0,.L116
+.L1120:
+	jlt.u	d11,d10,.L115
+.L116:
+	mov	d15,#1
+.L799:
+	st.w	[a10]24,d15
+.L1121:
+	st.w	[a10],d9
+.L1122:
+	lea	a5,[a12]338
+.L1123:
+	lea	a6,[a12]332
+.L1124:
+	lea	a7,[a10]10
+	mov.aa	a4,a12
+.L801:
+	ld.w	d4,[a10]24
+.L800:
+	mov	d5,d12
+.L803:
+	mov	e6,d11,d8
+	call	enable_ref_spads
+.L802:
+	mov	d15,d2
+.L804:
+	jne	d15,#0,.L117
+.L1125:
+	ld.w	d11,[a10]10
+.L1126:
+	lea	a5,[a10]18
+	mov.aa	a4,a12
+.L806:
+	call	perform_ref_signal_measurement
+.L805:
+	mov	d15,d2
+.L807:
+	jne	d15,#0,.L118
+.L1127:
+	ld.hu	d0,[a10]18
+.L1128:
+	jge.u	d14,d0,.L119
+.L1129:
+	mov	d0,#1
+.L809:
+	st.w	[a10]28,d0
+.L1130:
+	mov	d13,#3
+.L119:
+.L118:
+.L117:
+	j	.L120
+.L111:
+.L110:
+	mov	d0,#0
+.L810:
+	st.w	[a10]24,d0
+.L120:
+.L109:
+	jne	d15,#0,.L121
+.L1131:
+	ld.hu	d0,[a10]18
+.L1132:
+	jge.u	d0,d14,.L122
+.L1133:
+	ld.w	d0,[a10]24
+.L811:
+	st.w	[a10]28,d0
+.L1134:
+	mov	d13,#3
+.L1135:
+	lea	a4,[a10]4
+.L1136:
+	lea	a5,[a12]332
+.L1137:
+	mov	d4,d12
+.L813:
+	call	memcpy
+.L812:
+	ld.hu	d0,[a10]18
+	sub	d0,d14
+	abs	d9,d0
+.L764:
+	mov	d10,#0
+.L766:
+	j	.L123
+.L124:
+	lea	a4,[a12]338
+.L1138:
+	lea	a5,[a10]14
+	mov	e4,d11,d12
+	call	get_next_good_spad
+.L1139:
+	ld.w	d0,[a10]14
+.L1140:
+	jne	d0,#-1,.L125
+.L1141:
+	mov	d15,#-50
+.L1142:
+	j	.L126
+.L125:
+	ld.w	d4,[a10]14
+.L1143:
+	add	d4,d8
+	call	is_aperture
+.L1144:
+	ld.w	d0,[a10]24
+.L814:
+	jeq	d2,d0,.L127
+.L1145:
+	j	.L128
+.L127:
+	add	d13,#1
+.L1146:
+	ld.w	d11,[a10]14
+.L1147:
+	lea	a4,[a12]332
+.L1148:
+	mov	e4,d11,d12
+	call	enable_spad_bit
+.L808:
+	mov	d15,d2
+.L815:
+	jne	d15,#0,.L129
+.L1149:
+	add	d11,#1
+.L1150:
+	lea	a5,[a12]332
+.L1151:
+	mov.aa	a4,a12
+.L817:
+	call	set_ref_spad_map
+.L816:
+	mov	d15,d2
+.L129:
+	jeq	d15,#0,.L130
+.L1152:
+	j	.L131
+.L130:
+	lea	a5,[a10]18
+	mov.aa	a4,a12
+.L819:
+	call	perform_ref_signal_measurement
+.L818:
+	mov	d15,d2
+.L821:
+	jeq	d15,#0,.L132
+.L1153:
+	j	.L133
+.L132:
+	ld.hu	d0,[a10]18
+	sub	d0,d14
+	abs	d0,d0
+.L823:
+	ld.hu	d1,[a10]18
+.L1154:
+	jge.u	d14,d1,.L134
+.L1155:
+	jge.u	d9,d0,.L135
+.L1156:
+	lea	a5,[a10]4
+	mov.aa	a4,a12
+.L824:
+	call	set_ref_spad_map
+.L822:
+	mov	d15,d2
+.L825:
+	lea	a4,[a12]332
+.L1157:
+	lea	a5,[a10]4
+.L1158:
+	mov	d4,d12
+.L826:
+	call	memcpy
+.L820:
+	add	d13,#-1
+.L135:
+	mov	d10,#1
+.L1159:
+	j	.L136
+.L134:
+	mov	d9,d0
+.L1160:
+	lea	a4,[a10]4
+.L1161:
+	lea	a5,[a12]332
+.L1162:
+	mov	d4,d12
+.L827:
+	call	memcpy
+.L136:
+.L123:
+	jeq	d10,#0,.L124
+.L133:
+.L131:
+.L128:
+.L126:
+.L122:
+.L121:
+	jne	d15,#0,.L137
+.L1163:
+	st.w	[a13],d13
+.L1164:
+	ld.w	d0,[a10]28
+.L828:
+	st.b	[a14],d0
+.L1165:
+	mov	d0,#1
+.L829:
+	st.b	[a12]319,d0
+.L1166:
+	ld.w	d0,[a13]
+	st.b	[a12]317,d0
+.L1167:
+	ld.bu	d0,[a14]
+	st.b	[a12]318,d0
+.L137:
+	mov	d2,d15
+.L830:
+	j	.L138
+.L138:
+	ret
+.L420:
+	
+__VL53L0X_perform_ref_spad_management_function_end:
+	.size	VL53L0X_perform_ref_spad_management,__VL53L0X_perform_ref_spad_management_function_end-VL53L0X_perform_ref_spad_management
+.L271:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_set_reference_spads',code,cluster('VL53L0X_set_reference_spads')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_set_reference_spads'
+	.align	2
+	
+	.global	VL53L0X_set_reference_spads
+; Function VL53L0X_set_reference_spads
+.L221:
+VL53L0X_set_reference_spads:	.type	func
+	sub.a	a10,#8
+.L831:
+	mov.aa	a15,a4
+.L835:
+	mov	d11,d4
+.L836:
+	mov	d12,d5
+.L837:
+	mov	d8,#0
+.L838:
+	mov	d15,#180
+.L839:
+	mov	d9,#6
+.L841:
+	mov	d10,#44
+.L842:
+	mov	d4,#255
+.L833:
+	mov	d5,#1
+.L834:
+	mov.aa	a4,a15
+	call	VL53L0X_WrByte
+.L832:
+	jne	d2,#0,.L139
+.L1172:
+	mov	d4,#79
+.L1173:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L843:
+	call	VL53L0X_WrByte
+.L139:
+	jne	d2,#0,.L140
+.L1174:
+	mov	d4,#78
+.L1175:
+	mov	d5,#44
+	mov.aa	a4,a15
+.L844:
+	call	VL53L0X_WrByte
+.L140:
+	jne	d2,#0,.L141
+.L1176:
+	mov	d4,#255
+.L1177:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L845:
+	call	VL53L0X_WrByte
+.L141:
+	jne	d2,#0,.L142
+.L1178:
+	mov	d4,#182
+.L1179:
+	mov.aa	a4,a15
+.L846:
+	mov	d5,d15
+.L847:
+	call	VL53L0X_WrByte
+.L142:
+	mov	d0,#0
+.L848:
+	j	.L143
+.L144:
+	addsc.a	a2,a15,d0,#0
+.L1180:
+	mov	d1,#0
+.L1181:
+	st.b	[a2]332,d1
+.L1182:
+	add	d0,#1
+.L143:
+	jlt.u	d0,#6,.L144
+.L1183:
+	jeq	d12,#0,.L145
+.L1184:
+	j	.L146
+.L147:
+	add	d8,#1
+.L146:
+	add	d4,d15,d8
+	call	is_aperture
+.L1185:
+	jne	d2,#0,.L148
+.L1186:
+	jlt.u	d8,d10,.L147
+.L148:
+.L145:
+	st.w	[a10],d11
+.L1187:
+	lea	a5,[a15]338
+.L1188:
+	lea	a6,[a15]332
+.L1189:
+	lea	a7,[a10]4
+	mov.aa	a4,a15
+.L849:
+	mov	e4,d9,d12
+	mov	e6,d8,d15
+	call	enable_ref_spads
+.L850:
+	jne	d2,#0,.L149
+.L1190:
+	mov	d15,#1
+.L840:
+	st.b	[a15]319,d15
+.L1191:
+	st.b	[a15]317,d11
+.L1192:
+	st.b	[a15]318,d12
+.L149:
+	j	.L150
+.L150:
+	ret
+.L447:
+	
+__VL53L0X_set_reference_spads_function_end:
+	.size	VL53L0X_set_reference_spads,__VL53L0X_set_reference_spads_function_end-VL53L0X_set_reference_spads
+.L276:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_get_reference_spads',code,cluster('VL53L0X_get_reference_spads')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_get_reference_spads'
+	.align	2
+	
+	.global	VL53L0X_get_reference_spads
+; Function VL53L0X_get_reference_spads
+.L223:
+VL53L0X_get_reference_spads:	.type	func
+	sub.a	a10,#16
+.L851:
+	mov.aa	a15,a4
+.L854:
+	mov.aa	a12,a5
+.L855:
+	mov.aa	a13,a6
+.L856:
+	mov	d2,#0
+.L857:
+	mov	d8,#44
+.L858:
+	mov	d9,#6
+.L859:
+	mov	d15,#0
+.L1197:
+	st.b	[a10]10,d15
+.L1198:
+	ld.bu	d15,[a15]319
+.L860:
+	jne	d15,#1,.L151
+.L1199:
+	ld.bu	d15,[a15]317
+.L861:
+	st.w	[a12],d15
+.L1200:
+	ld.bu	d15,[a15]318
+.L1201:
+	st.b	[a13],d15
+.L1202:
+	j	.L152
+.L151:
+	lea	a5,[a10]0
+.L853:
+	mov.aa	a4,a15
+	call	get_ref_spad_map
+.L852:
+	jne	d2,#0,.L153
+.L1203:
+	lea	a4,[a10]0
+.L1204:
+	lea	a5,[a10]6
+.L1205:
+	lea	a6,[a10]10
+	mov	e4,d8,d9
+	call	count_enabled_spads
+.L1206:
+	jne	d2,#0,.L154
+.L1207:
+	ld.w	d15,[a10]6
+.L862:
+	st.w	[a12],d15
+.L1208:
+	ld.bu	d15,[a10]10
+.L1209:
+	st.b	[a13],d15
+.L1210:
+	mov	d15,#1
+	st.b	[a15]319,d15
+.L1211:
+	ld.w	d15,[a10]6
+	st.b	[a15]317,d15
+.L1212:
+	ld.bu	d15,[a10]10
+	st.b	[a15]318,d15
+.L154:
+.L153:
+.L152:
+	j	.L155
+.L155:
+	ret
+.L458:
+	
+__VL53L0X_get_reference_spads_function_end:
+	.size	VL53L0X_get_reference_spads,__VL53L0X_get_reference_spads_function_end-VL53L0X_get_reference_spads
+.L281:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_perform_single_ref_calibration',code,cluster('VL53L0X_perform_single_ref_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_perform_single_ref_calibration'
+	.align	2
+	
+	.global	VL53L0X_perform_single_ref_calibration
+; Function VL53L0X_perform_single_ref_calibration
+.L225:
+VL53L0X_perform_single_ref_calibration:	.type	func
+	mov.aa	a15,a4
+.L864:
+	mov	d2,#0
+.L865:
+	jne	d2,#0,.L156
+.L1347:
+	mov	d15,#0
+.L1348:
+	or	d5,d4,#1
+	mov.aa	a4,a15
+	mov	d4,d15
+.L863:
+	call	VL53L0X_WrByte
+.L156:
+	jne	d2,#0,.L157
+.L1349:
+	mov.aa	a4,a15
+.L866:
+	call	VL53L0X_measurement_poll_for_completion
+.L157:
+	jne	d2,#0,.L158
+.L1350:
+	mov	d4,#0
+	mov.aa	a4,a15
+.L867:
+	call	VL53L0X_ClearInterruptMask
+.L158:
+	jne	d2,#0,.L159
+.L1351:
+	mov	d4,#0
+.L1352:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L868:
+	call	VL53L0X_WrByte
+.L159:
+	j	.L160
+.L160:
+	ret
+.L571:
+	
+__VL53L0X_perform_single_ref_calibration_function_end:
+	.size	VL53L0X_perform_single_ref_calibration,__VL53L0X_perform_single_ref_calibration_function_end-VL53L0X_perform_single_ref_calibration
+.L346:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_ref_calibration_io',code,cluster('VL53L0X_ref_calibration_io')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_ref_calibration_io'
+	.align	2
+	
+	.global	VL53L0X_ref_calibration_io
+; Function VL53L0X_ref_calibration_io
+.L227:
+VL53L0X_ref_calibration_io:	.type	func
+	sub.a	a10,#8
+.L869:
+	mov.aa	a15,a4
+.L873:
+	mov	d9,d4
+.L874:
+	mov	e10,d6,d5
+	mov.aa	a12,a5
+.L875:
+	mov.aa	a13,a6
+.L876:
+	mov	d15,d7
+.L877:
+	ld.bu	d12,[a10]8
+.L879:
+	mov	d8,#0
+.L880:
+	mov	d0,#0
+.L1357:
+	st.b	[a10],d0
+.L1358:
+	mov	d4,#255
+.L872:
+	mov	d5,#1
+.L871:
+	mov.aa	a4,a15
+	call	VL53L0X_WrByte
+.L870:
+	or	d8,d2
+.L1359:
+	mov	d4,#0
+.L1360:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L882:
+	call	VL53L0X_WrByte
+.L883:
+	or	d8,d2
+.L1361:
+	mov	d4,#255
+.L1362:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L884:
+	call	VL53L0X_WrByte
+.L885:
+	or	d8,d2
+.L1363:
+	jeq	d9,#0,.L161
+.L1364:
+	jeq	d15,#0,.L162
+.L1365:
+	mov	d4,#203
+.L1366:
+	mov.aa	a4,a15
+.L886:
+	mov.aa	a5,a12
+.L888:
+	call	VL53L0X_RdByte
+.L887:
+	or	d8,d2
+.L162:
+	jeq	d12,#0,.L163
+.L1367:
+	mov	d4,#238
+.L1368:
+	lea	a5,[a10]0
+	mov.aa	a4,a15
+.L889:
+	call	VL53L0X_RdByte
+.L890:
+	or	d8,d2
+.L163:
+	j	.L164
+.L161:
+	jeq	d15,#0,.L165
+.L1369:
+	mov	d4,#203
+.L1370:
+	mov.aa	a4,a15
+.L891:
+	mov	d5,d10
+.L893:
+	call	VL53L0X_WrByte
+.L892:
+	or	d8,d2
+.L165:
+	jeq	d12,#0,.L166
+.L1371:
+	mov	d4,#238
+.L1372:
+	mov	d5,#128
+.L1373:
+	mov.aa	a4,a15
+.L894:
+	mov	d6,d11
+.L896:
+	call	VL53L0X_UpdateByte
+.L895:
+	or	d8,d2
+.L166:
+.L164:
+	mov	d4,#255
+.L1374:
+	mov	d5,#1
+	mov.aa	a4,a15
+.L897:
+	call	VL53L0X_WrByte
+.L898:
+	or	d8,d2
+.L1375:
+	mov	d4,#0
+.L1376:
+	mov	d5,#1
+	mov.aa	a4,a15
+.L899:
+	call	VL53L0X_WrByte
+.L900:
+	or	d8,d2
+.L1377:
+	mov	d4,#255
+.L1378:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L901:
+	call	VL53L0X_WrByte
+.L902:
+	or	d2,d8
+.L881:
+	ld.bu	d15,[a10]
+.L878:
+	and	d15,#239
+.L1379:
+	st.b	[a13],d15
+.L1380:
+	j	.L167
+.L167:
+	ret
+.L575:
+	
+__VL53L0X_ref_calibration_io_function_end:
+	.size	VL53L0X_ref_calibration_io,__VL53L0X_ref_calibration_io_function_end-VL53L0X_ref_calibration_io
+.L351:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_perform_vhv_calibration',code,cluster('VL53L0X_perform_vhv_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_perform_vhv_calibration'
+	.align	2
+	
+	.global	VL53L0X_perform_vhv_calibration
+; Function VL53L0X_perform_vhv_calibration
+.L229:
+VL53L0X_perform_vhv_calibration:	.type	func
+	sub.a	a10,#8
+.L903:
+	mov.aa	a15,a4
+.L907:
+	mov.aa	a12,a5
+.L908:
+	mov	d8,d4
+.L909:
+	mov	d15,d5
+.L910:
+	mov	d9,#0
+.L911:
+	mov	d10,#0
+.L912:
+	mov	d11,#0
+.L913:
+	mov	d0,#0
+.L1385:
+	st.b	[a10]4,d0
+.L1386:
+	jeq	d15,#0,.L168
+.L1387:
+	ld.bu	d9,[a15]344
+.L168:
+	mov	d4,#1
+.L905:
+	mov	d5,#1
+.L906:
+	mov.aa	a4,a15
+	call	VL53L0X_WrByte
+.L904:
+	jne	d2,#0,.L169
+.L1388:
+	mov	d4,#64
+	mov.aa	a4,a15
+.L914:
+	call	VL53L0X_perform_single_ref_calibration
+.L169:
+	jne	d2,#0,.L170
+.L1389:
+	jne	d8,#1,.L171
+.L1390:
+	mov	d0,#0
+	st.b	[a10],d0
+.L1391:
+	mov	d4,#1
+.L1392:
+	lea	a6,[a10]4
+.L1393:
+	mov	d7,#1
+	mov.aa	a4,a15
+.L915:
+	mov	d5,d10
+.L917:
+	mov	d6,d11
+.L918:
+	mov.aa	a5,a12
+.L919:
+	call	VL53L0X_ref_calibration_io
+.L916:
+	j	.L172
+.L171:
+.L170:
+	mov	d0,#0
+.L1394:
+	st.b	[a12],d0
+.L172:
+	jne	d2,#0,.L173
+.L1395:
+	jeq	d15,#0,.L174
+.L1396:
+	mov	d4,#1
+.L1397:
+	mov.aa	a4,a15
+.L920:
+	mov	d5,d9
+.L922:
+	call	VL53L0X_WrByte
+.L921:
+	jne	d2,#0,.L175
+.L1398:
+	st.b	[a15]344,d9
+.L175:
+.L174:
+.L173:
+	j	.L176
+.L176:
+	ret
+.L588:
+	
+__VL53L0X_perform_vhv_calibration_function_end:
+	.size	VL53L0X_perform_vhv_calibration,__VL53L0X_perform_vhv_calibration_function_end-VL53L0X_perform_vhv_calibration
+.L356:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_perform_phase_calibration',code,cluster('VL53L0X_perform_phase_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_perform_phase_calibration'
+	.align	2
+	
+	.global	VL53L0X_perform_phase_calibration
+; Function VL53L0X_perform_phase_calibration
+.L231:
+VL53L0X_perform_phase_calibration:	.type	func
+	sub.a	a10,#8
+.L923:
+	mov.aa	a15,a4
+.L927:
+	mov.aa	a12,a5
+.L928:
+	mov	d8,d4
+.L929:
+	mov	d15,d5
+.L930:
+	mov	d9,#0
+.L931:
+	mov	d10,#0
+.L932:
+	mov	d11,#0
+.L933:
+	jeq	d15,#0,.L177
+.L1217:
+	ld.bu	d9,[a15]344
+.L177:
+	mov	d4,#1
+.L925:
+	mov	d5,#2
+.L926:
+	mov.aa	a4,a15
+	call	VL53L0X_WrByte
+.L924:
+	jne	d2,#0,.L178
+.L1218:
+	mov	d4,#0
+	mov.aa	a4,a15
+.L934:
+	call	VL53L0X_perform_single_ref_calibration
+.L178:
+	jne	d2,#0,.L179
+.L1219:
+	jne	d8,#1,.L180
+.L1220:
+	mov	d0,#1
+	st.b	[a10],d0
+.L1221:
+	mov	d4,#1
+.L1222:
+	lea	a5,[a10]4
+.L1223:
+	mov	d7,#0
+	mov.aa	a4,a15
+.L935:
+	mov	d5,d10
+.L937:
+	mov	d6,d11
+.L938:
+	mov.aa	a6,a12
+.L939:
+	call	VL53L0X_ref_calibration_io
+.L936:
+	j	.L181
+.L180:
+.L179:
+	mov	d0,#0
+.L1224:
+	st.b	[a12],d0
+.L181:
+	jne	d2,#0,.L182
+.L1225:
+	jeq	d15,#0,.L183
+.L1226:
+	mov	d4,#1
+.L1227:
+	mov.aa	a4,a15
+.L940:
+	mov	d5,d9
+.L942:
+	call	VL53L0X_WrByte
+.L941:
+	jne	d2,#0,.L184
+.L1228:
+	st.b	[a15]344,d9
+.L184:
+.L183:
+.L182:
+	j	.L185
+.L185:
+	ret
+.L469:
+	
+__VL53L0X_perform_phase_calibration_function_end:
+	.size	VL53L0X_perform_phase_calibration,__VL53L0X_perform_phase_calibration_function_end-VL53L0X_perform_phase_calibration
+.L286:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_perform_ref_calibration',code,cluster('VL53L0X_perform_ref_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_perform_ref_calibration'
+	.align	2
+	
+	.global	VL53L0X_perform_ref_calibration
+; Function VL53L0X_perform_ref_calibration
+.L233:
+VL53L0X_perform_ref_calibration:	.type	func
+	mov.aa	a15,a4
+.L944:
+	mov.aa	a12,a6
+.L945:
+	mov	d15,d4
+.L946:
+	ld.bu	d8,[a15]344
+.L947:
+	mov	d5,#0
+	mov.aa	a4,a15
+	mov	d4,d15
+	call	VL53L0X_perform_vhv_calibration
+.L943:
+	jne	d2,#0,.L186
+.L1233:
+	mov	d5,#0
+	mov.aa	a4,a15
+.L948:
+	mov.aa	a5,a12
+.L949:
+	mov	d4,d15
+.L950:
+	call	VL53L0X_perform_phase_calibration
+.L186:
+	jne	d2,#0,.L187
+.L1234:
+	mov	d4,#1
+.L1235:
+	mov.aa	a4,a15
+.L951:
+	mov	d5,d8
+.L953:
+	call	VL53L0X_WrByte
+.L952:
+	jne	d2,#0,.L188
+.L1236:
+	st.b	[a15]344,d8
+.L188:
+.L187:
+	j	.L189
+.L189:
+	ret
+.L481:
+	
+__VL53L0X_perform_ref_calibration_function_end:
+	.size	VL53L0X_perform_ref_calibration,__VL53L0X_perform_ref_calibration_function_end-VL53L0X_perform_ref_calibration
+.L291:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_set_ref_calibration',code,cluster('VL53L0X_set_ref_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_set_ref_calibration'
+	.align	2
+	
+	.global	VL53L0X_set_ref_calibration
+; Function VL53L0X_set_ref_calibration
+.L235:
+VL53L0X_set_ref_calibration:	.type	func
+	sub.a	a10,#8
+.L954:
+	mov	d15,d4
+.L958:
+	mov	d6,d5
+.L959:
+	mov	d0,#1
+	st.b	[a10],d0
+.L1241:
+	mov	d4,#0
+.L957:
+	lea	a5,[a10]4
+.L1242:
+	lea	a6,[a10]5
+.L1243:
+	mov	d7,#1
+	mov	d5,d15
+.L956:
+	call	VL53L0X_ref_calibration_io
+.L955:
+	j	.L190
+.L190:
+	ret
+.L488:
+	
+__VL53L0X_set_ref_calibration_function_end:
+	.size	VL53L0X_set_ref_calibration,__VL53L0X_set_ref_calibration_function_end-VL53L0X_set_ref_calibration
+.L296:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_calibration.VL53L0X_get_ref_calibration',code,cluster('VL53L0X_get_ref_calibration')
+	.sect	'.text.vl53l0x_api_calibration.VL53L0X_get_ref_calibration'
+	.align	2
+	
+	.global	VL53L0X_get_ref_calibration
+; Function VL53L0X_get_ref_calibration
+.L237:
+VL53L0X_get_ref_calibration:	.type	func
+	sub.a	a10,#8
+.L960:
+	mov	d5,#0
+.L962:
+	mov	d6,#0
+.L963:
+	mov	d15,#1
+	st.b	[a10],d15
+.L1248:
+	mov	d4,#1
+.L1249:
+	mov	d7,#1
+	call	VL53L0X_ref_calibration_io
+.L961:
+	j	.L191
+.L191:
+	ret
+.L495:
+	
+__VL53L0X_get_ref_calibration_function_end:
+	.size	VL53L0X_get_ref_calibration,__VL53L0X_get_ref_calibration_function_end-VL53L0X_get_ref_calibration
+.L301:
+	; End of function
+	
+	.sdecl	'.data.vl53l0x_api_calibration.refArrayQuadrants',data,cluster('refArrayQuadrants')
+	.sect	'.data.vl53l0x_api_calibration.refArrayQuadrants'
+	.global	refArrayQuadrants
+	.align	2
+refArrayQuadrants:	.type	object
+	.size	refArrayQuadrants,16
+	.word	10,5
+	.space	4
+	.word	5
+	.calls	'VL53L0X_perform_xtalk_calibration','VL53L0X_SetXTalkCompensationEnable'
+	.calls	'VL53L0X_perform_xtalk_calibration','VL53L0X_SetLimitCheckEnable'
+	.calls	'VL53L0X_perform_xtalk_calibration','VL53L0X_PerformSingleRangingMeasurement'
+	.calls	'VL53L0X_perform_xtalk_calibration','VL53L0X_SetXTalkCompensationRateMegaCps'
+	.calls	'VL53L0X_perform_offset_calibration','VL53L0X_SetOffsetCalibrationDataMicroMeter'
+	.calls	'VL53L0X_perform_offset_calibration','VL53L0X_GetSequenceStepEnable'
+	.calls	'VL53L0X_perform_offset_calibration','VL53L0X_SetSequenceStepEnable'
+	.calls	'VL53L0X_perform_offset_calibration','VL53L0X_SetLimitCheckEnable'
+	.calls	'VL53L0X_perform_offset_calibration','VL53L0X_PerformSingleRangingMeasurement'
+	.calls	'VL53L0X_set_offset_calibration_data_micro_meter','VL53L0X_WrWord'
+	.calls	'VL53L0X_get_offset_calibration_data_micro_meter','VL53L0X_RdWord'
+	.calls	'VL53L0X_apply_offset_adjustment','VL53L0X_get_info_from_device'
+	.calls	'VL53L0X_apply_offset_adjustment','VL53L0X_GetOffsetCalibrationDataMicroMeter'
+	.calls	'VL53L0X_apply_offset_adjustment','VL53L0X_SetOffsetCalibrationDataMicroMeter'
+	.calls	'set_ref_spad_map','VL53L0X_WriteMulti'
+	.calls	'get_ref_spad_map','VL53L0X_ReadMulti'
+	.calls	'enable_ref_spads','get_next_good_spad'
+	.calls	'enable_ref_spads','is_aperture'
+	.calls	'enable_ref_spads','enable_spad_bit'
+	.calls	'enable_ref_spads','set_ref_spad_map'
+	.calls	'enable_ref_spads','get_ref_spad_map'
+	.calls	'perform_ref_signal_measurement','VL53L0X_WrByte'
+	.calls	'perform_ref_signal_measurement','VL53L0X_PerformSingleRangingMeasurement'
+	.calls	'perform_ref_signal_measurement','VL53L0X_RdWord'
+	.calls	'VL53L0X_perform_ref_spad_management','VL53L0X_WrByte'
+	.calls	'VL53L0X_perform_ref_spad_management','VL53L0X_perform_ref_calibration'
+	.calls	'VL53L0X_perform_ref_spad_management','enable_ref_spads'
+	.calls	'VL53L0X_perform_ref_spad_management','perform_ref_signal_measurement'
+	.calls	'VL53L0X_perform_ref_spad_management','is_aperture'
+	.calls	'VL53L0X_perform_ref_spad_management','memcpy'
+	.calls	'VL53L0X_perform_ref_spad_management','get_next_good_spad'
+	.calls	'VL53L0X_perform_ref_spad_management','enable_spad_bit'
+	.calls	'VL53L0X_perform_ref_spad_management','set_ref_spad_map'
+	.calls	'VL53L0X_set_reference_spads','VL53L0X_WrByte'
+	.calls	'VL53L0X_set_reference_spads','is_aperture'
+	.calls	'VL53L0X_set_reference_spads','enable_ref_spads'
+	.calls	'VL53L0X_get_reference_spads','get_ref_spad_map'
+	.calls	'VL53L0X_get_reference_spads','count_enabled_spads'
+	.calls	'VL53L0X_perform_single_ref_calibration','VL53L0X_WrByte'
+	.calls	'VL53L0X_perform_single_ref_calibration','VL53L0X_measurement_poll_for_completion'
+	.calls	'VL53L0X_perform_single_ref_calibration','VL53L0X_ClearInterruptMask'
+	.calls	'VL53L0X_ref_calibration_io','VL53L0X_WrByte'
+	.calls	'VL53L0X_ref_calibration_io','VL53L0X_RdByte'
+	.calls	'VL53L0X_ref_calibration_io','VL53L0X_UpdateByte'
+	.calls	'VL53L0X_perform_vhv_calibration','VL53L0X_WrByte'
+	.calls	'VL53L0X_perform_vhv_calibration','VL53L0X_perform_single_ref_calibration'
+	.calls	'VL53L0X_perform_vhv_calibration','VL53L0X_ref_calibration_io'
+	.calls	'VL53L0X_perform_phase_calibration','VL53L0X_WrByte'
+	.calls	'VL53L0X_perform_phase_calibration','VL53L0X_perform_single_ref_calibration'
+	.calls	'VL53L0X_perform_phase_calibration','VL53L0X_ref_calibration_io'
+	.calls	'VL53L0X_perform_ref_calibration','VL53L0X_perform_vhv_calibration'
+	.calls	'VL53L0X_perform_ref_calibration','VL53L0X_perform_phase_calibration'
+	.calls	'VL53L0X_perform_ref_calibration','VL53L0X_WrByte'
+	.calls	'VL53L0X_set_ref_calibration','VL53L0X_ref_calibration_io'
+	.calls	'VL53L0X_get_ref_calibration','VL53L0X_ref_calibration_io'
+	.calls	'VL53L0X_perform_xtalk_calibration','',32
+	.calls	'VL53L0X_perform_offset_calibration','',32
+	.calls	'VL53L0X_set_offset_calibration_data_micro_meter','',0
+	.calls	'VL53L0X_get_offset_calibration_data_micro_meter','',8
+	.calls	'VL53L0X_apply_offset_adjustment','',8
+	.calls	'get_next_good_spad','',0
+	.calls	'is_aperture','',0
+	.calls	'enable_spad_bit','',0
+	.calls	'count_enabled_spads','',0
+	.calls	'set_ref_spad_map','',0
+	.calls	'get_ref_spad_map','',0
+	.calls	'enable_ref_spads','',16
+	.calls	'perform_ref_signal_measurement','',32
+	.calls	'VL53L0X_perform_ref_spad_management','',32
+	.calls	'VL53L0X_set_reference_spads','',8
+	.calls	'VL53L0X_get_reference_spads','',16
+	.calls	'VL53L0X_perform_single_ref_calibration','',0
+	.calls	'VL53L0X_ref_calibration_io','',8
+	.calls	'VL53L0X_perform_vhv_calibration','',8
+	.calls	'VL53L0X_perform_phase_calibration','',8
+	.calls	'VL53L0X_perform_ref_calibration','',0
+	.calls	'VL53L0X_set_ref_calibration','',8
+	.extern	memcpy
+	.extern	VL53L0X_WriteMulti
+	.extern	VL53L0X_ReadMulti
+	.extern	VL53L0X_WrByte
+	.extern	VL53L0X_WrWord
+	.extern	VL53L0X_RdByte
+	.extern	VL53L0X_RdWord
+	.extern	VL53L0X_UpdateByte
+	.extern	VL53L0X_SetOffsetCalibrationDataMicroMeter
+	.extern	VL53L0X_GetOffsetCalibrationDataMicroMeter
+	.extern	VL53L0X_SetSequenceStepEnable
+	.extern	VL53L0X_GetSequenceStepEnable
+	.extern	VL53L0X_SetXTalkCompensationEnable
+	.extern	VL53L0X_SetXTalkCompensationRateMegaCps
+	.extern	VL53L0X_SetLimitCheckEnable
+	.extern	VL53L0X_PerformSingleRangingMeasurement
+	.extern	VL53L0X_ClearInterruptMask
+	.extern	VL53L0X_measurement_poll_for_completion
+	.extern	VL53L0X_get_info_from_device
+	.calls	'VL53L0X_get_ref_calibration','',8
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L239:
+	.word	5168
+	.half	3
+	.word	.L240
+	.byte	4
+.L238:
+	.byte	1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L241
+.L397:
+	.byte	2
+	.byte	'int',0,4,5,3
+	.byte	'__abs',0
+	.word	268
+	.byte	1,1,1,1,4
+	.word	268
+	.byte	0,5
+	.byte	'void',0,6
+	.word	296
+	.byte	7
+	.word	302
+	.byte	8
+	.word	296
+	.byte	6
+	.word	312
+	.byte	7
+	.word	317
+.L363:
+	.byte	2
+	.byte	'unsigned int',0,4,7,9
+	.byte	'memcpy',0,1,53,17
+	.word	302
+	.byte	1,1,1,1,10,1,53,33
+	.word	307
+	.byte	10,1,53,56
+	.word	322
+	.byte	10,1,53,68
+	.word	327
+	.byte	0
+.L359:
+	.byte	2
+	.byte	'char',0,1,6
+.L373:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L368:
+	.byte	2
+	.byte	'unsigned short int',0,2,7
+.L427:
+	.byte	11,6
+	.word	395
+	.byte	12,5,0,11,24
+	.word	327
+	.byte	12,5,0,11,28
+	.word	327
+	.byte	12,6,0,13,3,240,1,9,56,14
+	.byte	'ambRate_mcps',0
+	.word	452
+	.byte	28,2,35,0,14
+	.byte	'dmax_mm',0
+	.word	452
+	.byte	28,2,35,28,0,13,3,249,1,9,120,14
+	.byte	'DeviceMode',0
+	.word	395
+	.byte	1,2,35,0,14
+	.byte	'HistogramMode',0
+	.word	395
+	.byte	1,2,35,1,14
+	.byte	'MeasurementTimingBudgetMicroSeconds',0
+	.word	327
+	.byte	4,2,35,2,14
+	.byte	'InterMeasurementPeriodMilliSeconds',0
+	.word	327
+	.byte	4,2,35,6,14
+	.byte	'XTalkCompensationEnable',0
+	.word	395
+	.byte	1,2,35,10,14
+	.byte	'XTalkCompensationRangeMilliMeter',0
+	.word	412
+	.byte	2,2,35,12,14
+	.byte	'XTalkCompensationRateMegaCps',0
+	.word	327
+	.byte	4,2,35,14,14
+	.byte	'RangeOffsetMicroMeters',0
+	.word	268
+	.byte	4,2,35,18,14
+	.byte	'LimitChecksEnable',0
+	.word	434
+	.byte	6,2,35,22,14
+	.byte	'LimitChecksStatus',0
+	.word	434
+	.byte	6,2,35,28,14
+	.byte	'LimitChecksValue',0
+	.word	443
+	.byte	24,2,35,34,14
+	.byte	'dmax_lut',0
+	.word	461
+	.byte	56,2,35,60,14
+	.byte	'WrapAroundCheckEnable',0
+	.word	395
+	.byte	1,2,35,116,0
+.L375:
+	.byte	13,3,194,2,9,28,14
+	.byte	'TimeStamp',0
+	.word	327
+	.byte	4,2,35,0,14
+	.byte	'MeasurementTimeUsec',0
+	.word	327
+	.byte	4,2,35,4,14
+	.byte	'RangeMilliMeter',0
+	.word	412
+	.byte	2,2,35,8,14
+	.byte	'RangeDMaxMilliMeter',0
+	.word	412
+	.byte	2,2,35,10,14
+	.byte	'SignalRateRtnMegaCps',0
+	.word	327
+	.byte	4,2,35,12,14
+	.byte	'AmbientRateRtnMegaCps',0
+	.word	327
+	.byte	4,2,35,16,14
+	.byte	'EffectiveSpadRtnCount',0
+	.word	412
+	.byte	2,2,35,20,14
+	.byte	'ZoneId',0
+	.word	395
+	.byte	1,2,35,22,14
+	.byte	'RangeFractionalPart',0
+	.word	395
+	.byte	1,2,35,23,14
+	.byte	'RangeStatus',0
+	.word	395
+	.byte	1,2,35,24,0,11,96
+	.word	327
+	.byte	12,23,0,13,3,248,2,9,100,14
+	.byte	'HistogramData',0
+	.word	1187
+	.byte	96,2,35,0,14
+	.byte	'FirstBin',0
+	.word	395
+	.byte	1,2,35,96,14
+	.byte	'BufferSize',0
+	.word	395
+	.byte	1,2,35,97,14
+	.byte	'NumberOfBins',0
+	.word	395
+	.byte	1,2,35,98,14
+	.byte	'ErrorStatus',0
+	.word	395
+	.byte	1,2,35,99,0,2
+	.byte	'char',0,1,6,11,32
+	.word	1307
+	.byte	12,31,0,13,3,151,3,9,76,14
+	.byte	'OscFrequencyMHz',0
+	.word	327
+	.byte	4,2,35,0,14
+	.byte	'LastEncodedTimeout',0
+	.word	412
+	.byte	2,2,35,4,14
+	.byte	'Pin0GpioFunctionality',0
+	.word	395
+	.byte	1,2,35,6,14
+	.byte	'FinalRangeTimeoutMicroSecs',0
+	.word	327
+	.byte	4,2,35,8,14
+	.byte	'FinalRangeVcselPulsePeriod',0
+	.word	395
+	.byte	1,2,35,12,14
+	.byte	'PreRangeTimeoutMicroSecs',0
+	.word	327
+	.byte	4,2,35,14,14
+	.byte	'PreRangeVcselPulsePeriod',0
+	.word	395
+	.byte	1,2,35,18,14
+	.byte	'SigmaEstRefArray',0
+	.word	412
+	.byte	2,2,35,20,14
+	.byte	'SigmaEstEffPulseWidth',0
+	.word	412
+	.byte	2,2,35,22,14
+	.byte	'SigmaEstEffAmbWidth',0
+	.word	412
+	.byte	2,2,35,24,14
+	.byte	'ReadDataFromDeviceDone',0
+	.word	395
+	.byte	1,2,35,26,14
+	.byte	'ModuleId',0
+	.word	395
+	.byte	1,2,35,27,14
+	.byte	'Revision',0
+	.word	395
+	.byte	1,2,35,28,14
+	.byte	'ProductId',0
+	.word	1315
+	.byte	32,2,35,29,14
+	.byte	'ReferenceSpadCount',0
+	.word	395
+	.byte	1,2,35,61,14
+	.byte	'ReferenceSpadType',0
+	.word	395
+	.byte	1,2,35,62,14
+	.byte	'RefSpadsInitialised',0
+	.word	395
+	.byte	1,2,35,63,14
+	.byte	'PartUIDUpper',0
+	.word	327
+	.byte	4,2,35,64,14
+	.byte	'PartUIDLower',0
+	.word	327
+	.byte	4,2,35,68,14
+	.byte	'SignalRateMeasFixed400mm',0
+	.word	327
+	.byte	4,2,35,72,0,13,3,144,3,9,12,14
+	.byte	'RefSpadEnables',0
+	.word	434
+	.byte	6,2,35,0,14
+	.byte	'RefGoodSpadMap',0
+	.word	434
+	.byte	6,2,35,6,0
+.L424:
+	.byte	6
+	.word	395
+	.byte	13,3,205,3,9,252,2,14
+	.byte	'Part2PartOffsetNVMMicroMeter',0
+	.word	268
+	.byte	4,2,35,0,14
+	.byte	'Part2PartOffsetAdjustmentNVMMicroMeter',0
+	.word	268
+	.byte	4,2,35,4,14
+	.byte	'CurrentParameters',0
+	.word	507
+	.byte	120,2,35,8,14
+	.byte	'LastRangeMeasure',0
+	.word	920
+	.byte	28,3,35,128,1,14
+	.byte	'LastHistogramMeasure',0
+	.word	1196
+	.byte	100,3,35,156,1,14
+	.byte	'DeviceSpecificParameters',0
+	.word	1324
+	.byte	76,3,35,128,2,14
+	.byte	'SpadData',0
+	.word	1890
+	.byte	12,3,35,204,2,14
+	.byte	'SequenceConfig',0
+	.word	395
+	.byte	1,3,35,216,2,14
+	.byte	'RangeFractionalEnable',0
+	.word	395
+	.byte	1,3,35,217,2,14
+	.byte	'PalState',0
+	.word	395
+	.byte	1,3,35,218,2,14
+	.byte	'PowerMode',0
+	.word	395
+	.byte	1,3,35,219,2,14
+	.byte	'SigmaEstRefArray',0
+	.word	412
+	.byte	2,3,35,220,2,14
+	.byte	'SigmaEstEffPulseWidth',0
+	.word	412
+	.byte	2,3,35,222,2,14
+	.byte	'SigmaEstEffAmbWidth',0
+	.word	412
+	.byte	2,3,35,224,2,14
+	.byte	'StopVariable',0
+	.word	395
+	.byte	1,3,35,226,2,14
+	.byte	'targetRefRate',0
+	.word	412
+	.byte	2,3,35,228,2,14
+	.byte	'SigmaEstimate',0
+	.word	327
+	.byte	4,3,35,230,2,14
+	.byte	'SignalEstimate',0
+	.word	327
+	.byte	4,3,35,234,2,14
+	.byte	'LastSignalRefMcps',0
+	.word	327
+	.byte	4,3,35,238,2,14
+	.byte	'pTuningSettingsPointer',0
+	.word	1945
+	.byte	4,3,35,244,2,14
+	.byte	'UseInternalTuningSettings',0
+	.word	395
+	.byte	1,3,35,248,2,14
+	.byte	'LinearityCorrectiveGain',0
+	.word	412
+	.byte	2,3,35,250,2,0,13,2,58,9,128,3,14
+	.byte	'Data',0
+	.word	1950
+	.byte	252,2,2,35,0,14
+	.byte	'I2cDevAddr',0
+	.word	395
+	.byte	1,3,35,252,2,14
+	.byte	'comms_type',0
+	.word	395
+	.byte	1,3,35,253,2,14
+	.byte	'comms_speed_khz',0
+	.word	412
+	.byte	2,3,35,254,2,0,6
+	.word	2595
+.L361:
+	.byte	15
+	.byte	'VL53L0X_DEV',0,2,73,24
+	.word	2685
+	.byte	9
+	.byte	'VL53L0X_WriteMulti',0,2,128,1,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,2,128,1,46
+	.word	2690
+	.byte	16
+	.byte	'index',0,2,128,1,59
+	.word	395
+	.byte	16
+	.byte	'pdata',0,2,128,1,75
+	.word	1945
+	.byte	16
+	.byte	'count',0,2,128,1,91
+	.word	327
+	.byte	0,6
+	.word	2595
+	.byte	9
+	.byte	'VL53L0X_ReadMulti',0,2,139,1,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,2,139,1,45
+	.word	2690
+	.byte	16
+	.byte	'index',0,2,139,1,58
+	.word	395
+	.byte	16
+	.byte	'pdata',0,2,139,1,74
+	.word	1945
+	.byte	16
+	.byte	'count',0,2,139,1,90
+	.word	327
+	.byte	0,9
+	.byte	'VL53L0X_WrByte',0,2,149,1,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,2,149,1,42
+	.word	2690
+	.byte	16
+	.byte	'index',0,2,149,1,55
+	.word	395
+	.byte	16
+	.byte	'data',0,2,149,1,70
+	.word	395
+	.byte	0,9
+	.byte	'VL53L0X_WrWord',0,2,159,1,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,2,159,1,42
+	.word	2690
+	.byte	16
+	.byte	'index',0,2,159,1,55
+	.word	395
+	.byte	16
+	.byte	'data',0,2,159,1,71
+	.word	412
+	.byte	0,9
+	.byte	'VL53L0X_RdByte',0,2,179,1,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,2,179,1,42
+	.word	2690
+	.byte	16
+	.byte	'index',0,2,179,1,55
+	.word	395
+	.byte	16
+	.byte	'data',0,2,179,1,71
+	.word	1945
+	.byte	0
+.L566:
+	.byte	6
+	.word	412
+	.byte	9
+	.byte	'VL53L0X_RdWord',0,2,189,1,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,2,189,1,42
+	.word	2690
+	.byte	16
+	.byte	'index',0,2,189,1,55
+	.word	395
+	.byte	16
+	.byte	'data',0,2,189,1,72
+	.word	3109
+	.byte	0,9
+	.byte	'VL53L0X_UpdateByte',0,2,213,1,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,2,213,1,46
+	.word	2690
+	.byte	16
+	.byte	'index',0,2,213,1,59
+	.word	395
+	.byte	16
+	.byte	'AndData',0,2,213,1,74
+	.word	395
+	.byte	16
+	.byte	'OrData',0,2,213,1,91
+	.word	395
+	.byte	0,9
+	.byte	'VL53L0X_SetOffsetCalibrationDataMicroMeter',0,4,249,1,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,250,1,14
+	.word	2690
+	.byte	16
+	.byte	'OffsetCalibrationDataMicroMeter',0,4,250,1,27
+	.word	268
+	.byte	0
+.L387:
+	.byte	6
+	.word	268
+	.byte	9
+	.byte	'VL53L0X_GetOffsetCalibrationDataMicroMeter',0,4,139,2,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,140,2,14
+	.word	2690
+	.byte	16
+	.byte	'pOffsetCalibrationDataMicroMeter',0,4,140,2,28
+	.word	3390
+	.byte	0,9
+	.byte	'VL53L0X_SetSequenceStepEnable',0,4,248,5,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,248,5,69
+	.word	2690
+	.byte	16
+	.byte	'SequenceStepId',0,4,249,5,25
+	.word	395
+	.byte	16
+	.byte	'SequenceStepEnabled',0,4,249,5,49
+	.word	395
+	.byte	0,9
+	.byte	'VL53L0X_GetSequenceStepEnable',0,4,140,6,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,140,6,69
+	.word	2690
+	.byte	16
+	.byte	'SequenceStepId',0,4,141,6,25
+	.word	395
+	.byte	16
+	.byte	'pSequenceStepEnabled',0,4,141,6,50
+	.word	1945
+	.byte	0,9
+	.byte	'VL53L0X_SetXTalkCompensationEnable',0,4,151,7,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,151,7,74
+	.word	2690
+	.byte	16
+	.byte	'XTalkCompensationEnable',0,4,152,7,10
+	.word	395
+	.byte	0,9
+	.byte	'VL53L0X_SetXTalkCompensationRateMegaCps',0,4,183,7,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,184,7,14
+	.word	2690
+	.byte	16
+	.byte	'XTalkCompensationRateMegaCps',0,4,185,7,17
+	.word	327
+	.byte	0,9
+	.byte	'VL53L0X_SetLimitCheckEnable',0,4,196,8,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,196,8,67
+	.word	2690
+	.byte	16
+	.byte	'LimitCheckId',0,4,197,8,11
+	.word	412
+	.byte	16
+	.byte	'LimitCheckEnable',0,4,197,8,33
+	.word	395
+	.byte	0,6
+	.word	920
+	.byte	9
+	.byte	'VL53L0X_PerformSingleRangingMeasurement',0,4,240,11,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,241,11,14
+	.word	2690
+	.byte	16
+	.byte	'pRangingMeasurementData',0,4,242,11,36
+	.word	4031
+	.byte	0,9
+	.byte	'VL53L0X_ClearInterruptMask',0,4,205,13,27
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,4,205,13,66
+	.word	2690
+	.byte	16
+	.byte	'InterruptMask',0,4,206,13,11
+	.word	327
+	.byte	0,9
+	.byte	'VL53L0X_measurement_poll_for_completion',0,5,43,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,5,43,67
+	.word	2690
+	.byte	0,9
+	.byte	'VL53L0X_get_info_from_device',0,5,53,15
+	.word	387
+	.byte	1,1,1,1,16
+	.byte	'Dev',0,5,53,56
+	.word	2690
+	.byte	16
+	.byte	'option',0,5,53,69
+	.word	395
+	.byte	0
+.L365:
+	.byte	6
+	.word	327
+.L405:
+	.byte	2
+	.byte	'short int',0,2,5
+.L422:
+	.byte	6
+	.word	327
+.L472:
+	.byte	8
+	.word	395
+.L474:
+	.byte	8
+	.word	395
+.L582:
+	.byte	8
+	.word	395
+.L584:
+	.byte	8
+	.word	395
+.L591:
+	.byte	8
+	.word	395
+.L593:
+	.byte	8
+	.word	395
+	.byte	15
+	.byte	'__wchar_t',0,6,1,1
+	.word	4352
+	.byte	15
+	.byte	'__size_t',0,6,1,1
+	.word	327
+	.byte	15
+	.byte	'__ptrdiff_t',0,6,1,1
+	.word	268
+	.byte	17,1,6
+	.word	4455
+	.byte	15
+	.byte	'__codeptr',0,6,1,1
+	.word	4457
+	.byte	15
+	.byte	'__intptr_t',0,6,1,1
+	.word	268
+	.byte	15
+	.byte	'__uintptr_t',0,6,1,1
+	.word	327
+	.byte	15
+	.byte	'int8_t',0,7,241,1,41
+	.word	387
+	.byte	15
+	.byte	'uint8_t',0,7,242,1,41
+	.word	395
+	.byte	15
+	.byte	'uint16_t',0,7,246,1,41
+	.word	412
+	.byte	15
+	.byte	'int32_t',0,7,253,1,41
+	.word	268
+	.byte	15
+	.byte	'uint32_t',0,7,254,1,41
+	.word	327
+	.byte	15
+	.byte	'size_t',0,8,24,25
+	.word	327
+	.byte	15
+	.byte	'FixPoint1616_t',0,9,61,18
+	.word	327
+	.byte	15
+	.byte	'VL53L0X_DeviceError',0,10,55,17
+	.word	395
+	.byte	15
+	.byte	'VL53L0X_GpioFunctionality',0,10,101,17
+	.word	395
+	.byte	15
+	.byte	'VL53L0X_Error',0,3,131,1,16
+	.word	387
+	.byte	15
+	.byte	'VL53L0X_DeviceModes',0,3,184,1,17
+	.word	395
+	.byte	15
+	.byte	'VL53L0X_HistogramModes',0,3,202,1,17
+	.word	395
+	.byte	15
+	.byte	'VL53L0X_PowerModes',0,3,221,1,17
+	.word	395
+	.byte	15
+	.byte	'VL53L0X_DMaxLUT_t',0,3,245,1,3
+	.word	461
+	.byte	15
+	.byte	'VL53L0X_DeviceParameters_t',0,3,161,2,3
+	.word	507
+	.byte	15
+	.byte	'VL53L0X_State',0,3,170,2,17
+	.word	395
+	.byte	15
+	.byte	'VL53L0X_RangingMeasurementData_t',0,3,239,2,3
+	.word	920
+	.byte	15
+	.byte	'VL53L0X_HistogramMeasurementData_t',0,3,136,3,3
+	.word	1196
+	.byte	15
+	.byte	'VL53L0X_SpadData_t',0,3,149,3,3
+	.word	1890
+	.byte	15
+	.byte	'VL53L0X_DeviceSpecificParameters_t',0,3,195,3,3
+	.word	1324
+	.byte	15
+	.byte	'VL53L0X_DevData_t',0,3,128,4,3
+	.word	1950
+	.byte	15
+	.byte	'VL53L0X_SequenceStepId',0,3,180,4,17
+	.word	395
+	.byte	15
+	.byte	'_iob_flag_t',0,11,82,25
+	.word	412
+	.byte	15
+	.byte	'VL53L0X_Dev_t',0,2,66,3
+	.word	2595
+.L600:
+	.byte	11,16
+	.word	327
+	.byte	12,3,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L240:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,73,19,54,15,39,12
+	.byte	63,12,60,12,0,0,4,5,0,73,19,0,0,5,59,0,3,8,0,0,6,15,0,73,19,0,0,7,55,0,73,19,0,0,8,38,0,73,19,0,0,9,46
+	.byte	1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,10,5,0,58,15,59,15,57,15,73,19,0,0,11,1,1,11
+	.byte	15,73,19,0,0,12,33,0,47,15,0,0,13,19,1,58,15,59,15,57,15,11,15,0,0,14,13,0,3,8,73,19,11,15,56,9,0,0,15
+	.byte	22,0,3,8,58,15,59,15,57,15,73,19,0,0,16,5,0,3,8,58,15,59,15,57,15,73,19,0,0,17,21,0,54,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L241:
+	.word	.L965-.L964
+.L964:
+	.half	3
+	.word	.L967-.L966
+.L966:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'C:\\Infineon\\AURIX-Studio-1.10.28\\tools\\Compilers\\Tasking_1.1r8\\ctc\\include\\',0
+	.byte	'C:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform\\\\inc',0
+	.byte	'C:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core\\\\inc',0
+	.byte	0
+	.byte	'string.h',0,1,0,0
+	.byte	'vl53l0x_platform.h',0,2,0,0
+	.byte	'vl53l0x_def.h',0,3,0,0
+	.byte	'vl53l0x_api.h',0,3,0,0
+	.byte	'vl53l0x_api_core.h',0,3,0,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0
+	.byte	'stdint.h',0,1,0,0
+	.byte	'stddef.h',0,1,0,0
+	.byte	'vl53l0x_types.h',0,2,0,0
+	.byte	'vl53l0x_device.h',0,3,0,0
+	.byte	'stdio.h',0,1,0,0,0
+.L967:
+.L965:
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_perform_xtalk_calibration')
+	.sect	'.debug_info'
+.L242:
+	.word	862
+	.half	3
+	.word	.L243
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L245,.L244
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_perform_xtalk_calibration',0,1,48,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L193,.L360,.L192
+	.byte	4
+	.byte	'Dev',0,1,48,61
+	.word	.L361,.L362
+	.byte	4
+	.byte	'XTalkCalDistance',0,1,49,19
+	.word	.L363,.L364
+	.byte	4
+	.byte	'pXTalkCompensationRateMegaCps',0,1,50,20
+	.word	.L365,.L366
+	.byte	5
+	.word	.L193,.L360
+	.byte	6
+	.byte	'Status',0,1,52,16
+	.word	.L359,.L367
+	.byte	6
+	.byte	'sum_ranging',0,1,53,11
+	.word	.L368,.L369
+	.byte	6
+	.byte	'sum_spads',0,1,54,11
+	.word	.L368,.L370
+	.byte	6
+	.byte	'sum_signalRate',0,1,55,17
+	.word	.L363,.L371
+	.byte	6
+	.byte	'total_count',0,1,56,17
+	.word	.L363,.L372
+	.byte	6
+	.byte	'xtalk_meas',0,1,57,10
+	.word	.L373,.L374
+	.byte	6
+	.byte	'RangingMeasurementData',0,1,58,35
+	.word	.L375,.L376
+	.byte	6
+	.byte	'xTalkStoredMeanSignalRate',0,1,59,17
+	.word	.L363,.L377
+	.byte	6
+	.byte	'xTalkStoredMeanRange',0,1,60,17
+	.word	.L363,.L378
+	.byte	6
+	.byte	'xTalkStoredMeanRtnSpads',0,1,61,17
+	.word	.L363,.L379
+	.byte	6
+	.byte	'signalXTalkTotalPerSpad',0,1,62,11
+	.word	.L363,.L380
+	.byte	6
+	.byte	'xTalkStoredMeanRtnSpadsAsInt',0,1,63,11
+	.word	.L363,.L381
+	.byte	6
+	.byte	'xTalkCalDistanceAsInt',0,1,64,11
+	.word	.L363,.L382
+	.byte	6
+	.byte	'XTalkCompensationRateMegaCps',0,1,65,17
+	.word	.L363,.L383
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_perform_xtalk_calibration')
+	.sect	'.debug_abbrev'
+.L243:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_perform_xtalk_calibration')
+	.sect	'.debug_line'
+.L244:
+	.word	.L969-.L968
+.L968:
+	.half	3
+	.word	.L971-.L970
+.L970:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L971:
+	.byte	5,15,7,0,5,2
+	.word	.L193
+	.byte	3,47,1,5,23,9
+	.half	.L606-.L193
+	.byte	3,4,1,9
+	.half	.L607-.L606
+	.byte	3,1,1,5,21,9
+	.half	.L608-.L607
+	.byte	3,1,1,5,32,9
+	.half	.L610-.L608
+	.byte	3,1,1,5,29,9
+	.half	.L612-.L610
+	.byte	3,1,1,5,2,9
+	.half	.L613-.L612
+	.byte	3,11,1,5,10,7,9
+	.half	.L972-.L613
+	.byte	3,1,1,5,2,9
+	.half	.L2-.L972
+	.byte	3,3,1,5,52,7,9
+	.half	.L973-.L2
+	.byte	3,1,1,5,2,9
+	.half	.L3-.L973
+	.byte	3,3,1,5,5,7,9
+	.half	.L974-.L3
+	.byte	3,2,1,5,49,9
+	.half	.L975-.L974
+	.byte	1,5,2,9
+	.half	.L4-.L975
+	.byte	3,4,1,5,15,7,9
+	.half	.L976-.L4
+	.byte	3,1,1,5,13,9
+	.half	.L977-.L976
+	.byte	3,1,1,5,18,9
+	.half	.L978-.L977
+	.byte	3,1,1,5,15,9
+	.half	.L979-.L978
+	.byte	3,1,1,5,19,9
+	.half	.L980-.L979
+	.byte	3,1,1,5,39,9
+	.half	.L615-.L980
+	.byte	1,5,6,9
+	.half	.L7-.L615
+	.byte	3,2,1,5,4,9
+	.half	.L617-.L7
+	.byte	3,2,1,5,5,7,9
+	.half	.L981-.L617
+	.byte	3,1,1,5,30,9
+	.half	.L8-.L981
+	.byte	3,3,1,5,4,9
+	.half	.L982-.L8
+	.byte	1,5,28,7,9
+	.half	.L983-.L982
+	.byte	3,2,1,5,31,9
+	.half	.L984-.L983
+	.byte	3,127,1,5,27,9
+	.half	.L618-.L984
+	.byte	3,3,1,5,37,9
+	.half	.L985-.L618
+	.byte	3,127,1,5,27,9
+	.half	.L986-.L985
+	.byte	3,3,1,5,8,9
+	.half	.L987-.L986
+	.byte	3,1,1,5,6,9
+	.half	.L988-.L987
+	.byte	1,5,27,9
+	.half	.L989-.L988
+	.byte	3,126,1,5,31,9
+	.half	.L619-.L989
+	.byte	3,3,1,5,51,9
+	.half	.L10-.L619
+	.byte	3,112,1,5,37,9
+	.half	.L6-.L10
+	.byte	1,5,39,9
+	.half	.L990-.L6
+	.byte	1,5,3,7,9
+	.half	.L9-.L990
+	.byte	3,21,1,5,11,7,9
+	.half	.L991-.L9
+	.byte	3,1,1,5,2,9
+	.half	.L5-.L991
+	.byte	3,5,1,5,46,7,9
+	.half	.L992-.L5
+	.byte	3,2,1,5,16,9
+	.half	.L620-.L992
+	.byte	3,2,1,5,23,9
+	.half	.L993-.L620
+	.byte	1,5,14,9
+	.half	.L622-.L993
+	.byte	3,2,1,5,21,9
+	.half	.L994-.L622
+	.byte	1,5,4,9
+	.half	.L624-.L994
+	.byte	3,14,1,5,59,9
+	.half	.L995-.L624
+	.byte	3,127,1,5,12,9
+	.half	.L625-.L995
+	.byte	3,1,1,5,48,9
+	.half	.L626-.L625
+	.byte	3,6,1,5,46,9
+	.half	.L996-.L626
+	.byte	1,5,56,9
+	.half	.L997-.L996
+	.byte	1,5,7,9
+	.half	.L627-.L997
+	.byte	3,2,1,5,28,7,9
+	.half	.L998-.L627
+	.byte	3,1,1,5,27,7,9
+	.half	.L999-.L998
+	.byte	3,1,1,5,33,7,9
+	.half	.L13-.L999
+	.byte	3,1,1,5,36,9
+	.half	.L628-.L13
+	.byte	1,5,5,9
+	.half	.L15-.L628
+	.byte	3,7,1,5,46,9
+	.half	.L629-.L15
+	.byte	3,127,1,5,13,9
+	.half	.L605-.L629
+	.byte	3,1,1,5,58,9
+	.half	.L630-.L605
+	.byte	3,7,1,5,35,9
+	.half	.L632-.L630
+	.byte	3,8,1,5,27,9
+	.half	.L621-.L632
+	.byte	3,1,1,5,42,9
+	.half	.L623-.L621
+	.byte	3,127,1,5,28,9
+	.half	.L1000-.L623
+	.byte	1,5,7,9
+	.half	.L1001-.L1000
+	.byte	3,5,1,5,5,9
+	.half	.L631-.L1001
+	.byte	1,5,15,9
+	.half	.L633-.L631
+	.byte	1,5,34,9
+	.half	.L16-.L633
+	.byte	3,3,1,5,3,9
+	.half	.L1002-.L16
+	.byte	3,3,1,5,53,7,9
+	.half	.L1003-.L1002
+	.byte	3,1,1,5,3,9
+	.half	.L17-.L1003
+	.byte	3,3,1,5,6,7,9
+	.half	.L1004-.L17
+	.byte	3,2,1,5,2,9
+	.half	.L12-.L1004
+	.byte	3,4,1,5,1,9
+	.half	.L19-.L12
+	.byte	3,1,1,7,9
+	.half	.L246-.L19
+	.byte	0,1,1
+.L969:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_perform_xtalk_calibration')
+	.sect	'.debug_ranges'
+.L245:
+	.word	-1,.L193,0,.L246-.L193,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_perform_offset_calibration')
+	.sect	'.debug_info'
+.L247:
+	.word	680
+	.half	3
+	.word	.L248
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L250,.L249
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_perform_offset_calibration',0,1,190,1,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L195,.L384,.L194
+	.byte	4
+	.byte	'Dev',0,1,190,1,62
+	.word	.L361,.L385
+	.byte	4
+	.byte	'CalDistanceMilliMeter',0,1,191,1,19
+	.word	.L363,.L386
+	.byte	4
+	.byte	'pOffsetMicroMeter',0,1,192,1,13
+	.word	.L387,.L388
+	.byte	5
+	.word	.L195,.L384
+	.byte	6
+	.byte	'Status',0,1,194,1,16
+	.word	.L359,.L389
+	.byte	6
+	.byte	'sum_ranging',0,1,195,1,11
+	.word	.L368,.L390
+	.byte	6
+	.byte	'total_count',0,1,196,1,17
+	.word	.L363,.L391
+	.byte	6
+	.byte	'RangingMeasurementData',0,1,197,1,35
+	.word	.L375,.L392
+	.byte	6
+	.byte	'StoredMeanRange',0,1,198,1,17
+	.word	.L363,.L393
+	.byte	6
+	.byte	'StoredMeanRangeAsInt',0,1,199,1,11
+	.word	.L363,.L394
+	.byte	6
+	.byte	'CalDistanceAsInt_mm',0,1,200,1,11
+	.word	.L363,.L395
+	.byte	6
+	.byte	'SequenceStepEnabled',0,1,201,1,10
+	.word	.L373,.L396
+	.byte	6
+	.byte	'meas',0,1,202,1,6
+	.word	.L397,.L398
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_perform_offset_calibration')
+	.sect	'.debug_abbrev'
+.L248:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_perform_offset_calibration')
+	.sect	'.debug_line'
+.L249:
+	.word	.L1006-.L1005
+.L1005:
+	.half	3
+	.word	.L1008-.L1007
+.L1007:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1008:
+	.byte	5,15,7,0,5,2
+	.word	.L195
+	.byte	3,189,1,1,5,23,9
+	.half	.L642-.L195
+	.byte	3,4,1,9
+	.half	.L643-.L642
+	.byte	3,1,1,5,29,9
+	.half	.L644-.L643
+	.byte	3,1,1,5,2,9
+	.half	.L646-.L644
+	.byte	3,8,1,5,10,7,9
+	.half	.L1009-.L646
+	.byte	3,1,1,5,2,9
+	.half	.L20-.L1009
+	.byte	3,2,1,5,60,7,9
+	.half	.L1010-.L20
+	.byte	3,1,1,5,2,9
+	.half	.L21-.L1010
+	.byte	3,4,1,5,5,7,9
+	.half	.L1011-.L21
+	.byte	3,2,1,5,32,9
+	.half	.L1012-.L1011
+	.byte	1,5,2,9
+	.half	.L22-.L1012
+	.byte	3,4,1,5,5,7,9
+	.half	.L1013-.L22
+	.byte	3,2,1,5,31,9
+	.half	.L1014-.L1013
+	.byte	1,5,2,9
+	.half	.L23-.L1014
+	.byte	3,4,1,5,5,7,9
+	.half	.L1015-.L23
+	.byte	3,2,1,5,49,9
+	.half	.L1016-.L1015
+	.byte	1,5,2,9
+	.half	.L24-.L1016
+	.byte	3,3,1,5,15,7,9
+	.half	.L1017-.L24
+	.byte	3,1,1,9
+	.half	.L1018-.L1017
+	.byte	3,1,1,5,13,9
+	.half	.L1019-.L1018
+	.byte	3,1,1,5,27,9
+	.half	.L650-.L1019
+	.byte	1,5,7,9
+	.half	.L27-.L650
+	.byte	3,2,1,5,4,9
+	.half	.L652-.L27
+	.byte	3,2,1,5,5,7,9
+	.half	.L1020-.L652
+	.byte	3,1,1,5,30,9
+	.half	.L28-.L1020
+	.byte	3,3,1,5,4,9
+	.half	.L1021-.L28
+	.byte	1,5,28,7,9
+	.half	.L1022-.L1021
+	.byte	3,2,1,5,31,9
+	.half	.L1023-.L1022
+	.byte	3,127,1,9
+	.half	.L653-.L1023
+	.byte	3,2,1,5,33,9
+	.half	.L30-.L653
+	.byte	3,117,1,5,25,9
+	.half	.L26-.L30
+	.byte	1,5,27,9
+	.half	.L1024-.L26
+	.byte	1,5,3,7,9
+	.half	.L29-.L1024
+	.byte	3,16,1,5,11,7,9
+	.half	.L1025-.L29
+	.byte	3,1,1,5,2,9
+	.half	.L25-.L1025
+	.byte	3,4,1,5,61,7,9
+	.half	.L1026-.L25
+	.byte	3,2,1,5,4,9
+	.half	.L1027-.L1026
+	.byte	3,1,1,5,45,9
+	.half	.L654-.L1027
+	.byte	3,2,1,5,43,9
+	.half	.L1028-.L654
+	.byte	1,5,53,9
+	.half	.L1029-.L1028
+	.byte	1,5,51,9
+	.half	.L655-.L1029
+	.byte	3,6,1,5,49,9
+	.half	.L1030-.L655
+	.byte	1,5,59,9
+	.half	.L641-.L1030
+	.byte	1,5,46,9
+	.half	.L657-.L641
+	.byte	3,2,1,5,30,9
+	.half	.L658-.L657
+	.byte	3,1,1,5,28,9
+	.half	.L656-.L658
+	.byte	1,5,23,9
+	.half	.L1031-.L656
+	.byte	3,127,1,5,3,9
+	.half	.L1032-.L1031
+	.byte	3,4,1,5,4,7,9
+	.half	.L1033-.L1032
+	.byte	3,1,1,5,6,9
+	.half	.L1034-.L1033
+	.byte	3,3,1,5,2,9
+	.half	.L32-.L1034
+	.byte	3,6,1,5,7,7,9
+	.half	.L1035-.L32
+	.byte	3,1,1,5,3,9
+	.half	.L1036-.L1035
+	.byte	1,5,6,7,9
+	.half	.L1037-.L1036
+	.byte	3,2,1,5,32,9
+	.half	.L1038-.L1037
+	.byte	1,5,2,9
+	.half	.L34-.L1038
+	.byte	3,3,1,5,1,9
+	.half	.L36-.L34
+	.byte	3,1,1,7,9
+	.half	.L251-.L36
+	.byte	0,1,1
+.L1006:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_perform_offset_calibration')
+	.sect	'.debug_ranges'
+.L250:
+	.word	-1,.L195,0,.L251-.L195,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_set_offset_calibration_data_micro_meter')
+	.sect	'.debug_info'
+.L252:
+	.word	563
+	.half	3
+	.word	.L253
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L255,.L254
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_set_offset_calibration_data_micro_meter',0,1,162,2,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L197,.L399,.L196
+	.byte	4
+	.byte	'Dev',0,1,162,2,75
+	.word	.L361,.L400
+	.byte	4
+	.byte	'OffsetCalibrationDataMicroMeter',0,1,163,2,11
+	.word	.L397,.L401
+	.byte	5
+	.word	.L197,.L399
+	.byte	6
+	.byte	'Status',0,1,165,2,16
+	.word	.L359,.L402
+	.byte	6
+	.byte	'cMaxOffsetMicroMeter',0,1,166,2,10
+	.word	.L397,.L403
+	.byte	6
+	.byte	'cMinOffsetMicroMeter',0,1,167,2,10
+	.word	.L397,.L404
+	.byte	6
+	.byte	'cOffsetRange',0,1,168,2,10
+	.word	.L405,.L406
+	.byte	6
+	.byte	'encodedOffsetVal',0,1,169,2,11
+	.word	.L363,.L407
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_set_offset_calibration_data_micro_meter')
+	.sect	'.debug_abbrev'
+.L253:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_set_offset_calibration_data_micro_meter')
+	.sect	'.debug_line'
+.L254:
+	.word	.L1040-.L1039
+.L1039:
+	.half	3
+	.word	.L1042-.L1041
+.L1041:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1042:
+	.byte	5,33,7,0,5,2
+	.word	.L197
+	.byte	3,165,2,1,9
+	.half	.L1043-.L197
+	.byte	3,1,1,5,23,9
+	.half	.L1044-.L1043
+	.byte	3,1,1,5,2,9
+	.half	.L667-.L1044
+	.byte	3,5,1,5,35,7,9
+	.half	.L1045-.L667
+	.byte	3,1,1,5,57,9
+	.half	.L1046-.L1045
+	.byte	1,5,7,9
+	.half	.L37-.L1046
+	.byte	3,1,1,5,35,7,9
+	.half	.L1047-.L37
+	.byte	3,1,1,5,2,9
+	.half	.L38-.L1047
+	.byte	3,6,1,5,36,7,9
+	.half	.L1048-.L38
+	.byte	3,2,1,5,35,9
+	.half	.L664-.L1048
+	.byte	1,5,39,9
+	.half	.L666-.L664
+	.byte	1,5,36,9
+	.half	.L40-.L666
+	.byte	3,4,1,5,35,9
+	.half	.L668-.L40
+	.byte	1,5,17,9
+	.half	.L669-.L668
+	.byte	3,127,1,5,3,9
+	.half	.L41-.L669
+	.byte	3,5,1,9
+	.half	.L662-.L41
+	.byte	3,1,1,5,2,9
+	.half	.L661-.L662
+	.byte	3,3,1,5,1,9
+	.half	.L42-.L661
+	.byte	3,1,1,7,9
+	.half	.L256-.L42
+	.byte	0,1,1
+.L1040:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_set_offset_calibration_data_micro_meter')
+	.sect	'.debug_ranges'
+.L255:
+	.word	-1,.L197,0,.L256-.L197,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_offset_calibration_data_micro_meter')
+	.sect	'.debug_info'
+.L257:
+	.word	523
+	.half	3
+	.word	.L258
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L260,.L259
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_get_offset_calibration_data_micro_meter',0,1,199,2,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L199,.L408,.L198
+	.byte	4
+	.byte	'Dev',0,1,199,2,75
+	.word	.L361,.L409
+	.byte	4
+	.byte	'pOffsetCalibrationDataMicroMeter',0,1,200,2,12
+	.word	.L387,.L410
+	.byte	5
+	.word	.L199,.L408
+	.byte	6
+	.byte	'Status',0,1,202,2,16
+	.word	.L359,.L411
+	.byte	6
+	.byte	'RangeOffsetRegister',0,1,203,2,11
+	.word	.L368,.L412
+	.byte	6
+	.byte	'cMaxOffset',0,1,204,2,10
+	.word	.L405,.L413
+	.byte	6
+	.byte	'cOffsetRange',0,1,205,2,10
+	.word	.L405,.L414
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_offset_calibration_data_micro_meter')
+	.sect	'.debug_abbrev'
+.L258:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_offset_calibration_data_micro_meter')
+	.sect	'.debug_line'
+.L259:
+	.word	.L1050-.L1049
+.L1049:
+	.half	3
+	.word	.L1052-.L1051
+.L1051:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1052:
+	.byte	5,15,7,0,5,2
+	.word	.L199
+	.byte	3,198,2,1,5,21,9
+	.half	.L673-.L199
+	.byte	3,5,1,5,5,9
+	.half	.L674-.L673
+	.byte	3,6,1,5,6,9
+	.half	.L1053-.L674
+	.byte	3,1,1,5,2,9
+	.half	.L671-.L1053
+	.byte	3,2,1,5,26,7,9
+	.half	.L1054-.L671
+	.byte	3,1,1,5,46,9
+	.half	.L1055-.L1054
+	.byte	1,5,23,9
+	.half	.L1056-.L1055
+	.byte	1,5,7,9
+	.half	.L1057-.L1056
+	.byte	3,3,1,5,3,9
+	.half	.L1058-.L1057
+	.byte	1,5,15,7,9
+	.half	.L1059-.L1058
+	.byte	3,2,1,5,35,9
+	.half	.L675-.L1059
+	.byte	1,5,6,9
+	.half	.L1060-.L675
+	.byte	3,1,1,5,38,9
+	.half	.L1061-.L1060
+	.byte	3,126,1,5,11,9
+	.half	.L1062-.L1061
+	.byte	3,2,1,5,14,9
+	.half	.L44-.L1062
+	.byte	3,3,1,5,34,9
+	.half	.L676-.L44
+	.byte	1,5,38,9
+	.half	.L1063-.L676
+	.byte	3,127,1,5,2,9
+	.half	.L43-.L1063
+	.byte	3,5,1,5,1,9
+	.half	.L46-.L43
+	.byte	3,1,1,7,9
+	.half	.L261-.L46
+	.byte	0,1,1
+.L1050:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_offset_calibration_data_micro_meter')
+	.sect	'.debug_ranges'
+.L260:
+	.word	-1,.L199,0,.L261-.L199,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_apply_offset_adjustment')
+	.sect	'.debug_info'
+.L262:
+	.word	456
+	.half	3
+	.word	.L263
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L265,.L264
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_apply_offset_adjustment',0,1,231,2,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L201,.L415,.L200
+	.byte	4
+	.byte	'Dev',0,1,231,2,59
+	.word	.L361,.L416
+	.byte	5
+	.word	.L201,.L415
+	.byte	6
+	.byte	'Status',0,1,233,2,16
+	.word	.L359,.L417
+	.byte	6
+	.byte	'CorrectedOffsetMicroMeters',0,1,234,2,10
+	.word	.L397,.L418
+	.byte	6
+	.byte	'CurrentOffsetMicroMeters',0,1,235,2,10
+	.word	.L397,.L419
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_apply_offset_adjustment')
+	.sect	'.debug_abbrev'
+.L263:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_apply_offset_adjustment')
+	.sect	'.debug_line'
+.L264:
+	.word	.L1065-.L1064
+.L1064:
+	.half	3
+	.word	.L1067-.L1066
+.L1066:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1067:
+	.byte	5,15,7,0,5,2
+	.word	.L201
+	.byte	3,230,2,1,5,45,9
+	.half	.L679-.L201
+	.byte	3,9,1,5,2,9
+	.half	.L678-.L679
+	.byte	3,3,1,5,7,7,9
+	.half	.L1068-.L678
+	.byte	3,2,1,5,2,9
+	.half	.L47-.L1068
+	.byte	3,4,1,5,3,7,9
+	.half	.L1069-.L47
+	.byte	3,3,1,5,32,9
+	.half	.L1070-.L1069
+	.byte	3,3,1,5,13,9
+	.half	.L1071-.L1070
+	.byte	3,1,1,5,57,9
+	.half	.L681-.L1071
+	.byte	3,127,1,5,6,9
+	.half	.L1072-.L681
+	.byte	3,5,1,5,3,9
+	.half	.L683-.L1072
+	.byte	3,3,1,5,4,7,9
+	.half	.L1073-.L683
+	.byte	3,1,1,5,2,9
+	.half	.L48-.L1073
+	.byte	3,5,1,5,1,9
+	.half	.L50-.L48
+	.byte	3,1,1,7,9
+	.half	.L266-.L50
+	.byte	0,1,1
+.L1065:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_apply_offset_adjustment')
+	.sect	'.debug_ranges'
+.L265:
+	.word	-1,.L201,0,.L266-.L201,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_perform_ref_spad_management')
+	.sect	'.debug_info'
+.L267:
+	.word	950
+	.half	3
+	.word	.L268
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L270,.L269
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_perform_ref_spad_management',0,1,168,5,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L219,.L420,.L218
+	.byte	4
+	.byte	'Dev',0,1,168,5,63
+	.word	.L361,.L421
+	.byte	4
+	.byte	'refSpadCount',0,1,169,5,15
+	.word	.L422,.L423
+	.byte	4
+	.byte	'isApertureSpads',0,1,170,5,14
+	.word	.L424,.L425
+	.byte	5
+	.word	.L219,.L420
+	.byte	6
+	.byte	'Status',0,1,172,5,16
+	.word	.L359,.L426
+	.byte	6
+	.byte	'lastSpadArray',0,1,173,5,10
+	.word	.L427,.L428
+	.byte	6
+	.byte	'startSelect',0,1,174,5,10
+	.word	.L373,.L429
+	.byte	6
+	.byte	'minimumSpadCount',0,1,175,5,11
+	.word	.L363,.L430
+	.byte	6
+	.byte	'maxSpadCount',0,1,176,5,11
+	.word	.L363,.L431
+	.byte	6
+	.byte	'currentSpadIndex',0,1,177,5,11
+	.word	.L363,.L432
+	.byte	6
+	.byte	'lastSpadIndex',0,1,178,5,11
+	.word	.L363,.L433
+	.byte	6
+	.byte	'nextGoodSpad',0,1,179,5,10
+	.word	.L397,.L434
+	.byte	6
+	.byte	'targetRefRate',0,1,180,5,11
+	.word	.L368,.L435
+	.byte	6
+	.byte	'peakSignalRateRef',0,1,181,5,11
+	.word	.L368,.L436
+	.byte	6
+	.byte	'needAptSpads',0,1,182,5,11
+	.word	.L363,.L437
+	.byte	6
+	.byte	'index',0,1,183,5,11
+	.word	.L363,.L438
+	.byte	6
+	.byte	'spadArraySize',0,1,184,5,11
+	.word	.L363,.L439
+	.byte	6
+	.byte	'signalRateDiff',0,1,185,5,11
+	.word	.L363,.L440
+	.byte	6
+	.byte	'lastSignalRateDiff',0,1,186,5,11
+	.word	.L363,.L441
+	.byte	6
+	.byte	'complete',0,1,187,5,10
+	.word	.L373,.L442
+	.byte	6
+	.byte	'VhvSettings',0,1,188,5,10
+	.word	.L373,.L443
+	.byte	6
+	.byte	'PhaseCal',0,1,189,5,10
+	.word	.L373,.L444
+	.byte	6
+	.byte	'refSpadCount_int',0,1,190,5,11
+	.word	.L363,.L445
+	.byte	6
+	.byte	'isApertureSpads_int',0,1,191,5,11
+	.word	.L373,.L446
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_perform_ref_spad_management')
+	.sect	'.debug_abbrev'
+.L268:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_perform_ref_spad_management')
+	.sect	'.debug_line'
+.L269:
+	.word	.L1075-.L1074
+.L1074:
+	.half	3
+	.word	.L1077-.L1076
+.L1076:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1077:
+	.byte	5,15,7,0,5,2
+	.word	.L219
+	.byte	3,167,5,1,5,22,9
+	.half	.L761-.L219
+	.byte	3,6,1,5,28,9
+	.half	.L762-.L761
+	.byte	3,1,1,5,24,9
+	.half	.L763-.L762
+	.byte	3,1,1,5,28,9
+	.half	.L765-.L763
+	.byte	3,1,1,5,27,9
+	.half	.L767-.L765
+	.byte	3,1,1,5,25,9
+	.half	.L1078-.L767
+	.byte	1,9
+	.half	.L1079-.L1078
+	.byte	3,1,1,5,23,9
+	.half	.L1080-.L1079
+	.byte	1,5,24,9
+	.half	.L1081-.L1080
+	.byte	3,3,1,5,25,9
+	.half	.L770-.L1081
+	.byte	3,2,1,5,24,9
+	.half	.L771-.L770
+	.byte	3,4,1,5,22,9
+	.half	.L1082-.L771
+	.byte	1,5,21,9
+	.half	.L1083-.L1082
+	.byte	3,1,1,5,19,9
+	.half	.L769-.L1083
+	.byte	1,5,28,9
+	.half	.L1084-.L769
+	.byte	3,1,1,5,31,9
+	.half	.L772-.L1084
+	.byte	3,1,1,5,18,9
+	.half	.L775-.L772
+	.byte	3,25,1,5,13,9
+	.half	.L776-.L775
+	.byte	3,10,1,5,39,9
+	.half	.L774-.L776
+	.byte	1,5,36,9
+	.half	.L101-.L774
+	.byte	3,1,1,5,46,9
+	.half	.L1085-.L101
+	.byte	1,5,44,9
+	.half	.L1086-.L1085
+	.byte	1,5,46,9
+	.half	.L1087-.L1086
+	.byte	3,127,1,5,39,9
+	.half	.L100-.L1087
+	.byte	1,5,31,7,9
+	.half	.L1088-.L100
+	.byte	3,4,1,5,37,9
+	.half	.L1089-.L1088
+	.byte	1,5,9,9
+	.half	.L758-.L1089
+	.byte	1,5,2,9
+	.half	.L777-.L758
+	.byte	3,2,1,5,4,7,9
+	.half	.L1090-.L777
+	.byte	3,2,1,5,50,9
+	.half	.L1091-.L1090
+	.byte	1,5,10,9
+	.half	.L778-.L1091
+	.byte	3,127,1,5,2,9
+	.half	.L102-.L778
+	.byte	3,3,1,5,4,7,9
+	.half	.L1092-.L102
+	.byte	3,2,1,5,53,9
+	.half	.L1093-.L1092
+	.byte	1,5,10,9
+	.half	.L780-.L1093
+	.byte	3,127,1,5,2,9
+	.half	.L103-.L780
+	.byte	3,3,1,5,32,7,9
+	.half	.L1094-.L103
+	.byte	3,1,1,5,38,9
+	.half	.L1095-.L1094
+	.byte	1,5,10,9
+	.half	.L782-.L1095
+	.byte	1,5,2,9
+	.half	.L104-.L782
+	.byte	3,2,1,5,4,7,9
+	.half	.L1096-.L104
+	.byte	3,2,1,9
+	.half	.L1097-.L1096
+	.byte	3,1,1,5,10,9
+	.half	.L784-.L1097
+	.byte	3,126,1,5,2,9
+	.half	.L105-.L784
+	.byte	3,5,1,5,4,7,9
+	.half	.L1098-.L105
+	.byte	3,2,1,5,50,9
+	.half	.L1099-.L1098
+	.byte	1,5,10,9
+	.half	.L787-.L1099
+	.byte	3,127,1,5,2,9
+	.half	.L106-.L787
+	.byte	3,4,1,5,50,7,9
+	.half	.L1100-.L106
+	.byte	3,1,1,5,5,9
+	.half	.L1101-.L1100
+	.byte	3,1,1,5,15,9
+	.half	.L1102-.L1101
+	.byte	1,5,10,9
+	.half	.L789-.L1102
+	.byte	3,127,1,5,2,9
+	.half	.L107-.L789
+	.byte	3,3,1,5,20,7,9
+	.half	.L1103-.L107
+	.byte	3,2,1,5,17,9
+	.half	.L1104-.L1103
+	.byte	3,1,1,5,16,9
+	.half	.L1105-.L1104
+	.byte	3,1,1,5,6,9
+	.half	.L1106-.L1105
+	.byte	3,8,1,5,24,9
+	.half	.L1107-.L1106
+	.byte	3,123,1,5,15,9
+	.half	.L1108-.L1107
+	.byte	3,1,1,5,7,9
+	.half	.L1109-.L1108
+	.byte	3,5,1,5,10,9
+	.half	.L791-.L1109
+	.byte	3,120,1,5,2,9
+	.half	.L108-.L791
+	.byte	3,11,1,5,22,7,9
+	.half	.L1110-.L108
+	.byte	3,1,1,5,5,9
+	.half	.L1111-.L1110
+	.byte	3,3,1,5,10,9
+	.half	.L795-.L1111
+	.byte	3,127,1,5,7,9
+	.half	.L797-.L795
+	.byte	3,2,1,5,5,7,9
+	.half	.L1112-.L797
+	.byte	3,1,1,5,23,9
+	.half	.L1113-.L1112
+	.byte	1,5,15,7,9
+	.half	.L1114-.L1113
+	.byte	3,5,1,5,41,9
+	.half	.L798-.L1114
+	.byte	1,5,38,9
+	.half	.L113-.L798
+	.byte	3,1,1,5,48,9
+	.half	.L1115-.L113
+	.byte	1,5,46,9
+	.half	.L1116-.L1115
+	.byte	1,5,48,9
+	.half	.L1117-.L1116
+	.byte	3,127,1,5,41,9
+	.half	.L112-.L1117
+	.byte	1,5,47,7,9
+	.half	.L1118-.L112
+	.byte	3,6,1,5,21,9
+	.half	.L115-.L1118
+	.byte	3,1,1,5,36,9
+	.half	.L114-.L115
+	.byte	3,126,1,5,11,9
+	.half	.L1119-.L114
+	.byte	1,5,32,7,9
+	.half	.L1120-.L1119
+	.byte	3,1,1,5,17,7,9
+	.half	.L116-.L1120
+	.byte	3,4,1,5,6,9
+	.half	.L1121-.L116
+	.byte	3,9,1,5,24,9
+	.half	.L1122-.L1121
+	.byte	3,123,1,5,15,9
+	.half	.L1123-.L1122
+	.byte	3,1,1,5,7,9
+	.half	.L1124-.L1123
+	.byte	3,5,1,5,11,9
+	.half	.L802-.L1124
+	.byte	3,120,1,5,4,9
+	.half	.L804-.L802
+	.byte	3,10,1,5,24,7,9
+	.half	.L1125-.L804
+	.byte	3,1,1,5,8,9
+	.half	.L1126-.L1125
+	.byte	3,2,1,5,12,9
+	.half	.L805-.L1126
+	.byte	3,127,1,5,9,9
+	.half	.L807-.L805
+	.byte	3,3,1,5,7,7,9
+	.half	.L1127-.L807
+	.byte	3,1,1,5,25,9
+	.half	.L1128-.L1127
+	.byte	1,5,26,7,9
+	.half	.L1129-.L1128
+	.byte	3,7,1,5,23,9
+	.half	.L1130-.L1129
+	.byte	3,1,1,5,4,9
+	.half	.L117-.L1130
+	.byte	3,114,1,5,17,9
+	.half	.L110-.L117
+	.byte	3,18,1,5,6,9
+	.half	.L109-.L110
+	.byte	3,4,1,5,4,7,9
+	.half	.L1131-.L109
+	.byte	3,1,1,5,22,9
+	.half	.L1132-.L1131
+	.byte	1,5,23,7,9
+	.half	.L1133-.L1132
+	.byte	3,6,1,5,20,9
+	.half	.L1134-.L1133
+	.byte	3,1,1,5,10,9
+	.half	.L1135-.L1134
+	.byte	3,2,1,5,34,9
+	.half	.L1136-.L1135
+	.byte	1,5,5,9
+	.half	.L1137-.L1136
+	.byte	3,1,1,5,24,9
+	.half	.L812-.L1137
+	.byte	3,1,1,5,12,9
+	.half	.L764-.L812
+	.byte	3,2,1,5,19,9
+	.half	.L766-.L764
+	.byte	3,2,1,5,23,9
+	.half	.L124-.L766
+	.byte	3,2,1,5,6,9
+	.half	.L1138-.L124
+	.byte	3,2,1,5,8,9
+	.half	.L1139-.L1138
+	.byte	3,2,1,5,4,9
+	.half	.L1140-.L1139
+	.byte	1,5,12,7,9
+	.half	.L1141-.L1140
+	.byte	3,1,1,5,5,9
+	.half	.L1142-.L1141
+	.byte	3,1,1,5,44,9
+	.half	.L125-.L1142
+	.byte	3,6,1,5,42,9
+	.half	.L1143-.L125
+	.byte	1,5,4,9
+	.half	.L1144-.L1143
+	.byte	1,5,5,9
+	.half	.L1145-.L1144
+	.byte	3,6,1,5,22,9
+	.half	.L127-.L1145
+	.byte	3,3,1,5,23,9
+	.half	.L1146-.L127
+	.byte	3,2,1,5,15,9
+	.half	.L1147-.L1146
+	.byte	3,2,1,5,21,9
+	.half	.L1148-.L1147
+	.byte	3,1,1,5,11,9
+	.half	.L808-.L1148
+	.byte	3,126,1,5,4,9
+	.half	.L815-.L808
+	.byte	3,4,1,5,21,7,9
+	.half	.L1149-.L815
+	.byte	3,1,1,5,15,9
+	.half	.L1150-.L1149
+	.byte	3,5,1,5,24,9
+	.half	.L1151-.L1150
+	.byte	1,5,12,9
+	.half	.L816-.L1151
+	.byte	3,127,1,5,4,9
+	.half	.L129-.L816
+	.byte	3,4,1,5,5,7,9
+	.half	.L1152-.L129
+	.byte	3,1,1,5,7,9
+	.half	.L130-.L1152
+	.byte	3,3,1,5,11,9
+	.half	.L818-.L130
+	.byte	3,127,1,5,4,9
+	.half	.L821-.L818
+	.byte	3,3,1,5,5,7,9
+	.half	.L1153-.L821
+	.byte	3,1,1,5,21,9
+	.half	.L132-.L1153
+	.byte	3,2,1,5,8,9
+	.half	.L823-.L132
+	.byte	3,2,1,5,4,9
+	.half	.L1154-.L823
+	.byte	1,5,5,7,9
+	.half	.L1155-.L1154
+	.byte	3,5,1,5,8,7,9
+	.half	.L1156-.L1155
+	.byte	3,5,1,5,13,9
+	.half	.L822-.L1156
+	.byte	3,127,1,5,15,9
+	.half	.L825-.L822
+	.byte	3,3,1,5,6,9
+	.half	.L1157-.L825
+	.byte	3,1,1,5,21,9
+	.half	.L1158-.L1157
+	.byte	1,5,24,9
+	.half	.L820-.L1158
+	.byte	3,2,1,5,14,9
+	.half	.L135-.L820
+	.byte	3,2,1,5,17,9
+	.half	.L1159-.L135
+	.byte	1,5,24,9
+	.half	.L134-.L1159
+	.byte	3,3,1,5,12,9
+	.half	.L1160-.L134
+	.byte	3,1,1,5,15,9
+	.half	.L1161-.L1160
+	.byte	3,1,1,5,6,9
+	.half	.L1162-.L1161
+	.byte	3,1,1,5,11,9
+	.half	.L123-.L1162
+	.byte	3,183,127,1,5,2,7,9
+	.half	.L121-.L123
+	.byte	3,207,0,1,5,17,7,9
+	.half	.L1163-.L121
+	.byte	3,1,1,5,20,9
+	.half	.L1164-.L1163
+	.byte	3,1,1,5,3,9
+	.half	.L1165-.L1164
+	.byte	3,2,1,9
+	.half	.L1166-.L1165
+	.byte	3,1,1,9
+	.half	.L1167-.L1166
+	.byte	3,2,1,5,2,9
+	.half	.L137-.L1167
+	.byte	3,4,1,5,1,9
+	.half	.L138-.L137
+	.byte	3,1,1,7,9
+	.half	.L271-.L138
+	.byte	0,1,1
+.L1075:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_perform_ref_spad_management')
+	.sect	'.debug_ranges'
+.L270:
+	.word	-1,.L219,0,.L271-.L219,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_set_reference_spads')
+	.sect	'.debug_info'
+.L272:
+	.word	576
+	.half	3
+	.word	.L273
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L275,.L274
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_set_reference_spads',0,1,182,7,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L221,.L447,.L220
+	.byte	4
+	.byte	'Dev',0,1,182,7,55
+	.word	.L361,.L448
+	.byte	4
+	.byte	'count',0,1,183,7,15
+	.word	.L363,.L449
+	.byte	4
+	.byte	'isApertureSpads',0,1,183,7,30
+	.word	.L373,.L450
+	.byte	5
+	.word	.L221,.L447
+	.byte	6
+	.byte	'Status',0,1,185,7,16
+	.word	.L359,.L451
+	.byte	6
+	.byte	'currentSpadIndex',0,1,186,7,11
+	.word	.L363,.L452
+	.byte	6
+	.byte	'startSelect',0,1,187,7,10
+	.word	.L373,.L453
+	.byte	6
+	.byte	'spadArraySize',0,1,188,7,11
+	.word	.L363,.L454
+	.byte	6
+	.byte	'maxSpadCount',0,1,189,7,11
+	.word	.L363,.L455
+	.byte	6
+	.byte	'lastSpadIndex',0,1,190,7,11
+	.word	.L363,.L456
+	.byte	6
+	.byte	'index',0,1,191,7,11
+	.word	.L363,.L457
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_set_reference_spads')
+	.sect	'.debug_abbrev'
+.L273:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_set_reference_spads')
+	.sect	'.debug_line'
+.L274:
+	.word	.L1169-.L1168
+.L1168:
+	.half	3
+	.word	.L1171-.L1170
+.L1170:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1171:
+	.byte	5,15,7,0,5,2
+	.word	.L221
+	.byte	3,181,7,1,5,28,9
+	.half	.L837-.L221
+	.byte	3,4,1,5,22,9
+	.half	.L838-.L837
+	.byte	3,1,1,5,25,9
+	.half	.L839-.L838
+	.byte	3,1,1,5,24,9
+	.half	.L841-.L839
+	.byte	3,1,1,5,31,9
+	.half	.L842-.L841
+	.byte	3,11,1,5,37,9
+	.half	.L833-.L842
+	.byte	1,5,2,9
+	.half	.L832-.L833
+	.byte	3,2,1,5,4,7,9
+	.half	.L1172-.L832
+	.byte	3,2,1,5,50,9
+	.half	.L1173-.L1172
+	.byte	1,5,2,9
+	.half	.L139-.L1173
+	.byte	3,2,1,5,4,7,9
+	.half	.L1174-.L139
+	.byte	3,2,1,5,53,9
+	.half	.L1175-.L1174
+	.byte	1,5,2,9
+	.half	.L140-.L1175
+	.byte	3,2,1,5,32,7,9
+	.half	.L1176-.L140
+	.byte	3,1,1,5,38,9
+	.half	.L1177-.L1176
+	.byte	1,5,2,9
+	.half	.L141-.L1177
+	.byte	3,2,1,5,4,7,9
+	.half	.L1178-.L141
+	.byte	3,2,1,9
+	.half	.L1179-.L1178
+	.byte	3,1,1,5,13,9
+	.half	.L142-.L1179
+	.byte	3,2,1,5,39,9
+	.half	.L848-.L142
+	.byte	1,5,36,9
+	.half	.L144-.L848
+	.byte	3,1,1,5,46,9
+	.half	.L1180-.L144
+	.byte	1,5,44,9
+	.half	.L1181-.L1180
+	.byte	1,5,46,9
+	.half	.L1182-.L1181
+	.byte	3,127,1,5,39,9
+	.half	.L143-.L1182
+	.byte	1,5,2,7,9
+	.half	.L1183-.L143
+	.byte	3,3,1,5,39,7,9
+	.half	.L1184-.L1183
+	.byte	3,3,1,5,20,9
+	.half	.L147-.L1184
+	.byte	3,1,1,5,35,9
+	.half	.L146-.L147
+	.byte	3,126,1,5,10,9
+	.half	.L1185-.L146
+	.byte	1,5,24,7,9
+	.half	.L1186-.L1185
+	.byte	3,1,1,5,5,7,9
+	.half	.L145-.L1186
+	.byte	3,11,1,5,23,9
+	.half	.L1187-.L145
+	.byte	3,123,1,5,14,9
+	.half	.L1188-.L1187
+	.byte	3,1,1,5,6,9
+	.half	.L1189-.L1188
+	.byte	3,5,1,5,2,9
+	.half	.L850-.L1189
+	.byte	3,2,1,5,3,7,9
+	.half	.L1190-.L850
+	.byte	3,1,1,9
+	.half	.L1191-.L1190
+	.byte	3,1,1,9
+	.half	.L1192-.L1191
+	.byte	3,2,1,5,2,9
+	.half	.L149-.L1192
+	.byte	3,4,1,5,1,9
+	.half	.L150-.L149
+	.byte	3,1,1,7,9
+	.half	.L276-.L150
+	.byte	0,1,1
+.L1169:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_set_reference_spads')
+	.sect	'.debug_ranges'
+.L275:
+	.word	-1,.L221,0,.L276-.L221,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_reference_spads')
+	.sect	'.debug_info'
+.L277:
+	.word	597
+	.half	3
+	.word	.L278
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L280,.L279
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_get_reference_spads',0,1,249,7,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L223,.L458,.L222
+	.byte	4
+	.byte	'Dev',0,1,249,7,55
+	.word	.L361,.L459
+	.byte	4
+	.byte	'pSpadCount',0,1,250,7,14
+	.word	.L422,.L460
+	.byte	4
+	.byte	'pIsApertureSpads',0,1,250,7,35
+	.word	.L424,.L461
+	.byte	5
+	.word	.L223,.L458
+	.byte	6
+	.byte	'Status',0,1,252,7,16
+	.word	.L359,.L462
+	.byte	6
+	.byte	'refSpadsInitialised',0,1,253,7,10
+	.word	.L373,.L463
+	.byte	6
+	.byte	'refSpadArray',0,1,254,7,10
+	.word	.L427,.L464
+	.byte	6
+	.byte	'cMaxSpadCount',0,1,255,7,11
+	.word	.L363,.L465
+	.byte	6
+	.byte	'cSpadArraySize',0,1,128,8,11
+	.word	.L363,.L466
+	.byte	6
+	.byte	'spadsEnabled',0,1,129,8,11
+	.word	.L363,.L467
+	.byte	6
+	.byte	'isApertureSpads',0,1,130,8,10
+	.word	.L373,.L468
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_reference_spads')
+	.sect	'.debug_abbrev'
+.L278:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_reference_spads')
+	.sect	'.debug_line'
+.L279:
+	.word	.L1194-.L1193
+.L1193:
+	.half	3
+	.word	.L1196-.L1195
+.L1195:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1196:
+	.byte	5,15,7,0,5,2
+	.word	.L223
+	.byte	3,248,7,1,5,23,9
+	.half	.L856-.L223
+	.byte	3,3,1,5,25,9
+	.half	.L857-.L856
+	.byte	3,3,1,5,26,9
+	.half	.L858-.L857
+	.byte	3,1,1,5,28,9
+	.half	.L859-.L858
+	.byte	3,2,1,5,26,9
+	.half	.L1197-.L859
+	.byte	1,5,24,9
+	.half	.L1198-.L1197
+	.byte	3,2,1,5,2,9
+	.half	.L860-.L1198
+	.byte	3,3,1,5,27,7,9
+	.half	.L1199-.L860
+	.byte	3,2,1,5,15,9
+	.half	.L861-.L1199
+	.byte	1,5,23,9
+	.half	.L1200-.L861
+	.byte	3,2,1,5,21,9
+	.half	.L1201-.L1200
+	.byte	1,5,23,9
+	.half	.L1202-.L1201
+	.byte	3,127,1,5,34,9
+	.half	.L151-.L1202
+	.byte	3,6,1,5,3,9
+	.half	.L852-.L151
+	.byte	3,2,1,5,33,7,9
+	.half	.L1203-.L852
+	.byte	3,4,1,5,9,9
+	.half	.L1204-.L1203
+	.byte	3,3,1,9
+	.half	.L1205-.L1204
+	.byte	3,1,1,5,4,9
+	.half	.L1206-.L1205
+	.byte	3,2,1,5,19,7,9
+	.half	.L1207-.L1206
+	.byte	3,2,1,5,17,9
+	.half	.L862-.L1207
+	.byte	1,5,25,9
+	.half	.L1208-.L862
+	.byte	3,1,1,5,23,9
+	.half	.L1209-.L1208
+	.byte	1,5,5,9
+	.half	.L1210-.L1209
+	.byte	3,2,1,9
+	.half	.L1211-.L1210
+	.byte	3,2,1,9
+	.half	.L1212-.L1211
+	.byte	3,3,1,5,2,9
+	.half	.L152-.L1212
+	.byte	3,6,1,5,1,9
+	.half	.L155-.L152
+	.byte	3,1,1,7,9
+	.half	.L281-.L155
+	.byte	0,1,1
+.L1194:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_reference_spads')
+	.sect	'.debug_ranges'
+.L280:
+	.word	-1,.L223,0,.L281-.L223,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_perform_phase_calibration')
+	.sect	'.debug_info'
+.L282:
+	.word	563
+	.half	3
+	.word	.L283
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L285,.L284
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_perform_phase_calibration',0,1,152,9,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L231,.L469,.L230
+	.byte	4
+	.byte	'Dev',0,1,152,9,61
+	.word	.L361,.L470
+	.byte	4
+	.byte	'pPhaseCal',0,1,153,9,11
+	.word	.L424,.L471
+	.byte	4
+	.byte	'get_data_enable',0,1,153,9,36
+	.word	.L472,.L473
+	.byte	4
+	.byte	'restore_config',0,1,154,9,16
+	.word	.L474,.L475
+	.byte	5
+	.word	.L231,.L469
+	.byte	6
+	.byte	'Status',0,1,156,9,16
+	.word	.L359,.L476
+	.byte	6
+	.byte	'SequenceConfig',0,1,157,9,10
+	.word	.L373,.L477
+	.byte	6
+	.byte	'VhvSettings',0,1,158,9,10
+	.word	.L373,.L478
+	.byte	6
+	.byte	'PhaseCal',0,1,159,9,10
+	.word	.L373,.L479
+	.byte	6
+	.byte	'VhvSettingsint',0,1,160,9,10
+	.word	.L373,.L480
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_perform_phase_calibration')
+	.sect	'.debug_abbrev'
+.L283:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_perform_phase_calibration')
+	.sect	'.debug_line'
+.L284:
+	.word	.L1214-.L1213
+.L1213:
+	.half	3
+	.word	.L1216-.L1215
+.L1215:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1216:
+	.byte	5,15,7,0,5,2
+	.word	.L231
+	.byte	3,151,9,1,5,25,9
+	.half	.L930-.L231
+	.byte	3,5,1,5,22,9
+	.half	.L931-.L930
+	.byte	3,1,1,5,19,9
+	.half	.L932-.L931
+	.byte	3,1,1,5,2,9
+	.half	.L933-.L932
+	.byte	3,7,1,5,20,7,9
+	.half	.L1217-.L933
+	.byte	3,1,1,5,31,9
+	.half	.L177-.L1217
+	.byte	3,3,1,5,67,9
+	.half	.L925-.L177
+	.byte	1,5,2,9
+	.half	.L924-.L925
+	.byte	3,2,1,5,56,7,9
+	.half	.L1218-.L924
+	.byte	3,1,1,5,6,9
+	.half	.L178-.L1218
+	.byte	3,3,1,5,57,7,9
+	.half	.L1219-.L178
+	.byte	1,5,7,7,9
+	.half	.L1220-.L1219
+	.byte	3,4,1,5,44,9
+	.half	.L1221-.L1220
+	.byte	3,125,1,5,5,9
+	.half	.L1222-.L1221
+	.byte	3,2,1,5,4,9
+	.half	.L1223-.L1222
+	.byte	3,1,1,5,9,9
+	.half	.L936-.L1223
+	.byte	1,5,16,9
+	.half	.L179-.L936
+	.byte	3,2,1,5,14,9
+	.half	.L1224-.L179
+	.byte	1,5,6,9
+	.half	.L181-.L1224
+	.byte	3,3,1,5,40,7,9
+	.half	.L1225-.L181
+	.byte	1,5,32,7,9
+	.half	.L1226-.L1225
+	.byte	3,2,1,5,5,9
+	.half	.L1227-.L1226
+	.byte	3,1,1,5,3,9
+	.half	.L941-.L1227
+	.byte	3,1,1,5,4,7,9
+	.half	.L1228-.L941
+	.byte	3,1,1,5,2,9
+	.half	.L182-.L1228
+	.byte	3,4,1,5,1,9
+	.half	.L185-.L182
+	.byte	3,1,1,7,9
+	.half	.L286-.L185
+	.byte	0,1,1
+.L1214:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_perform_phase_calibration')
+	.sect	'.debug_ranges'
+.L285:
+	.word	-1,.L231,0,.L286-.L231,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_perform_ref_calibration')
+	.sect	'.debug_info'
+.L287:
+	.word	484
+	.half	3
+	.word	.L288
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L290,.L289
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_perform_ref_calibration',0,1,197,9,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L233,.L481,.L232
+	.byte	4
+	.byte	'Dev',0,1,197,9,59
+	.word	.L361,.L482
+	.byte	4
+	.byte	'pVhvSettings',0,1,198,9,11
+	.word	.L424,.L483
+	.byte	4
+	.byte	'pPhaseCal',0,1,198,9,34
+	.word	.L424,.L484
+	.byte	4
+	.byte	'get_data_enable',0,1,198,9,53
+	.word	.L373,.L485
+	.byte	5
+	.word	.L233,.L481
+	.byte	6
+	.byte	'Status',0,1,200,9,16
+	.word	.L359,.L486
+	.byte	6
+	.byte	'SequenceConfig',0,1,201,9,10
+	.word	.L373,.L487
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_perform_ref_calibration')
+	.sect	'.debug_abbrev'
+.L288:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_perform_ref_calibration')
+	.sect	'.debug_line'
+.L289:
+	.word	.L1230-.L1229
+.L1229:
+	.half	3
+	.word	.L1232-.L1231
+.L1231:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1232:
+	.byte	5,15,7,0,5,2
+	.word	.L233
+	.byte	3,196,9,1,5,19,9
+	.half	.L946-.L233
+	.byte	3,10,1,5,40,9
+	.half	.L947-.L946
+	.byte	3,6,1,5,2,9
+	.half	.L943-.L947
+	.byte	3,3,1,5,37,7,9
+	.half	.L1233-.L943
+	.byte	3,2,1,5,2,9
+	.half	.L186-.L1233
+	.byte	3,3,1,5,32,7,9
+	.half	.L1234-.L186
+	.byte	3,2,1,5,5,9
+	.half	.L1235-.L1234
+	.byte	3,1,1,5,3,9
+	.half	.L952-.L1235
+	.byte	3,1,1,5,4,7,9
+	.half	.L1236-.L952
+	.byte	3,1,1,5,2,9
+	.half	.L187-.L1236
+	.byte	3,4,1,5,1,9
+	.half	.L189-.L187
+	.byte	3,1,1,7,9
+	.half	.L291-.L189
+	.byte	0,1,1
+.L1230:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_perform_ref_calibration')
+	.sect	'.debug_ranges'
+.L290:
+	.word	-1,.L233,0,.L291-.L233,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_set_ref_calibration')
+	.sect	'.debug_info'
+.L292:
+	.word	470
+	.half	3
+	.word	.L293
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L295,.L294
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_set_ref_calibration',0,1,233,9,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L235,.L488,.L234
+	.byte	4
+	.byte	'Dev',0,1,233,9,55
+	.word	.L361,.L489
+	.byte	4
+	.byte	'VhvSettings',0,1,234,9,11
+	.word	.L373,.L490
+	.byte	4
+	.byte	'PhaseCal',0,1,234,9,32
+	.word	.L373,.L491
+	.byte	5
+	.word	.L235,.L488
+	.byte	6
+	.byte	'Status',0,1,236,9,16
+	.word	.L359,.L492
+	.byte	6
+	.byte	'pVhvSettings',0,1,237,9,10
+	.word	.L373,.L493
+	.byte	6
+	.byte	'pPhaseCal',0,1,238,9,10
+	.word	.L373,.L494
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_set_ref_calibration')
+	.sect	'.debug_abbrev'
+.L293:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_set_ref_calibration')
+	.sect	'.debug_line'
+.L294:
+	.word	.L1238-.L1237
+.L1237:
+	.half	3
+	.word	.L1240-.L1239
+.L1239:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1240:
+	.byte	5,15,7,0,5,2
+	.word	.L235
+	.byte	3,232,9,1,5,6,9
+	.half	.L959-.L235
+	.byte	3,10,1,5,43,9
+	.half	.L1241-.L959
+	.byte	3,125,1,5,4,9
+	.half	.L957-.L1241
+	.byte	3,2,1,5,19,9
+	.half	.L1242-.L957
+	.byte	1,5,3,9
+	.half	.L1243-.L1242
+	.byte	3,1,1,5,2,9
+	.half	.L955-.L1243
+	.byte	3,2,1,5,1,9
+	.half	.L190-.L955
+	.byte	3,1,1,7,9
+	.half	.L296-.L190
+	.byte	0,1,1
+.L1238:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_set_ref_calibration')
+	.sect	'.debug_ranges'
+.L295:
+	.word	-1,.L235,0,.L296-.L235,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_ref_calibration')
+	.sect	'.debug_info'
+.L297:
+	.word	470
+	.half	3
+	.word	.L298
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L300,.L299
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_get_ref_calibration',0,1,248,9,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L237,.L495,.L236
+	.byte	4
+	.byte	'Dev',0,1,248,9,55
+	.word	.L361,.L496
+	.byte	4
+	.byte	'pVhvSettings',0,1,249,9,12
+	.word	.L424,.L497
+	.byte	4
+	.byte	'pPhaseCal',0,1,249,9,35
+	.word	.L424,.L498
+	.byte	5
+	.word	.L237,.L495
+	.byte	6
+	.byte	'Status',0,1,251,9,16
+	.word	.L359,.L499
+	.byte	6
+	.byte	'VhvSettings',0,1,252,9,10
+	.word	.L373,.L500
+	.byte	6
+	.byte	'PhaseCal',0,1,253,9,10
+	.word	.L373,.L501
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_ref_calibration')
+	.sect	'.debug_abbrev'
+.L298:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_ref_calibration')
+	.sect	'.debug_line'
+.L299:
+	.word	.L1245-.L1244
+.L1244:
+	.half	3
+	.word	.L1247-.L1246
+.L1246:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1247:
+	.byte	5,15,7,0,5,2
+	.word	.L237
+	.byte	3,247,9,1,5,22,9
+	.half	.L960-.L237
+	.byte	3,4,1,5,19,9
+	.half	.L962-.L960
+	.byte	3,1,1,5,6,9
+	.half	.L963-.L962
+	.byte	3,5,1,5,43,9
+	.half	.L1248-.L963
+	.byte	3,125,1,5,3,9
+	.half	.L1249-.L1248
+	.byte	3,3,1,5,2,9
+	.half	.L961-.L1249
+	.byte	3,2,1,5,1,9
+	.half	.L191-.L961
+	.byte	3,1,1,7,9
+	.half	.L301-.L191
+	.byte	0,1,1
+.L1245:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_ref_calibration')
+	.sect	'.debug_ranges'
+.L300:
+	.word	-1,.L237,0,.L301-.L237,0,0
+	.sdecl	'.debug_info',debug,cluster('get_next_good_spad')
+	.sect	'.debug_info'
+.L302:
+	.word	571
+	.half	3
+	.word	.L303
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L305,.L304
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'get_next_good_spad',0,1,144,3,6,1,1,1
+	.word	.L203,.L502,.L202
+	.byte	4
+	.byte	'goodSpadArray',0,1,144,3,33
+	.word	.L424,.L503
+	.byte	4
+	.byte	'size',0,1,144,3,59
+	.word	.L363,.L504
+	.byte	4
+	.byte	'curr',0,1,145,3,13
+	.word	.L363,.L505
+	.byte	4
+	.byte	'next',0,1,145,3,28
+	.word	.L387,.L506
+	.byte	5
+	.word	.L203,.L502
+	.byte	6
+	.byte	'startIndex',0,1,147,3,11
+	.word	.L363,.L507
+	.byte	6
+	.byte	'fineOffset',0,1,148,3,11
+	.word	.L363,.L508
+	.byte	6
+	.byte	'cSpadsPerByte',0,1,149,3,11
+	.word	.L363,.L509
+	.byte	6
+	.byte	'coarseIndex',0,1,150,3,11
+	.word	.L363,.L510
+	.byte	6
+	.byte	'fineIndex',0,1,151,3,11
+	.word	.L363,.L511
+	.byte	6
+	.byte	'dataByte',0,1,152,3,10
+	.word	.L373,.L512
+	.byte	6
+	.byte	'success',0,1,153,3,10
+	.word	.L373,.L513
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('get_next_good_spad')
+	.sect	'.debug_abbrev'
+.L303:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('get_next_good_spad')
+	.sect	'.debug_line'
+.L304:
+	.word	.L1251-.L1250
+.L1250:
+	.half	3
+	.word	.L1253-.L1252
+.L1252:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1253:
+	.byte	5,25,7,0,5,2
+	.word	.L203
+	.byte	3,148,3,1,5,18,9
+	.half	.L685-.L203
+	.byte	3,4,1,5,10,9
+	.half	.L686-.L685
+	.byte	3,10,1,5,8,9
+	.half	.L1254-.L686
+	.byte	1,5,20,9
+	.half	.L1255-.L1254
+	.byte	3,2,1,9
+	.half	.L687-.L1255
+	.byte	3,1,1,5,19,9
+	.half	.L688-.L687
+	.byte	3,2,1,5,67,9
+	.half	.L689-.L688
+	.byte	1,5,13,9
+	.half	.L52-.L689
+	.byte	3,2,1,5,27,9
+	.half	.L690-.L52
+	.byte	3,1,1,5,3,9
+	.half	.L692-.L690
+	.byte	3,2,1,5,13,7,9
+	.half	.L693-.L692
+	.byte	3,4,1,5,14,9
+	.half	.L694-.L693
+	.byte	3,1,1,5,35,9
+	.half	.L53-.L694
+	.byte	3,3,1,5,4,9
+	.half	.L55-.L53
+	.byte	3,1,1,5,13,7,9
+	.half	.L1256-.L55
+	.byte	3,1,1,5,41,9
+	.half	.L1257-.L1256
+	.byte	3,1,1,5,11,9
+	.half	.L695-.L1257
+	.byte	1,5,5,9
+	.half	.L1258-.L695
+	.byte	3,1,1,5,13,9
+	.half	.L56-.L1258
+	.byte	3,2,1,9
+	.half	.L1259-.L56
+	.byte	3,1,1,5,35,9
+	.half	.L54-.L1259
+	.byte	3,121,1,5,16,7,9
+	.half	.L57-.L54
+	.byte	3,116,1,5,34,9
+	.half	.L51-.L57
+	.byte	3,127,1,5,59,7,9
+	.half	.L1260-.L51
+	.byte	1,5,1,7,9
+	.half	.L58-.L1260
+	.byte	3,23,1,7,9
+	.half	.L306-.L58
+	.byte	0,1,1
+.L1251:
+	.sdecl	'.debug_ranges',debug,cluster('get_next_good_spad')
+	.sect	'.debug_ranges'
+.L305:
+	.word	-1,.L203,0,.L306-.L203,0,0
+	.sdecl	'.debug_info',debug,cluster('is_aperture')
+	.sect	'.debug_info'
+.L307:
+	.word	390
+	.half	3
+	.word	.L308
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L310,.L309
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'is_aperture',0,1,194,3,9
+	.word	.L373
+	.byte	1,1,1
+	.word	.L205,.L514,.L204
+	.byte	4
+	.byte	'spadIndex',0,1,194,3,30
+	.word	.L363,.L515
+	.byte	5
+	.word	.L205,.L514
+	.byte	6
+	.byte	'quadrant',0,1,200,3,11
+	.word	.L363,.L516
+	.byte	6
+	.byte	'isAperture',0,1,201,3,10
+	.word	.L373,.L517
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('is_aperture')
+	.sect	'.debug_abbrev'
+.L308:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('is_aperture')
+	.sect	'.debug_line'
+.L309:
+	.word	.L1262-.L1261
+.L1261:
+	.half	3
+	.word	.L1264-.L1263
+.L1263:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1264:
+	.byte	5,21,7,0,5,2
+	.word	.L205
+	.byte	3,200,3,1,5,23,9
+	.half	.L697-.L205
+	.byte	3,2,1,9
+	.half	.L696-.L697
+	.byte	3,1,1,5,6,9
+	.half	.L1265-.L696
+	.byte	1,5,23,9
+	.half	.L1266-.L1265
+	.byte	1,5,2,9
+	.half	.L1267-.L1266
+	.byte	1,5,14,7,9
+	.half	.L1268-.L1267
+	.byte	3,1,1,5,2,9
+	.half	.L59-.L1268
+	.byte	3,2,1,5,1,9
+	.half	.L60-.L59
+	.byte	3,1,1,7,9
+	.half	.L311-.L60
+	.byte	0,1,1
+.L1262:
+	.sdecl	'.debug_ranges',debug,cluster('is_aperture')
+	.sect	'.debug_ranges'
+.L310:
+	.word	-1,.L205,0,.L311-.L205,0,0
+	.sdecl	'.debug_info',debug,cluster('enable_spad_bit')
+	.sect	'.debug_info'
+.L312:
+	.word	484
+	.half	3
+	.word	.L313
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L315,.L314
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'enable_spad_bit',0,1,211,3,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L207,.L518,.L206
+	.byte	4
+	.byte	'spadArray',0,1,211,3,39
+	.word	.L424,.L519
+	.byte	4
+	.byte	'size',0,1,211,3,61
+	.word	.L363,.L520
+	.byte	4
+	.byte	'spadIndex',0,1,212,3,11
+	.word	.L363,.L521
+	.byte	5
+	.word	.L207,.L518
+	.byte	6
+	.byte	'status',0,1,214,3,16
+	.word	.L359,.L522
+	.byte	6
+	.byte	'cSpadsPerByte',0,1,215,3,11
+	.word	.L363,.L523
+	.byte	6
+	.byte	'coarseIndex',0,1,216,3,11
+	.word	.L363,.L524
+	.byte	6
+	.byte	'fineIndex',0,1,217,3,11
+	.word	.L363,.L525
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('enable_spad_bit')
+	.sect	'.debug_abbrev'
+.L313:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('enable_spad_bit')
+	.sect	'.debug_line'
+.L314:
+	.word	.L1270-.L1269
+.L1269:
+	.half	3
+	.word	.L1272-.L1271
+.L1271:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1272:
+	.byte	5,23,7,0,5,2
+	.word	.L207
+	.byte	3,213,3,1,5,25,9
+	.half	.L698-.L207
+	.byte	3,1,1,5,26,9
+	.half	.L699-.L698
+	.byte	3,4,1,5,24,9
+	.half	.L701-.L699
+	.byte	3,1,1,5,2,9
+	.half	.L703-.L701
+	.byte	3,1,1,5,10,7,9
+	.half	.L1273-.L703
+	.byte	3,1,1,5,39,9
+	.half	.L1274-.L1273
+	.byte	1,5,12,9
+	.half	.L61-.L1274
+	.byte	3,2,1,5,30,9
+	.half	.L700-.L61
+	.byte	1,5,32,9
+	.half	.L702-.L700
+	.byte	1,5,26,9
+	.half	.L1275-.L702
+	.byte	1,5,2,9
+	.half	.L62-.L1275
+	.byte	3,2,1,5,1,9
+	.half	.L63-.L62
+	.byte	3,1,1,7,9
+	.half	.L316-.L63
+	.byte	0,1,1
+.L1270:
+	.sdecl	'.debug_ranges',debug,cluster('enable_spad_bit')
+	.sect	'.debug_ranges'
+.L315:
+	.word	-1,.L207,0,.L316-.L207,0,0
+	.sdecl	'.debug_info',debug,cluster('count_enabled_spads')
+	.sect	'.debug_info'
+.L317:
+	.word	643
+	.half	3
+	.word	.L318
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L320,.L319
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'count_enabled_spads',0,1,229,3,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L209,.L526,.L208
+	.byte	4
+	.byte	'spadArray',0,1,229,3,43
+	.word	.L424,.L527
+	.byte	4
+	.byte	'byteCount',0,1,230,3,12
+	.word	.L363,.L528
+	.byte	4
+	.byte	'maxSpads',0,1,230,3,32
+	.word	.L363,.L529
+	.byte	4
+	.byte	'pTotalSpadsEnabled',0,1,231,3,13
+	.word	.L422,.L530
+	.byte	4
+	.byte	'pIsAperture',0,1,231,3,42
+	.word	.L424,.L531
+	.byte	5
+	.word	.L209,.L526
+	.byte	6
+	.byte	'status',0,1,233,3,16
+	.word	.L359,.L532
+	.byte	6
+	.byte	'cSpadsPerByte',0,1,234,3,11
+	.word	.L363,.L533
+	.byte	6
+	.byte	'lastByte',0,1,235,3,11
+	.word	.L363,.L534
+	.byte	6
+	.byte	'lastBit',0,1,236,3,11
+	.word	.L363,.L535
+	.byte	6
+	.byte	'byteIndex',0,1,237,3,11
+	.word	.L363,.L536
+	.byte	6
+	.byte	'bitIndex',0,1,238,3,11
+	.word	.L363,.L537
+	.byte	6
+	.byte	'tempByte',0,1,239,3,10
+	.word	.L373,.L538
+	.byte	6
+	.byte	'spadTypeIdentified',0,1,240,3,10
+	.word	.L373,.L539
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('count_enabled_spads')
+	.sect	'.debug_abbrev'
+.L318:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('count_enabled_spads')
+	.sect	'.debug_line'
+.L319:
+	.word	.L1277-.L1276
+.L1276:
+	.half	3
+	.word	.L1279-.L1278
+.L1278:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1279:
+	.byte	5,23,7,0,5,2
+	.word	.L209
+	.byte	3,232,3,1,5,25,9
+	.half	.L704-.L209
+	.byte	3,1,1,5,29,9
+	.half	.L705-.L704
+	.byte	3,6,1,5,22,9
+	.half	.L707-.L705
+	.byte	3,6,1,5,21,9
+	.half	.L709-.L707
+	.byte	3,1,1,5,2,9
+	.half	.L711-.L709
+	.byte	3,3,1,5,10,7,9
+	.half	.L1280-.L711
+	.byte	3,1,1,5,24,9
+	.half	.L64-.L1280
+	.byte	3,2,1,5,22,9
+	.half	.L706-.L64
+	.byte	1,5,17,9
+	.half	.L1281-.L706
+	.byte	3,3,1,5,49,9
+	.half	.L712-.L1281
+	.byte	1,5,23,9
+	.half	.L66-.L712
+	.byte	3,1,1,5,17,9
+	.half	.L714-.L66
+	.byte	3,2,1,5,47,9
+	.half	.L715-.L714
+	.byte	1,5,4,9
+	.half	.L68-.L715
+	.byte	3,1,1,5,7,7,9
+	.half	.L1282-.L68
+	.byte	3,1,1,5,26,9
+	.half	.L1283-.L1282
+	.byte	1,5,10,9
+	.half	.L1284-.L1283
+	.byte	3,2,1,5,21,7,9
+	.half	.L1285-.L1284
+	.byte	3,1,1,5,19,9
+	.half	.L708-.L1285
+	.byte	1,5,10,9
+	.half	.L1286-.L708
+	.byte	3,1,1,5,39,7,9
+	.half	.L1287-.L1286
+	.byte	1,5,22,7,9
+	.half	.L1288-.L1287
+	.byte	3,1,1,5,20,9
+	.half	.L1289-.L1288
+	.byte	1,5,25,9
+	.half	.L71-.L1289
+	.byte	3,1,1,5,13,9
+	.half	.L69-.L71
+	.byte	3,3,1,5,57,9
+	.half	.L1290-.L69
+	.byte	3,117,1,5,47,9
+	.half	.L67-.L1290
+	.byte	1,5,60,7,9
+	.half	.L1291-.L67
+	.byte	3,125,1,5,45,9
+	.half	.L65-.L1291
+	.byte	1,5,49,9
+	.half	.L1292-.L65
+	.byte	1,5,22,7,9
+	.half	.L1293-.L1292
+	.byte	3,21,1,5,16,9
+	.half	.L716-.L1293
+	.byte	3,2,1,5,40,9
+	.half	.L713-.L716
+	.byte	1,5,3,9
+	.half	.L74-.L713
+	.byte	3,1,1,5,6,7,9
+	.half	.L1294-.L74
+	.byte	3,1,1,5,25,9
+	.half	.L1295-.L1294
+	.byte	1,5,50,9
+	.half	.L75-.L1295
+	.byte	3,126,1,5,40,9
+	.half	.L73-.L75
+	.byte	1,5,2,7,9
+	.half	.L1296-.L73
+	.byte	3,5,1,5,1,9
+	.half	.L76-.L1296
+	.byte	3,1,1,7,9
+	.half	.L321-.L76
+	.byte	0,1,1
+.L1277:
+	.sdecl	'.debug_ranges',debug,cluster('count_enabled_spads')
+	.sect	'.debug_ranges'
+.L320:
+	.word	-1,.L209,0,.L321-.L209,0,0
+	.sdecl	'.debug_info',debug,cluster('set_ref_spad_map')
+	.sect	'.debug_info'
+.L322:
+	.word	389
+	.half	3
+	.word	.L323
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L325,.L324
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'set_ref_spad_map',0,1,159,4,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L211,.L540,.L210
+	.byte	4
+	.byte	'Dev',0,1,159,4,44
+	.word	.L361,.L541
+	.byte	4
+	.byte	'refSpadArray',0,1,159,4,58
+	.word	.L424,.L542
+	.byte	5
+	.word	.L211,.L540
+	.byte	6
+	.byte	'status',0,1,161,4,16
+	.word	.L359,.L543
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('set_ref_spad_map')
+	.sect	'.debug_abbrev'
+.L323:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('set_ref_spad_map')
+	.sect	'.debug_line'
+.L324:
+	.word	.L1298-.L1297
+.L1297:
+	.half	3
+	.word	.L1300-.L1299
+.L1299:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1300:
+	.byte	5,5,7,0,5,2
+	.word	.L211
+	.byte	3,161,4,1,5,19,9
+	.half	.L1301-.L211
+	.byte	3,1,1,5,2,9
+	.half	.L717-.L1301
+	.byte	3,1,1,5,1,9
+	.half	.L77-.L717
+	.byte	3,1,1,7,9
+	.half	.L326-.L77
+	.byte	0,1,1
+.L1298:
+	.sdecl	'.debug_ranges',debug,cluster('set_ref_spad_map')
+	.sect	'.debug_ranges'
+.L325:
+	.word	-1,.L211,0,.L326-.L211,0,0
+	.sdecl	'.debug_info',debug,cluster('get_ref_spad_map')
+	.sect	'.debug_info'
+.L327:
+	.word	389
+	.half	3
+	.word	.L328
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L330,.L329
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'get_ref_spad_map',0,1,167,4,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L213,.L544,.L212
+	.byte	4
+	.byte	'Dev',0,1,167,4,44
+	.word	.L361,.L545
+	.byte	4
+	.byte	'refSpadArray',0,1,167,4,58
+	.word	.L424,.L546
+	.byte	5
+	.word	.L213,.L544
+	.byte	6
+	.byte	'status',0,1,169,4,16
+	.word	.L359,.L547
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('get_ref_spad_map')
+	.sect	'.debug_abbrev'
+.L328:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('get_ref_spad_map')
+	.sect	'.debug_line'
+.L329:
+	.word	.L1303-.L1302
+.L1302:
+	.half	3
+	.word	.L1305-.L1304
+.L1304:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1305:
+	.byte	5,5,7,0,5,2
+	.word	.L213
+	.byte	3,169,4,1,9
+	.half	.L1306-.L213
+	.byte	3,2,1,5,2,9
+	.half	.L718-.L1306
+	.byte	3,1,1,5,1,9
+	.half	.L78-.L718
+	.byte	3,1,1,7,9
+	.half	.L331-.L78
+	.byte	0,1,1
+.L1303:
+	.sdecl	'.debug_ranges',debug,cluster('get_ref_spad_map')
+	.sect	'.debug_ranges'
+.L330:
+	.word	-1,.L213,0,.L331-.L213,0,0
+	.sdecl	'.debug_info',debug,cluster('enable_ref_spads')
+	.sect	'.debug_info'
+.L332:
+	.word	655
+	.half	3
+	.word	.L333
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L335,.L334
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'enable_ref_spads',0,1,176,4,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L215,.L548,.L214
+	.byte	4
+	.byte	'Dev',0,1,176,4,44
+	.word	.L361,.L549
+	.byte	4
+	.byte	'apertureSpads',0,1,177,4,13
+	.word	.L373,.L550
+	.byte	4
+	.byte	'goodSpadArray',0,1,178,4,13
+	.word	.L424,.L551
+	.byte	4
+	.byte	'spadArray',0,1,179,4,13
+	.word	.L424,.L552
+	.byte	4
+	.byte	'size',0,1,180,4,14
+	.word	.L363,.L553
+	.byte	4
+	.byte	'start',0,1,181,4,14
+	.word	.L363,.L554
+	.byte	4
+	.byte	'offset',0,1,182,4,14
+	.word	.L363,.L555
+	.byte	4
+	.byte	'spadCount',0,1,183,4,14
+	.word	.L363,.L556
+	.byte	4
+	.byte	'lastSpad',0,1,184,4,15
+	.word	.L422,.L557
+	.byte	5
+	.word	.L215,.L548
+	.byte	6
+	.byte	'status',0,1,186,4,16
+	.word	.L359,.L558
+	.byte	6
+	.byte	'index',0,1,187,4,11
+	.word	.L363,.L559
+	.byte	6
+	.byte	'i',0,1,188,4,11
+	.word	.L363,.L560
+	.byte	6
+	.byte	'nextGoodSpad',0,1,189,4,10
+	.word	.L397,.L561
+	.byte	6
+	.byte	'currentSpad',0,1,190,4,11
+	.word	.L363,.L562
+	.byte	6
+	.byte	'checkSpadArray',0,1,191,4,10
+	.word	.L427,.L563
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('enable_ref_spads')
+	.sect	'.debug_abbrev'
+.L333:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('enable_ref_spads')
+	.sect	'.debug_line'
+.L334:
+	.word	.L1308-.L1307
+.L1307:
+	.half	3
+	.word	.L1310-.L1309
+.L1309:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1310:
+	.byte	5,15,7,0,5,2
+	.word	.L215
+	.byte	3,175,4,1,5,23,9
+	.half	.L727-.L215
+	.byte	3,10,1,9
+	.half	.L728-.L727
+	.byte	3,3,1,5,14,9
+	.half	.L1311-.L728
+	.byte	3,14,1,5,13,9
+	.half	.L730-.L1311
+	.byte	3,1,1,5,35,9
+	.half	.L731-.L730
+	.byte	1,5,5,9
+	.half	.L80-.L731
+	.byte	3,2,1,5,7,9
+	.half	.L733-.L80
+	.byte	3,2,1,5,3,9
+	.half	.L1312-.L733
+	.byte	1,5,11,7,9
+	.half	.L1313-.L1312
+	.byte	3,1,1,5,4,9
+	.half	.L1314-.L1313
+	.byte	3,1,1,5,27,9
+	.half	.L81-.L1314
+	.byte	3,4,1,5,25,9
+	.half	.L1315-.L81
+	.byte	1,5,3,9
+	.half	.L1316-.L1315
+	.byte	1,5,11,7,9
+	.half	.L1317-.L1316
+	.byte	3,4,1,5,4,9
+	.half	.L1318-.L1317
+	.byte	3,1,1,5,27,9
+	.half	.L83-.L1318
+	.byte	3,2,1,5,36,9
+	.half	.L1319-.L83
+	.byte	3,1,1,5,14,9
+	.half	.L735-.L1319
+	.byte	3,1,1,5,42,9
+	.half	.L1320-.L735
+	.byte	3,109,1,5,35,9
+	.half	.L79-.L1320
+	.byte	1,5,12,7,9
+	.half	.L82-.L79
+	.byte	3,21,1,5,2,9
+	.half	.L1321-.L82
+	.byte	3,2,1,5,34,7,9
+	.half	.L1322-.L1321
+	.byte	3,1,1,5,10,9
+	.half	.L729-.L1322
+	.byte	1,5,2,9
+	.half	.L85-.L729
+	.byte	3,3,1,5,34,7,9
+	.half	.L1323-.L85
+	.byte	3,1,1,5,10,9
+	.half	.L738-.L1323
+	.byte	1,5,5,9
+	.half	.L741-.L738
+	.byte	3,2,1,5,18,9
+	.half	.L742-.L741
+	.byte	3,3,1,5,17,9
+	.half	.L88-.L742
+	.byte	3,1,1,5,38,9
+	.half	.L1324-.L88
+	.byte	1,5,4,9
+	.half	.L1325-.L1324
+	.byte	1,5,12,7,9
+	.half	.L1326-.L1325
+	.byte	3,1,1,5,5,9
+	.half	.L740-.L1326
+	.byte	3,1,1,9
+	.half	.L89-.L740
+	.byte	3,2,1,5,18,9
+	.half	.L87-.L89
+	.byte	3,123,1,5,2,7,9
+	.half	.L86-.L87
+	.byte	3,8,1,5,1,9
+	.half	.L91-.L86
+	.byte	3,1,1,7,9
+	.half	.L336-.L91
+	.byte	0,1,1
+.L1308:
+	.sdecl	'.debug_ranges',debug,cluster('enable_ref_spads')
+	.sect	'.debug_ranges'
+.L335:
+	.word	-1,.L215,0,.L336-.L215,0,0
+	.sdecl	'.debug_info',debug,cluster('perform_ref_signal_measurement')
+	.sect	'.debug_info'
+.L337:
+	.word	468
+	.half	3
+	.word	.L338
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L340,.L339
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'perform_ref_signal_measurement',0,1,249,4,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L217,.L564,.L216
+	.byte	4
+	.byte	'Dev',0,1,249,4,58
+	.word	.L361,.L565
+	.byte	4
+	.byte	'refSignalRate',0,1,250,4,13
+	.word	.L566,.L567
+	.byte	5
+	.word	.L217,.L564
+	.byte	6
+	.byte	'status',0,1,252,4,16
+	.word	.L359,.L568
+	.byte	6
+	.byte	'rangingMeasurementData',0,1,253,4,35
+	.word	.L375,.L569
+	.byte	6
+	.byte	'SequenceConfig',0,1,255,4,10
+	.word	.L373,.L570
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('perform_ref_signal_measurement')
+	.sect	'.debug_abbrev'
+.L338:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('perform_ref_signal_measurement')
+	.sect	'.debug_line'
+.L339:
+	.word	.L1328-.L1327
+.L1327:
+	.half	3
+	.word	.L1330-.L1329
+.L1329:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1330:
+	.byte	5,15,7,0,5,2
+	.word	.L217
+	.byte	3,248,4,1,5,23,9
+	.half	.L746-.L217
+	.byte	3,3,1,5,19,9
+	.half	.L747-.L746
+	.byte	3,9,1,5,2,9
+	.half	.L748-.L747
+	.byte	3,5,1,5,4,7,9
+	.half	.L1331-.L748
+	.byte	3,2,1,5,40,9
+	.half	.L1332-.L1331
+	.byte	1,5,2,9
+	.half	.L92-.L1332
+	.byte	3,2,1,5,6,7,9
+	.half	.L1333-.L92
+	.byte	3,2,1,5,2,9
+	.half	.L93-.L1333
+	.byte	3,2,1,5,32,7,9
+	.half	.L1334-.L93
+	.byte	3,1,1,5,38,9
+	.half	.L1335-.L1334
+	.byte	1,5,2,9
+	.half	.L94-.L1335
+	.byte	3,2,1,5,4,7,9
+	.half	.L1336-.L94
+	.byte	3,2,1,9
+	.half	.L1337-.L1336
+	.byte	3,1,1,5,2,9
+	.half	.L95-.L1337
+	.byte	3,2,1,5,32,7,9
+	.half	.L1338-.L95
+	.byte	3,1,1,5,38,9
+	.half	.L1339-.L1338
+	.byte	1,5,2,9
+	.half	.L96-.L1339
+	.byte	3,2,1,5,32,7,9
+	.half	.L1340-.L96
+	.byte	3,2,1,5,5,9
+	.half	.L1341-.L1340
+	.byte	3,1,1,5,3,9
+	.half	.L755-.L1341
+	.byte	3,1,1,5,4,7,9
+	.half	.L1342-.L755
+	.byte	3,1,1,5,2,9
+	.half	.L97-.L1342
+	.byte	3,3,1,5,1,9
+	.half	.L99-.L97
+	.byte	3,1,1,7,9
+	.half	.L341-.L99
+	.byte	0,1,1
+.L1328:
+	.sdecl	'.debug_ranges',debug,cluster('perform_ref_signal_measurement')
+	.sect	'.debug_ranges'
+.L340:
+	.word	-1,.L217,0,.L341-.L217,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_perform_single_ref_calibration')
+	.sect	'.debug_info'
+.L342:
+	.word	412
+	.half	3
+	.word	.L343
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L345,.L344
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_perform_single_ref_calibration',0,1,176,8,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L225,.L571,.L224
+	.byte	4
+	.byte	'Dev',0,1,176,8,66
+	.word	.L361,.L572
+	.byte	4
+	.byte	'vhv_init_byte',0,1,177,8,11
+	.word	.L373,.L573
+	.byte	5
+	.word	.L225,.L571
+	.byte	6
+	.byte	'Status',0,1,179,8,16
+	.word	.L359,.L574
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_perform_single_ref_calibration')
+	.sect	'.debug_abbrev'
+.L343:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_perform_single_ref_calibration')
+	.sect	'.debug_line'
+.L344:
+	.word	.L1344-.L1343
+.L1343:
+	.half	3
+	.word	.L1346-.L1345
+.L1345:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1346:
+	.byte	5,15,7,0,5,2
+	.word	.L225
+	.byte	3,175,8,1,5,23,9
+	.half	.L864-.L225
+	.byte	3,3,1,5,2,9
+	.half	.L865-.L864
+	.byte	3,2,1,5,32,7,9
+	.half	.L1347-.L865
+	.byte	3,1,1,5,42,9
+	.half	.L1348-.L1347
+	.byte	3,1,1,5,2,9
+	.half	.L156-.L1348
+	.byte	3,3,1,5,52,7,9
+	.half	.L1349-.L156
+	.byte	3,1,1,5,2,9
+	.half	.L157-.L1349
+	.byte	3,2,1,5,44,7,9
+	.half	.L1350-.L157
+	.byte	3,1,1,5,2,9
+	.half	.L158-.L1350
+	.byte	3,2,1,5,32,7,9
+	.half	.L1351-.L158
+	.byte	3,1,1,5,60,9
+	.half	.L1352-.L1351
+	.byte	1,5,2,9
+	.half	.L159-.L1352
+	.byte	3,2,1,5,1,9
+	.half	.L160-.L159
+	.byte	3,1,1,7,9
+	.half	.L346-.L160
+	.byte	0,1,1
+.L1344:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_perform_single_ref_calibration')
+	.sect	'.debug_ranges'
+.L345:
+	.word	-1,.L225,0,.L346-.L225,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_ref_calibration_io')
+	.sect	'.debug_info'
+.L347:
+	.word	572
+	.half	3
+	.word	.L348
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L350,.L349
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_ref_calibration_io',0,1,199,8,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L227,.L575,.L226
+	.byte	4
+	.byte	'Dev',0,1,199,8,54
+	.word	.L361,.L576
+	.byte	4
+	.byte	'read_not_write',0,1,200,8,10
+	.word	.L373,.L577
+	.byte	4
+	.byte	'VhvSettings',0,1,201,8,10
+	.word	.L373,.L578
+	.byte	4
+	.byte	'PhaseCal',0,1,201,8,31
+	.word	.L373,.L579
+	.byte	4
+	.byte	'pVhvSettings',0,1,202,8,11
+	.word	.L424,.L580
+	.byte	4
+	.byte	'pPhaseCal',0,1,202,8,34
+	.word	.L424,.L581
+	.byte	4
+	.byte	'vhv_enable',0,1,203,8,16
+	.word	.L582,.L583
+	.byte	4
+	.byte	'phase_enable',0,1,203,8,42
+	.word	.L584,.L585
+	.byte	5
+	.word	.L227,.L575
+	.byte	6
+	.byte	'Status',0,1,205,8,16
+	.word	.L359,.L586
+	.byte	6
+	.byte	'PhaseCalint',0,1,206,8,10
+	.word	.L373,.L587
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_ref_calibration_io')
+	.sect	'.debug_abbrev'
+.L348:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_ref_calibration_io')
+	.sect	'.debug_line'
+.L349:
+	.word	.L1354-.L1353
+.L1353:
+	.half	3
+	.word	.L1356-.L1355
+.L1355:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1356:
+	.byte	5,15,7,0,5,2
+	.word	.L227
+	.byte	3,198,8,1,5,23,9
+	.half	.L879-.L227
+	.byte	3,6,1,5,24,9
+	.half	.L880-.L879
+	.byte	3,1,1,5,22,9
+	.half	.L1357-.L880
+	.byte	1,5,32,9
+	.half	.L1358-.L1357
+	.byte	3,3,1,5,38,9
+	.half	.L872-.L1358
+	.byte	1,5,9,9
+	.half	.L870-.L872
+	.byte	1,5,32,9
+	.half	.L1359-.L870
+	.byte	3,1,1,5,38,9
+	.half	.L1360-.L1359
+	.byte	1,5,9,9
+	.half	.L883-.L1360
+	.byte	1,5,32,9
+	.half	.L1361-.L883
+	.byte	3,1,1,5,38,9
+	.half	.L1362-.L1361
+	.byte	1,5,9,9
+	.half	.L885-.L1362
+	.byte	1,5,2,9
+	.half	.L1363-.L885
+	.byte	3,2,1,5,3,7,9
+	.half	.L1364-.L1363
+	.byte	3,1,1,5,34,7,9
+	.half	.L1365-.L1364
+	.byte	3,1,1,5,40,9
+	.half	.L1366-.L1365
+	.byte	1,5,11,9
+	.half	.L887-.L1366
+	.byte	1,5,3,9
+	.half	.L162-.L887
+	.byte	3,1,1,5,34,7,9
+	.half	.L1367-.L162
+	.byte	3,1,1,5,41,9
+	.half	.L1368-.L1367
+	.byte	1,5,11,9
+	.half	.L890-.L1368
+	.byte	1,5,3,9
+	.half	.L163-.L890
+	.byte	3,127,1,9
+	.half	.L161-.L163
+	.byte	3,3,1,5,34,7,9
+	.half	.L1369-.L161
+	.byte	3,1,1,5,40,9
+	.half	.L1370-.L1369
+	.byte	1,5,11,9
+	.half	.L892-.L1370
+	.byte	1,5,3,9
+	.half	.L165-.L892
+	.byte	3,1,1,5,38,7,9
+	.half	.L1371-.L165
+	.byte	3,1,1,5,44,9
+	.half	.L1372-.L1371
+	.byte	1,5,50,9
+	.half	.L1373-.L1372
+	.byte	1,5,11,9
+	.half	.L895-.L1373
+	.byte	1,5,32,9
+	.half	.L164-.L895
+	.byte	3,3,1,5,38,9
+	.half	.L1374-.L164
+	.byte	1,5,9,9
+	.half	.L898-.L1374
+	.byte	1,5,32,9
+	.half	.L1375-.L898
+	.byte	3,1,1,5,38,9
+	.half	.L1376-.L1375
+	.byte	1,5,9,9
+	.half	.L900-.L1376
+	.byte	1,5,32,9
+	.half	.L1377-.L900
+	.byte	3,1,1,5,38,9
+	.half	.L1378-.L1377
+	.byte	1,5,9,9
+	.half	.L902-.L1378
+	.byte	1,5,25,9
+	.half	.L881-.L902
+	.byte	3,2,1,5,36,9
+	.half	.L878-.L881
+	.byte	1,5,13,9
+	.half	.L1379-.L878
+	.byte	1,5,2,9
+	.half	.L1380-.L1379
+	.byte	3,2,1,5,1,9
+	.half	.L167-.L1380
+	.byte	3,1,1,7,9
+	.half	.L351-.L167
+	.byte	0,1,1
+.L1354:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_ref_calibration_io')
+	.sect	'.debug_ranges'
+.L350:
+	.word	-1,.L227,0,.L351-.L227,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_perform_vhv_calibration')
+	.sect	'.debug_info'
+.L352:
+	.word	561
+	.half	3
+	.word	.L353
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L355,.L354
+	.byte	2
+	.word	.L238
+	.byte	3
+	.byte	'VL53L0X_perform_vhv_calibration',0,1,235,8,15
+	.word	.L359
+	.byte	1,1,1
+	.word	.L229,.L588,.L228
+	.byte	4
+	.byte	'Dev',0,1,235,8,59
+	.word	.L361,.L589
+	.byte	4
+	.byte	'pVhvSettings',0,1,236,8,11
+	.word	.L424,.L590
+	.byte	4
+	.byte	'get_data_enable',0,1,236,8,39
+	.word	.L591,.L592
+	.byte	4
+	.byte	'restore_config',0,1,237,8,16
+	.word	.L593,.L594
+	.byte	5
+	.word	.L229,.L588
+	.byte	6
+	.byte	'Status',0,1,239,8,16
+	.word	.L359,.L595
+	.byte	6
+	.byte	'SequenceConfig',0,1,240,8,10
+	.word	.L373,.L596
+	.byte	6
+	.byte	'VhvSettings',0,1,241,8,10
+	.word	.L373,.L597
+	.byte	6
+	.byte	'PhaseCal',0,1,242,8,10
+	.word	.L373,.L598
+	.byte	6
+	.byte	'PhaseCalInt',0,1,243,8,10
+	.word	.L373,.L599
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_perform_vhv_calibration')
+	.sect	'.debug_abbrev'
+.L353:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_perform_vhv_calibration')
+	.sect	'.debug_line'
+.L354:
+	.word	.L1382-.L1381
+.L1381:
+	.half	3
+	.word	.L1384-.L1383
+.L1383:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0,0,0,0,0
+.L1384:
+	.byte	5,15,7,0,5,2
+	.word	.L229
+	.byte	3,234,8,1,5,25,9
+	.half	.L910-.L229
+	.byte	3,5,1,5,22,9
+	.half	.L911-.L910
+	.byte	3,1,1,5,19,9
+	.half	.L912-.L911
+	.byte	3,1,1,5,24,9
+	.half	.L913-.L912
+	.byte	3,1,1,5,22,9
+	.half	.L1385-.L913
+	.byte	1,5,2,9
+	.half	.L1386-.L1385
+	.byte	3,6,1,5,20,7,9
+	.half	.L1387-.L1386
+	.byte	3,1,1,5,31,9
+	.half	.L168-.L1387
+	.byte	3,3,1,5,67,9
+	.half	.L905-.L168
+	.byte	1,5,2,9
+	.half	.L904-.L905
+	.byte	3,2,1,5,56,7,9
+	.half	.L1388-.L904
+	.byte	3,1,1,5,6,9
+	.half	.L169-.L1388
+	.byte	3,3,1,5,57,7,9
+	.half	.L1389-.L169
+	.byte	1,5,7,7,9
+	.half	.L1390-.L1389
+	.byte	3,4,1,5,44,9
+	.half	.L1391-.L1390
+	.byte	3,125,1,5,19,9
+	.half	.L1392-.L1391
+	.byte	3,2,1,5,4,9
+	.half	.L1393-.L1392
+	.byte	3,1,1,5,9,9
+	.half	.L916-.L1393
+	.byte	1,5,19,9
+	.half	.L170-.L916
+	.byte	3,2,1,5,17,9
+	.half	.L1394-.L170
+	.byte	1,5,6,9
+	.half	.L172-.L1394
+	.byte	3,3,1,5,40,7,9
+	.half	.L1395-.L172
+	.byte	1,5,32,7,9
+	.half	.L1396-.L1395
+	.byte	3,2,1,5,5,9
+	.half	.L1397-.L1396
+	.byte	3,1,1,5,3,9
+	.half	.L921-.L1397
+	.byte	3,1,1,5,4,7,9
+	.half	.L1398-.L921
+	.byte	3,1,1,5,2,9
+	.half	.L173-.L1398
+	.byte	3,4,1,5,1,9
+	.half	.L176-.L173
+	.byte	3,1,1,7,9
+	.half	.L356-.L176
+	.byte	0,1,1
+.L1382:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_perform_vhv_calibration')
+	.sect	'.debug_ranges'
+.L355:
+	.word	-1,.L229,0,.L356-.L229,0,0
+	.sdecl	'.debug_info',debug,cluster('refArrayQuadrants')
+	.sect	'.debug_info'
+.L357:
+	.word	299
+	.half	3
+	.word	.L358
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_calibration.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1,2
+	.word	.L238
+	.byte	3
+	.byte	'refArrayQuadrants',0,6,45,10
+	.word	.L600
+	.byte	1,5,3
+	.word	refArrayQuadrants
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('refArrayQuadrants')
+	.sect	'.debug_abbrev'
+.L358:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_apply_offset_adjustment')
+	.sect	'.debug_loc'
+.L418:
+	.word	-1,.L201,.L681-.L201,.L48-.L201
+	.half	1
+	.byte	88
+	.word	.L684-.L201,.L683-.L201
+	.half	1
+	.byte	84
+	.word	0,0
+.L419:
+	.word	-1,.L201,0,.L415-.L201
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L416:
+	.word	-1,.L201,0,.L678-.L201
+	.half	1
+	.byte	100
+	.word	.L679-.L201,.L415-.L201
+	.half	1
+	.byte	111
+	.word	.L680-.L201,.L47-.L201
+	.half	1
+	.byte	100
+	.word	.L682-.L201,.L683-.L201
+	.half	1
+	.byte	100
+	.word	0,0
+.L417:
+	.word	-1,.L201,.L678-.L201,.L415-.L201
+	.half	1
+	.byte	82
+	.word	0,0
+.L200:
+	.word	-1,.L201,0,.L677-.L201
+	.half	2
+	.byte	138,0
+	.word	.L677-.L201,.L415-.L201
+	.half	2
+	.byte	138,8
+	.word	.L415-.L201,.L415-.L201
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_offset_calibration_data_micro_meter')
+	.sect	'.debug_loc'
+.L409:
+	.word	-1,.L199,0,.L671-.L199
+	.half	1
+	.byte	100
+	.word	0,0
+.L412:
+	.word	-1,.L199,0,.L408-.L199
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L411:
+	.word	-1,.L199,.L671-.L199,.L408-.L199
+	.half	1
+	.byte	82
+	.word	0,0
+.L198:
+	.word	-1,.L199,0,.L670-.L199
+	.half	2
+	.byte	138,0
+	.word	.L670-.L199,.L408-.L199
+	.half	2
+	.byte	138,8
+	.word	.L408-.L199,.L408-.L199
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L413:
+	.word	-1,.L199,.L674-.L199,.L675-.L199
+	.half	1
+	.byte	95
+	.word	.L44-.L199,.L676-.L199
+	.half	1
+	.byte	95
+	.word	0,0
+.L414:
+	.word	0,0
+.L410:
+	.word	-1,.L199,0,.L672-.L199
+	.half	1
+	.byte	101
+	.word	.L673-.L199,.L408-.L199
+	.half	1
+	.byte	111
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_ref_calibration')
+	.sect	'.debug_loc'
+.L496:
+	.word	-1,.L237,0,.L961-.L237
+	.half	1
+	.byte	100
+	.word	0,0
+.L501:
+	.word	-1,.L237,.L963-.L237,.L961-.L237
+	.half	1
+	.byte	86
+	.word	0,0
+.L499:
+	.word	-1,.L237,.L961-.L237,.L495-.L237
+	.half	1
+	.byte	82
+	.word	0,0
+.L236:
+	.word	-1,.L237,0,.L960-.L237
+	.half	2
+	.byte	138,0
+	.word	.L960-.L237,.L495-.L237
+	.half	2
+	.byte	138,8
+	.word	.L495-.L237,.L495-.L237
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L500:
+	.word	-1,.L237,.L962-.L237,.L961-.L237
+	.half	1
+	.byte	85
+	.word	0,0
+.L498:
+	.word	-1,.L237,0,.L961-.L237
+	.half	1
+	.byte	102
+	.word	0,0
+.L497:
+	.word	-1,.L237,0,.L961-.L237
+	.half	1
+	.byte	101
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_reference_spads')
+	.sect	'.debug_loc'
+.L459:
+	.word	-1,.L223,0,.L852-.L223
+	.half	1
+	.byte	100
+	.word	.L854-.L223,.L458-.L223
+	.half	1
+	.byte	111
+	.word	0,0
+.L462:
+	.word	-1,.L223,.L857-.L223,.L458-.L223
+	.half	1
+	.byte	82
+	.word	0,0
+.L222:
+	.word	-1,.L223,0,.L851-.L223
+	.half	2
+	.byte	138,0
+	.word	.L851-.L223,.L458-.L223
+	.half	2
+	.byte	138,16
+	.word	.L458-.L223,.L458-.L223
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L465:
+	.word	-1,.L223,.L858-.L223,.L458-.L223
+	.half	1
+	.byte	88
+	.word	0,0
+.L466:
+	.word	-1,.L223,.L859-.L223,.L458-.L223
+	.half	1
+	.byte	89
+	.word	0,0
+.L468:
+	.word	-1,.L223,0,.L458-.L223
+	.half	2
+	.byte	145,122
+	.word	0,0
+.L461:
+	.word	-1,.L223,0,.L852-.L223
+	.half	1
+	.byte	102
+	.word	.L856-.L223,.L458-.L223
+	.half	1
+	.byte	109
+	.word	0,0
+.L460:
+	.word	-1,.L223,0,.L853-.L223
+	.half	1
+	.byte	101
+	.word	.L855-.L223,.L458-.L223
+	.half	1
+	.byte	108
+	.word	0,0
+.L464:
+	.word	-1,.L223,0,.L458-.L223
+	.half	2
+	.byte	145,112
+	.word	0,0
+.L463:
+	.word	-1,.L223,.L860-.L223,.L861-.L223
+	.half	1
+	.byte	95
+	.word	.L151-.L223,.L862-.L223
+	.half	1
+	.byte	95
+	.word	0,0
+.L467:
+	.word	-1,.L223,0,.L458-.L223
+	.half	2
+	.byte	145,118
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_perform_offset_calibration')
+	.sect	'.debug_loc'
+.L395:
+	.word	-1,.L195,.L657-.L195,.L658-.L195
+	.half	1
+	.byte	95
+	.word	0,0
+.L386:
+	.word	-1,.L195,0,.L638-.L195
+	.half	1
+	.byte	84
+	.word	.L640-.L195,.L641-.L195
+	.half	1
+	.byte	89
+	.word	0,0
+.L385:
+	.word	-1,.L195,0,.L21-.L195
+	.half	1
+	.byte	100
+	.word	.L639-.L195,.L384-.L195
+	.half	1
+	.byte	111
+	.word	.L647-.L195,.L22-.L195
+	.half	1
+	.byte	100
+	.word	.L648-.L195,.L23-.L195
+	.half	1
+	.byte	100
+	.word	.L649-.L195,.L24-.L195
+	.half	1
+	.byte	100
+	.word	.L651-.L195,.L652-.L195
+	.half	1
+	.byte	100
+	.word	.L659-.L195,.L32-.L195
+	.half	1
+	.byte	100
+	.word	.L660-.L195,.L34-.L195
+	.half	1
+	.byte	100
+	.word	0,0
+.L392:
+	.word	-1,.L195,0,.L384-.L195
+	.half	2
+	.byte	145,96
+	.word	0,0
+.L396:
+	.word	-1,.L195,0,.L384-.L195
+	.half	2
+	.byte	145,124
+	.word	0,0
+.L389:
+	.word	-1,.L195,.L643-.L195,.L384-.L195
+	.half	1
+	.byte	82
+	.word	0,0
+.L393:
+	.word	-1,.L195,.L654-.L195,.L655-.L195
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L394:
+	.word	-1,.L195,.L655-.L195,.L656-.L195
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L194:
+	.word	-1,.L195,0,.L637-.L195
+	.half	2
+	.byte	138,0
+	.word	.L637-.L195,.L384-.L195
+	.half	2
+	.byte	138,32
+	.word	.L384-.L195,.L384-.L195
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L398:
+	.word	-1,.L195,.L650-.L195,.L25-.L195
+	.half	1
+	.byte	90
+	.word	0,0
+.L388:
+	.word	-1,.L195,0,.L21-.L195
+	.half	1
+	.byte	101
+	.word	.L642-.L195,.L384-.L195
+	.half	1
+	.byte	108
+	.word	0,0
+.L390:
+	.word	-1,.L195,.L644-.L195,.L645-.L195
+	.half	1
+	.byte	88
+	.word	.L653-.L195,.L384-.L195
+	.half	1
+	.byte	88
+	.word	0,0
+.L391:
+	.word	-1,.L195,.L646-.L195,.L384-.L195
+	.half	1
+	.byte	91
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_perform_phase_calibration')
+	.sect	'.debug_loc'
+.L470:
+	.word	-1,.L231,0,.L924-.L231
+	.half	1
+	.byte	100
+	.word	.L927-.L231,.L469-.L231
+	.half	1
+	.byte	111
+	.word	.L934-.L231,.L178-.L231
+	.half	1
+	.byte	100
+	.word	.L935-.L231,.L936-.L231
+	.half	1
+	.byte	100
+	.word	.L940-.L231,.L941-.L231
+	.half	1
+	.byte	100
+	.word	0,0
+.L479:
+	.word	-1,.L231,.L933-.L231,.L469-.L231
+	.half	1
+	.byte	91
+	.word	.L938-.L231,.L936-.L231
+	.half	1
+	.byte	86
+	.word	0,0
+.L477:
+	.word	-1,.L231,.L931-.L231,.L469-.L231
+	.half	1
+	.byte	89
+	.word	.L942-.L231,.L941-.L231
+	.half	1
+	.byte	85
+	.word	0,0
+.L476:
+	.word	-1,.L231,.L924-.L231,.L469-.L231
+	.half	1
+	.byte	82
+	.word	0,0
+.L230:
+	.word	-1,.L231,0,.L923-.L231
+	.half	2
+	.byte	138,0
+	.word	.L923-.L231,.L469-.L231
+	.half	2
+	.byte	138,8
+	.word	.L469-.L231,.L469-.L231
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L478:
+	.word	-1,.L231,.L932-.L231,.L469-.L231
+	.half	1
+	.byte	90
+	.word	.L937-.L231,.L936-.L231
+	.half	1
+	.byte	85
+	.word	0,0
+.L480:
+	.word	-1,.L231,0,.L469-.L231
+	.half	2
+	.byte	145,124
+	.word	0,0
+.L473:
+	.word	-1,.L231,0,.L925-.L231
+	.half	1
+	.byte	84
+	.word	.L929-.L231,.L469-.L231
+	.half	1
+	.byte	88
+	.word	0,0
+.L471:
+	.word	-1,.L231,0,.L924-.L231
+	.half	1
+	.byte	101
+	.word	.L928-.L231,.L469-.L231
+	.half	1
+	.byte	108
+	.word	.L939-.L231,.L936-.L231
+	.half	1
+	.byte	102
+	.word	0,0
+.L475:
+	.word	-1,.L231,0,.L926-.L231
+	.half	1
+	.byte	85
+	.word	.L930-.L231,.L469-.L231
+	.half	1
+	.byte	95
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_perform_ref_calibration')
+	.sect	'.debug_loc'
+.L482:
+	.word	-1,.L233,0,.L943-.L233
+	.half	1
+	.byte	100
+	.word	.L944-.L233,.L481-.L233
+	.half	1
+	.byte	111
+	.word	.L948-.L233,.L186-.L233
+	.half	1
+	.byte	100
+	.word	.L951-.L233,.L952-.L233
+	.half	1
+	.byte	100
+	.word	0,0
+.L487:
+	.word	-1,.L233,.L947-.L233,.L481-.L233
+	.half	1
+	.byte	88
+	.word	.L953-.L233,.L952-.L233
+	.half	1
+	.byte	85
+	.word	0,0
+.L486:
+	.word	-1,.L233,.L943-.L233,.L481-.L233
+	.half	1
+	.byte	82
+	.word	0,0
+.L232:
+	.word	-1,.L233,0,.L481-.L233
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L485:
+	.word	-1,.L233,0,.L943-.L233
+	.half	1
+	.byte	84
+	.word	.L946-.L233,.L481-.L233
+	.half	1
+	.byte	95
+	.word	.L950-.L233,.L186-.L233
+	.half	1
+	.byte	84
+	.word	0,0
+.L484:
+	.word	-1,.L233,0,.L943-.L233
+	.half	1
+	.byte	102
+	.word	.L945-.L233,.L481-.L233
+	.half	1
+	.byte	108
+	.word	.L949-.L233,.L186-.L233
+	.half	1
+	.byte	101
+	.word	0,0
+.L483:
+	.word	-1,.L233,0,.L943-.L233
+	.half	1
+	.byte	101
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_perform_ref_spad_management')
+	.sect	'.debug_loc'
+.L421:
+	.word	-1,.L219,0,.L758-.L219
+	.half	1
+	.byte	100
+	.word	.L759-.L219,.L420-.L219
+	.half	1
+	.byte	108
+	.word	.L779-.L219,.L778-.L219
+	.half	1
+	.byte	100
+	.word	.L781-.L219,.L780-.L219
+	.half	1
+	.byte	100
+	.word	.L783-.L219,.L782-.L219
+	.half	1
+	.byte	100
+	.word	.L785-.L219,.L784-.L219
+	.half	1
+	.byte	100
+	.word	.L788-.L219,.L787-.L219
+	.half	1
+	.byte	100
+	.word	.L790-.L219,.L789-.L219
+	.half	1
+	.byte	100
+	.word	.L793-.L219,.L791-.L219
+	.half	1
+	.byte	100
+	.word	.L796-.L219,.L795-.L219
+	.half	1
+	.byte	100
+	.word	.L801-.L219,.L802-.L219
+	.half	1
+	.byte	100
+	.word	.L806-.L219,.L805-.L219
+	.half	1
+	.byte	100
+	.word	.L817-.L219,.L816-.L219
+	.half	1
+	.byte	100
+	.word	.L819-.L219,.L818-.L219
+	.half	1
+	.byte	100
+	.word	.L824-.L219,.L822-.L219
+	.half	1
+	.byte	100
+	.word	0,0
+.L444:
+	.word	-1,.L219,0,.L420-.L219
+	.half	2
+	.byte	145,117
+	.word	0,0
+.L426:
+	.word	-1,.L219,.L758-.L219,.L102-.L219
+	.half	1
+	.byte	82
+	.word	.L777-.L219,.L778-.L219
+	.half	1
+	.byte	95
+	.word	.L102-.L219,.L780-.L219
+	.half	1
+	.byte	95
+	.word	.L780-.L219,.L103-.L219
+	.half	1
+	.byte	82
+	.word	.L103-.L219,.L782-.L219
+	.half	1
+	.byte	95
+	.word	.L782-.L219,.L104-.L219
+	.half	1
+	.byte	82
+	.word	.L104-.L219,.L784-.L219
+	.half	1
+	.byte	95
+	.word	.L784-.L219,.L105-.L219
+	.half	1
+	.byte	82
+	.word	.L105-.L219,.L787-.L219
+	.half	1
+	.byte	95
+	.word	.L787-.L219,.L106-.L219
+	.half	1
+	.byte	82
+	.word	.L106-.L219,.L789-.L219
+	.half	1
+	.byte	95
+	.word	.L789-.L219,.L107-.L219
+	.half	1
+	.byte	82
+	.word	.L107-.L219,.L791-.L219
+	.half	1
+	.byte	95
+	.word	.L791-.L219,.L108-.L219
+	.half	1
+	.byte	82
+	.word	.L108-.L219,.L795-.L219
+	.half	1
+	.byte	95
+	.word	.L795-.L219,.L115-.L219
+	.half	1
+	.byte	82
+	.word	.L797-.L219,.L798-.L219
+	.half	1
+	.byte	95
+	.word	.L802-.L219,.L117-.L219
+	.half	1
+	.byte	82
+	.word	.L804-.L219,.L805-.L219
+	.half	1
+	.byte	95
+	.word	.L807-.L219,.L808-.L219
+	.half	1
+	.byte	95
+	.word	.L110-.L219,.L109-.L219
+	.half	1
+	.byte	82
+	.word	.L808-.L219,.L129-.L219
+	.half	1
+	.byte	82
+	.word	.L815-.L219,.L816-.L219
+	.half	1
+	.byte	95
+	.word	.L129-.L219,.L818-.L219
+	.half	1
+	.byte	95
+	.word	.L818-.L219,.L820-.L219
+	.half	1
+	.byte	82
+	.word	.L821-.L219,.L822-.L219
+	.half	1
+	.byte	95
+	.word	.L825-.L219,.L420-.L219
+	.half	1
+	.byte	95
+	.word	.L134-.L219,.L123-.L219
+	.half	1
+	.byte	82
+	.word	.L830-.L219,.L420-.L219
+	.half	1
+	.byte	82
+	.word	0,0
+.L218:
+	.word	-1,.L219,0,.L757-.L219
+	.half	2
+	.byte	138,0
+	.word	.L757-.L219,.L420-.L219
+	.half	2
+	.byte	138,32
+	.word	.L420-.L219,.L420-.L219
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L443:
+	.word	-1,.L219,0,.L420-.L219
+	.half	2
+	.byte	145,116
+	.word	0,0
+.L442:
+	.word	-1,.L219,.L766-.L219,.L121-.L219
+	.half	1
+	.byte	90
+	.word	0,0
+.L432:
+	.word	-1,.L219,.L767-.L219,.L420-.L219
+	.half	1
+	.byte	91
+	.word	0,0
+.L438:
+	.word	-1,.L219,.L774-.L219,.L777-.L219
+	.half	1
+	.byte	95
+	.word	.L798-.L219,.L799-.L219
+	.half	1
+	.byte	95
+	.word	0,0
+.L425:
+	.word	-1,.L219,0,.L758-.L219
+	.half	1
+	.byte	102
+	.word	.L761-.L219,.L420-.L219
+	.half	1
+	.byte	110
+	.word	0,0
+.L446:
+	.word	-1,.L219,.L773-.L219,.L774-.L219
+	.half	1
+	.byte	95
+	.word	.L775-.L219,.L420-.L219
+	.half	2
+	.byte	145,124
+	.word	.L809-.L219,.L117-.L219
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L828-.L219,.L829-.L219
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L441:
+	.word	-1,.L219,.L764-.L219,.L121-.L219
+	.half	1
+	.byte	89
+	.word	0,0
+.L428:
+	.word	-1,.L219,0,.L420-.L219
+	.half	2
+	.byte	145,100
+	.word	0,0
+.L433:
+	.word	-1,.L219,0,.L420-.L219
+	.half	2
+	.byte	145,106
+	.word	0,0
+.L431:
+	.word	-1,.L219,.L765-.L219,.L766-.L219
+	.half	1
+	.byte	90
+	.word	0,0
+.L430:
+	.word	-1,.L219,.L763-.L219,.L764-.L219
+	.half	1
+	.byte	89
+	.word	0,0
+.L437:
+	.word	-1,.L219,.L768-.L219,.L769-.L219
+	.half	1
+	.byte	95
+	.word	.L770-.L219,.L420-.L219
+	.half	2
+	.byte	145,120
+	.word	.L792-.L219,.L791-.L219
+	.half	1
+	.byte	84
+	.word	.L799-.L219,.L800-.L219
+	.half	1
+	.byte	95
+	.word	.L800-.L219,.L802-.L219
+	.half	1
+	.byte	84
+	.word	.L810-.L219,.L109-.L219
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L811-.L219,.L812-.L219
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L814-.L219,.L808-.L219
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L434:
+	.word	-1,.L219,0,.L420-.L219
+	.half	2
+	.byte	145,110
+	.word	0,0
+.L436:
+	.word	-1,.L219,0,.L420-.L219
+	.half	2
+	.byte	145,114
+	.word	0,0
+.L423:
+	.word	-1,.L219,0,.L758-.L219
+	.half	1
+	.byte	101
+	.word	.L760-.L219,.L420-.L219
+	.half	1
+	.byte	109
+	.word	0,0
+.L445:
+	.word	-1,.L219,.L772-.L219,.L420-.L219
+	.half	1
+	.byte	93
+	.word	0,0
+.L440:
+	.word	-1,.L219,.L823-.L219,.L822-.L219
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L134-.L219,.L123-.L219
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L439:
+	.word	-1,.L219,.L771-.L219,.L420-.L219
+	.half	1
+	.byte	92
+	.word	.L794-.L219,.L791-.L219
+	.half	1
+	.byte	85
+	.word	.L803-.L219,.L802-.L219
+	.half	1
+	.byte	85
+	.word	.L813-.L219,.L812-.L219
+	.half	1
+	.byte	84
+	.word	.L826-.L219,.L820-.L219
+	.half	1
+	.byte	84
+	.word	.L827-.L219,.L123-.L219
+	.half	1
+	.byte	84
+	.word	0,0
+.L429:
+	.word	-1,.L219,.L762-.L219,.L420-.L219
+	.half	1
+	.byte	88
+	.word	.L786-.L219,.L784-.L219
+	.half	1
+	.byte	85
+	.word	0,0
+.L435:
+	.word	-1,.L219,.L776-.L219,.L420-.L219
+	.half	1
+	.byte	94
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_perform_single_ref_calibration')
+	.sect	'.debug_loc'
+.L572:
+	.word	-1,.L225,0,.L156-.L225
+	.half	1
+	.byte	100
+	.word	.L864-.L225,.L571-.L225
+	.half	1
+	.byte	111
+	.word	.L866-.L225,.L157-.L225
+	.half	1
+	.byte	100
+	.word	.L867-.L225,.L158-.L225
+	.half	1
+	.byte	100
+	.word	.L868-.L225,.L159-.L225
+	.half	1
+	.byte	100
+	.word	0,0
+.L574:
+	.word	-1,.L225,.L865-.L225,.L571-.L225
+	.half	1
+	.byte	82
+	.word	0,0
+.L224:
+	.word	-1,.L225,0,.L571-.L225
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L573:
+	.word	-1,.L225,0,.L863-.L225
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_perform_vhv_calibration')
+	.sect	'.debug_loc'
+.L589:
+	.word	-1,.L229,0,.L904-.L229
+	.half	1
+	.byte	100
+	.word	.L907-.L229,.L588-.L229
+	.half	1
+	.byte	111
+	.word	.L914-.L229,.L169-.L229
+	.half	1
+	.byte	100
+	.word	.L915-.L229,.L916-.L229
+	.half	1
+	.byte	100
+	.word	.L920-.L229,.L921-.L229
+	.half	1
+	.byte	100
+	.word	0,0
+.L598:
+	.word	-1,.L229,.L913-.L229,.L588-.L229
+	.half	1
+	.byte	91
+	.word	.L918-.L229,.L916-.L229
+	.half	1
+	.byte	86
+	.word	0,0
+.L599:
+	.word	-1,.L229,0,.L588-.L229
+	.half	2
+	.byte	145,124
+	.word	0,0
+.L596:
+	.word	-1,.L229,.L911-.L229,.L588-.L229
+	.half	1
+	.byte	89
+	.word	.L922-.L229,.L921-.L229
+	.half	1
+	.byte	85
+	.word	0,0
+.L595:
+	.word	-1,.L229,.L904-.L229,.L588-.L229
+	.half	1
+	.byte	82
+	.word	0,0
+.L228:
+	.word	-1,.L229,0,.L903-.L229
+	.half	2
+	.byte	138,0
+	.word	.L903-.L229,.L588-.L229
+	.half	2
+	.byte	138,8
+	.word	.L588-.L229,.L588-.L229
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L597:
+	.word	-1,.L229,.L912-.L229,.L588-.L229
+	.half	1
+	.byte	90
+	.word	.L917-.L229,.L916-.L229
+	.half	1
+	.byte	85
+	.word	0,0
+.L592:
+	.word	-1,.L229,0,.L905-.L229
+	.half	1
+	.byte	84
+	.word	.L909-.L229,.L588-.L229
+	.half	1
+	.byte	88
+	.word	0,0
+.L590:
+	.word	-1,.L229,0,.L904-.L229
+	.half	1
+	.byte	101
+	.word	.L908-.L229,.L588-.L229
+	.half	1
+	.byte	108
+	.word	.L919-.L229,.L916-.L229
+	.half	1
+	.byte	101
+	.word	0,0
+.L594:
+	.word	-1,.L229,0,.L906-.L229
+	.half	1
+	.byte	85
+	.word	.L910-.L229,.L588-.L229
+	.half	1
+	.byte	95
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_perform_xtalk_calibration')
+	.sect	'.debug_loc'
+.L362:
+	.word	-1,.L193,0,.L3-.L193
+	.half	1
+	.byte	100
+	.word	.L603-.L193,.L360-.L193
+	.half	1
+	.byte	111
+	.word	.L614-.L193,.L4-.L193
+	.half	1
+	.byte	100
+	.word	.L616-.L193,.L617-.L193
+	.half	1
+	.byte	100
+	.word	.L634-.L193,.L17-.L193
+	.half	1
+	.byte	100
+	.word	.L635-.L193,.L12-.L193
+	.half	1
+	.byte	100
+	.word	0,0
+.L376:
+	.word	-1,.L193,0,.L360-.L193
+	.half	2
+	.byte	145,96
+	.word	0,0
+.L367:
+	.word	-1,.L193,.L607-.L193,.L360-.L193
+	.half	1
+	.byte	82
+	.word	0,0
+.L192:
+	.word	-1,.L193,0,.L601-.L193
+	.half	2
+	.byte	138,0
+	.word	.L601-.L193,.L360-.L193
+	.half	2
+	.byte	138,32
+	.word	.L360-.L193,.L360-.L193
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L364:
+	.word	-1,.L193,0,.L602-.L193
+	.half	1
+	.byte	84
+	.word	.L604-.L193,.L605-.L193
+	.half	1
+	.byte	92
+	.word	0,0
+.L383:
+	.word	-1,.L193,.L628-.L193,.L15-.L193
+	.half	1
+	.byte	95
+	.word	.L16-.L193,.L12-.L193
+	.half	1
+	.byte	95
+	.word	.L636-.L193,.L12-.L193
+	.half	1
+	.byte	84
+	.word	0,0
+.L366:
+	.word	-1,.L193,0,.L3-.L193
+	.half	1
+	.byte	101
+	.word	.L606-.L193,.L360-.L193
+	.half	1
+	.byte	108
+	.word	0,0
+.L380:
+	.word	-1,.L193,.L632-.L193,.L633-.L193
+	.half	1
+	.byte	84
+	.word	0,0
+.L369:
+	.word	-1,.L193,.L608-.L193,.L609-.L193
+	.half	1
+	.byte	88
+	.word	.L618-.L193,.L360-.L193
+	.half	1
+	.byte	88
+	.word	0,0
+.L371:
+	.word	-1,.L193,.L612-.L193,.L360-.L193
+	.half	1
+	.byte	91
+	.word	0,0
+.L370:
+	.word	-1,.L193,.L610-.L193,.L611-.L193
+	.half	1
+	.byte	90
+	.word	.L619-.L193,.L360-.L193
+	.half	1
+	.byte	90
+	.word	0,0
+.L372:
+	.word	-1,.L193,.L613-.L193,.L360-.L193
+	.half	1
+	.byte	89
+	.word	0,0
+.L382:
+	.word	-1,.L193,.L627-.L193,.L628-.L193
+	.half	1
+	.byte	95
+	.word	.L15-.L193,.L629-.L193
+	.half	1
+	.byte	95
+	.word	.L630-.L193,.L631-.L193
+	.half	1
+	.byte	95
+	.word	0,0
+.L378:
+	.word	-1,.L193,.L622-.L193,.L623-.L193
+	.half	1
+	.byte	86
+	.word	0,0
+.L379:
+	.word	-1,.L193,.L624-.L193,.L625-.L193
+	.half	1
+	.byte	84
+	.word	0,0
+.L381:
+	.word	-1,.L193,.L626-.L193,.L17-.L193
+	.half	1
+	.byte	83
+	.word	0,0
+.L377:
+	.word	-1,.L193,.L620-.L193,.L621-.L193
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L374:
+	.word	-1,.L193,.L615-.L193,.L5-.L193
+	.half	1
+	.byte	93
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_ref_calibration_io')
+	.sect	'.debug_loc'
+.L576:
+	.word	-1,.L227,0,.L870-.L227
+	.half	1
+	.byte	100
+	.word	.L873-.L227,.L575-.L227
+	.half	1
+	.byte	111
+	.word	.L882-.L227,.L883-.L227
+	.half	1
+	.byte	100
+	.word	.L884-.L227,.L885-.L227
+	.half	1
+	.byte	100
+	.word	.L886-.L227,.L887-.L227
+	.half	1
+	.byte	100
+	.word	.L889-.L227,.L890-.L227
+	.half	1
+	.byte	100
+	.word	.L891-.L227,.L892-.L227
+	.half	1
+	.byte	100
+	.word	.L894-.L227,.L895-.L227
+	.half	1
+	.byte	100
+	.word	.L897-.L227,.L898-.L227
+	.half	1
+	.byte	100
+	.word	.L899-.L227,.L900-.L227
+	.half	1
+	.byte	100
+	.word	.L901-.L227,.L902-.L227
+	.half	1
+	.byte	100
+	.word	0,0
+.L579:
+	.word	-1,.L227,0,.L870-.L227
+	.half	1
+	.byte	86
+	.word	.L894-.L227,.L896-.L227
+	.half	1
+	.byte	91
+	.word	.L896-.L227,.L895-.L227
+	.half	1
+	.byte	86
+	.word	0,0
+.L587:
+	.word	-1,.L227,0,.L575-.L227
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L586:
+	.word	-1,.L227,.L880-.L227,.L881-.L227
+	.half	1
+	.byte	88
+	.word	.L902-.L227,.L575-.L227
+	.half	1
+	.byte	82
+	.word	0,0
+.L226:
+	.word	-1,.L227,0,.L869-.L227
+	.half	2
+	.byte	138,0
+	.word	.L869-.L227,.L575-.L227
+	.half	2
+	.byte	138,8
+	.word	.L575-.L227,.L575-.L227
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L578:
+	.word	-1,.L227,0,.L871-.L227
+	.half	1
+	.byte	85
+	.word	.L891-.L227,.L893-.L227
+	.half	1
+	.byte	90
+	.word	.L893-.L227,.L892-.L227
+	.half	1
+	.byte	85
+	.word	0,0
+.L581:
+	.word	-1,.L227,0,.L870-.L227
+	.half	1
+	.byte	102
+	.word	.L876-.L227,.L575-.L227
+	.half	1
+	.byte	109
+	.word	0,0
+.L580:
+	.word	-1,.L227,0,.L870-.L227
+	.half	1
+	.byte	101
+	.word	.L875-.L227,.L575-.L227
+	.half	1
+	.byte	108
+	.word	.L888-.L227,.L887-.L227
+	.half	1
+	.byte	101
+	.word	0,0
+.L585:
+	.word	-1,.L227,0,.L575-.L227
+	.half	2
+	.byte	145,0
+	.word	.L879-.L227,.L575-.L227
+	.half	1
+	.byte	92
+	.word	0,0
+.L577:
+	.word	-1,.L227,0,.L872-.L227
+	.half	1
+	.byte	84
+	.word	.L874-.L227,.L575-.L227
+	.half	1
+	.byte	89
+	.word	0,0
+.L583:
+	.word	-1,.L227,0,.L870-.L227
+	.half	1
+	.byte	87
+	.word	.L877-.L227,.L878-.L227
+	.half	1
+	.byte	95
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_set_offset_calibration_data_micro_meter')
+	.sect	'.debug_loc'
+.L400:
+	.word	-1,.L197,0,.L661-.L197
+	.half	1
+	.byte	100
+	.word	0,0
+.L401:
+	.word	-1,.L197,0,.L662-.L197
+	.half	1
+	.byte	84
+	.word	0,0
+.L402:
+	.word	-1,.L197,.L661-.L197,.L399-.L197
+	.half	1
+	.byte	82
+	.word	0,0
+.L196:
+	.word	-1,.L197,0,.L399-.L197
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L403:
+	.word	-1,.L197,.L663-.L197,.L664-.L197
+	.half	1
+	.byte	95
+	.word	.L40-.L197,.L668-.L197
+	.half	1
+	.byte	95
+	.word	0,0
+.L404:
+	.word	-1,.L197,.L665-.L197,.L666-.L197
+	.half	1
+	.byte	81
+	.word	.L40-.L197,.L41-.L197
+	.half	1
+	.byte	81
+	.word	0,0
+.L406:
+	.word	-1,.L197,.L667-.L197,.L666-.L197
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L40-.L197,.L41-.L197
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L407:
+	.word	-1,.L197,.L666-.L197,.L40-.L197
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L669-.L197,.L661-.L197
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_set_ref_calibration')
+	.sect	'.debug_loc'
+.L489:
+	.word	-1,.L235,0,.L955-.L235
+	.half	1
+	.byte	100
+	.word	0,0
+.L491:
+	.word	-1,.L235,0,.L956-.L235
+	.half	1
+	.byte	85
+	.word	.L959-.L235,.L955-.L235
+	.half	1
+	.byte	86
+	.word	0,0
+.L492:
+	.word	-1,.L235,.L955-.L235,.L488-.L235
+	.half	1
+	.byte	82
+	.word	0,0
+.L234:
+	.word	-1,.L235,0,.L954-.L235
+	.half	2
+	.byte	138,0
+	.word	.L954-.L235,.L488-.L235
+	.half	2
+	.byte	138,8
+	.word	.L488-.L235,.L488-.L235
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L490:
+	.word	-1,.L235,0,.L957-.L235
+	.half	1
+	.byte	84
+	.word	.L958-.L235,.L488-.L235
+	.half	1
+	.byte	95
+	.word	.L956-.L235,.L955-.L235
+	.half	1
+	.byte	85
+	.word	0,0
+.L494:
+	.word	-1,.L235,0,.L488-.L235
+	.half	2
+	.byte	145,125
+	.word	0,0
+.L493:
+	.word	-1,.L235,0,.L488-.L235
+	.half	2
+	.byte	145,124
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_set_reference_spads')
+	.sect	'.debug_loc'
+.L448:
+	.word	-1,.L221,0,.L832-.L221
+	.half	1
+	.byte	100
+	.word	.L835-.L221,.L447-.L221
+	.half	1
+	.byte	111
+	.word	.L843-.L221,.L139-.L221
+	.half	1
+	.byte	100
+	.word	.L844-.L221,.L140-.L221
+	.half	1
+	.byte	100
+	.word	.L845-.L221,.L141-.L221
+	.half	1
+	.byte	100
+	.word	.L846-.L221,.L142-.L221
+	.half	1
+	.byte	100
+	.word	.L849-.L221,.L850-.L221
+	.half	1
+	.byte	100
+	.word	0,0
+.L451:
+	.word	-1,.L221,.L832-.L221,.L142-.L221
+	.half	1
+	.byte	82
+	.word	.L850-.L221,.L447-.L221
+	.half	1
+	.byte	82
+	.word	0,0
+.L220:
+	.word	-1,.L221,0,.L831-.L221
+	.half	2
+	.byte	138,0
+	.word	.L831-.L221,.L447-.L221
+	.half	2
+	.byte	138,8
+	.word	.L447-.L221,.L447-.L221
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L449:
+	.word	-1,.L221,0,.L833-.L221
+	.half	1
+	.byte	84
+	.word	.L836-.L221,.L447-.L221
+	.half	1
+	.byte	91
+	.word	0,0
+.L452:
+	.word	-1,.L221,.L838-.L221,.L447-.L221
+	.half	1
+	.byte	88
+	.word	0,0
+.L457:
+	.word	-1,.L221,.L848-.L221,.L147-.L221
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L450:
+	.word	-1,.L221,0,.L834-.L221
+	.half	1
+	.byte	85
+	.word	.L837-.L221,.L447-.L221
+	.half	1
+	.byte	92
+	.word	0,0
+.L456:
+	.word	-1,.L221,0,.L447-.L221
+	.half	2
+	.byte	145,124
+	.word	0,0
+.L455:
+	.word	-1,.L221,.L842-.L221,.L447-.L221
+	.half	1
+	.byte	90
+	.word	0,0
+.L454:
+	.word	-1,.L221,.L841-.L221,.L447-.L221
+	.half	1
+	.byte	89
+	.word	0,0
+.L453:
+	.word	-1,.L221,.L839-.L221,.L840-.L221
+	.half	1
+	.byte	95
+	.word	.L847-.L221,.L142-.L221
+	.half	1
+	.byte	85
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('count_enabled_spads')
+	.sect	'.debug_loc'
+.L537:
+	.word	-1,.L209,.L715-.L209,.L65-.L209
+	.half	1
+	.byte	84
+	.word	.L713-.L209,.L526-.L209
+	.half	1
+	.byte	81
+	.word	0,0
+.L528:
+	.word	-1,.L209,0,.L66-.L209
+	.half	1
+	.byte	84
+	.word	0,0
+.L536:
+	.word	-1,.L209,.L712-.L209,.L713-.L209
+	.half	1
+	.byte	81
+	.word	0,0
+.L533:
+	.word	-1,.L209,.L705-.L209,.L706-.L209
+	.half	1
+	.byte	95
+	.word	0,0
+.L208:
+	.word	-1,.L209,0,.L526-.L209
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L535:
+	.word	-1,.L209,.L711-.L209,.L526-.L209
+	.half	1
+	.byte	87
+	.word	0,0
+.L534:
+	.word	-1,.L209,.L709-.L209,.L710-.L209
+	.half	1
+	.byte	82
+	.word	0,0
+.L529:
+	.word	-1,.L209,0,.L66-.L209
+	.half	1
+	.byte	85
+	.word	0,0
+.L531:
+	.word	-1,.L209,0,.L526-.L209
+	.half	1
+	.byte	102
+	.word	0,0
+.L530:
+	.word	-1,.L209,0,.L526-.L209
+	.half	1
+	.byte	101
+	.word	0,0
+.L527:
+	.word	-1,.L209,0,.L526-.L209
+	.half	1
+	.byte	100
+	.word	0,0
+.L539:
+	.word	-1,.L209,.L707-.L209,.L708-.L209
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L69-.L209,.L74-.L209
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L532:
+	.word	-1,.L209,.L704-.L209,.L526-.L209
+	.half	1
+	.byte	88
+	.word	.L710-.L209,.L526-.L209
+	.half	1
+	.byte	82
+	.word	0,0
+.L538:
+	.word	-1,.L209,.L714-.L209,.L65-.L209
+	.half	1
+	.byte	95
+	.word	.L716-.L209,.L526-.L209
+	.half	1
+	.byte	95
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('enable_ref_spads')
+	.sect	'.debug_loc'
+.L549:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	100
+	.word	.L720-.L215,.L88-.L215
+	.half	1
+	.byte	111
+	.word	.L736-.L215,.L729-.L215
+	.half	1
+	.byte	100
+	.word	.L739-.L215,.L738-.L215
+	.half	1
+	.byte	100
+	.word	0,0
+.L550:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	84
+	.word	.L721-.L215,.L548-.L215
+	.half	1
+	.byte	88
+	.word	0,0
+.L563:
+	.word	-1,.L215,0,.L548-.L215
+	.half	2
+	.byte	145,116
+	.word	0,0
+.L562:
+	.word	-1,.L215,.L730-.L215,.L548-.L215
+	.half	1
+	.byte	93
+	.word	0,0
+.L214:
+	.word	-1,.L215,0,.L719-.L215
+	.half	2
+	.byte	138,0
+	.word	.L719-.L215,.L548-.L215
+	.half	2
+	.byte	138,16
+	.word	.L548-.L215,.L548-.L215
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L551:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	101
+	.word	.L722-.L215,.L548-.L215
+	.half	1
+	.byte	108
+	.word	.L732-.L215,.L733-.L215
+	.half	1
+	.byte	100
+	.word	0,0
+.L560:
+	.word	-1,.L215,.L742-.L215,.L86-.L215
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L559:
+	.word	-1,.L215,.L731-.L215,.L548-.L215
+	.half	1
+	.byte	94
+	.word	0,0
+.L557:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	103
+	.word	.L727-.L215,.L548-.L215
+	.half	1
+	.byte	109
+	.word	0,0
+.L561:
+	.word	-1,.L215,0,.L548-.L215
+	.half	2
+	.byte	145,112
+	.word	0,0
+.L555:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	87
+	.word	0,0
+.L553:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	85
+	.word	.L724-.L215,.L548-.L215
+	.half	1
+	.byte	89
+	.word	0,0
+.L552:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	102
+	.word	.L723-.L215,.L548-.L215
+	.half	1
+	.byte	110
+	.word	.L734-.L215,.L735-.L215
+	.half	1
+	.byte	100
+	.word	.L737-.L215,.L729-.L215
+	.half	1
+	.byte	101
+	.word	0,0
+.L556:
+	.word	-1,.L215,0,.L548-.L215
+	.half	2
+	.byte	145,0
+	.word	0,.L548-.L215
+	.half	2
+	.byte	145,0
+	.word	.L726-.L215,.L548-.L215
+	.half	1
+	.byte	91
+	.word	0,0
+.L554:
+	.word	-1,.L215,0,.L80-.L215
+	.half	1
+	.byte	86
+	.word	.L725-.L215,.L548-.L215
+	.half	1
+	.byte	90
+	.word	0,0
+.L558:
+	.word	-1,.L215,.L728-.L215,.L729-.L215
+	.half	1
+	.byte	92
+	.word	.L729-.L215,.L85-.L215
+	.half	1
+	.byte	82
+	.word	.L85-.L215,.L738-.L215
+	.half	1
+	.byte	92
+	.word	.L738-.L215,.L740-.L215
+	.half	1
+	.byte	82
+	.word	.L741-.L215,.L548-.L215
+	.half	1
+	.byte	92
+	.word	.L89-.L215,.L86-.L215
+	.half	1
+	.byte	82
+	.word	.L743-.L215,.L548-.L215
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('enable_spad_bit')
+	.sect	'.debug_loc'
+.L523:
+	.word	-1,.L207,.L699-.L207,.L700-.L207
+	.half	1
+	.byte	95
+	.word	0,0
+.L524:
+	.word	-1,.L207,.L701-.L207,.L702-.L207
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L206:
+	.word	-1,.L207,0,.L518-.L207
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L525:
+	.word	-1,.L207,.L703-.L207,.L518-.L207
+	.half	1
+	.byte	87
+	.word	0,0
+.L520:
+	.word	-1,.L207,0,.L518-.L207
+	.half	1
+	.byte	84
+	.word	0,0
+.L519:
+	.word	-1,.L207,0,.L518-.L207
+	.half	1
+	.byte	100
+	.word	0,0
+.L521:
+	.word	-1,.L207,0,.L518-.L207
+	.half	1
+	.byte	85
+	.word	0,0
+.L522:
+	.word	-1,.L207,.L698-.L207,.L518-.L207
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('get_next_good_spad')
+	.sect	'.debug_loc'
+.L509:
+	.word	-1,.L203,.L685-.L203,.L502-.L203
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L510:
+	.word	-1,.L203,.L689-.L203,.L502-.L203
+	.half	1
+	.byte	95
+	.word	0,0
+.L505:
+	.word	-1,.L203,0,.L502-.L203
+	.half	1
+	.byte	85
+	.word	0,0
+.L512:
+	.word	-1,.L203,.L692-.L203,.L51-.L203
+	.half	1
+	.byte	83
+	.word	0,0
+.L511:
+	.word	-1,.L203,.L690-.L203,.L691-.L203
+	.half	1
+	.byte	82
+	.word	.L53-.L203,.L695-.L203
+	.half	1
+	.byte	82
+	.word	.L56-.L203,.L57-.L203
+	.half	1
+	.byte	82
+	.word	0,0
+.L508:
+	.word	-1,.L203,.L688-.L203,.L52-.L203
+	.half	1
+	.byte	89
+	.word	.L693-.L203,.L691-.L203
+	.half	1
+	.byte	89
+	.word	.L691-.L203,.L53-.L203
+	.half	1
+	.byte	82
+	.word	.L694-.L203,.L53-.L203
+	.half	1
+	.byte	89
+	.word	0,0
+.L202:
+	.word	-1,.L203,0,.L502-.L203
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L503:
+	.word	-1,.L203,0,.L502-.L203
+	.half	1
+	.byte	100
+	.word	0,0
+.L506:
+	.word	-1,.L203,0,.L502-.L203
+	.half	1
+	.byte	101
+	.word	0,0
+.L504:
+	.word	-1,.L203,0,.L502-.L203
+	.half	1
+	.byte	84
+	.word	0,0
+.L507:
+	.word	-1,.L203,.L687-.L203,.L502-.L203
+	.half	1
+	.byte	86
+	.word	0,0
+.L513:
+	.word	-1,.L203,.L686-.L203,.L502-.L203
+	.half	1
+	.byte	81
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('get_ref_spad_map')
+	.sect	'.debug_loc'
+.L545:
+	.word	-1,.L213,0,.L718-.L213
+	.half	1
+	.byte	100
+	.word	0,0
+.L212:
+	.word	-1,.L213,0,.L544-.L213
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L546:
+	.word	-1,.L213,0,.L718-.L213
+	.half	1
+	.byte	101
+	.word	0,0
+.L547:
+	.word	-1,.L213,.L718-.L213,.L544-.L213
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('is_aperture')
+	.sect	'.debug_loc'
+.L517:
+	.word	-1,.L205,.L697-.L205,.L514-.L205
+	.half	1
+	.byte	82
+	.word	0,0
+.L204:
+	.word	-1,.L205,0,.L514-.L205
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L516:
+	.word	-1,.L205,.L697-.L205,.L514-.L205
+	.half	1
+	.byte	84
+	.word	0,0
+.L515:
+	.word	-1,.L205,0,.L696-.L205
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('perform_ref_signal_measurement')
+	.sect	'.debug_loc'
+.L565:
+	.word	-1,.L217,0,.L92-.L217
+	.half	1
+	.byte	100
+	.word	.L745-.L217,.L564-.L217
+	.half	1
+	.byte	111
+	.word	.L749-.L217,.L93-.L217
+	.half	1
+	.byte	100
+	.word	.L750-.L217,.L94-.L217
+	.half	1
+	.byte	100
+	.word	.L751-.L217,.L95-.L217
+	.half	1
+	.byte	100
+	.word	.L753-.L217,.L96-.L217
+	.half	1
+	.byte	100
+	.word	.L754-.L217,.L755-.L217
+	.half	1
+	.byte	100
+	.word	0,0
+.L570:
+	.word	-1,.L217,.L748-.L217,.L564-.L217
+	.half	1
+	.byte	95
+	.word	.L756-.L217,.L755-.L217
+	.half	1
+	.byte	85
+	.word	0,0
+.L216:
+	.word	-1,.L217,0,.L744-.L217
+	.half	2
+	.byte	138,0
+	.word	.L744-.L217,.L564-.L217
+	.half	2
+	.byte	138,32
+	.word	.L564-.L217,.L564-.L217
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L569:
+	.word	-1,.L217,0,.L564-.L217
+	.half	2
+	.byte	145,96
+	.word	0,0
+.L567:
+	.word	-1,.L217,0,.L92-.L217
+	.half	1
+	.byte	101
+	.word	.L746-.L217,.L564-.L217
+	.half	1
+	.byte	108
+	.word	.L752-.L217,.L95-.L217
+	.half	1
+	.byte	101
+	.word	0,0
+.L568:
+	.word	-1,.L217,.L747-.L217,.L564-.L217
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('set_ref_spad_map')
+	.sect	'.debug_loc'
+.L541:
+	.word	-1,.L211,0,.L717-.L211
+	.half	1
+	.byte	100
+	.word	0,0
+.L542:
+	.word	-1,.L211,0,.L717-.L211
+	.half	1
+	.byte	101
+	.word	0,0
+.L210:
+	.word	-1,.L211,0,.L540-.L211
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L543:
+	.word	-1,.L211,.L717-.L211,.L540-.L211
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L1399:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_perform_xtalk_calibration')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L193,.L360-.L193
+	.byte	4
+	.word	(.L601-.L193)/2
+	.byte	19,32,22,26,3,19,138,32,4
+	.word	(.L360-.L601)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_perform_offset_calibration')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L195,.L384-.L195
+	.byte	4
+	.word	(.L637-.L195)/2
+	.byte	19,32,22,26,3,19,138,32,4
+	.word	(.L384-.L637)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_set_offset_calibration_data_micro_meter')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L1399,.L197,.L399-.L197
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_offset_calibration_data_micro_meter')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L199,.L408-.L199
+	.byte	4
+	.word	(.L670-.L199)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L408-.L670)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_apply_offset_adjustment')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L201,.L415-.L201
+	.byte	4
+	.word	(.L677-.L201)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L415-.L677)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('get_next_good_spad')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L1399,.L203,.L502-.L203
+	.byte	8,18,8,19,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('is_aperture')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L1399,.L205,.L514-.L205
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('enable_spad_bit')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L1399,.L207,.L518-.L207
+	.byte	8,19,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('count_enabled_spads')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L1399,.L209,.L526-.L209
+	.byte	8,18,8,19,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('set_ref_spad_map')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L1399,.L211,.L540-.L211
+	.sdecl	'.debug_frame',debug,cluster('get_ref_spad_map')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L1399,.L213,.L544-.L213
+	.sdecl	'.debug_frame',debug,cluster('enable_ref_spads')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L215,.L548-.L215
+	.byte	4
+	.word	(.L719-.L215)/2
+	.byte	19,16,22,26,3,19,138,16,4
+	.word	(.L548-.L719)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('perform_ref_signal_measurement')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L217,.L564-.L217
+	.byte	4
+	.word	(.L744-.L217)/2
+	.byte	19,32,22,26,3,19,138,32,4
+	.word	(.L564-.L744)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_perform_ref_spad_management')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L219,.L420-.L219
+	.byte	4
+	.word	(.L757-.L219)/2
+	.byte	19,32,22,26,3,19,138,32,4
+	.word	(.L420-.L757)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_set_reference_spads')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L221,.L447-.L221
+	.byte	4
+	.word	(.L831-.L221)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L447-.L831)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_reference_spads')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L223,.L458-.L223
+	.byte	4
+	.word	(.L851-.L223)/2
+	.byte	19,16,22,26,3,19,138,16,4
+	.word	(.L458-.L851)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_perform_single_ref_calibration')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L1399,.L225,.L571-.L225
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_ref_calibration_io')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L227,.L575-.L227
+	.byte	4
+	.word	(.L869-.L227)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L575-.L869)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_perform_vhv_calibration')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L229,.L588-.L229
+	.byte	4
+	.word	(.L903-.L229)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L588-.L903)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_perform_phase_calibration')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L231,.L469-.L231
+	.byte	4
+	.word	(.L923-.L231)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L469-.L923)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_perform_ref_calibration')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L1399,.L233,.L481-.L233
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_set_ref_calibration')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L235,.L488-.L235
+	.byte	4
+	.word	(.L954-.L235)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L488-.L954)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_ref_calibration')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L1399,.L237,.L495-.L237
+	.byte	4
+	.word	(.L960-.L237)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L495-.L960)/2
+	.byte	19,0,8,26,0,0
+	; Module end

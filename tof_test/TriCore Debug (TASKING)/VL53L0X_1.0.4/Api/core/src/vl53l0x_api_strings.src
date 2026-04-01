@@ -1,0 +1,3616 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc20388a --dep-file=VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc27xd -D__CPU_TC27XD__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc27xd -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Configurations -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D\\\\_Reg -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service\\\\CpuGeneric -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\CStart -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Trap -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c\\\\I2c -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_Impl -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_PinMap -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4 -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core\\\\inc -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform\\\\inc -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.src ../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c"
+	.compiler_name		"ctc"
+	;source	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_check_part_used',code,cluster('VL53L0X_check_part_used')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_check_part_used'
+	.align	2
+	
+	.global	VL53L0X_check_part_used
+; Function VL53L0X_check_part_used
+.L145:
+VL53L0X_check_part_used:	.type	func
+	mov.aa	a15,a4
+.L250:
+	mov.aa	a12,a5
+.L251:
+	mov.aa	a13,a6
+.L252:
+	mov	d4,#2
+	mov.aa	a4,a15
+	call	VL53L0X_get_info_from_device
+.L249:
+	mov	d8,d2
+.L254:
+	jne	d8,#0,.L2
+.L458:
+	ld.bu	d15,[a15]283
+.L255:
+	jne	d15,#0,.L3
+.L459:
+	mov	d15,#0
+.L256:
+	st.b	[a12],d15
+.L460:
+	lea	a4,[a13]64
+	movh.a	a5,#@his(.1.str)
+	lea	a5,[a5]@los(.1.str)
+	call	strcpy
+.L253:
+	j	.L4
+.L3:
+	ld.bu	d15,[a15]284
+.L257:
+	st.b	[a12],d15
+.L461:
+	lea	a5,[a15]285
+.L258:
+	lea	a4,[a13]64
+	call	strcpy
+.L4:
+.L2:
+	mov	d2,d8
+.L259:
+	j	.L5
+.L5:
+	ret
+.L241:
+	
+__VL53L0X_check_part_used_function_end:
+	.size	VL53L0X_check_part_used,__VL53L0X_check_part_used_function_end-VL53L0X_check_part_used
+.L203:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_get_device_info',code,cluster('VL53L0X_get_device_info')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_device_info'
+	.align	2
+	
+	.global	VL53L0X_get_device_info
+; Function VL53L0X_get_device_info
+.L147:
+VL53L0X_get_device_info:	.type	func
+	sub.a	a10,#8
+.L260:
+	mov.aa	a15,a4
+.L263:
+	mov.aa	a12,a5
+.L264:
+	lea	a5,[a10]1
+.L262:
+	mov.aa	a4,a15
+	mov.aa	a6,a12
+.L265:
+	call	VL53L0X_check_part_used
+.L261:
+	mov	d8,d2
+.L267:
+	jne	d8,#0,.L6
+.L372:
+	ld.bu	d15,[a10]1
+.L373:
+	jne	d15,#0,.L7
+.L374:
+	movh.a	a5,#@his(.2.str)
+	lea	a5,[a5]@los(.2.str)
+	mov.aa	a4,a12
+.L269:
+	call	strcpy
+.L266:
+	j	.L8
+.L7:
+	ld.bu	d0,[a10]1
+.L375:
+	mov	d15,#34
+.L376:
+	jlt.u	d15,d0,.L9
+.L377:
+	ld.bu	d0,[a10]1
+.L378:
+	mov	d15,#32
+.L379:
+	jeq	d15,d0,.L10
+.L380:
+	movh.a	a5,#@his(.3.str)
+	lea	a5,[a5]@los(.3.str)
+	mov.aa	a4,a12
+.L271:
+	call	strcpy
+.L270:
+	j	.L11
+.L10:
+.L9:
+	ld.bu	d0,[a10]1
+.L381:
+	mov	d15,#39
+.L382:
+	jge.u	d0,d15,.L12
+.L383:
+	movh.a	a5,#@his(.4.str)
+	lea	a5,[a5]@los(.4.str)
+	mov.aa	a4,a12
+.L273:
+	call	strcpy
+.L272:
+	j	.L13
+.L12:
+	movh.a	a5,#@his(.5.str)
+	lea	a5,[a5]@los(.5.str)
+	mov.aa	a4,a12
+.L274:
+	call	strcpy
+.L13:
+.L11:
+.L8:
+	lea	a4,[a12]32
+	movh.a	a5,#@his(.6.str)
+	lea	a5,[a5]@los(.6.str)
+	call	strcpy
+.L6:
+	jne	d8,#0,.L14
+.L384:
+	mov	d4,#192
+.L385:
+	lea	a5,[a12]96
+	mov.aa	a4,a15
+.L275:
+	call	VL53L0X_RdByte
+.L268:
+	mov	d8,d2
+.L14:
+	jne	d8,#0,.L15
+.L386:
+	mov	d4,#194
+.L387:
+	lea	a5,[a10]0
+	mov.aa	a4,a15
+.L277:
+	call	VL53L0X_RdByte
+.L276:
+	mov	d8,d2
+.L278:
+	mov	d15,#1
+.L388:
+	st.b	[a12]97,d15
+.L389:
+	ld.bu	d15,[a10]
+.L390:
+	and	d15,#240
+.L391:
+	sha	d15,#-4
+.L392:
+	st.b	[a12]98,d15
+.L15:
+	mov	d2,d8
+.L279:
+	j	.L16
+.L16:
+	ret
+.L205:
+	
+__VL53L0X_get_device_info_function_end:
+	.size	VL53L0X_get_device_info,__VL53L0X_get_device_info_function_end-VL53L0X_get_device_info
+.L168:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_get_device_error_string',code,cluster('VL53L0X_get_device_error_string')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_device_error_string'
+	.align	2
+	
+	.global	VL53L0X_get_device_error_string
+; Function VL53L0X_get_device_error_string
+.L149:
+VL53L0X_get_device_error_string:	.type	func
+	mov	d8,#0
+.L281:
+	mov	d15,#14
+	jlt	d15,d4,.L17
+	mov	d15,#0
+	jlt	d4,d15,.L17
+	sub	d15,d4,d15
+	movh.a	a15,#@his(.65.jmp)
+	lea	a15,[a15]@los(.65.jmp)
+	addsc.a	a15,a15,d15,#2
+	ld.a	a15,[a15]
+	ji	a15
+.L17:
+	j	.L18
+.L280:
+	
+	.sdecl	'.rodata.vl53l0x_api_strings..65.jmp',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..65.jmp'
+	.align	4
+.65.jmp:	.type	object
+	.word	.L19
+	.word	.L20
+	.word	.L21
+	.word	.L22
+	.word	.L23
+	.word	.L24
+	.word	.L25
+	.word	.L26
+	.word	.L27
+	.word	.L28
+	.word	.L29
+	.word	.L30
+	.word	.L31
+	.word	.L32
+	.word	.L33
+	
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_device_error_string'
+.L19:
+	movh.a	a5,#@his(.7.str)
+	lea	a5,[a5]@los(.7.str)
+	call	strcpy
+.L282:
+	j	.L34
+.L20:
+	movh.a	a5,#@his(.8.str)
+	lea	a5,[a5]@los(.8.str)
+	call	strcpy
+.L283:
+	j	.L35
+.L21:
+	movh.a	a5,#@his(.9.str)
+	lea	a5,[a5]@los(.9.str)
+	call	strcpy
+.L284:
+	j	.L36
+.L22:
+	movh.a	a5,#@his(.10.str)
+	lea	a5,[a5]@los(.10.str)
+	call	strcpy
+.L285:
+	j	.L37
+.L23:
+	movh.a	a5,#@his(.11.str)
+	lea	a5,[a5]@los(.11.str)
+	call	strcpy
+.L286:
+	j	.L38
+.L24:
+	movh.a	a5,#@his(.12.str)
+	lea	a5,[a5]@los(.12.str)
+	call	strcpy
+.L287:
+	j	.L39
+.L25:
+	movh.a	a5,#@his(.13.str)
+	lea	a5,[a5]@los(.13.str)
+	call	strcpy
+.L288:
+	j	.L40
+.L26:
+	movh.a	a5,#@his(.14.str)
+	lea	a5,[a5]@los(.14.str)
+	call	strcpy
+.L289:
+	j	.L41
+.L27:
+	movh.a	a5,#@his(.15.str)
+	lea	a5,[a5]@los(.15.str)
+	call	strcpy
+.L290:
+	j	.L42
+.L28:
+	movh.a	a5,#@his(.16.str)
+	lea	a5,[a5]@los(.16.str)
+	call	strcpy
+.L291:
+	j	.L43
+.L29:
+	movh.a	a5,#@his(.17.str)
+	lea	a5,[a5]@los(.17.str)
+	call	strcpy
+.L292:
+	j	.L44
+.L30:
+	movh.a	a5,#@his(.18.str)
+	lea	a5,[a5]@los(.18.str)
+	call	strcpy
+.L293:
+	j	.L45
+.L31:
+	movh.a	a5,#@his(.19.str)
+	lea	a5,[a5]@los(.19.str)
+	call	strcpy
+.L294:
+	j	.L46
+.L32:
+	movh.a	a5,#@his(.20.str)
+	lea	a5,[a5]@los(.20.str)
+	call	strcpy
+.L295:
+	j	.L47
+.L33:
+	movh.a	a5,#@his(.21.str)
+	lea	a5,[a5]@los(.21.str)
+	call	strcpy
+.L296:
+	j	.L48
+.L18:
+	movh.a	a5,#@his(.22.str)
+	lea	a5,[a5]@los(.22.str)
+	call	strcpy
+.L48:
+.L47:
+.L46:
+.L45:
+.L44:
+.L43:
+.L42:
+.L41:
+.L40:
+.L39:
+.L38:
+.L37:
+.L36:
+.L35:
+.L34:
+	mov	d2,d8
+.L297:
+	j	.L49
+.L49:
+	ret
+.L214:
+	
+__VL53L0X_get_device_error_string_function_end:
+	.size	VL53L0X_get_device_error_string,__VL53L0X_get_device_error_string_function_end-VL53L0X_get_device_error_string
+.L173:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_get_range_status_string',code,cluster('VL53L0X_get_range_status_string')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_range_status_string'
+	.align	2
+	
+	.global	VL53L0X_get_range_status_string
+; Function VL53L0X_get_range_status_string
+.L151:
+VL53L0X_get_range_status_string:	.type	func
+	mov	d8,#0
+.L299:
+	mov	d15,#0
+	jeq	d15,d4,.L50
+.L401:
+	mov	d15,#1
+	jeq	d15,d4,.L51
+.L402:
+	mov	d15,#2
+	jeq	d15,d4,.L52
+.L403:
+	mov	d15,#3
+	jeq	d15,d4,.L53
+.L404:
+	mov	d15,#4
+	jeq	d15,d4,.L54
+.L405:
+	mov	d15,#5
+	jeq	d15,d4,.L55
+	j	.L56
+.L50:
+	movh.a	a5,#@his(.23.str)
+	lea	a5,[a5]@los(.23.str)
+	call	strcpy
+.L298:
+	j	.L57
+.L51:
+	movh.a	a5,#@his(.24.str)
+	lea	a5,[a5]@los(.24.str)
+	call	strcpy
+.L300:
+	j	.L58
+.L52:
+	movh.a	a5,#@his(.25.str)
+	lea	a5,[a5]@los(.25.str)
+	call	strcpy
+.L301:
+	j	.L59
+.L53:
+	movh.a	a5,#@his(.26.str)
+	lea	a5,[a5]@los(.26.str)
+	call	strcpy
+.L302:
+	j	.L60
+.L54:
+	movh.a	a5,#@his(.27.str)
+	lea	a5,[a5]@los(.27.str)
+	call	strcpy
+.L303:
+	j	.L61
+.L55:
+	movh.a	a5,#@his(.28.str)
+	lea	a5,[a5]@los(.28.str)
+	call	strcpy
+.L304:
+	j	.L62
+.L56:
+	movh.a	a5,#@his(.7.str)
+	lea	a5,[a5]@los(.7.str)
+	call	strcpy
+.L62:
+.L61:
+.L60:
+.L59:
+.L58:
+.L57:
+	mov	d2,d8
+.L305:
+	j	.L63
+.L63:
+	ret
+.L219:
+	
+__VL53L0X_get_range_status_string_function_end:
+	.size	VL53L0X_get_range_status_string,__VL53L0X_get_range_status_string_function_end-VL53L0X_get_range_status_string
+.L178:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_get_pal_error_string',code,cluster('VL53L0X_get_pal_error_string')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_pal_error_string'
+	.align	2
+	
+	.global	VL53L0X_get_pal_error_string
+; Function VL53L0X_get_pal_error_string
+.L153:
+VL53L0X_get_pal_error_string:	.type	func
+	mov	d8,#0
+.L307:
+	mov	d15,#-99
+	jeq	d15,d4,.L64
+.L410:
+	mov	d15,#-50
+	jeq	d15,d4,.L65
+.L411:
+	mov	d15,#-40
+	jeq	d15,d4,.L66
+.L412:
+	mov	d15,#-30
+	jeq	d15,d4,.L67
+.L413:
+	mov	d15,#-20
+	jeq	d15,d4,.L68
+.L414:
+	mov	d15,#-12
+	jeq	d15,d4,.L69
+.L415:
+	mov	d15,#-11
+	jeq	d15,d4,.L70
+.L416:
+	mov	d15,#-10
+	jeq	d15,d4,.L71
+.L417:
+	mov	d15,#-9
+	jeq	d15,d4,.L72
+.L418:
+	mov	d15,#-8
+	jeq	d15,d4,.L73
+.L419:
+	mov	d15,#-7
+	jeq	d15,d4,.L74
+.L420:
+	mov	d15,#-6
+	jeq	d15,d4,.L75
+.L421:
+	mov	d15,#-5
+	jeq	d15,d4,.L76
+.L422:
+	mov	d15,#-4
+	jeq	d15,d4,.L77
+.L423:
+	mov	d15,#-3
+	jeq	d15,d4,.L78
+.L424:
+	mov	d15,#-2
+	jeq	d15,d4,.L79
+.L425:
+	mov	d15,#-1
+	jeq	d15,d4,.L80
+.L426:
+	mov	d15,#0
+	jeq	d15,d4,.L81
+	j	.L82
+.L81:
+	movh.a	a5,#@his(.29.str)
+	lea	a5,[a5]@los(.29.str)
+	call	strcpy
+.L306:
+	j	.L83
+.L80:
+	movh.a	a5,#@his(.30.str)
+	lea	a5,[a5]@los(.30.str)
+	call	strcpy
+.L308:
+	j	.L84
+.L79:
+	movh.a	a5,#@his(.31.str)
+	lea	a5,[a5]@los(.31.str)
+	call	strcpy
+.L309:
+	j	.L85
+.L78:
+	movh.a	a5,#@his(.32.str)
+	lea	a5,[a5]@los(.32.str)
+	call	strcpy
+.L310:
+	j	.L86
+.L77:
+	movh.a	a5,#@his(.33.str)
+	lea	a5,[a5]@los(.33.str)
+	call	strcpy
+.L311:
+	j	.L87
+.L76:
+	movh.a	a5,#@his(.34.str)
+	lea	a5,[a5]@los(.34.str)
+	call	strcpy
+.L312:
+	j	.L88
+.L69:
+	movh.a	a5,#@his(.35.str)
+	lea	a5,[a5]@los(.35.str)
+	call	strcpy
+.L313:
+	j	.L89
+.L75:
+	movh.a	a5,#@his(.36.str)
+	lea	a5,[a5]@los(.36.str)
+	call	strcpy
+.L314:
+	j	.L90
+.L74:
+	movh.a	a5,#@his(.37.str)
+	lea	a5,[a5]@los(.37.str)
+	call	strcpy
+.L315:
+	j	.L91
+.L73:
+	movh.a	a5,#@his(.38.str)
+	lea	a5,[a5]@los(.38.str)
+	call	strcpy
+.L316:
+	j	.L92
+.L72:
+	movh.a	a5,#@his(.39.str)
+	lea	a5,[a5]@los(.39.str)
+	call	strcpy
+.L317:
+	j	.L93
+.L71:
+	movh.a	a5,#@his(.40.str)
+	lea	a5,[a5]@los(.40.str)
+	call	strcpy
+.L318:
+	j	.L94
+.L70:
+	movh.a	a5,#@his(.41.str)
+	lea	a5,[a5]@los(.41.str)
+	call	strcpy
+.L319:
+	j	.L95
+.L68:
+	movh.a	a5,#@his(.42.str)
+	lea	a5,[a5]@los(.42.str)
+	call	strcpy
+.L320:
+	j	.L96
+.L67:
+	movh.a	a5,#@his(.43.str)
+	lea	a5,[a5]@los(.43.str)
+	call	strcpy
+.L321:
+	j	.L97
+.L66:
+	movh.a	a5,#@his(.44.str)
+	lea	a5,[a5]@los(.44.str)
+	call	strcpy
+.L322:
+	j	.L98
+.L65:
+	movh.a	a5,#@his(.45.str)
+	lea	a5,[a5]@los(.45.str)
+	call	strcpy
+.L323:
+	j	.L99
+.L64:
+	movh.a	a5,#@his(.46.str)
+	lea	a5,[a5]@los(.46.str)
+	call	strcpy
+.L324:
+	j	.L100
+.L82:
+	movh.a	a5,#@his(.22.str)
+	lea	a5,[a5]@los(.22.str)
+	call	strcpy
+.L100:
+.L99:
+.L98:
+.L97:
+.L96:
+.L95:
+.L94:
+.L93:
+.L92:
+.L91:
+.L90:
+.L89:
+.L88:
+.L87:
+.L86:
+.L85:
+.L84:
+.L83:
+	mov	d2,d8
+.L325:
+	j	.L101
+.L101:
+	ret
+.L223:
+	
+__VL53L0X_get_pal_error_string_function_end:
+	.size	VL53L0X_get_pal_error_string,__VL53L0X_get_pal_error_string_function_end-VL53L0X_get_pal_error_string
+.L183:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_get_pal_state_string',code,cluster('VL53L0X_get_pal_state_string')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_pal_state_string'
+	.align	2
+	
+	.global	VL53L0X_get_pal_state_string
+; Function VL53L0X_get_pal_state_string
+.L155:
+VL53L0X_get_pal_state_string:	.type	func
+	mov	d8,#0
+.L327:
+	mov	d15,#0
+	jeq	d15,d4,.L102
+.L431:
+	mov	d15,#1
+	jeq	d15,d4,.L103
+.L432:
+	mov	d15,#2
+	jeq	d15,d4,.L104
+.L433:
+	mov	d15,#3
+	jeq	d15,d4,.L105
+.L434:
+	mov	d15,#4
+	jeq	d15,d4,.L106
+.L435:
+	mov	d15,#98
+	jeq	d15,d4,.L107
+.L436:
+	mov	d15,#99
+	jeq	d15,d4,.L108
+	j	.L109
+.L102:
+	movh.a	a5,#@his(.47.str)
+	lea	a5,[a5]@los(.47.str)
+	call	strcpy
+.L326:
+	j	.L110
+.L103:
+	movh.a	a5,#@his(.48.str)
+	lea	a5,[a5]@los(.48.str)
+	call	strcpy
+.L328:
+	j	.L111
+.L104:
+	movh.a	a5,#@his(.49.str)
+	lea	a5,[a5]@los(.49.str)
+	call	strcpy
+.L329:
+	j	.L112
+.L105:
+	movh.a	a5,#@his(.50.str)
+	lea	a5,[a5]@los(.50.str)
+	call	strcpy
+.L330:
+	j	.L113
+.L106:
+	movh.a	a5,#@his(.51.str)
+	lea	a5,[a5]@los(.51.str)
+	call	strcpy
+.L331:
+	j	.L114
+.L107:
+	movh.a	a5,#@his(.52.str)
+	lea	a5,[a5]@los(.52.str)
+	call	strcpy
+.L332:
+	j	.L115
+.L108:
+	movh.a	a5,#@his(.53.str)
+	lea	a5,[a5]@los(.53.str)
+	call	strcpy
+.L333:
+	j	.L116
+.L109:
+	movh.a	a5,#@his(.52.str)
+	lea	a5,[a5]@los(.52.str)
+	call	strcpy
+.L116:
+.L115:
+.L114:
+.L113:
+.L112:
+.L111:
+.L110:
+	mov	d2,d8
+.L334:
+	j	.L117
+.L117:
+	ret
+.L227:
+	
+__VL53L0X_get_pal_state_string_function_end:
+	.size	VL53L0X_get_pal_state_string,__VL53L0X_get_pal_state_string_function_end-VL53L0X_get_pal_state_string
+.L188:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_get_sequence_steps_info',code,cluster('VL53L0X_get_sequence_steps_info')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_sequence_steps_info'
+	.align	2
+	
+	.global	VL53L0X_get_sequence_steps_info
+; Function VL53L0X_get_sequence_steps_info
+.L157:
+VL53L0X_get_sequence_steps_info:	.type	func
+	mov	d8,#0
+.L336:
+	mov	d15,#0
+	jeq	d15,d4,.L118
+.L441:
+	mov	d15,#1
+	jeq	d15,d4,.L119
+.L442:
+	mov	d15,#2
+	jeq	d15,d4,.L120
+.L443:
+	mov	d15,#3
+	jeq	d15,d4,.L121
+.L444:
+	mov	d15,#4
+	jeq	d15,d4,.L122
+	j	.L123
+.L118:
+	movh.a	a5,#@his(.54.str)
+	lea	a5,[a5]@los(.54.str)
+	call	strcpy
+.L335:
+	j	.L124
+.L119:
+	movh.a	a5,#@his(.55.str)
+	lea	a5,[a5]@los(.55.str)
+	call	strcpy
+.L337:
+	j	.L125
+.L120:
+	movh.a	a5,#@his(.56.str)
+	lea	a5,[a5]@los(.56.str)
+	call	strcpy
+.L338:
+	j	.L126
+.L121:
+	movh.a	a5,#@his(.57.str)
+	lea	a5,[a5]@los(.57.str)
+	call	strcpy
+.L339:
+	j	.L127
+.L122:
+	movh.a	a5,#@his(.58.str)
+	lea	a5,[a5]@los(.58.str)
+	call	strcpy
+.L340:
+	j	.L128
+.L123:
+	mov	d8,#-4
+.L128:
+.L127:
+.L126:
+.L125:
+.L124:
+	mov	d2,d8
+.L341:
+	j	.L129
+.L129:
+	ret
+.L231:
+	
+__VL53L0X_get_sequence_steps_info_function_end:
+	.size	VL53L0X_get_sequence_steps_info,__VL53L0X_get_sequence_steps_info_function_end-VL53L0X_get_sequence_steps_info
+.L193:
+	; End of function
+	
+	.sdecl	'.text.vl53l0x_api_strings.VL53L0X_get_limit_check_info',code,cluster('VL53L0X_get_limit_check_info')
+	.sect	'.text.vl53l0x_api_strings.VL53L0X_get_limit_check_info'
+	.align	2
+	
+	.global	VL53L0X_get_limit_check_info
+; Function VL53L0X_get_limit_check_info
+.L159:
+VL53L0X_get_limit_check_info:	.type	func
+	mov	d8,#0
+.L345:
+	mov	d15,#0
+	jeq	d15,d4,.L130
+.L449:
+	mov	d15,#1
+	jeq	d15,d4,.L131
+.L450:
+	mov	d15,#2
+	jeq	d15,d4,.L132
+.L451:
+	mov	d15,#3
+	jeq	d15,d4,.L133
+.L452:
+	mov	d15,#4
+	jeq	d15,d4,.L134
+.L453:
+	mov	d15,#5
+	jeq	d15,d4,.L135
+	j	.L136
+.L130:
+	movh.a	a15,#@his(.59.str)
+	lea	a15,[a15]@los(.59.str)
+	mov.aa	a4,a5
+.L342:
+	mov.aa	a5,a15
+.L344:
+	call	strcpy
+.L343:
+	j	.L137
+.L131:
+	movh.a	a15,#@his(.60.str)
+	lea	a15,[a15]@los(.60.str)
+	mov.aa	a4,a5
+.L346:
+	mov.aa	a5,a15
+.L348:
+	call	strcpy
+.L347:
+	j	.L138
+.L132:
+	movh.a	a15,#@his(.61.str)
+	lea	a15,[a15]@los(.61.str)
+	mov.aa	a4,a5
+.L349:
+	mov.aa	a5,a15
+.L351:
+	call	strcpy
+.L350:
+	j	.L139
+.L133:
+	movh.a	a15,#@his(.62.str)
+	lea	a15,[a15]@los(.62.str)
+	mov.aa	a4,a5
+.L352:
+	mov.aa	a5,a15
+.L354:
+	call	strcpy
+.L353:
+	j	.L140
+.L134:
+	movh.a	a15,#@his(.63.str)
+	lea	a15,[a15]@los(.63.str)
+	mov.aa	a4,a5
+.L355:
+	mov.aa	a5,a15
+.L357:
+	call	strcpy
+.L356:
+	j	.L141
+.L135:
+	movh.a	a15,#@his(.64.str)
+	lea	a15,[a15]@los(.64.str)
+	mov.aa	a4,a5
+.L358:
+	mov.aa	a5,a15
+.L360:
+	call	strcpy
+.L359:
+	j	.L142
+.L136:
+	movh.a	a15,#@his(.22.str)
+	lea	a15,[a15]@los(.22.str)
+	mov.aa	a4,a5
+.L361:
+	mov.aa	a5,a15
+.L362:
+	call	strcpy
+.L142:
+.L141:
+.L140:
+.L139:
+.L138:
+.L137:
+	mov	d2,d8
+.L363:
+	j	.L143
+.L143:
+	ret
+.L235:
+	
+__VL53L0X_get_limit_check_info_function_end:
+	.size	VL53L0X_get_limit_check_info,__VL53L0X_get_limit_check_info_function_end-VL53L0X_get_limit_check_info
+.L198:
+	; End of function
+	
+	.sdecl	'.rodata.vl53l0x_api_strings..1.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..1.str'
+.1.str:	.type	object
+	.size	.1.str,1
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..2.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..2.str'
+.2.str:	.type	object
+	.size	.2.str,12
+	.byte	86,76,53,51,76,48,88,32
+	.byte	84,83,48
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..3.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..3.str'
+.3.str:	.type	object
+	.size	.3.str,12
+	.byte	86,76,53,51,76,48,88,32
+	.byte	84,83,49
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..4.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..4.str'
+.4.str:	.type	object
+	.size	.4.str,12
+	.byte	86,76,53,51,76,48,88,32
+	.byte	84,83,50
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..5.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..5.str'
+.5.str:	.type	object
+	.size	.5.str,21
+	.byte	86,76,53,51,76,48,88,32
+	.byte	69,83,49,32,111,114,32,108
+	.byte	97,116,101,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..6.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..6.str'
+.6.str:	.type	object
+	.size	.6.str,8
+	.byte	86,76,53,51
+	.byte	76,48,88
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..7.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..7.str'
+.7.str:	.type	object
+	.size	.7.str,10
+	.byte	78,111,32,85,112,100,97,116
+	.byte	101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..8.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..8.str'
+.8.str:	.type	object
+	.size	.8.str,30
+	.byte	86,67,83,69,76,32,67,111
+	.byte	110,116,105,110,117,105,116,121
+	.byte	32,84,101,115,116,32,70,97
+	.byte	105,108,117,114
+	.byte	101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..9.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..9.str'
+.9.str:	.type	object
+	.size	.9.str,28
+	.byte	86,67,83,69,76,32,87,97
+	.byte	116,99,104,100,111,103,32,84
+	.byte	101,115,116,32,70,97,105,108
+	.byte	117,114,101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..10.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..10.str'
+.10.str:	.type	object
+	.size	.10.str,19
+	.byte	78,111,32,86,72,86,32,86
+	.byte	97,108,117,101,32,102,111,117
+	.byte	110,100
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..11.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..11.str'
+.11.str:	.type	object
+	.size	.11.str,21
+	.byte	77,83,82,67,32,78,111,32
+	.byte	84,97,114,103,101,116,32,69
+	.byte	114,114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..12.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..12.str'
+.12.str:	.type	object
+	.size	.12.str,15
+	.byte	83,78,82,32,67,104,101,99
+	.byte	107,32,69,120
+	.byte	105,116
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..13.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..13.str'
+.13.str:	.type	object
+	.size	.13.str,24
+	.byte	82,97,110,103,101,32,80,104
+	.byte	97,115,101,32,67,104,101,99
+	.byte	107,32,69,114
+	.byte	114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..14.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..14.str'
+.14.str:	.type	object
+	.size	.14.str,28
+	.byte	83,105,103,109,97,32,84,104
+	.byte	114,101,115,104,111,108,100,32
+	.byte	67,104,101,99,107,32,69,114
+	.byte	114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..15.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..15.str'
+.15.str:	.type	object
+	.size	.15.str,10
+	.byte	84,67,67,32,69,114,114,111
+	.byte	114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..16.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..16.str'
+.16.str:	.type	object
+	.size	.16.str,24
+	.byte	80,104,97,115,101,32,67,111
+	.byte	110,115,105,115,116,101,110,99
+	.byte	121,32,69,114
+	.byte	114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..17.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..17.str'
+.17.str:	.type	object
+	.size	.17.str,15
+	.byte	77,105,110,32,67,108,105,112
+	.byte	32,69,114,114
+	.byte	111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..18.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..18.str'
+.18.str:	.type	object
+	.size	.18.str,15
+	.byte	82,97,110,103,101,32,67,111
+	.byte	109,112,108,101
+	.byte	116,101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..19.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..19.str'
+.19.str:	.type	object
+	.size	.19.str,27
+	.byte	82,97,110,103,101,32,65,108
+	.byte	103,111,32,85,110,100,101,114
+	.byte	102,108,111,119,32,69,114,114
+	.byte	111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..20.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..20.str'
+.20.str:	.type	object
+	.size	.20.str,25
+	.byte	82,97,110,103,101,32,65,108
+	.byte	103,111,32,79,118,101,114,108
+	.byte	111,119,32,69,114,114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..21.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..21.str'
+.21.str:	.type	object
+	.size	.21.str,29
+	.byte	82,97,110,103,101,32,73,103
+	.byte	110,111,114,101,32,84,104,114
+	.byte	101,115,104,111,108,100,32,69
+	.byte	114,114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..22.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..22.str'
+.22.str:	.type	object
+	.size	.22.str,19
+	.byte	85,110,107,110,111,119,110,32
+	.byte	69,114,114,111,114,32,67,111
+	.byte	100,101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..23.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..23.str'
+.23.str:	.type	object
+	.size	.23.str,12
+	.byte	82,97,110,103,101,32,86,97
+	.byte	108,105,100
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..24.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..24.str'
+.24.str:	.type	object
+	.size	.24.str,11
+	.byte	83,105,103,109,97,32,70,97
+	.byte	105,108
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..25.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..25.str'
+.25.str:	.type	object
+	.size	.25.str,12
+	.byte	83,105,103,110,97,108,32,70
+	.byte	97,105,108
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..26.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..26.str'
+.26.str:	.type	object
+	.size	.26.str,15
+	.byte	77,105,110,32,82,97,110,103
+	.byte	101,32,70,97
+	.byte	105,108
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..27.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..27.str'
+.27.str:	.type	object
+	.size	.27.str,11
+	.byte	80,104,97,115,101,32,70,97
+	.byte	105,108
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..28.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..28.str'
+.28.str:	.type	object
+	.size	.28.str,14
+	.byte	72,97,114,100,119,97,114,101
+	.byte	32,70,97,105
+	.byte	108
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..29.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..29.str'
+.29.str:	.type	object
+	.size	.29.str,9
+	.byte	78,111,32,69,114,114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..30.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..30.str'
+.30.str:	.type	object
+	.size	.30.str,26
+	.byte	67,97,108,105,98,114,97,116
+	.byte	105,111,110,32,87,97,114,110
+	.byte	105,110,103,32,69,114,114,111
+	.byte	114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..31.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..31.str'
+.31.str:	.type	object
+	.size	.31.str,18
+	.byte	77,105,110,32,99,108,105,112
+	.byte	112,101,100,32,101,114,114,111
+	.byte	114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..32.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..32.str'
+.32.str:	.type	object
+	.size	.32.str,16
+	.byte	85,110,100,101,102,105,110,101
+	.byte	100,32,101,114
+	.byte	114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..33.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..33.str'
+.33.str:	.type	object
+	.size	.33.str,25
+	.byte	73,110,118,97,108,105,100,32
+	.byte	112,97,114,97,109,101,116,101
+	.byte	114,115,32,101,114,114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..34.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..34.str'
+.34.str:	.type	object
+	.size	.34.str,20
+	.byte	78,111,116,32,115,117,112,112
+	.byte	111,114,116,101,100,32,101,114
+	.byte	114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..35.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..35.str'
+.35.str:	.type	object
+	.size	.35.str,22
+	.byte	73,110,116,101,114,114,117,112
+	.byte	116,32,110,111,116,32,67,108
+	.byte	101,97,114,101
+	.byte	100
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..36.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..36.str'
+.36.str:	.type	object
+	.size	.36.str,12
+	.byte	82,97,110,103,101,32,101,114
+	.byte	114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..37.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..37.str'
+.37.str:	.type	object
+	.size	.37.str,15
+	.byte	84,105,109,101,32,111,117,116
+	.byte	32,101,114,114
+	.byte	111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..38.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..38.str'
+.38.str:	.type	object
+	.size	.38.str,25
+	.byte	77,111,100,101,32,110,111,116
+	.byte	32,115,117,112,112,111,114,116
+	.byte	101,100,32,101,114,114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..39.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..39.str'
+.39.str:	.type	object
+	.size	.39.str,17
+	.byte	66,117,102,102,101,114,32,116
+	.byte	111,111,32,115,109,97,108,108
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..40.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..40.str'
+.40.str:	.type	object
+	.size	.40.str,18
+	.byte	71,80,73,79,32,110,111,116
+	.byte	32,101,120,105,115,116,105,110
+	.byte	103
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..41.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..41.str'
+.41.str:	.type	object
+	.size	.41.str,25
+	.byte	71,80,73,79,32,102,117,110
+	.byte	99,116,32,110,111,116,32,115
+	.byte	117,112,112,111,114,116,101,100
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..42.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..42.str'
+.42.str:	.type	object
+	.size	.42.str,24
+	.byte	67,111,110,116,114,111,108,32
+	.byte	73,110,116,101,114,102,97,99
+	.byte	101,32,69,114
+	.byte	114,111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..43.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..43.str'
+.43.str:	.type	object
+	.size	.43.str,22
+	.byte	73,110,118,97,108,105,100,32
+	.byte	67,111,109,109,97,110,100,32
+	.byte	69,114,114,111
+	.byte	114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..44.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..44.str'
+.44.str:	.type	object
+	.size	.44.str,23
+	.byte	68,105,118,105,115,105,111,110
+	.byte	32,98,121,32,122,101,114,111
+	.byte	32,69,114,114
+	.byte	111,114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..45.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..45.str'
+.45.str:	.type	object
+	.size	.45.str,26
+	.byte	82,101,102,101,114,101,110,99
+	.byte	101,32,83,112,97,100,32,73
+	.byte	110,105,116,32,69,114,114,111
+	.byte	114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..46.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..46.str'
+.46.str:	.type	object
+	.size	.46.str,22
+	.byte	78,111,116,32,105,109,112,108
+	.byte	101,109,101,110,116,101,100,32
+	.byte	101,114,114,111
+	.byte	114
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..47.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..47.str'
+.47.str:	.type	object
+	.size	.47.str,16
+	.byte	80,79,87,69,82,68,79,87
+	.byte	78,32,83,116
+	.byte	97,116,101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..48.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..48.str'
+.48.str:	.type	object
+	.size	.48.str,26
+	.byte	87,97,105,116,32,102,111,114
+	.byte	32,115,116,97,116,105,99,105
+	.byte	110,105,116,32,83,116,97,116
+	.byte	101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..49.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..49.str'
+.49.str:	.type	object
+	.size	.49.str,14
+	.byte	83,84,65,78,68,66,89,32
+	.byte	83,116,97,116
+	.byte	101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..50.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..50.str'
+.50.str:	.type	object
+	.size	.50.str,11
+	.byte	73,68,76,69,32,83,116,97
+	.byte	116,101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..51.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..51.str'
+.51.str:	.type	object
+	.size	.51.str,14
+	.byte	82,85,78,78,73,78,71,32
+	.byte	83,116,97,116
+	.byte	101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..52.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..52.str'
+.52.str:	.type	object
+	.size	.52.str,14
+	.byte	85,78,75,78,79,87,78,32
+	.byte	83,116,97,116
+	.byte	101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..53.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..53.str'
+.53.str:	.type	object
+	.size	.53.str,12
+	.byte	69,82,82,79,82,32,83,116
+	.byte	97,116,101
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..54.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..54.str'
+.54.str:	.type	object
+	.size	.54.str,4
+	.byte	84,67,67
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..55.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..55.str'
+.55.str:	.type	object
+	.size	.55.str,4
+	.byte	68,83,83
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..56.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..56.str'
+.56.str:	.type	object
+	.size	.56.str,5
+	.byte	77,83,82,67
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..57.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..57.str'
+.57.str:	.type	object
+	.size	.57.str,10
+	.byte	80,82,69,32,82,65,78,71
+	.byte	69
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..58.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..58.str'
+.58.str:	.type	object
+	.size	.58.str,12
+	.byte	70,73,78,65,76,32,82,65
+	.byte	78,71,69
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..59.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..59.str'
+.59.str:	.type	object
+	.size	.59.str,18
+	.byte	83,73,71,77,65,32,70,73
+	.byte	78,65,76,32,82,65,78,71
+	.byte	69
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..60.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..60.str'
+.60.str:	.type	object
+	.size	.60.str,24
+	.byte	83,73,71,78,65,76,32,82
+	.byte	65,84,69,32,70,73,78,65
+	.byte	76,32,82,65
+	.byte	78,71,69
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..61.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..61.str'
+.61.str:	.type	object
+	.size	.61.str,16
+	.byte	83,73,71,78,65,76,32,82
+	.byte	69,70,32,67
+	.byte	76,73,80
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..62.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..62.str'
+.62.str:	.type	object
+	.size	.62.str,23
+	.byte	82,65,78,71,69,32,73,71
+	.byte	78,79,82,69,32,84,72,82
+	.byte	69,83,72,79
+	.byte	76,68
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..63.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..63.str'
+.63.str:	.type	object
+	.size	.63.str,17
+	.byte	83,73,71,78,65,76,32,82
+	.byte	65,84,69,32,77,83,82,67
+	.space	1
+	.sdecl	'.rodata.vl53l0x_api_strings..64.str',data,rom
+	.sect	'.rodata.vl53l0x_api_strings..64.str'
+.64.str:	.type	object
+	.size	.64.str,22
+	.byte	83,73,71,78,65,76,32,82
+	.byte	65,84,69,32,80,82,69,32
+	.byte	82,65,78,71
+	.byte	69
+	.space	1
+	.calls	'VL53L0X_check_part_used','VL53L0X_get_info_from_device'
+	.calls	'VL53L0X_check_part_used','strcpy'
+	.calls	'VL53L0X_get_device_info','VL53L0X_check_part_used'
+	.calls	'VL53L0X_get_device_info','strcpy'
+	.calls	'VL53L0X_get_device_info','VL53L0X_RdByte'
+	.calls	'VL53L0X_get_device_error_string','strcpy'
+	.calls	'VL53L0X_get_range_status_string','strcpy'
+	.calls	'VL53L0X_get_pal_error_string','strcpy'
+	.calls	'VL53L0X_get_pal_state_string','strcpy'
+	.calls	'VL53L0X_get_sequence_steps_info','strcpy'
+	.calls	'VL53L0X_get_limit_check_info','strcpy'
+	.calls	'VL53L0X_check_part_used','',0
+	.calls	'VL53L0X_get_device_info','',8
+	.calls	'VL53L0X_get_device_error_string','',0
+	.calls	'VL53L0X_get_range_status_string','',0
+	.calls	'VL53L0X_get_pal_error_string','',0
+	.calls	'VL53L0X_get_pal_state_string','',0
+	.calls	'VL53L0X_get_sequence_steps_info','',0
+	.extern	strcpy
+	.extern	VL53L0X_RdByte
+	.extern	VL53L0X_get_info_from_device
+	.calls	'VL53L0X_get_limit_check_info','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L161:
+	.word	3741
+	.half	3
+	.word	.L162
+	.byte	4
+.L160:
+	.byte	1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L163
+	.byte	2
+	.byte	'char',0,1,6
+.L216:
+	.byte	3
+	.word	264
+	.byte	4
+	.word	272
+	.byte	5
+	.word	264
+	.byte	3
+	.word	282
+	.byte	4
+	.word	287
+	.byte	6
+	.byte	'strcpy',0,1,39,17
+	.word	272
+	.byte	1,1,1,1,7,1,39,33
+	.word	277
+	.byte	7,1,39,56
+	.word	292
+	.byte	0
+.L204:
+	.byte	2
+	.byte	'char',0,1,6,2
+	.byte	'int',0,4,5
+.L211:
+	.byte	2
+	.byte	'unsigned char',0,1,8,2
+	.byte	'unsigned int',0,4,7
+.L237:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,8,6
+	.word	348
+	.byte	9,5,0,8,24
+	.word	365
+	.byte	9,5,0,8,28
+	.word	365
+	.byte	9,6,0,10,3,240,1,9,56,11
+	.byte	'ambRate_mcps',0
+	.word	421
+	.byte	28,2,35,0,11
+	.byte	'dmax_mm',0
+	.word	421
+	.byte	28,2,35,28,0,10,3,249,1,9,120,11
+	.byte	'DeviceMode',0
+	.word	348
+	.byte	1,2,35,0,11
+	.byte	'HistogramMode',0
+	.word	348
+	.byte	1,2,35,1,11
+	.byte	'MeasurementTimingBudgetMicroSeconds',0
+	.word	365
+	.byte	4,2,35,2,11
+	.byte	'InterMeasurementPeriodMilliSeconds',0
+	.word	365
+	.byte	4,2,35,6,11
+	.byte	'XTalkCompensationEnable',0
+	.word	348
+	.byte	1,2,35,10,11
+	.byte	'XTalkCompensationRangeMilliMeter',0
+	.word	381
+	.byte	2,2,35,12,11
+	.byte	'XTalkCompensationRateMegaCps',0
+	.word	365
+	.byte	4,2,35,14,11
+	.byte	'RangeOffsetMicroMeters',0
+	.word	341
+	.byte	4,2,35,18,11
+	.byte	'LimitChecksEnable',0
+	.word	403
+	.byte	6,2,35,22,11
+	.byte	'LimitChecksStatus',0
+	.word	403
+	.byte	6,2,35,28,11
+	.byte	'LimitChecksValue',0
+	.word	412
+	.byte	24,2,35,34,11
+	.byte	'dmax_lut',0
+	.word	430
+	.byte	56,2,35,60,11
+	.byte	'WrapAroundCheckEnable',0
+	.word	348
+	.byte	1,2,35,116,0,10,3,194,2,9,28,11
+	.byte	'TimeStamp',0
+	.word	365
+	.byte	4,2,35,0,11
+	.byte	'MeasurementTimeUsec',0
+	.word	365
+	.byte	4,2,35,4,11
+	.byte	'RangeMilliMeter',0
+	.word	381
+	.byte	2,2,35,8,11
+	.byte	'RangeDMaxMilliMeter',0
+	.word	381
+	.byte	2,2,35,10,11
+	.byte	'SignalRateRtnMegaCps',0
+	.word	365
+	.byte	4,2,35,12,11
+	.byte	'AmbientRateRtnMegaCps',0
+	.word	365
+	.byte	4,2,35,16,11
+	.byte	'EffectiveSpadRtnCount',0
+	.word	381
+	.byte	2,2,35,20,11
+	.byte	'ZoneId',0
+	.word	348
+	.byte	1,2,35,22,11
+	.byte	'RangeFractionalPart',0
+	.word	348
+	.byte	1,2,35,23,11
+	.byte	'RangeStatus',0
+	.word	348
+	.byte	1,2,35,24,0,8,96
+	.word	365
+	.byte	9,23,0,10,3,248,2,9,100,11
+	.byte	'HistogramData',0
+	.word	1156
+	.byte	96,2,35,0,11
+	.byte	'FirstBin',0
+	.word	348
+	.byte	1,2,35,96,11
+	.byte	'BufferSize',0
+	.word	348
+	.byte	1,2,35,97,11
+	.byte	'NumberOfBins',0
+	.word	348
+	.byte	1,2,35,98,11
+	.byte	'ErrorStatus',0
+	.word	348
+	.byte	1,2,35,99,0,8,32
+	.word	264
+	.byte	9,31,0,10,3,151,3,9,76,11
+	.byte	'OscFrequencyMHz',0
+	.word	365
+	.byte	4,2,35,0,11
+	.byte	'LastEncodedTimeout',0
+	.word	381
+	.byte	2,2,35,4,11
+	.byte	'Pin0GpioFunctionality',0
+	.word	348
+	.byte	1,2,35,6,11
+	.byte	'FinalRangeTimeoutMicroSecs',0
+	.word	365
+	.byte	4,2,35,8,11
+	.byte	'FinalRangeVcselPulsePeriod',0
+	.word	348
+	.byte	1,2,35,12,11
+	.byte	'PreRangeTimeoutMicroSecs',0
+	.word	365
+	.byte	4,2,35,14,11
+	.byte	'PreRangeVcselPulsePeriod',0
+	.word	348
+	.byte	1,2,35,18,11
+	.byte	'SigmaEstRefArray',0
+	.word	381
+	.byte	2,2,35,20,11
+	.byte	'SigmaEstEffPulseWidth',0
+	.word	381
+	.byte	2,2,35,22,11
+	.byte	'SigmaEstEffAmbWidth',0
+	.word	381
+	.byte	2,2,35,24,11
+	.byte	'ReadDataFromDeviceDone',0
+	.word	348
+	.byte	1,2,35,26,11
+	.byte	'ModuleId',0
+	.word	348
+	.byte	1,2,35,27,11
+	.byte	'Revision',0
+	.word	348
+	.byte	1,2,35,28,11
+	.byte	'ProductId',0
+	.word	1276
+	.byte	32,2,35,29,11
+	.byte	'ReferenceSpadCount',0
+	.word	348
+	.byte	1,2,35,61,11
+	.byte	'ReferenceSpadType',0
+	.word	348
+	.byte	1,2,35,62,11
+	.byte	'RefSpadsInitialised',0
+	.word	348
+	.byte	1,2,35,63,11
+	.byte	'PartUIDUpper',0
+	.word	365
+	.byte	4,2,35,64,11
+	.byte	'PartUIDLower',0
+	.word	365
+	.byte	4,2,35,68,11
+	.byte	'SignalRateMeasFixed400mm',0
+	.word	365
+	.byte	4,2,35,72,0,10,3,144,3,9,12,11
+	.byte	'RefSpadEnables',0
+	.word	403
+	.byte	6,2,35,0,11
+	.byte	'RefGoodSpadMap',0
+	.word	403
+	.byte	6,2,35,6,0
+.L243:
+	.byte	3
+	.word	348
+	.byte	10,3,205,3,9,252,2,11
+	.byte	'Part2PartOffsetNVMMicroMeter',0
+	.word	341
+	.byte	4,2,35,0,11
+	.byte	'Part2PartOffsetAdjustmentNVMMicroMeter',0
+	.word	341
+	.byte	4,2,35,4,11
+	.byte	'CurrentParameters',0
+	.word	476
+	.byte	120,2,35,8,11
+	.byte	'LastRangeMeasure',0
+	.word	889
+	.byte	28,3,35,128,1,11
+	.byte	'LastHistogramMeasure',0
+	.word	1165
+	.byte	100,3,35,156,1,11
+	.byte	'DeviceSpecificParameters',0
+	.word	1285
+	.byte	76,3,35,128,2,11
+	.byte	'SpadData',0
+	.word	1851
+	.byte	12,3,35,204,2,11
+	.byte	'SequenceConfig',0
+	.word	348
+	.byte	1,3,35,216,2,11
+	.byte	'RangeFractionalEnable',0
+	.word	348
+	.byte	1,3,35,217,2,11
+	.byte	'PalState',0
+	.word	348
+	.byte	1,3,35,218,2,11
+	.byte	'PowerMode',0
+	.word	348
+	.byte	1,3,35,219,2,11
+	.byte	'SigmaEstRefArray',0
+	.word	381
+	.byte	2,3,35,220,2,11
+	.byte	'SigmaEstEffPulseWidth',0
+	.word	381
+	.byte	2,3,35,222,2,11
+	.byte	'SigmaEstEffAmbWidth',0
+	.word	381
+	.byte	2,3,35,224,2,11
+	.byte	'StopVariable',0
+	.word	348
+	.byte	1,3,35,226,2,11
+	.byte	'targetRefRate',0
+	.word	381
+	.byte	2,3,35,228,2,11
+	.byte	'SigmaEstimate',0
+	.word	365
+	.byte	4,3,35,230,2,11
+	.byte	'SignalEstimate',0
+	.word	365
+	.byte	4,3,35,234,2,11
+	.byte	'LastSignalRefMcps',0
+	.word	365
+	.byte	4,3,35,238,2,11
+	.byte	'pTuningSettingsPointer',0
+	.word	1906
+	.byte	4,3,35,244,2,11
+	.byte	'UseInternalTuningSettings',0
+	.word	348
+	.byte	1,3,35,248,2,11
+	.byte	'LinearityCorrectiveGain',0
+	.word	381
+	.byte	2,3,35,250,2,0,10,2,58,9,128,3,11
+	.byte	'Data',0
+	.word	1911
+	.byte	252,2,2,35,0,11
+	.byte	'I2cDevAddr',0
+	.word	348
+	.byte	1,3,35,252,2,11
+	.byte	'comms_type',0
+	.word	348
+	.byte	1,3,35,253,2,11
+	.byte	'comms_speed_khz',0
+	.word	381
+	.byte	2,3,35,254,2,0,3
+	.word	2556
+.L206:
+	.byte	12
+	.byte	'VL53L0X_DEV',0,2,73,24
+	.word	2646
+	.byte	6
+	.byte	'VL53L0X_RdByte',0,2,179,1,15
+	.word	333
+	.byte	1,1,1,1,13
+	.byte	'Dev',0,2,179,1,42
+	.word	2651
+	.byte	13
+	.byte	'index',0,2,179,1,55
+	.word	348
+	.byte	13
+	.byte	'data',0,2,179,1,71
+	.word	1906
+	.byte	0,3
+	.word	2556
+	.byte	10,3,110,9,100,11
+	.byte	'Name',0
+	.word	1276
+	.byte	32,2,35,0,11
+	.byte	'Type',0
+	.word	1276
+	.byte	32,2,35,32,11
+	.byte	'ProductId',0
+	.word	1276
+	.byte	32,2,35,64,11
+	.byte	'ProductType',0
+	.word	348
+	.byte	1,2,35,96,11
+	.byte	'ProductRevisionMajor',0
+	.word	348
+	.byte	1,2,35,97,11
+	.byte	'ProductRevisionMinor',0
+	.word	348
+	.byte	1,2,35,98,0
+.L208:
+	.byte	3
+	.word	2747
+	.byte	6
+	.byte	'VL53L0X_get_info_from_device',0,4,53,15
+	.word	333
+	.byte	1,1,1,1,13
+	.byte	'Dev',0,4,53,56
+	.word	2651
+	.byte	13
+	.byte	'option',0,4,53,69
+	.word	348
+	.byte	0,2
+	.byte	'short int',0,2,5,12
+	.byte	'__wchar_t',0,5,1,1
+	.word	2955
+	.byte	12
+	.byte	'__size_t',0,5,1,1
+	.word	365
+	.byte	12
+	.byte	'__ptrdiff_t',0,5,1,1
+	.word	341
+	.byte	14,1,3
+	.word	3023
+	.byte	12
+	.byte	'__codeptr',0,5,1,1
+	.word	3025
+	.byte	12
+	.byte	'__intptr_t',0,5,1,1
+	.word	341
+	.byte	12
+	.byte	'__uintptr_t',0,5,1,1
+	.word	365
+	.byte	12
+	.byte	'int8_t',0,6,241,1,41
+	.word	333
+	.byte	12
+	.byte	'uint8_t',0,6,242,1,41
+	.word	348
+	.byte	12
+	.byte	'uint16_t',0,6,246,1,41
+	.word	381
+	.byte	12
+	.byte	'int32_t',0,6,253,1,41
+	.word	341
+	.byte	12
+	.byte	'uint32_t',0,6,254,1,41
+	.word	365
+	.byte	12
+	.byte	'FixPoint1616_t',0,7,61,18
+	.word	365
+	.byte	12
+	.byte	'VL53L0X_DeviceError',0,8,55,17
+	.word	348
+	.byte	12
+	.byte	'VL53L0X_GpioFunctionality',0,8,101,17
+	.word	348
+	.byte	12
+	.byte	'VL53L0X_DeviceInfo_t',0,3,123,3
+	.word	2747
+	.byte	12
+	.byte	'VL53L0X_Error',0,3,131,1,16
+	.word	333
+	.byte	12
+	.byte	'VL53L0X_DeviceModes',0,3,184,1,17
+	.word	348
+	.byte	12
+	.byte	'VL53L0X_HistogramModes',0,3,202,1,17
+	.word	348
+	.byte	12
+	.byte	'VL53L0X_PowerModes',0,3,221,1,17
+	.word	348
+	.byte	12
+	.byte	'VL53L0X_DMaxLUT_t',0,3,245,1,3
+	.word	430
+	.byte	12
+	.byte	'VL53L0X_DeviceParameters_t',0,3,161,2,3
+	.word	476
+	.byte	12
+	.byte	'VL53L0X_State',0,3,170,2,17
+	.word	348
+	.byte	12
+	.byte	'VL53L0X_RangingMeasurementData_t',0,3,239,2,3
+	.word	889
+	.byte	12
+	.byte	'VL53L0X_HistogramMeasurementData_t',0,3,136,3,3
+	.word	1165
+	.byte	12
+	.byte	'VL53L0X_SpadData_t',0,3,149,3,3
+	.word	1851
+	.byte	12
+	.byte	'VL53L0X_DeviceSpecificParameters_t',0,3,195,3,3
+	.word	1285
+	.byte	12
+	.byte	'VL53L0X_DevData_t',0,3,128,4,3
+	.word	1911
+	.byte	12
+	.byte	'VL53L0X_SequenceStepId',0,3,180,4,17
+	.word	348
+	.byte	12
+	.byte	'_iob_flag_t',0,9,82,25
+	.word	381
+	.byte	12
+	.byte	'VL53L0X_Dev_t',0,2,66,3
+	.word	2556
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L162:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,55,0,73,19
+	.byte	0,0,5,38,0,73,19,0,0,6,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,7,5,0,58,15,59,15
+	.byte	57,15,73,19,0,0,8,1,1,11,15,73,19,0,0,9,33,0,47,15,0,0,10,19,1,58,15,59,15,57,15,11,15,0,0,11,13,0,3,8
+	.byte	73,19,11,15,56,9,0,0,12,22,0,3,8,58,15,59,15,57,15,73,19,0,0,13,5,0,3,8,58,15,59,15,57,15,73,19,0,0,14
+	.byte	21,0,54,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L163:
+	.word	.L365-.L364
+.L364:
+	.half	3
+	.word	.L367-.L366
+.L366:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'C:\\Infineon\\AURIX-Studio-1.10.28\\tools\\Compilers\\Tasking_1.1r8\\ctc\\include\\',0
+	.byte	'C:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform\\\\inc',0
+	.byte	'C:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core\\\\inc',0
+	.byte	0
+	.byte	'string.h',0,1,0,0
+	.byte	'vl53l0x_platform.h',0,2,0,0
+	.byte	'vl53l0x_def.h',0,3,0,0
+	.byte	'vl53l0x_api_core.h',0,3,0,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0
+	.byte	'stdint.h',0,1,0,0
+	.byte	'vl53l0x_types.h',0,2,0,0
+	.byte	'vl53l0x_device.h',0,3,0,0
+	.byte	'stdio.h',0,1,0,0,0
+.L367:
+.L365:
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_device_info')
+	.sect	'.debug_info'
+.L164:
+	.word	440
+	.half	3
+	.word	.L165
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L167,.L166
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_get_device_info',0,1,74,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L147,.L205,.L146
+	.byte	4
+	.byte	'Dev',0,1,74,51
+	.word	.L206,.L207
+	.byte	4
+	.byte	'pVL53L0X_DeviceInfo',0,1,75,27
+	.word	.L208,.L209
+	.byte	5
+	.word	.L147,.L205
+	.byte	6
+	.byte	'Status',0,1,77,16
+	.word	.L204,.L210
+	.byte	6
+	.byte	'revision_id',0,1,78,10
+	.word	.L211,.L212
+	.byte	6
+	.byte	'Revision',0,1,79,10
+	.word	.L211,.L213
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_device_info')
+	.sect	'.debug_abbrev'
+.L165:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_device_info')
+	.sect	'.debug_line'
+.L166:
+	.word	.L369-.L368
+.L368:
+	.half	3
+	.word	.L371-.L370
+.L370:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L371:
+	.byte	5,15,7,0,5,2
+	.word	.L147
+	.byte	3,201,0,1,5,41,9
+	.half	.L264-.L147
+	.byte	3,7,1,5,51,9
+	.half	.L262-.L264
+	.byte	1,5,9,9
+	.half	.L261-.L262
+	.byte	1,5,2,9
+	.half	.L267-.L261
+	.byte	3,2,1,5,7,7,9
+	.half	.L372-.L267
+	.byte	3,1,1,5,3,9
+	.half	.L373-.L372
+	.byte	1,5,4,7,9
+	.half	.L374-.L373
+	.byte	3,1,1,5,42,9
+	.half	.L266-.L374
+	.byte	3,1,1,5,15,9
+	.half	.L7-.L266
+	.byte	3,1,1,5,27,9
+	.half	.L375-.L7
+	.byte	1,5,14,9
+	.half	.L376-.L375
+	.byte	1,5,35,7,9
+	.half	.L377-.L376
+	.byte	1,5,47,9
+	.half	.L378-.L377
+	.byte	1,5,44,9
+	.half	.L379-.L378
+	.byte	1,5,4,7,9
+	.half	.L380-.L379
+	.byte	3,1,1,5,42,9
+	.half	.L270-.L380
+	.byte	3,1,1,5,14,9
+	.half	.L9-.L270
+	.byte	3,1,1,5,25,9
+	.half	.L381-.L9
+	.byte	1,5,10,9
+	.half	.L382-.L381
+	.byte	1,5,4,7,9
+	.half	.L383-.L382
+	.byte	3,1,1,5,42,9
+	.half	.L272-.L383
+	.byte	3,1,1,5,4,9
+	.half	.L12-.L272
+	.byte	3,2,1,5,3,9
+	.half	.L8-.L12
+	.byte	3,4,1,5,2,9
+	.half	.L6-.L8
+	.byte	3,5,1,5,5,7,9
+	.half	.L384-.L6
+	.byte	3,2,1,5,25,9
+	.half	.L385-.L384
+	.byte	3,1,1,5,10,9
+	.half	.L268-.L385
+	.byte	3,126,1,5,2,9
+	.half	.L14-.L268
+	.byte	3,5,1,5,4,7,9
+	.half	.L386-.L14
+	.byte	3,2,1,5,6,9
+	.half	.L387-.L386
+	.byte	3,1,1,5,10,9
+	.half	.L276-.L387
+	.byte	3,126,1,5,47,9
+	.half	.L278-.L276
+	.byte	3,3,1,5,45,9
+	.half	.L388-.L278
+	.byte	1,5,7,9
+	.half	.L389-.L388
+	.byte	3,2,1,5,19,9
+	.half	.L390-.L389
+	.byte	1,5,27,9
+	.half	.L391-.L390
+	.byte	1,5,45,9
+	.half	.L392-.L391
+	.byte	3,127,1,5,2,9
+	.half	.L15-.L392
+	.byte	3,4,1,5,1,9
+	.half	.L16-.L15
+	.byte	3,1,1,7,9
+	.half	.L168-.L16
+	.byte	0,1,1
+.L369:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_device_info')
+	.sect	'.debug_ranges'
+.L167:
+	.word	-1,.L147,0,.L168-.L147,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_device_error_string')
+	.sect	'.debug_info'
+.L169:
+	.word	408
+	.half	3
+	.word	.L170
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L172,.L171
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_get_device_error_string',0,1,122,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L149,.L214,.L148
+	.byte	4
+	.byte	'ErrorCode',0,1,122,67
+	.word	.L211,.L215
+	.byte	4
+	.byte	'pDeviceErrorString',0,1,123,9
+	.word	.L216,.L217
+	.byte	5
+	.word	.L149,.L214
+	.byte	6
+	.byte	'Status',0,1,125,16
+	.word	.L204,.L218
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_device_error_string')
+	.sect	'.debug_abbrev'
+.L170:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_device_error_string')
+	.sect	'.debug_line'
+.L171:
+	.word	.L394-.L393
+.L393:
+	.half	3
+	.word	.L396-.L395
+.L395:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L396:
+	.byte	5,23,7,0,5,2
+	.word	.L149
+	.byte	3,252,0,1,5,2,9
+	.half	.L281-.L149
+	.byte	3,4,1,5,3,9
+	.half	.L19-.L281
+	.byte	3,2,1,5,2,9
+	.half	.L282-.L19
+	.byte	3,2,1,5,3,9
+	.half	.L20-.L282
+	.byte	3,2,1,5,2,9
+	.half	.L283-.L20
+	.byte	3,2,1,5,3,9
+	.half	.L21-.L283
+	.byte	3,2,1,5,2,9
+	.half	.L284-.L21
+	.byte	3,2,1,5,3,9
+	.half	.L22-.L284
+	.byte	3,2,1,5,2,9
+	.half	.L285-.L22
+	.byte	3,2,1,5,3,9
+	.half	.L23-.L285
+	.byte	3,2,1,5,2,9
+	.half	.L286-.L23
+	.byte	3,2,1,5,3,9
+	.half	.L24-.L286
+	.byte	3,2,1,5,2,9
+	.half	.L287-.L24
+	.byte	3,2,1,5,3,9
+	.half	.L25-.L287
+	.byte	3,2,1,5,2,9
+	.half	.L288-.L25
+	.byte	3,2,1,5,3,9
+	.half	.L26-.L288
+	.byte	3,2,1,5,2,9
+	.half	.L289-.L26
+	.byte	3,2,1,5,3,9
+	.half	.L27-.L289
+	.byte	3,2,1,5,2,9
+	.half	.L290-.L27
+	.byte	3,2,1,5,3,9
+	.half	.L28-.L290
+	.byte	3,2,1,5,2,9
+	.half	.L291-.L28
+	.byte	3,2,1,5,3,9
+	.half	.L29-.L291
+	.byte	3,2,1,5,2,9
+	.half	.L292-.L29
+	.byte	3,2,1,5,3,9
+	.half	.L30-.L292
+	.byte	3,2,1,5,2,9
+	.half	.L293-.L30
+	.byte	3,2,1,5,3,9
+	.half	.L31-.L293
+	.byte	3,2,1,5,2,9
+	.half	.L294-.L31
+	.byte	3,2,1,5,3,9
+	.half	.L32-.L294
+	.byte	3,2,1,5,2,9
+	.half	.L295-.L32
+	.byte	3,2,1,5,3,9
+	.half	.L33-.L295
+	.byte	3,2,1,5,2,9
+	.half	.L296-.L33
+	.byte	3,2,1,5,3,9
+	.half	.L18-.L296
+	.byte	3,3,1,5,2,9
+	.half	.L34-.L18
+	.byte	3,6,1,5,1,9
+	.half	.L49-.L34
+	.byte	3,1,1,7,9
+	.half	.L173-.L49
+	.byte	0,1,1
+.L394:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_device_error_string')
+	.sect	'.debug_ranges'
+.L172:
+	.word	-1,.L149,0,.L173-.L149,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_range_status_string')
+	.sect	'.debug_info'
+.L174:
+	.word	414
+	.half	3
+	.word	.L175
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L177,.L176
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_get_range_status_string',0,1,201,1,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L151,.L219,.L150
+	.byte	4
+	.byte	'RangeStatus',0,1,201,1,55
+	.word	.L211,.L220
+	.byte	4
+	.byte	'pRangeStatusString',0,1,202,1,9
+	.word	.L216,.L221
+	.byte	5
+	.word	.L151,.L219
+	.byte	6
+	.byte	'Status',0,1,204,1,16
+	.word	.L204,.L222
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_range_status_string')
+	.sect	'.debug_abbrev'
+.L175:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_range_status_string')
+	.sect	'.debug_line'
+.L176:
+	.word	.L398-.L397
+.L397:
+	.half	3
+	.word	.L400-.L399
+.L399:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L400:
+	.byte	5,23,7,0,5,2
+	.word	.L151
+	.byte	3,203,1,1,5,7,9
+	.half	.L299-.L151
+	.byte	3,5,1,9
+	.half	.L401-.L299
+	.byte	3,4,1,9
+	.half	.L402-.L401
+	.byte	3,4,1,9
+	.half	.L403-.L402
+	.byte	3,4,1,9
+	.half	.L404-.L403
+	.byte	3,4,1,9
+	.half	.L405-.L404
+	.byte	3,4,1,5,3,9
+	.half	.L50-.L405
+	.byte	3,109,1,5,2,9
+	.half	.L298-.L50
+	.byte	3,2,1,5,3,9
+	.half	.L51-.L298
+	.byte	3,2,1,5,2,9
+	.half	.L300-.L51
+	.byte	3,2,1,5,3,9
+	.half	.L52-.L300
+	.byte	3,2,1,5,2,9
+	.half	.L301-.L52
+	.byte	3,2,1,5,3,9
+	.half	.L53-.L301
+	.byte	3,2,1,5,2,9
+	.half	.L302-.L53
+	.byte	3,2,1,5,3,9
+	.half	.L54-.L302
+	.byte	3,2,1,5,2,9
+	.half	.L303-.L54
+	.byte	3,2,1,5,3,9
+	.half	.L55-.L303
+	.byte	3,2,1,5,2,9
+	.half	.L304-.L55
+	.byte	3,2,1,5,3,9
+	.half	.L56-.L304
+	.byte	3,3,1,5,2,9
+	.half	.L57-.L56
+	.byte	3,5,1,5,1,9
+	.half	.L63-.L57
+	.byte	3,1,1,7,9
+	.half	.L178-.L63
+	.byte	0,1,1
+.L398:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_range_status_string')
+	.sect	'.debug_ranges'
+.L177:
+	.word	-1,.L151,0,.L178-.L151,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_pal_error_string')
+	.sect	'.debug_info'
+.L179:
+	.word	409
+	.half	3
+	.word	.L180
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L182,.L181
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_get_pal_error_string',0,1,243,1,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L153,.L223,.L152
+	.byte	4
+	.byte	'PalErrorCode',0,1,243,1,58
+	.word	.L204,.L224
+	.byte	4
+	.byte	'pPalErrorString',0,1,244,1,9
+	.word	.L216,.L225
+	.byte	5
+	.word	.L153,.L223
+	.byte	6
+	.byte	'Status',0,1,246,1,16
+	.word	.L204,.L226
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_pal_error_string')
+	.sect	'.debug_abbrev'
+.L180:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_pal_error_string')
+	.sect	'.debug_line'
+.L181:
+	.word	.L407-.L406
+.L406:
+	.half	3
+	.word	.L409-.L408
+.L408:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L409:
+	.byte	5,23,7,0,5,2
+	.word	.L153
+	.byte	3,245,1,1,5,7,9
+	.half	.L307-.L153
+	.byte	3,201,0,1,9
+	.half	.L410-.L307
+	.byte	3,124,1,9
+	.half	.L411-.L410
+	.byte	3,124,1,9
+	.half	.L412-.L411
+	.byte	3,124,1,9
+	.half	.L413-.L412
+	.byte	3,124,1,9
+	.half	.L414-.L413
+	.byte	3,100,1,9
+	.half	.L415-.L414
+	.byte	3,24,1,9
+	.half	.L416-.L415
+	.byte	3,124,1,9
+	.half	.L417-.L416
+	.byte	3,124,1,9
+	.half	.L418-.L417
+	.byte	3,124,1,9
+	.half	.L419-.L418
+	.byte	3,124,1,9
+	.half	.L420-.L419
+	.byte	3,124,1,9
+	.half	.L421-.L420
+	.byte	3,120,1,9
+	.half	.L422-.L421
+	.byte	3,124,1,9
+	.half	.L423-.L422
+	.byte	3,124,1,9
+	.half	.L424-.L423
+	.byte	3,124,1,9
+	.half	.L425-.L424
+	.byte	3,124,1,9
+	.half	.L426-.L425
+	.byte	3,124,1,5,3,9
+	.half	.L81-.L426
+	.byte	3,1,1,5,2,9
+	.half	.L306-.L81
+	.byte	3,2,1,5,3,9
+	.half	.L80-.L306
+	.byte	3,2,1,5,2,9
+	.half	.L308-.L80
+	.byte	3,2,1,5,3,9
+	.half	.L79-.L308
+	.byte	3,2,1,5,2,9
+	.half	.L309-.L79
+	.byte	3,2,1,5,3,9
+	.half	.L78-.L309
+	.byte	3,2,1,5,2,9
+	.half	.L310-.L78
+	.byte	3,2,1,5,3,9
+	.half	.L77-.L310
+	.byte	3,2,1,5,2,9
+	.half	.L311-.L77
+	.byte	3,2,1,5,3,9
+	.half	.L76-.L311
+	.byte	3,2,1,5,2,9
+	.half	.L312-.L76
+	.byte	3,2,1,5,3,9
+	.half	.L69-.L312
+	.byte	3,2,1,5,2,9
+	.half	.L313-.L69
+	.byte	3,2,1,5,3,9
+	.half	.L75-.L313
+	.byte	3,2,1,5,2,9
+	.half	.L314-.L75
+	.byte	3,2,1,5,3,9
+	.half	.L74-.L314
+	.byte	3,2,1,5,2,9
+	.half	.L315-.L74
+	.byte	3,2,1,5,3,9
+	.half	.L73-.L315
+	.byte	3,2,1,5,2,9
+	.half	.L316-.L73
+	.byte	3,2,1,5,3,9
+	.half	.L72-.L316
+	.byte	3,2,1,5,2,9
+	.half	.L317-.L72
+	.byte	3,2,1,5,3,9
+	.half	.L71-.L317
+	.byte	3,2,1,5,2,9
+	.half	.L318-.L71
+	.byte	3,2,1,5,3,9
+	.half	.L70-.L318
+	.byte	3,2,1,5,2,9
+	.half	.L319-.L70
+	.byte	3,2,1,5,3,9
+	.half	.L68-.L319
+	.byte	3,2,1,5,2,9
+	.half	.L320-.L68
+	.byte	3,2,1,5,3,9
+	.half	.L67-.L320
+	.byte	3,2,1,5,2,9
+	.half	.L321-.L67
+	.byte	3,2,1,5,3,9
+	.half	.L66-.L321
+	.byte	3,2,1,5,2,9
+	.half	.L322-.L66
+	.byte	3,2,1,5,3,9
+	.half	.L65-.L322
+	.byte	3,2,1,5,2,9
+	.half	.L323-.L65
+	.byte	3,2,1,5,3,9
+	.half	.L64-.L323
+	.byte	3,2,1,5,2,9
+	.half	.L324-.L64
+	.byte	3,2,1,5,3,9
+	.half	.L82-.L324
+	.byte	3,3,1,5,2,9
+	.half	.L83-.L82
+	.byte	3,5,1,5,1,9
+	.half	.L101-.L83
+	.byte	3,1,1,7,9
+	.half	.L183-.L101
+	.byte	0,1,1
+.L407:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_pal_error_string')
+	.sect	'.debug_ranges'
+.L182:
+	.word	-1,.L153,0,.L183-.L153,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_pal_state_string')
+	.sect	'.debug_info'
+.L184:
+	.word	409
+	.half	3
+	.word	.L185
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L187,.L186
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_get_pal_state_string',0,1,205,2,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L155,.L227,.L154
+	.byte	4
+	.byte	'PalStateCode',0,1,205,2,58
+	.word	.L211,.L228
+	.byte	4
+	.byte	'pPalStateString',0,1,206,2,9
+	.word	.L216,.L229
+	.byte	5
+	.word	.L155,.L227
+	.byte	6
+	.byte	'Status',0,1,208,2,16
+	.word	.L204,.L230
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_pal_state_string')
+	.sect	'.debug_abbrev'
+.L185:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_pal_state_string')
+	.sect	'.debug_line'
+.L186:
+	.word	.L428-.L427
+.L427:
+	.half	3
+	.word	.L430-.L429
+.L429:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L430:
+	.byte	5,23,7,0,5,2
+	.word	.L155
+	.byte	3,207,2,1,5,7,9
+	.half	.L327-.L155
+	.byte	3,5,1,9
+	.half	.L431-.L327
+	.byte	3,4,1,9
+	.half	.L432-.L431
+	.byte	3,4,1,9
+	.half	.L433-.L432
+	.byte	3,4,1,9
+	.half	.L434-.L433
+	.byte	3,4,1,9
+	.half	.L435-.L434
+	.byte	3,4,1,9
+	.half	.L436-.L435
+	.byte	3,4,1,5,3,9
+	.half	.L102-.L436
+	.byte	3,105,1,5,2,9
+	.half	.L326-.L102
+	.byte	3,2,1,5,3,9
+	.half	.L103-.L326
+	.byte	3,2,1,5,2,9
+	.half	.L328-.L103
+	.byte	3,2,1,5,3,9
+	.half	.L104-.L328
+	.byte	3,2,1,5,2,9
+	.half	.L329-.L104
+	.byte	3,2,1,5,3,9
+	.half	.L105-.L329
+	.byte	3,2,1,5,2,9
+	.half	.L330-.L105
+	.byte	3,2,1,5,3,9
+	.half	.L106-.L330
+	.byte	3,2,1,5,2,9
+	.half	.L331-.L106
+	.byte	3,2,1,5,3,9
+	.half	.L107-.L331
+	.byte	3,2,1,5,2,9
+	.half	.L332-.L107
+	.byte	3,2,1,5,3,9
+	.half	.L108-.L332
+	.byte	3,2,1,5,2,9
+	.half	.L333-.L108
+	.byte	3,2,1,5,3,9
+	.half	.L109-.L333
+	.byte	3,3,1,5,2,9
+	.half	.L110-.L109
+	.byte	3,5,1,5,1,9
+	.half	.L117-.L110
+	.byte	3,1,1,7,9
+	.half	.L188-.L117
+	.byte	0,1,1
+.L428:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_pal_state_string')
+	.sect	'.debug_ranges'
+.L187:
+	.word	-1,.L155,0,.L188-.L155,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_sequence_steps_info')
+	.sect	'.debug_info'
+.L189:
+	.word	419
+	.half	3
+	.word	.L190
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L192,.L191
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_get_sequence_steps_info',0,1,251,2,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L157,.L231,.L156
+	.byte	4
+	.byte	'SequenceStepId',0,1,252,2,26
+	.word	.L211,.L232
+	.byte	4
+	.byte	'pSequenceStepsString',0,1,253,2,9
+	.word	.L216,.L233
+	.byte	5
+	.word	.L157,.L231
+	.byte	6
+	.byte	'Status',0,1,255,2,16
+	.word	.L204,.L234
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_sequence_steps_info')
+	.sect	'.debug_abbrev'
+.L190:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_sequence_steps_info')
+	.sect	'.debug_line'
+.L191:
+	.word	.L438-.L437
+.L437:
+	.half	3
+	.word	.L440-.L439
+.L439:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L440:
+	.byte	5,23,7,0,5,2
+	.word	.L157
+	.byte	3,254,2,1,5,7,9
+	.half	.L336-.L157
+	.byte	3,5,1,9
+	.half	.L441-.L336
+	.byte	3,4,1,9
+	.half	.L442-.L441
+	.byte	3,4,1,9
+	.half	.L443-.L442
+	.byte	3,4,1,9
+	.half	.L444-.L443
+	.byte	3,4,1,5,3,9
+	.half	.L118-.L444
+	.byte	3,113,1,5,2,9
+	.half	.L335-.L118
+	.byte	3,2,1,5,3,9
+	.half	.L119-.L335
+	.byte	3,2,1,5,2,9
+	.half	.L337-.L119
+	.byte	3,2,1,5,3,9
+	.half	.L120-.L337
+	.byte	3,2,1,5,2,9
+	.half	.L338-.L120
+	.byte	3,2,1,5,3,9
+	.half	.L121-.L338
+	.byte	3,2,1,5,2,9
+	.half	.L339-.L121
+	.byte	3,2,1,5,3,9
+	.half	.L122-.L339
+	.byte	3,2,1,5,2,9
+	.half	.L340-.L122
+	.byte	3,2,1,5,10,9
+	.half	.L123-.L340
+	.byte	3,3,1,5,2,9
+	.half	.L124-.L123
+	.byte	3,5,1,5,1,9
+	.half	.L129-.L124
+	.byte	3,1,1,7,9
+	.half	.L193-.L129
+	.byte	0,1,1
+.L438:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_sequence_steps_info')
+	.sect	'.debug_ranges'
+.L192:
+	.word	-1,.L157,0,.L193-.L157,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_get_limit_check_info')
+	.sect	'.debug_info'
+.L194:
+	.word	428
+	.half	3
+	.word	.L195
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L197,.L196
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_get_limit_check_info',0,1,163,3,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L159,.L235,.L158
+	.byte	4
+	.byte	'Dev',0,1,163,3,56
+	.word	.L206,.L236
+	.byte	4
+	.byte	'LimitCheckId',0,1,164,3,11
+	.word	.L237,.L238
+	.byte	4
+	.byte	'pLimitCheckString',0,1,165,3,8
+	.word	.L216,.L239
+	.byte	5
+	.word	.L159,.L235
+	.byte	6
+	.byte	'Status',0,1,167,3,16
+	.word	.L204,.L240
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_get_limit_check_info')
+	.sect	'.debug_abbrev'
+.L195:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_get_limit_check_info')
+	.sect	'.debug_line'
+.L196:
+	.word	.L446-.L445
+.L445:
+	.half	3
+	.word	.L448-.L447
+.L447:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L448:
+	.byte	5,23,7,0,5,2
+	.word	.L159
+	.byte	3,166,3,1,5,7,9
+	.half	.L345-.L159
+	.byte	3,5,1,9
+	.half	.L449-.L345
+	.byte	3,4,1,9
+	.half	.L450-.L449
+	.byte	3,4,1,9
+	.half	.L451-.L450
+	.byte	3,4,1,9
+	.half	.L452-.L451
+	.byte	3,5,1,9
+	.half	.L453-.L452
+	.byte	3,5,1,5,3,9
+	.half	.L130-.L453
+	.byte	3,107,1,5,2,9
+	.half	.L343-.L130
+	.byte	3,2,1,5,3,9
+	.half	.L131-.L343
+	.byte	3,2,1,5,2,9
+	.half	.L347-.L131
+	.byte	3,2,1,5,3,9
+	.half	.L132-.L347
+	.byte	3,2,1,5,2,9
+	.half	.L350-.L132
+	.byte	3,2,1,5,3,9
+	.half	.L133-.L350
+	.byte	3,2,1,5,2,9
+	.half	.L353-.L133
+	.byte	3,2,1,5,3,9
+	.half	.L134-.L353
+	.byte	3,3,1,5,2,9
+	.half	.L356-.L134
+	.byte	3,2,1,5,3,9
+	.half	.L135-.L356
+	.byte	3,3,1,5,2,9
+	.half	.L359-.L135
+	.byte	3,2,1,5,3,9
+	.half	.L136-.L359
+	.byte	3,3,1,5,2,9
+	.half	.L137-.L136
+	.byte	3,6,1,5,1,9
+	.half	.L143-.L137
+	.byte	3,1,1,7,9
+	.half	.L198-.L143
+	.byte	0,1,1
+.L446:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_get_limit_check_info')
+	.sect	'.debug_ranges'
+.L197:
+	.word	-1,.L159,0,.L198-.L159,0,0
+	.sdecl	'.debug_info',debug,cluster('VL53L0X_check_part_used')
+	.sect	'.debug_info'
+.L199:
+	.word	466
+	.half	3
+	.word	.L200
+	.byte	4,1
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L202,.L201
+	.byte	2
+	.word	.L160
+	.byte	3
+	.byte	'VL53L0X_check_part_used',0,1,42,15
+	.word	.L204
+	.byte	1,1,1
+	.word	.L145,.L241,.L144
+	.byte	4
+	.byte	'Dev',0,1,42,51
+	.word	.L206,.L242
+	.byte	4
+	.byte	'Revision',0,1,43,12
+	.word	.L243,.L244
+	.byte	4
+	.byte	'pVL53L0X_DeviceInfo',0,1,44,25
+	.word	.L208,.L245
+	.byte	5
+	.word	.L145,.L241
+	.byte	6
+	.byte	'Status',0,1,46,16
+	.word	.L204,.L246
+	.byte	6
+	.byte	'ModuleIdInt',0,1,47,10
+	.word	.L211,.L247
+	.byte	6
+	.byte	'ProductId_tmp',0,1,48,8
+	.word	.L216,.L248
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('VL53L0X_check_part_used')
+	.sect	'.debug_abbrev'
+.L200:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('VL53L0X_check_part_used')
+	.sect	'.debug_line'
+.L201:
+	.word	.L455-.L454
+.L454:
+	.half	3
+	.word	.L457-.L456
+.L456:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../VL53L0X_1.0.4/Api/core/src/vl53l0x_api_strings.c',0,0,0,0,0
+.L457:
+	.byte	5,15,7,0,5,2
+	.word	.L145
+	.byte	3,41,1,5,45,9
+	.half	.L252-.L145
+	.byte	3,10,1,5,9,9
+	.half	.L249-.L252
+	.byte	1,5,2,9
+	.half	.L254-.L249
+	.byte	3,2,1,5,17,7,9
+	.half	.L458-.L254
+	.byte	3,1,1,5,2,9
+	.half	.L255-.L458
+	.byte	3,2,1,5,15,7,9
+	.half	.L459-.L255
+	.byte	3,1,1,5,13,9
+	.half	.L256-.L459
+	.byte	1,5,3,9
+	.half	.L460-.L256
+	.byte	3,1,1,5,16,9
+	.half	.L253-.L460
+	.byte	3,127,1,5,15,9
+	.half	.L3-.L253
+	.byte	3,3,1,5,13,9
+	.half	.L257-.L3
+	.byte	1,5,19,9
+	.half	.L461-.L257
+	.byte	3,1,1,5,3,9
+	.half	.L258-.L461
+	.byte	3,2,1,5,2,9
+	.half	.L2-.L258
+	.byte	3,6,1,5,1,9
+	.half	.L5-.L2
+	.byte	3,1,1,7,9
+	.half	.L203-.L5
+	.byte	0,1,1
+.L455:
+	.sdecl	'.debug_ranges',debug,cluster('VL53L0X_check_part_used')
+	.sect	'.debug_ranges'
+.L202:
+	.word	-1,.L145,0,.L203-.L145,0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_check_part_used')
+	.sect	'.debug_loc'
+.L242:
+	.word	-1,.L145,0,.L249-.L145
+	.half	1
+	.byte	100
+	.word	.L250-.L145,.L241-.L145
+	.half	1
+	.byte	111
+	.word	0,0
+.L247:
+	.word	-1,.L145,.L255-.L145,.L256-.L145
+	.half	1
+	.byte	95
+	.word	.L3-.L145,.L257-.L145
+	.half	1
+	.byte	95
+	.word	0,0
+.L248:
+	.word	-1,.L145,.L258-.L145,.L2-.L145
+	.half	1
+	.byte	101
+	.word	0,0
+.L244:
+	.word	-1,.L145,0,.L249-.L145
+	.half	1
+	.byte	101
+	.word	.L251-.L145,.L241-.L145
+	.half	1
+	.byte	108
+	.word	0,0
+.L246:
+	.word	-1,.L145,.L249-.L145,.L253-.L145
+	.half	1
+	.byte	82
+	.word	.L254-.L145,.L241-.L145
+	.half	1
+	.byte	88
+	.word	.L3-.L145,.L2-.L145
+	.half	1
+	.byte	82
+	.word	.L259-.L145,.L241-.L145
+	.half	1
+	.byte	82
+	.word	0,0
+.L144:
+	.word	-1,.L145,0,.L241-.L145
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L245:
+	.word	-1,.L145,0,.L249-.L145
+	.half	1
+	.byte	102
+	.word	.L252-.L145,.L241-.L145
+	.half	1
+	.byte	109
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_device_error_string')
+	.sect	'.debug_loc'
+.L215:
+	.word	-1,.L149,0,.L280-.L149
+	.half	1
+	.byte	84
+	.word	.L19-.L149,.L282-.L149
+	.half	1
+	.byte	84
+	.word	.L20-.L149,.L283-.L149
+	.half	1
+	.byte	84
+	.word	.L21-.L149,.L284-.L149
+	.half	1
+	.byte	84
+	.word	.L22-.L149,.L285-.L149
+	.half	1
+	.byte	84
+	.word	.L23-.L149,.L286-.L149
+	.half	1
+	.byte	84
+	.word	.L24-.L149,.L287-.L149
+	.half	1
+	.byte	84
+	.word	.L25-.L149,.L288-.L149
+	.half	1
+	.byte	84
+	.word	.L26-.L149,.L289-.L149
+	.half	1
+	.byte	84
+	.word	.L27-.L149,.L290-.L149
+	.half	1
+	.byte	84
+	.word	.L28-.L149,.L291-.L149
+	.half	1
+	.byte	84
+	.word	.L29-.L149,.L292-.L149
+	.half	1
+	.byte	84
+	.word	.L30-.L149,.L293-.L149
+	.half	1
+	.byte	84
+	.word	.L31-.L149,.L294-.L149
+	.half	1
+	.byte	84
+	.word	.L32-.L149,.L295-.L149
+	.half	1
+	.byte	84
+	.word	.L33-.L149,.L296-.L149
+	.half	1
+	.byte	84
+	.word	.L18-.L149,.L34-.L149
+	.half	1
+	.byte	84
+	.word	0,0
+.L218:
+	.word	-1,.L149,.L281-.L149,.L280-.L149
+	.half	1
+	.byte	88
+	.word	.L19-.L149,.L214-.L149
+	.half	1
+	.byte	88
+	.word	.L297-.L149,.L214-.L149
+	.half	1
+	.byte	82
+	.word	0,0
+.L148:
+	.word	-1,.L149,0,.L214-.L149
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L217:
+	.word	-1,.L149,0,.L280-.L149
+	.half	1
+	.byte	100
+	.word	.L19-.L149,.L282-.L149
+	.half	1
+	.byte	100
+	.word	.L20-.L149,.L283-.L149
+	.half	1
+	.byte	100
+	.word	.L21-.L149,.L284-.L149
+	.half	1
+	.byte	100
+	.word	.L22-.L149,.L285-.L149
+	.half	1
+	.byte	100
+	.word	.L23-.L149,.L286-.L149
+	.half	1
+	.byte	100
+	.word	.L24-.L149,.L287-.L149
+	.half	1
+	.byte	100
+	.word	.L25-.L149,.L288-.L149
+	.half	1
+	.byte	100
+	.word	.L26-.L149,.L289-.L149
+	.half	1
+	.byte	100
+	.word	.L27-.L149,.L290-.L149
+	.half	1
+	.byte	100
+	.word	.L28-.L149,.L291-.L149
+	.half	1
+	.byte	100
+	.word	.L29-.L149,.L292-.L149
+	.half	1
+	.byte	100
+	.word	.L30-.L149,.L293-.L149
+	.half	1
+	.byte	100
+	.word	.L31-.L149,.L294-.L149
+	.half	1
+	.byte	100
+	.word	.L32-.L149,.L295-.L149
+	.half	1
+	.byte	100
+	.word	.L33-.L149,.L296-.L149
+	.half	1
+	.byte	100
+	.word	.L18-.L149,.L34-.L149
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_device_info')
+	.sect	'.debug_loc'
+.L207:
+	.word	-1,.L147,0,.L261-.L147
+	.half	1
+	.byte	100
+	.word	.L263-.L147,.L205-.L147
+	.half	1
+	.byte	111
+	.word	.L275-.L147,.L268-.L147
+	.half	1
+	.byte	100
+	.word	.L277-.L147,.L276-.L147
+	.half	1
+	.byte	100
+	.word	0,0
+.L213:
+	.word	-1,.L147,0,.L205-.L147
+	.half	2
+	.byte	145,121
+	.word	0,0
+.L210:
+	.word	-1,.L147,.L261-.L147,.L266-.L147
+	.half	1
+	.byte	82
+	.word	.L267-.L147,.L268-.L147
+	.half	1
+	.byte	88
+	.word	.L7-.L147,.L270-.L147
+	.half	1
+	.byte	82
+	.word	.L9-.L147,.L272-.L147
+	.half	1
+	.byte	82
+	.word	.L12-.L147,.L8-.L147
+	.half	1
+	.byte	82
+	.word	.L268-.L147,.L14-.L147
+	.half	1
+	.byte	82
+	.word	.L14-.L147,.L276-.L147
+	.half	1
+	.byte	88
+	.word	.L276-.L147,.L15-.L147
+	.half	1
+	.byte	82
+	.word	.L278-.L147,.L205-.L147
+	.half	1
+	.byte	88
+	.word	.L279-.L147,.L205-.L147
+	.half	1
+	.byte	82
+	.word	0,0
+.L146:
+	.word	-1,.L147,0,.L260-.L147
+	.half	2
+	.byte	138,0
+	.word	.L260-.L147,.L205-.L147
+	.half	2
+	.byte	138,8
+	.word	.L205-.L147,.L205-.L147
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L209:
+	.word	-1,.L147,0,.L262-.L147
+	.half	1
+	.byte	101
+	.word	.L264-.L147,.L205-.L147
+	.half	1
+	.byte	108
+	.word	.L265-.L147,.L261-.L147
+	.half	1
+	.byte	102
+	.word	.L269-.L147,.L266-.L147
+	.half	1
+	.byte	100
+	.word	.L271-.L147,.L270-.L147
+	.half	1
+	.byte	100
+	.word	.L273-.L147,.L272-.L147
+	.half	1
+	.byte	100
+	.word	.L274-.L147,.L8-.L147
+	.half	1
+	.byte	100
+	.word	0,0
+.L212:
+	.word	-1,.L147,0,.L205-.L147
+	.half	2
+	.byte	145,120
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_limit_check_info')
+	.sect	'.debug_loc'
+.L236:
+	.word	-1,.L159,0,.L342-.L159
+	.half	1
+	.byte	100
+	.word	.L131-.L159,.L346-.L159
+	.half	1
+	.byte	100
+	.word	.L132-.L159,.L349-.L159
+	.half	1
+	.byte	100
+	.word	.L133-.L159,.L352-.L159
+	.half	1
+	.byte	100
+	.word	.L134-.L159,.L355-.L159
+	.half	1
+	.byte	100
+	.word	.L135-.L159,.L358-.L159
+	.half	1
+	.byte	100
+	.word	.L136-.L159,.L361-.L159
+	.half	1
+	.byte	100
+	.word	0,0
+.L238:
+	.word	-1,.L159,0,.L343-.L159
+	.half	1
+	.byte	84
+	.word	.L131-.L159,.L347-.L159
+	.half	1
+	.byte	84
+	.word	.L132-.L159,.L350-.L159
+	.half	1
+	.byte	84
+	.word	.L133-.L159,.L353-.L159
+	.half	1
+	.byte	84
+	.word	.L134-.L159,.L356-.L159
+	.half	1
+	.byte	84
+	.word	.L135-.L159,.L359-.L159
+	.half	1
+	.byte	84
+	.word	.L136-.L159,.L137-.L159
+	.half	1
+	.byte	84
+	.word	0,0
+.L240:
+	.word	-1,.L159,.L345-.L159,.L235-.L159
+	.half	1
+	.byte	88
+	.word	.L363-.L159,.L235-.L159
+	.half	1
+	.byte	82
+	.word	0,0
+.L158:
+	.word	-1,.L159,0,.L235-.L159
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L239:
+	.word	-1,.L159,0,.L344-.L159
+	.half	1
+	.byte	101
+	.word	.L342-.L159,.L343-.L159
+	.half	1
+	.byte	100
+	.word	.L131-.L159,.L348-.L159
+	.half	1
+	.byte	101
+	.word	.L346-.L159,.L347-.L159
+	.half	1
+	.byte	100
+	.word	.L132-.L159,.L351-.L159
+	.half	1
+	.byte	101
+	.word	.L349-.L159,.L350-.L159
+	.half	1
+	.byte	100
+	.word	.L133-.L159,.L354-.L159
+	.half	1
+	.byte	101
+	.word	.L352-.L159,.L353-.L159
+	.half	1
+	.byte	100
+	.word	.L134-.L159,.L357-.L159
+	.half	1
+	.byte	101
+	.word	.L355-.L159,.L356-.L159
+	.half	1
+	.byte	100
+	.word	.L135-.L159,.L360-.L159
+	.half	1
+	.byte	101
+	.word	.L358-.L159,.L359-.L159
+	.half	1
+	.byte	100
+	.word	.L136-.L159,.L362-.L159
+	.half	1
+	.byte	101
+	.word	.L361-.L159,.L137-.L159
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_pal_error_string')
+	.sect	'.debug_loc'
+.L224:
+	.word	-1,.L153,0,.L306-.L153
+	.half	1
+	.byte	84
+	.word	.L80-.L153,.L308-.L153
+	.half	1
+	.byte	84
+	.word	.L79-.L153,.L309-.L153
+	.half	1
+	.byte	84
+	.word	.L78-.L153,.L310-.L153
+	.half	1
+	.byte	84
+	.word	.L77-.L153,.L311-.L153
+	.half	1
+	.byte	84
+	.word	.L76-.L153,.L312-.L153
+	.half	1
+	.byte	84
+	.word	.L69-.L153,.L313-.L153
+	.half	1
+	.byte	84
+	.word	.L75-.L153,.L314-.L153
+	.half	1
+	.byte	84
+	.word	.L74-.L153,.L315-.L153
+	.half	1
+	.byte	84
+	.word	.L73-.L153,.L316-.L153
+	.half	1
+	.byte	84
+	.word	.L72-.L153,.L317-.L153
+	.half	1
+	.byte	84
+	.word	.L71-.L153,.L318-.L153
+	.half	1
+	.byte	84
+	.word	.L70-.L153,.L319-.L153
+	.half	1
+	.byte	84
+	.word	.L68-.L153,.L320-.L153
+	.half	1
+	.byte	84
+	.word	.L67-.L153,.L321-.L153
+	.half	1
+	.byte	84
+	.word	.L66-.L153,.L322-.L153
+	.half	1
+	.byte	84
+	.word	.L65-.L153,.L323-.L153
+	.half	1
+	.byte	84
+	.word	.L64-.L153,.L324-.L153
+	.half	1
+	.byte	84
+	.word	.L82-.L153,.L83-.L153
+	.half	1
+	.byte	84
+	.word	0,0
+.L226:
+	.word	-1,.L153,.L307-.L153,.L223-.L153
+	.half	1
+	.byte	88
+	.word	.L325-.L153,.L223-.L153
+	.half	1
+	.byte	82
+	.word	0,0
+.L152:
+	.word	-1,.L153,0,.L223-.L153
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L225:
+	.word	-1,.L153,0,.L306-.L153
+	.half	1
+	.byte	100
+	.word	.L80-.L153,.L308-.L153
+	.half	1
+	.byte	100
+	.word	.L79-.L153,.L309-.L153
+	.half	1
+	.byte	100
+	.word	.L78-.L153,.L310-.L153
+	.half	1
+	.byte	100
+	.word	.L77-.L153,.L311-.L153
+	.half	1
+	.byte	100
+	.word	.L76-.L153,.L312-.L153
+	.half	1
+	.byte	100
+	.word	.L69-.L153,.L313-.L153
+	.half	1
+	.byte	100
+	.word	.L75-.L153,.L314-.L153
+	.half	1
+	.byte	100
+	.word	.L74-.L153,.L315-.L153
+	.half	1
+	.byte	100
+	.word	.L73-.L153,.L316-.L153
+	.half	1
+	.byte	100
+	.word	.L72-.L153,.L317-.L153
+	.half	1
+	.byte	100
+	.word	.L71-.L153,.L318-.L153
+	.half	1
+	.byte	100
+	.word	.L70-.L153,.L319-.L153
+	.half	1
+	.byte	100
+	.word	.L68-.L153,.L320-.L153
+	.half	1
+	.byte	100
+	.word	.L67-.L153,.L321-.L153
+	.half	1
+	.byte	100
+	.word	.L66-.L153,.L322-.L153
+	.half	1
+	.byte	100
+	.word	.L65-.L153,.L323-.L153
+	.half	1
+	.byte	100
+	.word	.L64-.L153,.L324-.L153
+	.half	1
+	.byte	100
+	.word	.L82-.L153,.L83-.L153
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_pal_state_string')
+	.sect	'.debug_loc'
+.L228:
+	.word	-1,.L155,0,.L326-.L155
+	.half	1
+	.byte	84
+	.word	.L103-.L155,.L328-.L155
+	.half	1
+	.byte	84
+	.word	.L104-.L155,.L329-.L155
+	.half	1
+	.byte	84
+	.word	.L105-.L155,.L330-.L155
+	.half	1
+	.byte	84
+	.word	.L106-.L155,.L331-.L155
+	.half	1
+	.byte	84
+	.word	.L107-.L155,.L332-.L155
+	.half	1
+	.byte	84
+	.word	.L108-.L155,.L333-.L155
+	.half	1
+	.byte	84
+	.word	.L109-.L155,.L110-.L155
+	.half	1
+	.byte	84
+	.word	0,0
+.L230:
+	.word	-1,.L155,.L327-.L155,.L227-.L155
+	.half	1
+	.byte	88
+	.word	.L334-.L155,.L227-.L155
+	.half	1
+	.byte	82
+	.word	0,0
+.L154:
+	.word	-1,.L155,0,.L227-.L155
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L229:
+	.word	-1,.L155,0,.L326-.L155
+	.half	1
+	.byte	100
+	.word	.L103-.L155,.L328-.L155
+	.half	1
+	.byte	100
+	.word	.L104-.L155,.L329-.L155
+	.half	1
+	.byte	100
+	.word	.L105-.L155,.L330-.L155
+	.half	1
+	.byte	100
+	.word	.L106-.L155,.L331-.L155
+	.half	1
+	.byte	100
+	.word	.L107-.L155,.L332-.L155
+	.half	1
+	.byte	100
+	.word	.L108-.L155,.L333-.L155
+	.half	1
+	.byte	100
+	.word	.L109-.L155,.L110-.L155
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_range_status_string')
+	.sect	'.debug_loc'
+.L220:
+	.word	-1,.L151,0,.L298-.L151
+	.half	1
+	.byte	84
+	.word	.L51-.L151,.L300-.L151
+	.half	1
+	.byte	84
+	.word	.L52-.L151,.L301-.L151
+	.half	1
+	.byte	84
+	.word	.L53-.L151,.L302-.L151
+	.half	1
+	.byte	84
+	.word	.L54-.L151,.L303-.L151
+	.half	1
+	.byte	84
+	.word	.L55-.L151,.L304-.L151
+	.half	1
+	.byte	84
+	.word	.L56-.L151,.L57-.L151
+	.half	1
+	.byte	84
+	.word	0,0
+.L222:
+	.word	-1,.L151,.L299-.L151,.L219-.L151
+	.half	1
+	.byte	88
+	.word	.L305-.L151,.L219-.L151
+	.half	1
+	.byte	82
+	.word	0,0
+.L150:
+	.word	-1,.L151,0,.L219-.L151
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L221:
+	.word	-1,.L151,0,.L298-.L151
+	.half	1
+	.byte	100
+	.word	.L51-.L151,.L300-.L151
+	.half	1
+	.byte	100
+	.word	.L52-.L151,.L301-.L151
+	.half	1
+	.byte	100
+	.word	.L53-.L151,.L302-.L151
+	.half	1
+	.byte	100
+	.word	.L54-.L151,.L303-.L151
+	.half	1
+	.byte	100
+	.word	.L55-.L151,.L304-.L151
+	.half	1
+	.byte	100
+	.word	.L56-.L151,.L57-.L151
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('VL53L0X_get_sequence_steps_info')
+	.sect	'.debug_loc'
+.L232:
+	.word	-1,.L157,0,.L335-.L157
+	.half	1
+	.byte	84
+	.word	.L119-.L157,.L337-.L157
+	.half	1
+	.byte	84
+	.word	.L120-.L157,.L338-.L157
+	.half	1
+	.byte	84
+	.word	.L121-.L157,.L339-.L157
+	.half	1
+	.byte	84
+	.word	.L122-.L157,.L340-.L157
+	.half	1
+	.byte	84
+	.word	.L123-.L157,.L124-.L157
+	.half	1
+	.byte	84
+	.word	0,0
+.L234:
+	.word	-1,.L157,.L336-.L157,.L231-.L157
+	.half	1
+	.byte	88
+	.word	.L341-.L157,.L231-.L157
+	.half	1
+	.byte	82
+	.word	0,0
+.L156:
+	.word	-1,.L157,0,.L231-.L157
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L233:
+	.word	-1,.L157,0,.L335-.L157
+	.half	1
+	.byte	100
+	.word	.L119-.L157,.L337-.L157
+	.half	1
+	.byte	100
+	.word	.L120-.L157,.L338-.L157
+	.half	1
+	.byte	100
+	.word	.L121-.L157,.L339-.L157
+	.half	1
+	.byte	100
+	.word	.L122-.L157,.L340-.L157
+	.half	1
+	.byte	100
+	.word	.L123-.L157,.L124-.L157
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L462:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_check_part_used')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L462,.L145,.L241-.L145
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_device_info')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L462,.L147,.L205-.L147
+	.byte	4
+	.word	(.L260-.L147)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L205-.L260)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_device_error_string')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L462,.L149,.L214-.L149
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_range_status_string')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L462,.L151,.L219-.L151
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_pal_error_string')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L462,.L153,.L223-.L153
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_pal_state_string')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L462,.L155,.L227-.L155
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_sequence_steps_info')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L462,.L157,.L231-.L157
+	.sdecl	'.debug_frame',debug,cluster('VL53L0X_get_limit_check_info')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L462,.L159,.L235-.L159
+	; Module end

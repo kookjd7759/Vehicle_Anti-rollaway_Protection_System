@@ -1,0 +1,92 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc7124a --dep-file=Libraries/Infra/Platform/Tricore/Compilers/CompilerGcc.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc27xd -D__CPU_TC27XD__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc27xd -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Configurations -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D\\\\_Reg -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service\\\\CpuGeneric -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\CStart -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Trap -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c\\\\I2c -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\I2c\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm\\\\Std -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_Impl -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_PinMap -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4 -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\core\\\\inc -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform -IC:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\VL53L0X_1.0.4\\\\Api\\\\platform\\\\inc -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2012 -o Libraries/Infra/Platform/Tricore/Compilers/CompilerGcc.src ../Libraries/Infra/Platform/Tricore/Compilers/CompilerGcc.c"
+	.compiler_name		"ctc"
+	;source	'../Libraries/Infra/Platform/Tricore/Compilers/CompilerGcc.c'
+
+	
+$TC16X
+	
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L3:
+	.word	586
+	.half	3
+	.word	.L4
+	.byte	4
+.L2:
+	.byte	1
+	.byte	'../Libraries/Infra/Platform/Tricore/Compilers/CompilerGcc.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Vehicle_Anti-rollaway_Protection_System\\Vehicle_Anti-rollaway_Protection_System\\tof_test\\TriCore Debug (TASKING)\\',0
+	.byte	12,1
+	.word	.L5
+	.byte	2
+	.byte	'short int',0,2,5,3
+	.byte	'__wchar_t',0,1,1,1
+	.word	272
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.byte	'__size_t',0,1,1,1
+	.word	303
+	.byte	2
+	.byte	'int',0,4,5,3
+	.byte	'__ptrdiff_t',0,1,1,1
+	.word	336
+	.byte	4,1,5
+	.word	363
+	.byte	3
+	.byte	'__codeptr',0,1,1,1
+	.word	365
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.byte	'uint16',0,2,112,29
+	.word	388
+	.byte	2
+	.byte	'unsigned long int',0,4,7,3
+	.byte	'uint32',0,2,116,29
+	.word	425
+	.byte	3
+	.byte	'sint16',0,2,129,1,29
+	.word	272
+	.byte	2
+	.byte	'long int',0,4,5,3
+	.byte	'sint32',0,2,134,1,29
+	.word	477
+	.byte	2
+	.byte	'long long int',0,8,5,3
+	.byte	'sint64',0,2,141,1,29
+	.word	505
+	.byte	2
+	.byte	'float',0,4,4,3
+	.byte	'float32',0,2,170,1,29
+	.word	538
+	.byte	6
+	.byte	'void',0,5
+	.word	564
+	.byte	3
+	.byte	'pvoid',0,3,54,28
+	.word	570
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L4:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,22,0,3,8,58,15,59,15,57,15
+	.byte	73,19,0,0,4,21,0,54,15,0,0,5,15,0,73,19,0,0,6,59,0,3,8,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L5:
+	.word	.L7-.L6
+.L6:
+	.half	3
+	.word	.L9-.L8
+.L8:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../Libraries/Infra/Platform/Tricore/Compilers/CompilerGcc.c',0,0,0,0
+	.byte	'C:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\Cpu\\Std\\Platform_Types.h',0
+	.byte	0,0,0
+	.byte	'C:\\\\Vehicle_Anti-rollaway_Protection_System\\\\Vehicle_Anti-rollaway_Protection_System\\\\tof_test\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\Cpu\\Std\\Ifx_Types.h',0
+	.byte	0,0,0,0
+.L9:
+.L7:
+	; Module end

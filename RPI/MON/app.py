@@ -185,13 +185,13 @@ def get_connection_flags() -> Dict[str, Any]:
     connected = bool(SERIAL_ENABLED and usb_connected and port_open)
 
     if not SERIAL_ENABLED:
-        message = "serial disabled"
+        message = "시리얼 비활성화"
     elif connected:
-        message = "usb connected / port open"
+        message = "USB 연결됨 / 포트 열림"
     elif usb_connected:
-        message = "usb connected / port closed"
+        message = "USB 연결됨 / 포트 닫힘"
     else:
-        message = "usb disconnected"
+        message = "USB 연결 안 됨"
 
     return {
         "connected": connected,

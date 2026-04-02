@@ -89,11 +89,33 @@ EVENT_BRAKE_EMERGENCY = "\uae34\uae09"
 EVENT_SYSTEM_RELEASE_DRIVER = "\uc81c\ub3d9 \ud574\uc81c(\uc6b4\uc804\uc790 \ubcf5\uadc0)"
 EVENT_SYSTEM_RELEASE_P = "\uc81c\ub3d9 \ud574\uc81c(P\ub2e8 \uc804\ud658)"
 EVENT_SYSTEM_LOG_SENT = "\uc774\ubca4\ud2b8 \ub85c\uadf8 \uc804\uc1a1 \uc644\ub8cc"
+EVENT_SYSTEM_STATUS = "status"
 
 VALID_WARNING_TYPES = {EVENT_WARNING_PRIMARY, EVENT_WARNING_ENHANCED, "Rollaway"}
 VALID_BRAKE_TYPES = {EVENT_BRAKE_D, EVENT_BRAKE_R, "Rollaway", EVENT_BRAKE_EMERGENCY}
 VALID_GEAR = {"P", "R", "N", "D", "UNKNOWN", ""}
 VALID_DOOR = {"OPEN", "CLOSED", "UNKNOWN", ""}
+
+BINARY_WARNING_TYPE_MAP = {
+    0: "",
+    1: EVENT_WARNING_PRIMARY,
+    2: EVENT_WARNING_ENHANCED,
+    3: "Rollaway",
+}
+
+BINARY_BRAKE_TYPE_MAP = {
+    0: "",
+    1: EVENT_BRAKE_D,
+    2: EVENT_BRAKE_R,
+    3: "Rollaway",
+}
+
+BINARY_GEAR_STATE_MAP = {
+    0: "P",
+    1: "R",
+    2: "N",
+    3: "D",
+}
 
 
 SCHEMA_SQL = """
@@ -262,6 +284,7 @@ def notify_stream_clients(event_name: str, payload: Dict[str, Any]) -> None:
 def classify_led_action(cleaned: Dict[str, Any]) -> Optional[str]:
     category = str(cleaned.get("event_category") or "").lower()
     source = str(cleaned.get("source") or "").lower()
+    event_type = str(cleaned.get("event_type") or "").lower()
 
     # Keep sample data from driving hardware signals.
     if source.startswith("sample"):
@@ -272,6 +295,8 @@ def classify_led_action(cleaned: Dict[str, Any]) -> Optional[str]:
     if category == "warning":
         return "warning"
     if category == "system":
+        if event_type == EVENT_SYSTEM_STATUS:
+            return None
         return "system"
     return None
 
@@ -918,48 +943,57 @@ def split_binary_frames(bit_stream: str) -> tuple[list[str], str]:
 
 
 def decode_binary_frame(frame_bits: str) -> Dict[str, Any]:
+    # Matches CLU/UART_driver/uart_msg.c:sendData()
+    # [15:14] warning_type, [13:12] brake_type, [11:10] gear_state,
+    # [9] door_state, [8] driver_present, [7:0] speed_kmh
+    if len(frame_bits) != MON_BINARY_FRAME_BITS:
+        raise ValueError(f"binary frame length must be {MON_BINARY_FRAME_BITS} bits")
+
     byte_values = [
         int(frame_bits[i:i + 8], 2)
         for i in range(0, len(frame_bits), 8)
     ]
-    b0 = byte_values[0] if len(byte_values) > 0 else 0
-    b1 = byte_values[1] if len(byte_values) > 1 else 0
+    status_word = int(frame_bits, 2)
 
-    # 기본 MON 비트 해석 규칙:
-    # bit7=제동(control), bit6=경고(warning), bit5=해제(system release)
-    if b0 & 0x80:
+    warning_code = (status_word >> 14) & 0x03
+    brake_code = (status_word >> 12) & 0x03
+    gear_code = (status_word >> 10) & 0x03
+    door_code = (status_word >> 9) & 0x01
+    driver_code = (status_word >> 8) & 0x01
+    speed_code = status_word & 0xFF
+
+    warning_type = BINARY_WARNING_TYPE_MAP.get(warning_code, "")
+    brake_type = BINARY_BRAKE_TYPE_MAP.get(brake_code, "")
+
+    if brake_type:
         event_category = "brake"
-        if b0 & 0x20:
-            event_type = EVENT_BRAKE_EMERGENCY
-        elif b0 & 0x10:
-            event_type = EVENT_BRAKE_D
-        else:
-            event_type = EVENT_BRAKE_R
-    elif b0 & 0x40:
+        event_type = brake_type
+    elif warning_type:
         event_category = "warning"
-        event_type = EVENT_WARNING_ENHANCED if (b0 & 0x20) else EVENT_WARNING_PRIMARY
+        event_type = warning_type
     else:
         event_category = "system"
-        if b0 & 0x20:
-            event_type = EVENT_SYSTEM_RELEASE_P if (b0 & 0x10) else EVENT_SYSTEM_RELEASE_DRIVER
-        else:
-            event_type = EVENT_SYSTEM_LOG_SENT
+        event_type = EVENT_SYSTEM_STATUS
 
-    gear_code = (b1 >> 6) & 0x03
-    gear_state = {0: "P", 1: "R", 2: "N", 3: "D"}.get(gear_code, "UNKNOWN")
-    door_state = "OPEN" if (b1 & 0x20) else "CLOSED"
-    driver_present = 1 if (b1 & 0x10) else 0
-    vehicle_speed = float(b1 & 0x0F)
+    gear_state = BINARY_GEAR_STATE_MAP.get(gear_code, "UNKNOWN")
+    door_state = "OPEN" if door_code else "CLOSED"
+    driver_present = 1 if driver_code else 0
+    vehicle_speed = float(speed_code)
 
     payload: Dict[str, Any] = {
         "event_time": now_str(),
         "event_category": event_category,
         "event_type": event_type,
+        "warning_type_code": warning_code,
+        "warning_type": warning_type or None,
+        "brake_type_code": brake_code,
+        "brake_type": brake_type or None,
         "gear_state": gear_state,
         "door_state": door_state,
         "driver_present": driver_present,
         "vehicle_speed": vehicle_speed,
         "source": "serial_binary",
+        "status_word": f"0x{status_word:04X}",
         "binary_bits": frame_bits,
         "binary_bytes_hex": [f"0x{b:02X}" for b in byte_values],
     }

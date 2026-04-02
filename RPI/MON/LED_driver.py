@@ -1,5 +1,13 @@
-import RPi.GPIO as GPIO
+import os
 import time
+
+try:
+    import RPi.GPIO as GPIO
+except Exception as exc:
+    GPIO = None
+    _GPIO_IMPORT_ERROR = str(exc)
+else:
+    _GPIO_IMPORT_ERROR = ""
 
 PIN_R = 22
 PIN_G = 27
@@ -12,13 +20,14 @@ PWM_FREQ = 1000
 # - off인데 희미하게 켜짐
 # - 색이 반대로 나옴
 # 이런 경우 True로 바꿔봐
-COMMON_ANODE = False
+COMMON_ANODE = os.getenv("MON_LED_COMMON_ANODE", "0").strip().lower() in {"1", "true", "yes", "on"}
 
 _initialized = False
 _pwm_r = None
 _pwm_g = None
 _pwm_b = None
 warning_color = "off"
+_gpio_warning_logged = False
 
 # 채널별 밝기 보정
 # 보통 G가 너무 밝아서 줄여야 주황이 예쁘게 나옴
@@ -52,10 +61,16 @@ def _to_duty(value):
 
 
 def _init_rgb():
-    global _initialized, _pwm_r, _pwm_g, _pwm_b
+    global _initialized, _pwm_r, _pwm_g, _pwm_b, _gpio_warning_logged
 
     if _initialized:
-        return
+        return True
+
+    if GPIO is None:
+        if not _gpio_warning_logged:
+            print(f"[LED] GPIO unavailable: {_GPIO_IMPORT_ERROR or 'RPi.GPIO import failed'}")
+            _gpio_warning_logged = True
+        return False
 
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
@@ -74,10 +89,12 @@ def _init_rgb():
     _pwm_b.start(_to_duty(0))
 
     _initialized = True
+    return True
 
 
 def _set_color(r, g, b):
-    _init_rgb()
+    if not _init_rgb():
+        return False
 
     r = _apply_gain(r, GAIN_R)
     g = _apply_gain(g, GAIN_G)
@@ -86,6 +103,7 @@ def _set_color(r, g, b):
     _pwm_r.ChangeDutyCycle(_to_duty(r))
     _pwm_g.ChangeDutyCycle(_to_duty(g))
     _pwm_b.ChangeDutyCycle(_to_duty(b))
+    return True
 
 
 def on_red():
@@ -150,16 +168,10 @@ def warning_green():
 
 
 if __name__ == '__main__':
-    try:
-        warning_red()
-        time.sleep(1)
+    warning_red()
+    time.sleep(1)
 
-        warning_orange()
-        time.sleep(1)
+    warning_orange()
+    time.sleep(1)
 
-        warning_green()
-        time.sleep(1)
-
-        off()
-    finally:
-        cleanup()
+    warning_green()

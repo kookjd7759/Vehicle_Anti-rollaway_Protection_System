@@ -33,6 +33,11 @@ try:
 except Exception:
     LED_driver = None
 
+try:
+    import mp3  # type: ignore
+except Exception:
+    mp3 = None
+
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = Path(os.getenv("MON_DB_PATH", BASE_DIR / "mon_logs.db"))
 SERIAL_PORT = "/dev/ttyUSB0"
@@ -50,6 +55,7 @@ SEND_URL_TIMEOUT_SEC = float(os.getenv("MON_SEND_URL_TIMEOUT_SEC", "20"))
 SEND_URL_POLL_INTERVAL_SEC = float(os.getenv("MON_SEND_URL_POLL_INTERVAL_SEC", "0.2"))
 PUBLIC_WEB_HOST = os.getenv("MON_PUBLIC_HOST", "").strip()
 LED_SIGNAL_ENABLED = os.getenv("MON_LED_SIGNAL_ENABLED", "1") == "1"
+LED_EVENT_HOLD_SEC = float(os.getenv("MON_LED_EVENT_HOLD_SEC", "1.2"))
 MON_BINARY_FRAME_BITS = int(os.getenv("MON_BINARY_FRAME_BITS", "16"))
 if MON_BINARY_FRAME_BITS < 8 or MON_BINARY_FRAME_BITS % 8 != 0:
     MON_BINARY_FRAME_BITS = 16
@@ -60,6 +66,9 @@ _db_lock = threading.Lock()
 _led_queue: "queue.Queue[str]" = queue.Queue(maxsize=64)
 _led_worker_started = False
 _led_worker_lock = threading.Lock()
+_audio_queue: "queue.Queue[str]" = queue.Queue(maxsize=16)
+_audio_worker_started = False
+_audio_worker_lock = threading.Lock()
 _serial_state_lock = threading.Lock()
 _stream_clients_lock = threading.Lock()
 _stream_clients: list["queue.Queue[str]"] = []
@@ -90,17 +99,34 @@ EVENT_SYSTEM_RELEASE_DRIVER = "\uc81c\ub3d9 \ud574\uc81c(\uc6b4\uc804\uc790 \ubc
 EVENT_SYSTEM_RELEASE_P = "\uc81c\ub3d9 \ud574\uc81c(P\ub2e8 \uc804\ud658)"
 EVENT_SYSTEM_LOG_SENT = "\uc774\ubca4\ud2b8 \ub85c\uadf8 \uc804\uc1a1 \uc644\ub8cc"
 EVENT_SYSTEM_STATUS = "status"
+RISK_EVENT_OK = "OK"
+RISK_WARNING_TYPES = {"W1", "W2", "R1"}
+RISK_BRAKE_TYPES = {"W3", "W4", "R2"}
 
-VALID_WARNING_TYPES = {EVENT_WARNING_PRIMARY, EVENT_WARNING_ENHANCED, "Rollaway"}
-VALID_BRAKE_TYPES = {EVENT_BRAKE_D, EVENT_BRAKE_R, "Rollaway", EVENT_BRAKE_EMERGENCY}
+VALID_WARNING_TYPES = {EVENT_WARNING_PRIMARY, EVENT_WARNING_ENHANCED, "Rollaway", *RISK_WARNING_TYPES}
+VALID_BRAKE_TYPES = {EVENT_BRAKE_D, EVENT_BRAKE_R, "Rollaway", EVENT_BRAKE_EMERGENCY, *RISK_BRAKE_TYPES}
 VALID_GEAR = {"P", "R", "N", "D", "UNKNOWN", ""}
 VALID_DOOR = {"OPEN", "CLOSED", "UNKNOWN", ""}
+
+BINARY_WARNING_MACRO_MAP = {
+    0: "LCD_WARN_NONE",
+    1: "LCD_WARN_LV1",
+    2: "LCD_WARN_LV2",
+    3: "LCD_WARN_ROLLAWAY",
+}
 
 BINARY_WARNING_TYPE_MAP = {
     0: "",
     1: EVENT_WARNING_PRIMARY,
     2: EVENT_WARNING_ENHANCED,
     3: "Rollaway",
+}
+
+BINARY_BRAKE_MACRO_MAP = {
+    0: "LCD_BRK_NONE",
+    1: "LCD_BRK_D",
+    2: "LCD_BRK_R",
+    3: "LCD_BRK_ROLLAWAY",
 }
 
 BINARY_BRAKE_TYPE_MAP = {
@@ -110,11 +136,28 @@ BINARY_BRAKE_TYPE_MAP = {
     3: "Rollaway",
 }
 
+BINARY_GEAR_MACRO_MAP = {
+    0: "LCD_GEAR_P",
+    1: "LCD_GEAR_R",
+    2: "LCD_GEAR_N",
+    3: "LCD_GEAR_D",
+}
+
 BINARY_GEAR_STATE_MAP = {
     0: "P",
     1: "R",
     2: "N",
     3: "D",
+}
+
+BINARY_DOOR_MACRO_MAP = {
+    0: "LCD_DOOR_CLOSE",
+    1: "LCD_DOOR_OPEN",
+}
+
+BINARY_DRIVER_MACRO_MAP = {
+    0: "LCD_DRIVER_ABSENT",
+    1: "LCD_DRIVER_PRESENT",
 }
 
 
@@ -230,6 +273,8 @@ def action_to_warning_color(action: Optional[str]) -> Optional[str]:
         return "orange"
     if action in {"release", "system"}:
         return "green"
+    if action == "off":
+        return "off"
     return None
 
 
@@ -295,8 +340,8 @@ def classify_led_action(cleaned: Dict[str, Any]) -> Optional[str]:
     if category == "warning":
         return "warning"
     if category == "system":
-        if event_type == EVENT_SYSTEM_STATUS:
-            return None
+        if event_type in {EVENT_SYSTEM_STATUS, RISK_EVENT_OK.lower()}:
+            return "off"
         return "system"
     return None
 
@@ -309,9 +354,11 @@ def _call_led_driver(action: str) -> None:
     if action == "control":
         candidate_names = ["warning_red", "on_red", "red"]
     elif action == "warning":
-        candidate_names = ["warning_orange", "on_orange", "orange"]
+        candidate_names = ["on_orange", "warning_orange", "orange"]
     elif action in {"release", "system"}:
-        candidate_names = ["warning_green", "on_green", "green", "grean"]
+        candidate_names = ["on_green", "warning_green", "green", "grean"]
+    elif action == "off":
+        candidate_names = ["off", "clear", "reset"]
     else:
         return
 
@@ -321,6 +368,14 @@ def _call_led_driver(action: str) -> None:
             func()
             current_color = get_led_warning_color() or action_to_warning_color(action) or "unknown"
             print(f"[LED] warning_color={current_color} action={action}")
+
+            if action != "off":
+                off_func = getattr(LED_driver, "off", None)
+                latest_color = get_led_warning_color()
+                if callable(off_func) and latest_color not in {None, "off"}:
+                    time.sleep(max(0.0, LED_EVENT_HOLD_SEC))
+                    off_func()
+                    print(f"[LED] auto-off after action={action}")
             return
 
     print(f"[LED] no callable for action={action} candidates={candidate_names}")
@@ -371,6 +426,86 @@ def trigger_led_signal(cleaned: Dict[str, Any]) -> None:
             pass
         try:
             _led_queue.put_nowait(action)
+        except queue.Full:
+            pass
+
+
+def classify_audio_action(cleaned: Dict[str, Any]) -> Optional[str]:
+    category = str(cleaned.get("event_category") or "").lower()
+    source = str(cleaned.get("source") or "").lower()
+
+    # Keep sample data from triggering the MP3 player.
+    if source.startswith("sample"):
+        return None
+
+    if category == "warning":
+        return "warning"
+    if category == "brake":
+        return "brake"
+    return None
+
+
+def _call_audio_driver(action: str) -> None:
+    if mp3 is None:
+        return
+
+    if action == "warning":
+        func = getattr(mp3, "play_warning", None)
+    elif action == "brake":
+        func = getattr(mp3, "play_brake", None)
+    else:
+        return
+
+    if not callable(func):
+        print(f"[MP3] no callable for action={action}")
+        return
+
+    func()
+    print(f"[MP3] played action={action}")
+
+
+def _audio_worker() -> None:
+    while True:
+        action = _audio_queue.get()
+        try:
+            _call_audio_driver(action)
+        except Exception as exc:
+            print(f"[MP3] action failed: {action} / {exc}")
+        finally:
+            _audio_queue.task_done()
+
+
+def _ensure_audio_worker_started() -> None:
+    global _audio_worker_started
+    if _audio_worker_started:
+        return
+    with _audio_worker_lock:
+        if _audio_worker_started:
+            return
+        t = threading.Thread(target=_audio_worker, daemon=True)
+        t.start()
+        _audio_worker_started = True
+
+
+def trigger_audio_signal(cleaned: Dict[str, Any]) -> None:
+    action = classify_audio_action(cleaned)
+    if action is None:
+        return
+    if mp3 is None:
+        return
+
+    _ensure_audio_worker_started()
+    try:
+        _audio_queue.put_nowait(action)
+    except queue.Full:
+        # Keep latest playback request by dropping one stale queued action.
+        try:
+            _ = _audio_queue.get_nowait()
+            _audio_queue.task_done()
+        except queue.Empty:
+            pass
+        try:
+            _audio_queue.put_nowait(action)
         except queue.Full:
             pass
 
@@ -585,6 +720,9 @@ def normalize_event_type(category: str, value: Any) -> str:
 
     if category == "warning":
         mapping = {
+            "w1": "W1",
+            "w2": "W2",
+            "r1": "R1",
             "1": EVENT_WARNING_PRIMARY,
             EVENT_WARNING_PRIMARY: EVENT_WARNING_PRIMARY,
             f"{EVENT_WARNING_PRIMARY}경고": EVENT_WARNING_PRIMARY,
@@ -618,6 +756,9 @@ def normalize_event_type(category: str, value: Any) -> str:
 
     if category == "brake":
         mapping = {
+            "w3": "W3",
+            "w4": "W4",
+            "r2": "R2",
             "d": EVENT_BRAKE_D,
             "r": EVENT_BRAKE_R,
             EVENT_BRAKE_D: EVENT_BRAKE_D,
@@ -654,6 +795,9 @@ def normalize_event_type(category: str, value: Any) -> str:
 
     if category == "system":
         mapping = {
+            "ok": RISK_EVENT_OK,
+            RISK_EVENT_OK: RISK_EVENT_OK,
+            "status": EVENT_SYSTEM_STATUS,
             EVENT_SYSTEM_RELEASE_DRIVER: EVENT_SYSTEM_RELEASE_DRIVER,
             EVENT_SYSTEM_RELEASE_P: EVENT_SYSTEM_RELEASE_P,
             EVENT_SYSTEM_LOG_SENT: EVENT_SYSTEM_LOG_SENT,
@@ -790,9 +934,10 @@ def insert_event(payload: Dict[str, Any]) -> int:
 
     # LED 호출은 DB 잠금 밖에서 비동기로 처리
     trigger_led_signal(cleaned)
+    trigger_audio_signal(cleaned)
 
     action = classify_led_action(cleaned)
-    led_warning_color = action_to_warning_color(action) or get_led_warning_color()
+    led_warning_color = action_to_warning_color(action)
     stream_payload: Dict[str, Any] = {
         "id": event_id,
         "event_time": cleaned.get("event_time"),
@@ -829,6 +974,33 @@ def normalize_existing_event_rows() -> int:
             return len(updates)
 
 
+def build_raw_frame_text(raw_payload: Any) -> str:
+    text = normalize_text(raw_payload)
+    if not text:
+        return ""
+
+    try:
+        payload = json.loads(text)
+    except Exception:
+        return text
+
+    if not isinstance(payload, dict):
+        return text
+
+    binary_bits = normalize_text(payload.get("binary_bits"))
+    if binary_bits:
+        status_word = normalize_text(payload.get("status_word"))
+        if status_word:
+            return f"{binary_bits} ({status_word})"
+        return binary_bits
+
+    status_word = normalize_text(payload.get("status_word"))
+    if status_word:
+        return status_word
+
+    return text
+
+
 def query_events(limit: int = 50, category: str = "", keyword: str = ""):
     limit = max(1, min(limit, 500))
     sql = "SELECT * FROM events WHERE 1=1"
@@ -850,6 +1022,7 @@ def query_events(limit: int = 50, category: str = "", keyword: str = ""):
             item = dict(row)
             item["event_category"] = normalize_category(item.get("event_category"))
             item["event_type"] = normalize_event_type(item["event_category"], item.get("event_type"))
+            item["raw_frame"] = build_raw_frame_text(item.get("raw_payload"))
             items.append(item)
         return items
 
@@ -942,6 +1115,109 @@ def split_binary_frames(bit_stream: str) -> tuple[list[str], str]:
     return frames, bit_stream[usable_len:]
 
 
+def binary_get_risk_code(warning_code: int, brake_code: int) -> str:
+    if brake_code == 1:
+        return "W3"
+    if brake_code == 2:
+        return "W4"
+    if brake_code == 3:
+        return "R2"
+    if warning_code == 1:
+        return "W1"
+    if warning_code == 2:
+        return "W2"
+    if warning_code == 3:
+        return "R1"
+    return RISK_EVENT_OK
+
+
+def binary_get_brake_text(brake_code: int) -> str:
+    return "OFF" if brake_code == 0 else "ON"
+
+
+def binary_get_motor_mode(gear_code: int, brake_code: int) -> int:
+    if brake_code != 0:
+        return 0
+    if gear_code == 3:
+        return 1
+    if gear_code == 1:
+        return 2
+    if gear_code == 2:
+        return 3
+    if gear_code == 0:
+        return 4
+    return 0
+
+
+def binary_get_buzzer_mode(warning_code: int, brake_code: int) -> int:
+    if brake_code != 0:
+        return 2
+    if warning_code == 1:
+        return 1
+    if warning_code in {2, 3}:
+        return 2
+    return 0
+
+
+def binary_get_led_hazard(brake_code: int) -> int:
+    return 0 if brake_code == 0 else 1
+
+
+def binary_get_led_brake(brake_code: int) -> int:
+    return 0 if brake_code == 0 else 1
+
+
+def binary_get_gear_char(gear_code: int) -> str:
+    return {
+        0: "P",
+        1: "R",
+        2: "N",
+        3: "D",
+    }.get(gear_code, "?")
+
+
+def binary_get_driver_char(driver_code: int) -> str:
+    return "O" if driver_code == 1 else "X"
+
+
+def binary_get_door_char(door_code: int) -> str:
+    return "O" if door_code == 0 else "X"
+
+
+def binary_pad_lcd_segment(text: str) -> str:
+    return f"{text:<16}"[:16]
+
+
+def binary_make_lcd_strings(
+    warning_code: int,
+    brake_code: int,
+    gear_code: int,
+    door_code: int,
+    driver_code: int,
+    speed_code: int,
+) -> tuple[str, str]:
+    risk_code = binary_get_risk_code(warning_code, brake_code)
+    brake_text = binary_get_brake_text(brake_code)
+    motor_mode = binary_get_motor_mode(gear_code, brake_code)
+    buzzer_mode = binary_get_buzzer_mode(warning_code, brake_code)
+    led_hazard = binary_get_led_hazard(brake_code)
+    led_brake = binary_get_led_brake(brake_code)
+
+    line1_1 = binary_pad_lcd_segment(
+        f"{binary_get_gear_char(gear_code)} {speed_code:03d}km move    "
+    )
+    line1_2 = binary_pad_lcd_segment(
+        f"driver {binary_get_driver_char(driver_code)} door {binary_get_door_char(door_code)} "
+    )
+    line2_1 = binary_pad_lcd_segment(
+        f"RISK:{risk_code:>2} BRK:{brake_text:<3} "
+    )
+    line2_2 = binary_pad_lcd_segment(
+        f"M:{motor_mode} S:{buzzer_mode} L:{led_hazard} B:{led_brake} "
+    )
+    return line1_1 + line1_2, line2_1 + line2_2
+
+
 def decode_binary_frame(frame_bits: str) -> Dict[str, Any]:
     # Matches CLU/UART_driver/uart_msg.c:sendData()
     # [15:14] warning_type, [13:12] brake_type, [11:10] gear_state,
@@ -964,16 +1240,30 @@ def decode_binary_frame(frame_bits: str) -> Dict[str, Any]:
 
     warning_type = BINARY_WARNING_TYPE_MAP.get(warning_code, "")
     brake_type = BINARY_BRAKE_TYPE_MAP.get(brake_code, "")
+    risk_code = binary_get_risk_code(warning_code, brake_code)
+    brake_text = binary_get_brake_text(brake_code)
+    motor_mode = binary_get_motor_mode(gear_code, brake_code)
+    buzzer_mode = binary_get_buzzer_mode(warning_code, brake_code)
+    led_hazard = binary_get_led_hazard(brake_code)
+    led_brake = binary_get_led_brake(brake_code)
+    lcd_line1, lcd_line2 = binary_make_lcd_strings(
+        warning_code,
+        brake_code,
+        gear_code,
+        door_code,
+        driver_code,
+        speed_code,
+    )
 
-    if brake_type:
+    if brake_code != 0:
         event_category = "brake"
-        event_type = brake_type
-    elif warning_type:
+        event_type = risk_code
+    elif warning_code != 0:
         event_category = "warning"
-        event_type = warning_type
+        event_type = risk_code
     else:
         event_category = "system"
-        event_type = EVENT_SYSTEM_STATUS
+        event_type = risk_code
 
     gear_state = BINARY_GEAR_STATE_MAP.get(gear_code, "UNKNOWN")
     door_state = "OPEN" if door_code else "CLOSED"
@@ -984,14 +1274,30 @@ def decode_binary_frame(frame_bits: str) -> Dict[str, Any]:
         "event_time": now_str(),
         "event_category": event_category,
         "event_type": event_type,
+        "risk_code": risk_code,
         "warning_type_code": warning_code,
+        "warning_macro": BINARY_WARNING_MACRO_MAP.get(warning_code, "UNKNOWN"),
         "warning_type": warning_type or None,
         "brake_type_code": brake_code,
+        "brake_macro": BINARY_BRAKE_MACRO_MAP.get(brake_code, "UNKNOWN"),
         "brake_type": brake_type or None,
+        "brake_text": brake_text,
+        "gear_code": gear_code,
+        "gear_macro": BINARY_GEAR_MACRO_MAP.get(gear_code, "UNKNOWN"),
         "gear_state": gear_state,
+        "door_code": door_code,
+        "door_macro": BINARY_DOOR_MACRO_MAP.get(door_code, "UNKNOWN"),
         "door_state": door_state,
+        "driver_code": driver_code,
+        "driver_macro": BINARY_DRIVER_MACRO_MAP.get(driver_code, "UNKNOWN"),
         "driver_present": driver_present,
         "vehicle_speed": vehicle_speed,
+        "motor_mode": motor_mode,
+        "buzzer_mode": buzzer_mode,
+        "led_hazard": led_hazard,
+        "led_brake": led_brake,
+        "lcd_line1": lcd_line1,
+        "lcd_line2": lcd_line2,
         "source": "serial_binary",
         "status_word": f"0x{status_word:04X}",
         "binary_bits": frame_bits,

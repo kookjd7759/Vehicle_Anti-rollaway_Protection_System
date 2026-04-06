@@ -1,183 +1,61 @@
-#include "can_act.h"
-#include "drive_mode.h"   /* updateVehicleSpeed, updateBrakeStateCan */
-#include "IfxPort.h"
-#include "IfxStm.h"
-#include "Bsp.h"
-#include "mpu6050.h"
+#ifndef CAN_ACT_H
+#define CAN_ACT_H
 
-/* ── 전역 정의 ── */
-IfxCan_Can      g_mcmcan;
-IfxCan_Can_Node g_canNode0;
+#include "Ifx_Types.h"
+#include "IfxCan_Can.h"
 
-volatile uint8  g_canBrakeCmd  = BRAKE_CMD_RELEASE;
-volatile uint8  g_canGearState = CAN_GEAR_P;
-volatile uint8  g_canCmdValid  = 0U;
-volatile uint32 g_lastRxTick   = 0U;
+/* ── CAN 핀 / ID / 타임아웃 ── */
+#define CAN_STB_PORT    &MODULE_P20
+#define CAN_STB_PIN     6
 
-volatile uint32 g_vehicleSpeed  = 0U;
-volatile uint8  g_brakeStateCan = BRAKE_CMD_RELEASE;
+#define CAN_RX_ID       0x100U
+#define CAN_TX_ID       0x300U
+#define CAN_TIMEOUT_US  500000U
 
-volatile uint8  g_txSuccess = 0U, g_txBusy = 0U, g_txFail = 0U;
-volatile uint32 g_txCount   = 0U;
-volatile uint8  g_rxNew     = 0U, g_rxFail = 0U;
-volatile uint32 g_rxCount   = 0U;
-volatile uint32 g_rxData0   = 0U, g_rxData1 = 0U;
+/*
+ * ── MAIN → ACT 수신 프레임 (ID: 0x100, 2바이트) ──
+ * Byte 0 : brake_cmd   0:해제 / 1:유지 / 2:긴급제동
+ * Byte 1 : gear_state  0:P / 1:R / 2:N / 3:D
+ *
+ * ── ACT → MAIN 송신 프레임 (ID: 0x300, 8바이트) ──
+ * Byte 0~3 : speed       (uint32, km/h × 100, little-endian)
+ * Byte 4   : brake_state (0:해제 / 1:유지 / 2:긴급)
+ * Byte 5   : accel_x     (sint8, g × 100, ±100)
+ * Byte 6   : accel_y     (sint8, g × 100, ±100)
+ * Byte 7   : accel_z     (sint8, g × 100, ±100)
+ */
 
-/* ── 내부 전용 ── */
-static void initStandardFilter(uint32 filterId, uint8 rxBufferNumber)
-{
-    IfxCan_Filter filter;
-    filter.number                = 0;
-    filter.elementConfiguration  = IfxCan_FilterElementConfiguration_storeInRxBuffer;
-    filter.type                  = IfxCan_FilterType_classic;
-    filter.id1                   = filterId;
-    filter.id2                   = 0x7FF;
-    filter.rxBufferOffset        = (IfxCan_RxBufferId)rxBufferNumber;
-    IfxCan_Can_setStandardFilter(&g_canNode0, &filter);
-}
+/* ── Brake / Gear 열거형 ── */
+typedef enum { BRAKE_CMD_RELEASE=0, BRAKE_CMD_HOLD=1, BRAKE_CMD_EMERGENCY=2 } BrakeCmd;
+typedef enum { CAN_GEAR_P=0, CAN_GEAR_R=1, CAN_GEAR_N=2, CAN_GEAR_D=3 }      CanGearState;
 
-void initCanAct(void)
-{
-    IfxPort_setPinModeOutput(CAN_STB_PORT, CAN_STB_PIN,
-                             IfxPort_OutputMode_pushPull,
-                             IfxPort_OutputIdx_general);
-    IfxPort_setPinLow(CAN_STB_PORT, CAN_STB_PIN);
+/* ── CAN 수신 데이터 ── */
+extern volatile uint8  g_canBrakeCmd;
+extern volatile uint8  g_canGearState;
+extern volatile uint8  g_canCmdValid;
+extern volatile uint32 g_lastRxTick;
 
-    {
-        IfxCan_Can_Config canConfig;
-        IfxCan_Can_initModuleConfig(&canConfig, &MODULE_CAN0);
-        IfxCan_Can_initModule(&g_mcmcan, &canConfig);
-    }
-    {
-        IfxCan_Can_NodeConfig canNodeConfig;
-        IfxCan_Can_initNodeConfig(&canNodeConfig, &g_mcmcan);
+/* ── CAN 송신 데이터 ── */
+extern volatile uint32 g_vehicleSpeed;
+extern volatile uint8  g_brakeStateCan;
 
-        canNodeConfig.nodeId              = IfxCan_NodeId_0;
-        canNodeConfig.baudRate.baudrate   = 500000;
-        canNodeConfig.frame.type          = IfxCan_FrameType_transmitAndReceive;
+/* ── 디버그 ── */
+extern volatile uint8  g_txSuccess, g_txBusy, g_txFail;
+extern volatile uint32 g_txCount;
+extern volatile uint8  g_rxNew, g_rxFail;
+extern volatile uint32 g_rxCount;
+extern volatile uint32 g_rxData0, g_rxData1;
+extern volatile uint8  g_canBusOffCount;   /* Bus-Off 발생 횟수 디버그용 */
 
-        static const IfxCan_Can_Pins canPins = {
-            &IfxCan_TXD00_P20_8_OUT, IfxPort_OutputMode_pushPull,
-            &IfxCan_RXD00B_P20_7_IN, IfxPort_InputMode_pullUp,
-            IfxPort_PadDriver_cmosAutomotiveSpeed1
-        };
-        canNodeConfig.pins = &canPins;
+/* ── CAN 모듈 객체 ── */
+extern IfxCan_Can      g_mcmcan;
+extern IfxCan_Can_Node g_canNode0;
 
-        canNodeConfig.txConfig.txMode                   = IfxCan_TxMode_dedicatedBuffers;
-        canNodeConfig.txConfig.dedicatedTxBuffersNumber = 1;
-        canNodeConfig.txConfig.txBufferDataFieldSize    = IfxCan_DataFieldSize_8;
-        canNodeConfig.txConfig.txEventFifoSize          = 0;
+/* ── 공개 함수 ── */
+void initCanAct(void);
+void receive_main_command(void);
+void checkCanTimeout(void);
+void checkCanBusOff(void);     /* Bus-Off 감지 및 자동 복구 */
+void send_act_status(void);
 
-        canNodeConfig.rxConfig.rxMode                   = IfxCan_RxMode_dedicatedBuffers;
-        canNodeConfig.rxConfig.rxBufferDataFieldSize    = IfxCan_DataFieldSize_8;
-        canNodeConfig.rxConfig.rxFifo0DataFieldSize     = IfxCan_DataFieldSize_8;
-        canNodeConfig.rxConfig.rxFifo1DataFieldSize     = IfxCan_DataFieldSize_8;
-
-        IfxCan_Can_initNode(&g_canNode0, &canNodeConfig);
-    }
-
-    initStandardFilter(CAN_RX_ID, 0);
-}
-
-void receive_main_command(void)
-{
-    IfxCan_Message rxMsg;
-    uint32 rxData[2] = {0U, 0U};
-
-    g_rxFail = 0U;
-    g_rxNew  = 0U;
-
-    if (IfxCan_Can_isNewDataReceived(&g_canNode0, (IfxCan_RxBufferId)0) == FALSE)
-    {
-        g_rxFail = 1U;
-        return;
-    }
-
-    IfxCan_Can_initMessage(&rxMsg);
-    rxMsg.messageId       = 0xFFFFFFFFU;
-    rxMsg.bufferNumber    = 0;
-    rxMsg.frameMode       = IfxCan_FrameMode_standard;
-    rxMsg.messageIdLength = IfxCan_MessageIdLength_standard;
-    rxMsg.dataLengthCode  = IfxCan_DataLengthCode_2;
-    rxMsg.readFromRxFifo0 = FALSE;
-
-    IfxCan_Can_readMessage(&g_canNode0, &rxMsg, rxData);
-
-    if (rxMsg.messageId == CAN_RX_ID)
-    {
-        g_rxData0 = rxData[0];
-        g_rxData1 = rxData[1];
-        g_rxCount++;
-        g_rxNew = 1U;
-
-        g_canBrakeCmd  = (uint8)(rxData[0] & 0xFFU);
-        g_canGearState = (uint8)((rxData[0] >> 8) & 0xFFU);
-
-        g_canCmdValid = 1U;
-        g_lastRxTick  = IfxStm_getLower(BSP_DEFAULT_TIMER);
-    }
-    else
-    {
-        g_rxFail = 1U;
-    }
-}
-
-void checkCanTimeout(void)
-{
-    if (g_canCmdValid == 0U) return;
-
-    uint32 now       = IfxStm_getLower(BSP_DEFAULT_TIMER);
-    uint32 elapsedUs = (now - g_lastRxTick) / g_stmTicksPerUs;
-
-    if (elapsedUs >= CAN_TIMEOUT_US)
-    {
-        g_canCmdValid  = 0U;
-        g_canBrakeCmd  = BRAKE_CMD_RELEASE;
-        g_canGearState = CAN_GEAR_P;
-        g_gearMode     = GEAR_P;
-    }
-}
-
-void send_act_status(void)
-{
-    IfxCan_Message txMsg;
-    uint32 txData[2];
-    IfxCan_Status status;
-    sint32 timeout = 10000;
-
-    g_txSuccess = 0U; g_txBusy = 0U; g_txFail = 0U;
-
-    updateVehicleSpeed();
-    updateBrakeStateCan();
-
-    /*
-     * 0x300 프레임 구조 (8바이트, little-endian)
-     * txData[0] → Byte 0~3 : speed       (uint32, km/h x100)
-     * txData[1] → Byte 4   : brake_state (uint8)
-     *           → Byte 5   : accel_x     (sint8, g x100, ±100)
-     *           → Byte 6   : accel_y     (sint8, g x100, ±100)
-     *           → Byte 7   : accel_z     (sint8, g x100, ±100)
-     */
-    txData[0] = g_vehicleSpeed;
-    txData[1] = ((uint32)g_brakeStateCan       & 0xFFU)
-              | ((uint32)(uint8)g_accelX  <<  8U)
-              | ((uint32)(uint8)g_accelY  << 16U)
-              | ((uint32)(uint8)g_accelZ  << 24U);
-
-    IfxCan_Can_initMessage(&txMsg);
-    txMsg.messageId       = CAN_TX_ID;
-    txMsg.bufferNumber    = 0;
-    txMsg.frameMode       = IfxCan_FrameMode_standard;
-    txMsg.messageIdLength = IfxCan_MessageIdLength_standard;
-    txMsg.dataLengthCode  = IfxCan_DataLengthCode_8;   /* 5 → 8 변경 */
-    txMsg.readFromRxFifo0 = FALSE;
-
-    do {
-        status = IfxCan_Can_sendMessage(&g_canNode0, &txMsg, txData);
-        if (status == IfxCan_Status_ok) { g_txSuccess = 1U; g_txCount++; return; }
-        if (status == IfxCan_Status_notSentBusy) g_txBusy = 1U;
-        timeout--;
-    } while (timeout > 0);
-
-    g_txFail = 1U;
-}
+#endif /* CAN_ACT_H */

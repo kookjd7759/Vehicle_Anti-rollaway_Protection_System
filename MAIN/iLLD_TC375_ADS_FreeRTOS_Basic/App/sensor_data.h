@@ -79,12 +79,12 @@ typedef struct {
     GearState   gear;
     DoorState   door;
     float       speed_kmh;          /* ACT feedback speed */
-    MotionState motion;             /* Derived in MAIN from speed feedback */
+    sint16      accel_x;            /* ACT feedback acceleration X */
+    sint16      accel_y;            /* ACT feedback acceleration Y */
+    sint16      accel_z;            /* ACT feedback acceleration Z */
+    MotionState motion;             /* Derived in MAIN from ACT speed/accel */
     BrakeCommand act_brake_state;   /* ACT feedback brake state */
     boolean      act_feedback_alive;
-    sint16       accel_x;           /* ACT feedback acceleration X */
-    sint16       accel_y;           /* ACT feedback acceleration Y */
-    sint16       accel_z;           /* ACT feedback acceleration Z */
 } SensorData;
 
 /* ── 제어 명령 (Task_Judge가 채움, Task_CAN_TX가 읽음) ── */

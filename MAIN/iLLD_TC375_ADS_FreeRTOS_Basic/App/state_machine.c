@@ -6,11 +6,10 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-#define VEHICLE_MOVING_THRESHOLD_KMH 0.5f
+#define VEHICLE_MOVING_THRESHOLD_KMH 1.0f
 #define VEHICLE_ACCEL_THRESHOLD      2
 
 static RiskLevel current_state = RISK_NORMAL;
-static TickType_t absent_start = 0;
 static TickType_t door_open_start = 0;
 
 static boolean is_auto_brake_state(RiskLevel state)
@@ -29,11 +28,10 @@ static MotionState derive_motion(const SensorData *sensor)
         return MOTION_STOPPED;
 
     moving_by_speed = (sensor->speed_kmh >= VEHICLE_MOVING_THRESHOLD_KMH);
-    moving_by_accel =
-        (sensor->accel_x >= VEHICLE_ACCEL_THRESHOLD) ||
-        (sensor->accel_x <= -VEHICLE_ACCEL_THRESHOLD) ||
-        (sensor->accel_y >= VEHICLE_ACCEL_THRESHOLD) ||
-        (sensor->accel_y <= -VEHICLE_ACCEL_THRESHOLD);
+    moving_by_accel = (sensor->accel_x >= VEHICLE_ACCEL_THRESHOLD) ||
+                      (sensor->accel_x <= -VEHICLE_ACCEL_THRESHOLD) ||
+                      (sensor->accel_y >= VEHICLE_ACCEL_THRESHOLD) ||
+                      (sensor->accel_y <= -VEHICLE_ACCEL_THRESHOLD);
 
     if (moving_by_speed || moving_by_accel)
         return MOTION_MOVING;
@@ -76,16 +74,6 @@ static RiskLevel evaluate(const SensorData *s, RiskLevel prev)
     boolean moving = (derive_motion(s) == MOTION_MOVING);
     TickType_t now = xTaskGetTickCount();
 
-    /* 부재 타이머 관리 */
-    if (absent && absent_start == 0)
-        absent_start = now;
-    else if (seated)
-        absent_start = 0;
-
-    uint32 absent_ms = 0;
-    if (absent_start > 0)
-        absent_ms = (now - absent_start) * portTICK_PERIOD_MS;
-
     if (door_open && door_open_start == 0)
         door_open_start = now;
     else if (!door_open)
@@ -97,7 +85,8 @@ static RiskLevel evaluate(const SensorData *s, RiskLevel prev)
 
     /* SAF-01: P단 → 즉시 NORMAL
      * 단, 자동제동 상태(D_BRAKE/R_BRAKE/ROLLAWAY_BRAKE)에서는
-     * 이 조건으로 탈출하지 않고 SAF-02만 복귀 경로로 사용한다. */
+     * 기어가 P로 보고되더라도 이 조건으로 탈출 불가.
+     * 복귀 조건은 착석+도어닫힘(SAF-02)만 허용. */
     if (gear_p && !is_auto_brake_state(prev))
         return RISK_NORMAL;
 
@@ -105,41 +94,39 @@ static RiskLevel evaluate(const SensorData *s, RiskLevel prev)
     if (seated && door_close)
         return RISK_NORMAL;
 
+    /* D/R단 + 운전자 부재는 즉시 자동제동 */
+    if (gear_d && absent)
+        return RISK_D_BRAKE;
+    if (gear_r && absent)
+        return RISK_R_BRAKE;
+
+    /* N단 + 차량 이동 + 운전자 부재는 즉시 롤어웨이 제동 */
+    if (gear_n && moving && absent)
+        return RISK_ROLLAWAY_BRAKE;
+
+    /* N단 + 도어 열림은 롤어웨이 경고 */
+    if (gear_n && door_open)
+        return RISK_ROLLAWAY_WARN;
+
     switch (prev)
     {
     case RISK_NORMAL:
         if (gear_dr && door_open)
             return RISK_WARN_LV1;
-        if (gear_n && door_open)
-            return RISK_ROLLAWAY_WARN;
         return RISK_NORMAL;
 
     case RISK_WARN_LV1:
-        if (seated && door_open)
-        {
-            if (door_open_ms >= 10000U)
-                return RISK_NORMAL;
-            return RISK_WARN_LV1;
-        }
         if (door_close)
             return RISK_NORMAL;
-        if (gear_n)
-            return RISK_ROLLAWAY_WARN;
         if ((!gear_dr) && (!gear_n))
             return RISK_NORMAL;
-        if (absent && absent_ms >= 2000U)
+        if (door_open_ms >= 2000U)
             return RISK_WARN_LV2;
         return RISK_WARN_LV1;
 
     case RISK_WARN_LV2:
         if (door_close)
             return RISK_NORMAL;
-        if (gear_d)
-            return RISK_D_BRAKE;
-        if (gear_r)
-            return RISK_R_BRAKE;
-        if (gear_n)
-            return RISK_ROLLAWAY_WARN;
         return RISK_WARN_LV2;
 
     case RISK_D_BRAKE:
@@ -153,7 +140,7 @@ static RiskLevel evaluate(const SensorData *s, RiskLevel prev)
             return RISK_NORMAL;
         if (gear_dr)
             return RISK_WARN_LV1;
-        if (moving)
+        if (moving && absent)
             return RISK_ROLLAWAY_BRAKE;
         return RISK_ROLLAWAY_WARN;
 
@@ -187,12 +174,12 @@ void Task_Judge(void *param)
             GEAR_P,
             DOOR_CLOSE,
             0.0f,
+            0,
+            0,
+            0,
             MOTION_STOPPED,
             BRAKE_CMD_RELEASE,
-            FALSE,
-            0,
-            0,
-            0
+            FALSE
         };
 
         /* 센서 데이터 복사 */

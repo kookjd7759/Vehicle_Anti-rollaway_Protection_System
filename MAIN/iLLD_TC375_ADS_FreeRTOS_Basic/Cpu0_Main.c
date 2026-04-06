@@ -23,7 +23,7 @@
 IFX_ALIGN(4) IfxCpu_syncEvent g_cpuSyncEvent = 0;
 
 /* ── 전역 변수 정의 ── */
-SensorData       g_sensor   = { DRIVER_ABSENT, GEAR_P, DOOR_CLOSE, 0.0f, MOTION_STOPPED, BRAKE_CMD_RELEASE, FALSE, 0, 0, 0 };
+SensorData       g_sensor   = { DRIVER_ABSENT, GEAR_P, DOOR_CLOSE, 0.0f, 0, 0, 0, MOTION_STOPPED, BRAKE_CMD_RELEASE, FALSE };
 ControlCommand   g_command  = { RISK_NORMAL, BRAKE_CMD_RELEASE };
 SemaphoreHandle_t xSensorMutex;
 SemaphoreHandle_t xCommandMutex;
@@ -98,7 +98,7 @@ void core0_main(void)
     xTaskCreate(Task_ToF,    "ToF",    2048, NULL, 2, NULL);
     xTaskCreate(Task_Sensor, "Sensor", 1024, NULL, 3, NULL);
     xTaskCreate(Task_Judge,  "Judge",  1024, NULL, 3, NULL);
-    xTaskCreate(Task_Can,    "CAN",    2048, NULL, 3, NULL);
+    xTaskCreate(Task_Can,    "CAN",    2048, NULL, 4, NULL);
 
     vTaskStartScheduler();
 
@@ -108,9 +108,20 @@ void core0_main(void)
 /* FreeRTOS 필수 콜백 */
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
+    (void)xTask;
+    (void)pcTaskName;
     while (1)
     {
         IfxPort_togglePin(&MODULE_P00, 6);
+        for (volatile int i = 0; i < 100000; i++);
+    }
+}
+
+void vApplicationMallocFailedHook(void)
+{
+    while (1)
+    {
+        IfxPort_togglePin(&MODULE_P00, 5);
         for (volatile int i = 0; i < 100000; i++);
     }
 }

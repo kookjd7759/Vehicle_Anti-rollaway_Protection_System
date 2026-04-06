@@ -34,7 +34,7 @@ extern void Board_LED2_Set(uint8 on);
 #define STM_FREQ             100000000u
 #define ULTRA_TIMEOUT_TICKS  5000000u  /* 50ms */
 #define PRESSURE_MAX_ADC     ((uint32)4095U)
-#define PRESSURE_MAX_KG      ((uint32)150U)
+#define PRESSURE_MAX_G       ((uint32)10000U)
 #define PRESENT_CONFIRM_CNT  ((uint8)3U)
 #define ABSENT_CONFIRM_CNT   ((uint8)3U)
 #define WS_ABSENT_TH_X10     ((uint16)10U)
@@ -72,7 +72,7 @@ static boolean door_sw_buf[3] = {0, 0, 0};
 static uint8 db_idx = 0;
 static uint16 ultra_buf[RAW_FILTER_SIZE] = {0, 0, 0};
 static uint16 tof_buf[RAW_FILTER_SIZE]   = {0, 0, 0};
-static uint16 press_buf[RAW_FILTER_SIZE] = {0, 0, 0};
+static uint32 press_buf[RAW_FILTER_SIZE] = {0, 0, 0};
 static uint8 sensor_filt_idx = 0;
 static uint8 present_count = 0;
 static uint8 absent_count = 0;
@@ -107,7 +107,8 @@ volatile uint8      g_score_press    = 0;
 volatile uint16     g_ws_x10         = 0;
 volatile uint16     g_ultra_cm       = 0;
 volatile uint16     g_tof_cm         = 0;
-volatile uint16     g_press_kg       = 0;
+volatile uint32     g_press_g        = 0;
+volatile uint32     g_press_avg_g    = 0;
 
 
 /* ══════════════════════════════════════
@@ -235,9 +236,9 @@ static uint16 tof_mm_to_cm(uint16 tof_mm)
     return (uint16)(tof_mm / 10u);
 }
 
-static uint16 pressure_adc_to_kg(uint16 pressure_adc)
+static uint32 pressure_adc_to_g(uint16 pressure_adc)
 {
-    return (uint16)(((uint32)pressure_adc * PRESSURE_MAX_KG) / PRESSURE_MAX_ADC);
+    return ((uint32)pressure_adc * PRESSURE_MAX_G) / PRESSURE_MAX_ADC;
 }
 
 static uint16 median3(uint16 a, uint16 b, uint16 c)
@@ -248,37 +249,38 @@ static uint16 median3(uint16 a, uint16 b, uint16 c)
     return b;
 }
 
+static uint32 median3_u32(uint32 a, uint32 b, uint32 c)
+{
+    if (a > b) { uint32 t = a; a = b; b = t; }
+    if (b > c) { uint32 t = b; b = c; c = t; }
+    if (a > b) { uint32 t = a; a = b; b = t; }
+    return b;
+}
+
 static uint8 score_ultrasonic(uint16 cm)
 {
-    if (cm < 2u)   return 0u;
-    if (cm < 8u)   return 1u;
+    if (cm < 2u)   return 0u;   /* 노이즈/너무 가까움 */
+    if (cm < 8u)   return 5u;   /* 착석: 5cm 부근 */
     if (cm < 12u)  return 3u;
-    if (cm < 20u)  return 5u;
-    if (cm < 30u)  return 3u;
-    if (cm < 45u)  return 1u;
-    return 0u;
+    if (cm < 15u)  return 1u;
+    return 0u;                  /* 부재: 19cm+ */
 }
 
 static uint8 score_tof(uint16 cm)
 {
-    if (cm < 10u)  return 0u;
+    if (cm < 5u)   return 0u;   /* 노이즈/너무 가까움 */
+    if (cm < 13u)  return 5u;   /* 착석: 10cm 부근 */
+    if (cm < 16u)  return 3u;
     if (cm < 18u)  return 1u;
-    if (cm < 24u)  return 3u;
-    if (cm < 34u)  return 5u;
-    if (cm < 42u)  return 3u;
-    if (cm < 55u)  return 1u;
-    return 0u;
+    return 0u;                  /* 부재: 20-21cm+ */
 }
 
-static uint8 score_pressure(uint16 kg)
+static uint8 score_pressure(uint32 g)
 {
-    if (kg < 2u)    return 0u;
-    if (kg < 10u)   return 1u;
-    if (kg < 35u)   return 3u;
-    if (kg < 110u)  return 5u;
-    if (kg < 130u)  return 3u;
-    if (kg < 150u)  return 1u;
-    return 0u;
+    if (g < 200u)     return 0u;   /* 부재: ADC 0~80 → ~0~195g */
+    if (g < 2000u)    return 1u;
+    if (g < 4000u)    return 3u;
+    return 5u;                     /* 착석: ADC 2000+ → ~4884g+ */
 }
 
 static uint16 calc_ws_x10(uint8 ru, uint8 rt, uint8 rp)
@@ -379,16 +381,12 @@ void Task_Sensor(void *param)
     TickType_t xLastWake = xTaskGetTickCount();
     static GearState gear_ok = GEAR_P;
     static GearState last_physical_gear = GEAR_P;
-    static DoorState door_ok = DOOR_CLOSE;
-    static boolean door_sw_stable = FALSE;
-    static boolean door_press_armed = FALSE;
+    static DoorState door_ok = DOOR_OPEN;
 
     init_pressure_sensor();
 
     while (1)
     {
-        GearState reportedGear;
-
         /* ── 1. 기어: 개별 버튼 디바운스 + press-release 래치 ── */
         read_gear_raw();
 
@@ -468,22 +466,7 @@ void Task_Sensor(void *param)
 
         if (door_sw_buf[0] == door_sw_buf[1] && door_sw_buf[1] == door_sw_buf[2])
         {
-            boolean door_sw_new = door_sw_buf[0];
-
-            if (door_sw_new != door_sw_stable)
-            {
-                if (door_sw_new == TRUE)
-                {
-                    door_press_armed = TRUE;
-                }
-                else if (door_press_armed == TRUE)
-                {
-                    door_ok = (door_ok == DOOR_CLOSE) ? DOOR_OPEN : DOOR_CLOSE;
-                    door_press_armed = FALSE;
-                }
-
-                door_sw_stable = door_sw_new;
-            }
+            door_ok = door_sw_buf[0] ? DOOR_CLOSE : DOOR_OPEN;
         }
 
         /* ── 2. 초음파 비블로킹 상태머신 (~12us 또는 즉시) ── */
@@ -499,26 +482,23 @@ void Task_Sensor(void *param)
         /* ── 4. 단위 변환 + 3샘플 중앙값 필터 ── */
         uint16 ultra_cm = ultra_mm_to_cm(ultra_mm);
         uint16 tof_cm = tof_mm_to_cm(tof_mm_val);
-        uint16 press_kg = pressure_adc_to_kg(pressure_adc_avg);
+        uint32 press_g = pressure_adc_to_g(pressure_adc_avg);
+        g_press_avg_g = press_g;
 
         ultra_buf[sensor_filt_idx] = ultra_cm;
         tof_buf[sensor_filt_idx] = tof_cm;
-        press_buf[sensor_filt_idx] = press_kg;
+        press_buf[sensor_filt_idx] = press_g;
         sensor_filt_idx = (uint8)((sensor_filt_idx + 1u) % RAW_FILTER_SIZE);
 
         uint16 ultra_filt = median3(ultra_buf[0], ultra_buf[1], ultra_buf[2]);
         uint16 tof_filt = median3(tof_buf[0], tof_buf[1], tof_buf[2]);
-        uint16 press_filt = median3(press_buf[0], press_buf[1], press_buf[2]);
+        uint32 press_filt = median3_u32(press_buf[0], press_buf[1], press_buf[2]);
 
         /* ── 5. 점수 계산 + 최종 판정 ── */
         uint8 ru = score_ultrasonic(ultra_filt);
         uint8 rt = score_tof(tof_filt);
         uint8 rp = score_pressure(press_filt);
         DriverState driver = judge_driver_final(ru, rt, rp);
-        reportedGear = gear_ok;
-
-        if (g_gear_override_active == TRUE)
-            reportedGear = g_gear_override_state;
 
         /* ── 6. 디버깅 변수 갱신 ── */
         g_ultra_mm     = ultra_mm;
@@ -529,12 +509,12 @@ void Task_Sensor(void *param)
         g_tof_mm       = tof_mm_val;
         g_ultra_cm     = ultra_filt;
         g_tof_cm       = tof_filt;
-        g_press_kg     = press_filt;
+        g_press_g      = press_filt;
         g_score_ultra  = ru;
         g_score_tof    = rt;
         g_score_press  = rp;
         g_pressure_present_debug = (rp >= 3u) ? TRUE : FALSE;
-        g_gear_debug   = reportedGear;
+        g_gear_debug   = gear_ok;
         g_door_debug   = door_ok;
         g_driver_debug = driver;
 
@@ -547,6 +527,11 @@ void Task_Sensor(void *param)
         /* ── 8. 공유 데이터 갱신 ── */
         if (xSemaphoreTake(xSensorMutex, pdMS_TO_TICKS(5)) == pdTRUE)
         {
+            GearState reportedGear = gear_ok;
+
+            if (g_gear_override_active == TRUE)
+                reportedGear = g_gear_override_state;
+
             g_sensor.driver = driver;
             g_sensor.door   = door_ok;
             if (reportedGear != GEAR_ERROR)

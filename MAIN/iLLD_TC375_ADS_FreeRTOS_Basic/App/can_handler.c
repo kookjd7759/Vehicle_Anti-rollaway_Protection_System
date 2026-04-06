@@ -21,13 +21,16 @@
 
 #define CAN_TX_BUFFER_MAIN_ACT_CTRL   0U
 #define CAN_TX_BUFFER_MAIN_CLU_STATUS 1U
-#define CAN_RX_FIFO0_SIZE             4U
-#define CAN_SEND_RETRY_COUNT          3U
+#define CAN_RX_FIFO0_SIZE             8U
+#define CAN_SEND_RETRY_COUNT          5U
+#define CAN_SEND_RETRY_DELAY_MS       1U
+#define CAN_BUSOFF_RECOVERY_DELAY_MS  50U
 
 static IfxCan_Can g_canModule;
 static IfxCan_Can_Node g_canNode;
+static IfxCan_Can_NodeConfig g_savedNodeConfig;
 static boolean g_canReady = FALSE;
-static boolean g_auto_park_pending_on_release = FALSE;
+volatile uint32 g_can_busoff_recovery_count = 0U;
 
 volatile boolean g_gear_override_active = FALSE;
 volatile GearState g_gear_override_state = GEAR_P;
@@ -107,12 +110,12 @@ static void can_apply_act_feedback(uint32 speedX100, uint8 brakeState,
 {
     if (xSemaphoreTake(xSensorMutex, pdMS_TO_TICKS(2)) == pdTRUE)
     {
-        g_sensor.speed_kmh = ((float)speedX100) / 100.0f;
-        g_sensor.act_brake_state = (BrakeCommand)can_normalize_brake_state(brakeState);
-        g_sensor.act_feedback_alive = TRUE;
+        g_sensor.speed_kmh = (float)speedX100;
         g_sensor.accel_x = accelX;
         g_sensor.accel_y = accelY;
         g_sensor.accel_z = accelZ;
+        g_sensor.act_brake_state = (BrakeCommand)can_normalize_brake_state(brakeState);
+        g_sensor.act_feedback_alive = TRUE;
         xSemaphoreGive(xSensorMutex);
     }
 }
@@ -122,24 +125,24 @@ static void can_apply_act_timeout(void)
     if (xSemaphoreTake(xSensorMutex, pdMS_TO_TICKS(2)) == pdTRUE)
     {
         g_sensor.speed_kmh = 0.0f;
-        g_sensor.act_brake_state = BRAKE_CMD_RELEASE;
-        g_sensor.act_feedback_alive = FALSE;
         g_sensor.accel_x = 0;
         g_sensor.accel_y = 0;
         g_sensor.accel_z = 0;
+        g_sensor.act_brake_state = BRAKE_CMD_RELEASE;
+        g_sensor.act_feedback_alive = FALSE;
         xSemaphoreGive(xSensorMutex);
     }
 }
 
-/* 자동제동 해제 시점에만 P단 override를 적용한다. */
-static void can_apply_auto_park(void)
+/* 브레이크 RELEASE 전환 후 Main 기어 보고값을 P로 고정한다. */
+static void can_apply_gear_override(GearState gear)
 {
-    g_gear_override_state = GEAR_P;
+    g_gear_override_state = gear;
     g_gear_override_active = TRUE;
 
     if (xSemaphoreTake(xSensorMutex, pdMS_TO_TICKS(2)) == pdTRUE)
     {
-        g_sensor.gear = GEAR_P;
+        g_sensor.gear = gear;
         xSemaphoreGive(xSensorMutex);
     }
 }
@@ -156,6 +159,7 @@ static IfxCan_Status can_send_message(IfxCan_Message *message, uint32 *data)
             return status;
 
         retry++;
+        vTaskDelay(pdMS_TO_TICKS(CAN_SEND_RETRY_DELAY_MS));
     }
 
     return status;
@@ -165,22 +169,21 @@ static void can_send_main_act_ctrl(const SensorData *sensor, const ControlComman
 {
     IfxCan_Message message;
     uint32 txData[2] = {0U, 0U};
-    boolean autoBrakeRisk = can_is_auto_brake_risk(command->risk_level);
-    boolean applyAutoParkOnRelease = FALSE;
+    boolean autoBrakeCommand = can_is_auto_brake_risk(command->risk_level);
     GearState txGearState = sensor->gear;
     uint8 brakeCmd = (uint8)command->brake_cmd;
+    boolean shiftToParkOnRelease = (brakeCmd == (uint8)BRAKE_CMD_RELEASE) &&
+                                   (g_can_last_tx100_brake_cmd != (uint8)BRAKE_CMD_RELEASE);
     uint8 gear;
 
-    /* 자동제동 중에는 현재 기어를 유지하고, 해제되는 첫 RELEASE 프레임에서만 P단을 전송한다. */
-    if (autoBrakeRisk == TRUE)
+    /* 자동제동 중에는 FORCE를 유지하고, P 전환은 RELEASE 시점에만 적용한다. */
+    if (autoBrakeCommand == TRUE)
     {
-        g_auto_park_pending_on_release = TRUE;
+        brakeCmd = (uint8)BRAKE_CMD_FORCE;
     }
-    else if ((g_auto_park_pending_on_release == TRUE) &&
-             (brakeCmd == (uint8)BRAKE_CMD_RELEASE))
+    else if (shiftToParkOnRelease == TRUE)
     {
         txGearState = GEAR_P;
-        applyAutoParkOnRelease = TRUE;
     }
     else if (g_gear_override_active == TRUE)
     {
@@ -196,16 +199,13 @@ static void can_send_main_act_ctrl(const SensorData *sensor, const ControlComman
 
     txData[0] = can_pack_u32_le(brakeCmd, gear, 0U, 0U);
 
-    g_can_last_tx100_brake_cmd = brakeCmd;
-    g_can_last_tx100_gear = gear;
-
     if (can_send_message(&message, txData) == IfxCan_Status_ok)
     {
-        if (applyAutoParkOnRelease == TRUE)
-        {
-            can_apply_auto_park();
-            g_auto_park_pending_on_release = FALSE;
-        }
+        g_can_last_tx100_brake_cmd = brakeCmd;
+        g_can_last_tx100_gear = gear;
+
+        if (shiftToParkOnRelease == TRUE)
+            can_apply_gear_override(GEAR_P);
 
         g_can_tx100_count++;
     }
@@ -262,7 +262,7 @@ static void can_process_rx_feedback(TickType_t now)
         if ((rxMessage.messageId == CAN_ID_ACT_FEEDBACK) &&
             (rxMessage.dataLengthCode >= IfxCan_DataLengthCode_8))
         {
-            /* AURIX LE: rxData[0]=Byte0~3, rxData[1]=Byte4~7 */
+            /* Byte0~3=speed, Byte4=brake, Byte5~7=accel xyz (AURIX LE) */
             uint32 speedX100 = rxData[0];
             uint8 brakeState = (uint8)(rxData[1] & 0xFFU);
             uint8 rawByte5 = (uint8)((rxData[1] >> 8) & 0xFFU);
@@ -289,17 +289,54 @@ static void can_process_rx_feedback(TickType_t now)
 
 
 
+static void can_setup_filter(void)
+{
+    IfxCan_Filter filter;
+
+    filter.number = 0U;
+    filter.elementConfiguration = IfxCan_FilterElementConfiguration_storeInRxFifo0;
+    filter.type = IfxCan_FilterType_classic;
+    filter.id1 = CAN_ID_ACT_FEEDBACK;
+    filter.id2 = 0x7FFU;
+    filter.rxBufferOffset = IfxCan_RxBufferId_0;
+    IfxCan_Can_setStandardFilter(&g_canNode, &filter);
+}
+
+static boolean can_recover_busoff(void)
+{
+    g_canReady = FALSE;
+    g_can_busoff_recovery_count++;
+
+    if (IfxCan_Can_initNode(&g_canNode, &g_savedNodeConfig) == TRUE)
+    {
+        can_setup_filter();
+
+        /* 동기화 대기 (타임아웃 포함) */
+        {
+            uint32 wait = 0U;
+            while (IfxCan_Can_isNodeSynchronized(&g_canNode) != TRUE)
+            {
+                if (++wait > 100000U)
+                    return FALSE;
+            }
+        }
+
+        g_canReady = TRUE;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 void CanApp_Init(void)
 {
     /* CAN 트랜시버 활성화 (STB = Low) */
-        IfxPort_setPinModeOutput(&MODULE_P20, 6,
-                                 IfxPort_OutputMode_pushPull,
-                                 IfxPort_OutputIdx_general);
-        IfxPort_setPinLow(&MODULE_P20, 6);
+    IfxPort_setPinModeOutput(&MODULE_P20, 6,
+                             IfxPort_OutputMode_pushPull,
+                             IfxPort_OutputIdx_general);
+    IfxPort_setPinLow(&MODULE_P20, 6);
 
     IfxCan_Can_Config canConfig;
-    IfxCan_Can_NodeConfig nodeConfig;
-    IfxCan_Filter filter;
     static const IfxCan_Can_Pins canPins = {
         .txPin = &IfxCan_TXD00_P20_8_OUT,
         .txPinMode = IfxPort_OutputMode_pushPull,
@@ -311,38 +348,32 @@ void CanApp_Init(void)
     IfxCan_Can_initModuleConfig(&canConfig, &MODULE_CAN0);
     IfxCan_Can_initModule(&g_canModule, &canConfig);
 
-    IfxCan_Can_initNodeConfig(&nodeConfig, &g_canModule);
-    nodeConfig.nodeId = CAN_NODE_ID_MAIN;
-    nodeConfig.clockSource = IfxCan_ClockSource_both;
-    nodeConfig.frame.type = IfxCan_FrameType_transmitAndReceive;
-    nodeConfig.frame.mode = IfxCan_FrameMode_standard;
-    nodeConfig.calculateBitTimingValues = TRUE;
-    nodeConfig.baudRate.baudrate = CAN_BAUDRATE;
-    nodeConfig.baudRate.samplePoint = 8000;
-    nodeConfig.baudRate.syncJumpWidth = 3;
-    nodeConfig.txConfig.txMode = IfxCan_TxMode_dedicatedBuffers;
-    nodeConfig.txConfig.dedicatedTxBuffersNumber = 2;
-    nodeConfig.txConfig.txBufferDataFieldSize = IfxCan_DataFieldSize_8;
-    nodeConfig.filterConfig.messageIdLength = IfxCan_MessageIdLength_standard;
-    nodeConfig.filterConfig.standardListSize = 1;
-    nodeConfig.filterConfig.standardFilterForNonMatchingFrames = IfxCan_NonMatchingFrame_reject;
-    nodeConfig.rxConfig.rxMode = IfxCan_RxMode_fifo0;
-    nodeConfig.rxConfig.rxFifo0DataFieldSize = IfxCan_DataFieldSize_8;
-    nodeConfig.rxConfig.rxFifo0Size = CAN_RX_FIFO0_SIZE;
-    nodeConfig.rxConfig.rxFifo0OperatingMode = IfxCan_RxFifoMode_blocking;
-    nodeConfig.pins = &canPins;
+    IfxCan_Can_initNodeConfig(&g_savedNodeConfig, &g_canModule);
+    g_savedNodeConfig.nodeId = CAN_NODE_ID_MAIN;
+    g_savedNodeConfig.clockSource = IfxCan_ClockSource_both;
+    g_savedNodeConfig.frame.type = IfxCan_FrameType_transmitAndReceive;
+    g_savedNodeConfig.frame.mode = IfxCan_FrameMode_standard;
+    g_savedNodeConfig.calculateBitTimingValues = TRUE;
+    g_savedNodeConfig.baudRate.baudrate = CAN_BAUDRATE;
+    g_savedNodeConfig.baudRate.samplePoint = 8000;
+    g_savedNodeConfig.baudRate.syncJumpWidth = 3;
+    g_savedNodeConfig.txConfig.txMode = IfxCan_TxMode_dedicatedBuffers;
+    g_savedNodeConfig.txConfig.dedicatedTxBuffersNumber = 2;
+    g_savedNodeConfig.txConfig.txBufferDataFieldSize = IfxCan_DataFieldSize_8;
+    g_savedNodeConfig.filterConfig.messageIdLength = IfxCan_MessageIdLength_standard;
+    g_savedNodeConfig.filterConfig.standardListSize = 1;
+    g_savedNodeConfig.filterConfig.standardFilterForNonMatchingFrames = IfxCan_NonMatchingFrame_reject;
+    g_savedNodeConfig.rxConfig.rxMode = IfxCan_RxMode_fifo0;
+    g_savedNodeConfig.rxConfig.rxFifo0DataFieldSize = IfxCan_DataFieldSize_8;
+    g_savedNodeConfig.rxConfig.rxFifo0Size = CAN_RX_FIFO0_SIZE;
+    g_savedNodeConfig.rxConfig.rxFifo0OperatingMode = IfxCan_RxFifoMode_blocking;
+    g_savedNodeConfig.pins = &canPins;
 
-    g_can_init_ok = IfxCan_Can_initNode(&g_canNode, &nodeConfig);
+    g_can_init_ok = IfxCan_Can_initNode(&g_canNode, &g_savedNodeConfig);
 
     if (g_can_init_ok == TRUE)
     {
-        filter.number = 0U;
-        filter.elementConfiguration = IfxCan_FilterElementConfiguration_storeInRxFifo0;
-        filter.type = IfxCan_FilterType_classic;
-        filter.id1 = CAN_ID_ACT_FEEDBACK;
-        filter.id2 = 0x7FFU;
-        filter.rxBufferOffset = IfxCan_RxBufferId_0;
-        IfxCan_Can_setStandardFilter(&g_canNode, &filter);
+        can_setup_filter();
 
         while (IfxCan_Can_isNodeSynchronized(&g_canNode) != TRUE)
         {
@@ -365,8 +396,8 @@ void Task_Can(void *param)
 
     /* [BUG-3 수정] 안전한 기본값으로 초기화 (mutex 없는 비보호 복사 제거) */
     SensorData sensorSnapshot = {
-        DRIVER_ABSENT, GEAR_P, DOOR_CLOSE, 0.0f,
-        MOTION_STOPPED, BRAKE_CMD_RELEASE, FALSE, 0, 0, 0
+        DRIVER_ABSENT, GEAR_P, DOOR_CLOSE, 0.0f, 0, 0, 0,
+        MOTION_STOPPED, BRAKE_CMD_RELEASE, FALSE
     };
     ControlCommand commandSnapshot = { RISK_NORMAL, BRAKE_CMD_RELEASE };
 
@@ -382,8 +413,17 @@ void Task_Can(void *param)
             continue;
         }
 
-        can_process_rx_feedback(now);
+        /* Bus-Off 감지 및 자동 복구 */
         g_can_bus_off_debug = (uint8)IfxCan_Node_getBusOffStatus(g_canNode.node);
+        if (g_can_bus_off_debug != 0U)
+        {
+            vTaskDelay(pdMS_TO_TICKS(CAN_BUSOFF_RECOVERY_DELAY_MS));
+            can_recover_busoff();
+            vTaskDelayUntil(&xLastWake, pdMS_TO_TICKS(CAN_TASK_PERIOD_MS));
+            continue;
+        }
+
+        can_process_rx_feedback(now);
 
         if (g_can_act_feedback_timeout == FALSE)
         {

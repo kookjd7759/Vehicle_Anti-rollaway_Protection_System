@@ -75,22 +75,16 @@ static char lcd_get_door_char(uint8 door)
     return (door == LCD_DOOR_CLOSE) ? 'O' : 'X';
 }
 
-static const char* lcd_get_risk_keyword(uint8 warning, uint8 brake)
+static const char* lcd_get_risk_keyword(uint8 warning)
 {
-    /* brake warning 상태 우선 */
-    switch (brake) {
-    case LCD_BRK_D:         return "W3";  /* RISK_D_BRAKE */
-    case LCD_BRK_R:         return "W4";  /* RISK_R_BRAKE */
-    case LCD_BRK_ROLLAWAY:  return "R2";  /* RISK_ROLLAWAY_BRAKE */
-    default:                break;
-    }
-
-    /* brake warning 없으면 alert warning 기준 */
+    /* alert warning 기준 */
     switch (warning) {
     case LCD_WARN_LV1:       return "W1"; /* RISK_WARN_LV1 */
     case LCD_WARN_LV2:       return "W2"; /* RISK_WARN_LV2 */
-    case LCD_WARN_ROLLAWAY:  return "R1"; /* RISK_ROLLAWAY_WARN */
-    case LCD_WARN_NONE:
+    case LCD_WARN_ROLLAWAY:  return "W3"; /* RISK_ROLLAWAY_WARN */
+    case LCD_BRK_D:          return "B1";  /* RISK_D_BRAKE */
+    case LCD_BRK_R:          return "B2";  /* RISK_R_BRAKE */
+    case LCD_BRK_ROLLAWAY:   return "B3";  /* RISK_ROLLAWAY_BRAKE */
     default:                 return "OK"; /* RISK_NORMAL */
     }
 }
@@ -123,17 +117,17 @@ static uint8 lcd_get_buzzer_mode(uint8 warning, uint8 brake)
     }
 
     switch (warning) {
-    case LCD_WARN_LV1:       return 1; /* 단속 경고 */
-    case LCD_WARN_LV2:       return 2; /* 연속 경고 */
-    case LCD_WARN_ROLLAWAY:  return 2; /* 연속 경고 */
+    case LCD_WARN_LV1:       return 1; /* 1초 경고 */
+    case LCD_WARN_LV2:       return 2; /* 0.3초 경고 */
+    case LCD_WARN_ROLLAWAY:  return 2; /* 단속 경고 */
     case LCD_WARN_NONE:
     default:                 return 0; /* 부저 OFF */
     }
 }
 
-static uint8 lcd_get_led_hazard(uint8 brake)
+static uint8 lcd_get_led_hazard(uint8 warning)
 {
-    return (brake == LCD_BRK_NONE) ? 0 : 1;
+    return (warning == LCD_WARN_NONE) ? 0 : 1;
 }
 
 static uint8 lcd_get_led_brake(uint8 brake)
@@ -156,57 +150,101 @@ static uint8 lcd_get_led_brake(uint8 brake)
  * 각 버퍼는 최소 33바이트 필요
  * -------------------------------- */
 void lcd_make_strings(uint8 warning, uint8 brake, uint8 gear,
-    uint8 door, uint8 driver, uint8 speed,
+    uint8 door, uint8 driver, uint8 speed, uint8 notice,
     char out_lcd1[33], char out_lcd2[33])
 {
     char line1_1[17];
     char line1_2[17];
     char line2_1[17];
     char line2_2[17];
+    char notice_1[17] = "  Sit in seat  &";
+    char notice_2[17] = " Close the door ";
 
     char gear_ch = lcd_get_gear_char(gear);
     char driver_ch = lcd_get_driver_char(driver);
     char door_ch = lcd_get_door_char(door);
 
-    const char* risk_txt = lcd_get_risk_keyword(warning, brake);
+    const char* risk_txt = lcd_get_risk_keyword(warning);
     const char* brk_txt = lcd_get_brk_text(brake);
 
     uint8 motor_mode = lcd_get_motor_mode(gear, brake);
     uint8 buzzer_mode = lcd_get_buzzer_mode(warning, brake);
-    uint8 led_hazard = lcd_get_led_hazard(brake);
+    uint8 led_hazard = lcd_get_led_hazard(warning);
     uint8 led_brake = lcd_get_led_brake(brake);
 
     /* LCD 1 */
     /* "D ---km move    " */
-    snprintf(line1_1, sizeof(line1_1),
-        "%c %03ukm move    ",
-        gear_ch, (unsigned int)speed);
+    if(speed == 0xff)
+    {
+        snprintf(line1_1, sizeof(line1_1),
+            "%c ---km move    ",
+            gear_ch);
+    }
+    else if(speed == 0)
+    {
+        snprintf(line1_1, sizeof(line1_1),
+            "%c 000km stop    ",
+            gear_ch);
+    }
+    else
+    {
+        snprintf(line1_1, sizeof(line1_1),
+            "%c %03ukm move    ",
+            gear_ch, (unsigned int)speed);
+    }
+
+
 
     /* "driver - door - " */
     snprintf(line1_2, sizeof(line1_2),
         "driver %c door %c ",
         driver_ch, door_ch);
 
-    /* LCD 2 */
-    /* 예: "RISK:W1 BRK:OFF " / "RISK:R2 BRK:ON  " */
-    snprintf(line2_1, sizeof(line2_1),
-        "RISK:%2s BRK:%-3s ",
-        risk_txt, brk_txt);
 
-    /* "M:- S:- L:- B:- " */
-    snprintf(line2_2, sizeof(line2_2),
-        "M:%u S:%u L:%u B:%u ",
-        (unsigned int)motor_mode,
-        (unsigned int)buzzer_mode,
-        (unsigned int)led_hazard,
-        (unsigned int)led_brake);
+    /* LCD 2 */
+    if(warning == 7)
+    {
+        snprintf(line2_1, sizeof(line2_1),
+            "    MAIN CAN    ");
+
+        /* "M:- S:- L:- B:- " */
+        snprintf(line2_2, sizeof(line2_2),
+            "  DISCONNECTED  ");
+    }
+    else
+    {
+        /* 예: "RISK:W1 BRK:OFF " / "RISK:R2 BRK:ON  " */
+        snprintf(line2_1, sizeof(line2_1),
+            "RISK:%2s BRK:%-3s ",
+            risk_txt, brk_txt);
+
+        /* "M:- S:- L:- B:- " */
+        snprintf(line2_2, sizeof(line2_2),
+            "M:%u S:%u L:%u B:%u ",
+            (unsigned int)motor_mode,
+            (unsigned int)buzzer_mode,
+            (unsigned int)led_hazard,
+            (unsigned int)led_brake);
+    }
+
 
     /* 32글자 고정 문자열 생성 */
-    memcpy(&out_lcd1[0], line1_1, 16);
-    memcpy(&out_lcd1[16], line1_2, 16);
-    out_lcd1[32] = '\0';
+    if(notice)
+    {
+        memcpy(&out_lcd1[0], notice_1, 16);
+        memcpy(&out_lcd1[16], notice_2, 16);
+        out_lcd1[32] = '\0';
+    }
+    else
+    {
+        memcpy(&out_lcd1[0], line1_1, 16);
+        memcpy(&out_lcd1[16], line1_2, 16);
+        out_lcd1[32] = '\0';
+
+    }
 
     memcpy(&out_lcd2[0], line2_1, 16);
     memcpy(&out_lcd2[16], line2_2, 16);
     out_lcd2[32] = '\0';
+
 }

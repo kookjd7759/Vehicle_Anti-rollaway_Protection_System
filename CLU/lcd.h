@@ -49,7 +49,9 @@
 #define LCD_WARN_LV1        1
 #define LCD_WARN_LV2        2
 #define LCD_WARN_ROLLAWAY   3
-
+#define LCD_BRK_D           4
+#define LCD_BRK_R           5
+#define LCD_BRK_ROLLAWAY    6
   /* brake_type (2bit)
    * 0: 제동 없음
    * 1: D단 제동
@@ -57,9 +59,7 @@
    * 3: Rollaway 제동
    */
 #define LCD_BRK_NONE        0
-#define LCD_BRK_D           1
-#define LCD_BRK_R           2
-#define LCD_BRK_ROLLAWAY    3
+#define LCD_BRK             1
 
    /* gear_state (2bit)
     * 0: P
@@ -108,7 +108,7 @@
        * out_lcd1, out_lcd2는 각각 최소 33바이트 필요
        * -------------------------------- */
 void lcd_make_strings(uint8 warning, uint8 brake, uint8 gear,
-    uint8 door, uint8 driver, uint8 speed,
+    uint8 door, uint8 driver, uint8 speed, uint8 notice,
     char out_lcd1[33], char out_lcd2[33]);
 
 #endif /* LCD_H_ */

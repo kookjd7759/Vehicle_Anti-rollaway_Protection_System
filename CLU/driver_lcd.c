@@ -62,8 +62,8 @@ static void i2c_init(void)
     IfxI2c_I2c_initConfig(&config, &MODULE_I2C0);
 
     const IfxI2c_Pins pins1 = {
-            &IfxI2c0_SCL_P13_1_INOUT,
-            &IfxI2c0_SDA_P13_2_INOUT,
+            SCL_PIN1,
+            SDA_PIN1,
             IfxPort_PadDriver_cmosAutomotiveSpeed1
     };
     config.pins = &pins1;
@@ -72,10 +72,10 @@ static void i2c_init(void)
 
     //pin 2 setting
     const IfxI2c_Pins pins2 = {
-                &IfxI2c0_SCL_P15_4_INOUT,
-                &IfxI2c0_SDA_P15_5_INOUT,
-                IfxPort_PadDriver_cmosAutomotiveSpeed1
-        };
+            SCL_PIN2,
+            SDA_PIN2,
+            IfxPort_PadDriver_cmosAutomotiveSpeed1
+    };
     config.pins = &pins2;
     IfxI2c_stop(config.i2c);
 

@@ -88,9 +88,11 @@ static volatile uint8 led_emergency_cnt;
 static volatile uint8 buz_cnt;
 
 //lcd, uart전용
+static volatile uint8 warn;
 static volatile uint8 brk;
 static volatile uint8 speed;
 
+static volatile uint8 notice;
 
 //static variable declaration
 
@@ -119,6 +121,7 @@ void core0_main(void)
     init_can();
 
 
+    print_lcd(str1, str2);
     while(1)
     {
         app_scheduling();
@@ -169,6 +172,9 @@ void app_task_10ms(void)
 }
 void app_task_100ms(void)
 {
+    static uint8 before_risk = 0;
+    static uint8 current_risk = 0;
+
     //can timeout
     can_main_timeout_cnt++;
     can_act_timeout_cnt++;
@@ -181,10 +187,24 @@ void app_task_100ms(void)
         g_door_state = ((g_clu_status_dataLow >> 16) & 0xff);
         g_gear_state = ((g_clu_status_dataLow >> 24) & 0xff);
 
+        before_risk = current_risk;
+        current_risk = g_risk_level;
+
+
         //여기서 데이터 변환
+        if(g_risk_level == 0) warn = UART_WARN_NONE;
+        else if(g_risk_level == 1) warn = UART_WARN_LV1;
+        else if(g_risk_level == 2) warn = UART_WARN_LV2;
+        else if(g_risk_level == 3) warn = UART_WARN_ROLLAWAY;
+
+        if(g_risk_level < 4) brk = UART_BRK_NONE;
+        else if(g_risk_level == 4) brk = UART_BRK_D;
+        else if(g_risk_level == 5) brk = UART_BRK_R;
+        else if(g_risk_level == 6) brk = UART_BRK_ROLLAWAY;
 
 
         can_main_timeout_cnt = 0;
+        can_main_timeout_flag = FALSE;
         g_clu_status_received = FALSE;
         data_received_flag = TRUE;
     }
@@ -196,19 +216,10 @@ void app_task_100ms(void)
 
         //여기서 데이터 변환
         speed = (uint8)g_speed;
-        if(g_break)
-        {
-            switch(g_gear_state) {
-            case LCD_GEAR_R : brk = LCD_BRK_R; break;
-            case LCD_GEAR_N : brk = LCD_BRK_ROLLAWAY; break;
-            case LCD_GEAR_D : brk = LCD_BRK_D; break;
-            default : brk = LCD_BRK_ROLLAWAY;
-            }
-        }
-        else
-            brk = LCD_BRK_NONE;
+
 
         can_act_timeout_cnt = 0;
+        can_act_timeout_flag = FALSE;
         g_act_feedback_received = FALSE;
         data_received_flag = TRUE;
     }
@@ -217,14 +228,25 @@ void app_task_100ms(void)
     if(can_main_timeout_cnt >= 3) can_main_timeout_flag = TRUE;
     if(can_act_timeout_cnt >= 3) can_act_timeout_flag = TRUE;
 
+    if(can_main_timeout_flag)
+    {
+        g_risk_level = 7;
+        data_received_flag = TRUE;
+    }
+
+    if(can_act_timeout_flag)
+    {
+        speed = 0xff;
+        data_received_flag = TRUE;
+    }
 
 
     //lcd, uart
     if(data_received_flag)
     {
         print_lcd(str1, str2);
-        lcd_make_strings(g_risk_level, brk, g_gear_state, g_door_state, g_driver_present, speed, str1, str2);
-        if(g_risk_level)   sendData(LCD_WARN_LV2, LCD_BRK_NONE, LCD_GEAR_D, LCD_DOOR_OPEN, LCD_DRIVER_ABSENT, 50);
+        lcd_make_strings(g_risk_level, g_break, g_gear_state, g_door_state, g_driver_present, speed, notice, str1, str2);
+        if((g_risk_level != 7) && (before_risk != g_risk_level))   sendData(warn, brk, g_gear_state, g_door_state, g_driver_present, speed);
 
         data_received_flag = FALSE;
     }
@@ -252,7 +274,7 @@ void app_task_100ms(void)
     }
 
     //buz
-    if(g_risk_level >= 1)
+    if((g_risk_level >= 1) && (g_risk_level < 7))
     {
         if(buz_cnt == 0) buz_on(buz_warning);       // 첫 진입: 즉시 ON
         buz_cnt++;
@@ -281,6 +303,7 @@ void app_task_100ms(void)
             }
         }
         // g_risk_level >= 4: 상시 ON → 토글/OFF 없이 유지
+        else buz_cnt = 0;
     }
     else
     {
@@ -288,7 +311,7 @@ void app_task_100ms(void)
         buz_off(buz_warning);
     }
 
-    uint16 data = 0x0200;
+    uint16 data = 0x0300;
 
     IfxMultican_Message tx100msg = {
                     .id = 0x100,
@@ -296,13 +319,14 @@ void app_task_100ms(void)
                     .data[0] = data,
                     .data[1] = 0,
                     .fastBitRate = FALSE};
-    IfxMultican_Can_MsgObj_sendMessage(&txMsgObj1, &tx100msg);
+    //IfxMultican_Can_MsgObj_sendMessage(&txMsgObj1, &tx100msg);
 
 }
 void app_task_1000ms(void)
 {
     //can_loopback();
-
+    if(g_risk_level && (g_risk_level != 7) && (g_risk_level != 3)) notice = 1 - notice;
+    else notice = 0;
 }
 
 

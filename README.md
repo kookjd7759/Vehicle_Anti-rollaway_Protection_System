@@ -2,7 +2,7 @@
 무인 이동 방지 자동 제어 시스템
 
 <table align="left"> <tr> <td align="center">
-      <img src="https://github.com/user-attachments/assets/b9765c71-5878-49ef-9b1e-5daa0d42c9af"/>
+      <img src="https://github.com/user-attachments/assets/b9765c71-5878-49ef-9b1e-5daa0d42c9af" width="70%"/>
       </table> <br clear="left"/>  
 
 ## 1. 프로젝트 소개

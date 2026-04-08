@@ -1,6 +1,10 @@
 # VAPS (Vehicle Anti-rollaway Protection System)  
 무인 이동 방지 자동 제어 시스템
 
+<table align="left"> <tr> <td align="center">
+      <img src="https://github.com/user-attachments/assets/b9765c71-5878-49ef-9b1e-5daa0d42c9af"/>
+      </table> <br clear="left"/>  
+
 ## 1. 프로젝트 소개
 VAPS는 **운전자의 부재를 감지하고 차량의 위험 상태를 판단하여, 경고와 자동 제동으로 차량의 무인 이동을 방지하는 시스템**입니다.  
 주차 또는 정차 상황에서 운전자가 차량을 완전히 안전한 상태로 두지 않고 하차했을 때 발생할 수 있는 사고를 줄이기 위해 개발했습니다.

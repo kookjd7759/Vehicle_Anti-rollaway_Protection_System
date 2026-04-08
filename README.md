@@ -22,23 +22,76 @@
 
 ---
 
+## Contributors
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Gon0304">
+        <img src="https://github.com/Gon0304.png" width="100px;" alt="김태곤"/>
+        <br />
+        <sub><b>김태곤</b></sub>
+      </a>
+      <br />
+      ACT
+    </td>
+    <td align="center">
+      <a href="https://github.com/kookjd7759">
+        <img src="https://github.com/kookjd7759.png" width="100px;" alt="국동균"/>
+        <br />
+        <sub><b>국동균</b></sub>
+      </a>
+      <br />
+      RPI
+    </td>
+    <td align="center">
+      <a href="https://github.com/LSA31">
+        <img src="https://github.com/LSA31.png" width="100px;" alt="이승아"/>
+        <br />
+        <sub><b>이승아</b></sub>
+      </a>
+      <br />
+      MAIN
+    </td>
+    <td align="center">
+      <a href="https://github.com/cenway">
+        <img src="https://github.com/cenway.png" width="100px;" alt="윤한준"/>
+        <br />
+        <sub><b>윤한준</b></sub>
+      </a>
+      <br />
+      CLU
+    </td>
+    <td align="center">
+      <a href="https://github.com/chohabin">
+        <img src="https://github.com/chohabin.png" width="100px;" alt="조하빈"/>
+        <br />
+        <sub><b>조하빈</b></sub>
+      </a>
+      <br />
+      MAIN
+    </td>
+  </tr>
+</table>
+</div>
+
+---
+
+
 ## 1. 프로젝트 소개
 
 > VAPS는 **운전자의 부재를 감지하고 차량의 위험 상태를 판단하여, 경고와 자동 제동으로 차량의 무인 이동을 방지하는 시스템**입니다.  
 > 주차 또는 정차 상황에서 운전자가 차량을 완전히 안전한 상태로 두지 않고 하차했을 때 발생할 수 있는 사고를 줄이기 위해 개발했습니다.
 
-<table>
-  <tr>
-    <td>
+<table> <tr> <td>
       특히 다음과 같은 위험 상황을 대상으로 합니다.
       <br /><br />
       - D/R단 상태에서 하차 시도<br />
       - N단 상태에서 차량 밀림 위험 발생<br />
       - 운전자 부재 상태에서 차량 이동 발생<br />
       - 경고 및 제어 이력의 기록과 모니터링 필요 상황
-    </td>
-  </tr>
-</table>
+    </td> </tr> </table>
 
 ---
 

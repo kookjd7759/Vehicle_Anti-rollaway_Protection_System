@@ -144,18 +144,18 @@
   <table>
     <tr>
       <td align="center" width="50%">
-        <img src="https://github.com/user-attachments/assets/b05058ea-9dbb-491b-bc40-56e8bcf4767a" width="100%" alt="모듈 별 기능 1" />
+        <img src="https://github.com/user-attachments/assets/7f7fe47d-007b-439b-99d2-9ebc46859ffe" width="100%" alt="모듈 별 기능 1" />
       </td>
       <td align="center" width="50%">
-        <img src="https://github.com/user-attachments/assets/5d2bcb48-3fa2-4528-b4e8-e230ee358ad8" width="100%" alt="모듈 별 기능 2" />
+        <img src="https://github.com/user-attachments/assets/3988a75a-80c6-4cf3-be07-7062bd05d7d2" width="100%" alt="모듈 별 기능 2" />
       </td>
     </tr>
     <tr>
       <td align="center" width="50%">
-        <img src="https://github.com/user-attachments/assets/b6659007-8f73-41ff-95cc-3f60c522eee3" width="100%" alt="모듈 별 기능 3" />
+        <img src="https://github.com/user-attachments/assets/7e887dd4-18fa-414e-aac2-e442c1f3f05f" width="100%" alt="모듈 별 기능 3" />
       </td>
       <td align="center" width="50%">
-        <img src="https://github.com/user-attachments/assets/c855f3de-2776-4ace-95bb-d466af995c52" width="100%" alt="모듈 별 기능 4" />
+        <img src="https://github.com/user-attachments/assets/268d8a35-de48-465e-8fce-eb592993cb34" width="100%" alt="모듈 별 기능 4" />
       </td>
     </tr>
   </table>
